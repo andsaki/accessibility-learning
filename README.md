@@ -141,6 +141,7 @@ import { Input } from './design-system/components';
 - [Button コンポーネントの使い方](./src/design-system/components/Button.md)
 - [Input コンポーネントの使い方](./src/design-system/components/Input.md)
 - [カラーコントラストとアクセシビリティ](./docs/color-contrast.md)
+- [Storybook A11yアドオンの使い方](./docs/storybook-a11y.md)
 
 ### 参考リンク
 - [WCAG 2.1 ガイドライン（日本語）](https://waic.jp/docs/WCAG21/)
@@ -152,7 +153,59 @@ import { Input } from './design-system/components';
 - **React 18** - UIライブラリ
 - **TypeScript** - 型安全性
 - **Vite** - ビルドツール
+- **Storybook** - コンポーネントカタログ
 - **デザイントークン** - 一貫性のあるデザイン
+
+## 📚 Storybook
+
+コンポーネントを独立した環境で開発・テストできます。
+
+### Storybookの起動
+
+```bash
+npm run storybook
+```
+
+ブラウザで http://localhost:6006 を開いてください。
+
+### 主な機能
+
+**1. コンポーネントカタログ**
+- すべてのコンポーネントとそのバリエーションを一覧表示
+- プロパティをインタラクティブに変更してテスト
+
+**2. アクセシビリティチェック（A11y アドオン）**
+- WCAG準拠の自動チェック
+- カラーコントラスト比の検証
+- ARIA属性の検証
+- キーボードナビゲーションのテスト
+
+**3. ドキュメント自動生成**
+- プロパティの型情報から自動でドキュメント生成
+- 使用例とコード表示
+
+**4. ビジュアルテスト**
+- コンポーネントの見た目を比較
+- すべての状態を一度に確認
+
+### Storybookでできること
+
+```bash
+# 開発サーバーを起動
+npm run storybook
+
+# 静的ファイルとしてビルド
+npm run build-storybook
+```
+
+### アクセシビリティチェックの見方
+
+1. Storybookを起動
+2. 任意のストーリーを選択
+3. 下部の「Accessibility」タブをクリック
+4. WCAG違反がある場合、詳細が表示されます
+
+すべてのコンポーネントでViolations（違反）が0件になるように設計されています。
 
 ## 📝 今後の予定
 
