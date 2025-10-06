@@ -125,19 +125,24 @@ export const Input: React.FC<InputProps> = ({
         aria-describedby={getAriaDescribedBy()}
         style={inputStyles}
         {...props}
-        // フォーカス時のスタイル
+        // フォーカス時のスタイル: デジタル庁スタイルの黄色背景
         onFocus={(e) => {
           if (!disabled) {
-            e.currentTarget.style.borderColor = error ? colors.error : colors.primary[500];
-            e.currentTarget.style.boxShadow = `0 0 0 3px ${
-              error ? `${colors.error}33` : colors.primary[100]
-            }`;
+            e.currentTarget.style.backgroundColor = colors.focus.background;
+            e.currentTarget.style.color = colors.focus.text;
+            e.currentTarget.style.borderColor = colors.focus.outline;
+            e.currentTarget.style.outline = `3px solid ${colors.focus.outline}`;
+            e.currentTarget.style.outlineOffset = '2px';
           }
           props.onFocus?.(e);
         }}
         onBlur={(e) => {
+          // 元のスタイルに戻す
+          e.currentTarget.style.backgroundColor = disabled ? colors.neutral[100] : colors.background.default;
+          e.currentTarget.style.color = disabled ? colors.text.disabled : colors.text.primary;
           e.currentTarget.style.borderColor = error ? colors.error : colors.neutral[200];
-          e.currentTarget.style.boxShadow = 'none';
+          e.currentTarget.style.outline = 'none';
+          e.currentTarget.style.outlineOffset = '0';
           props.onBlur?.(e);
         }}
       />
