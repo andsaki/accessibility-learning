@@ -36,4 +36,11 @@ export const colors = {
     paper: '#f5f5f5',
     dark: '#212121',
   },
+
+  // Focus colors (デジタル庁スタイル)
+  focus: {
+    background: '#ffff00',  // 黄色背景
+    outline: '#000000',     // 黒いアウトライン
+    text: '#000000',        // 黒いテキスト（フォーカス時）
+  },
 } as const;

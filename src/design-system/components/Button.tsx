@@ -99,13 +99,20 @@ export const Button: React.FC<ButtonProps> = ({
       aria-disabled={disabled || isLoading} // 無効化状態を明示的に伝える
       style={styles}
       {...props}
-      // フォーカス時のスタイル: WCAG準拠のフォーカスインジケーター
+      // フォーカス時のスタイル: デジタル庁スタイルの黄色背景
       onFocus={(e) => {
-        e.currentTarget.style.boxShadow = `0 0 0 3px ${colors.primary[100]}`;
+        e.currentTarget.style.backgroundColor = colors.focus.background;
+        e.currentTarget.style.color = colors.focus.text;
+        e.currentTarget.style.outline = `3px solid ${colors.focus.outline}`;
+        e.currentTarget.style.outlineOffset = '2px';
         props.onFocus?.(e);
       }}
       onBlur={(e) => {
-        e.currentTarget.style.boxShadow = 'none';
+        // 元のスタイルに戻す
+        e.currentTarget.style.backgroundColor = variantStyles[variant].backgroundColor || '';
+        e.currentTarget.style.color = variantStyles[variant].color || '';
+        e.currentTarget.style.outline = 'none';
+        e.currentTarget.style.outlineOffset = '0';
         props.onBlur?.(e);
       }}
     >

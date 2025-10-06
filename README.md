@@ -141,6 +141,7 @@ import { Input } from './design-system/components';
 - [Button コンポーネントの使い方](./src/design-system/components/Button.md)
 - [Input コンポーネントの使い方](./src/design-system/components/Input.md)
 - [カラーコントラストとアクセシビリティ](./docs/color-contrast.md)
+- [フォーカススタイルのデザイン](./docs/focus-styles.md)
 - [Storybook A11yアドオンの使い方](./docs/storybook-a11y.md)
 
 ### 参考リンク
