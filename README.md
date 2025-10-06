@@ -1,73 +1,178 @@
-# React + TypeScript + Vite
+# アクセシビリティ学習プロジェクト
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+デザインシステムとアクセシビリティの学習用リポジトリです。WCAG 2.1 AA準拠のアクセシブルなReactコンポーネントを実装しています。
 
-Currently, two official plugins are available:
+## 📚 学習目的
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **デザインシステム**: 一貫性のあるUIを構築するためのデザイントークンとコンポーネント
+- **アクセシビリティ**: 誰もが使えるウェブサイトを作るためのベストプラクティス
 
-## React Compiler
+## 🚀 セットアップ
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 必要なもの
 
-## Expanding the ESLint configuration
+- Node.js 18以上
+- npm または yarn
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### インストール
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+```bash
+# リポジトリをクローン
+git clone https://github.com/andsaki/accessibility-learning.git
+cd accessibility-learning
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+# 依存関係をインストール
+npm install
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+# 開発サーバーを起動
+npm run dev
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+ブラウザで http://localhost:5173 を開いてください。
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📁 プロジェクト構成
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
 ```
+accessibility-learning/
+├── src/
+│   ├── design-system/
+│   │   ├── tokens/           # デザイントークン
+│   │   │   ├── colors.ts     # カラーパレット
+│   │   │   ├── spacing.ts    # スペーシング
+│   │   │   └── typography.ts # タイポグラフィ
+│   │   └── components/       # アクセシブルなコンポーネント
+│   │       ├── Button.tsx
+│   │       ├── Button.md
+│   │       ├── Input.tsx
+│   │       └── Input.md
+│   ├── App.tsx              # デモページ
+│   └── main.tsx
+├── docs/
+│   └── color-contrast.md    # カラーコントラストガイド
+└── README.md
+```
+
+## 🎨 実装済みコンポーネント
+
+### Button コンポーネント
+
+アクセシブルなボタンコンポーネント
+
+**機能:**
+- ✅ キーボード操作対応（Tab、Enter、Space）
+- ✅ フォーカスインジケーター表示
+- ✅ スクリーンリーダー対応（ARIA属性）
+- ✅ WCAG AA準拠のカラーコントラスト
+- ✅ ローディング状態のサポート
+- ✅ 3つのバリエーション（primary、secondary、outline）
+- ✅ 3つのサイズ（sm、md、lg）
+
+**使用例:**
+```tsx
+import { Button } from './design-system/components';
+
+<Button variant="primary" onClick={handleClick}>
+  クリック
+</Button>
+```
+
+詳細: [Button.md](./src/design-system/components/Button.md)
+
+### Input コンポーネント
+
+ラベル、エラー表示、ヘルプテキストを備えたアクセシブルな入力フィールド
+
+**機能:**
+- ✅ ラベルとinputの自動関連付け（useId使用）
+- ✅ エラーの即座な通知（role="alert"）
+- ✅ 必須項目の明示（aria-required）
+- ✅ ヘルプテキストのサポート
+- ✅ フォーカスインジケーター
+- ✅ 3つのサイズ（sm、md、lg）
+
+**使用例:**
+```tsx
+import { Input } from './design-system/components';
+
+<Input
+  label="メールアドレス"
+  type="email"
+  value={email}
+  onChange={(e) => setEmail(e.target.value)}
+  error={error}
+  helperText="ログイン時に使用します"
+  required
+/>
+```
+
+詳細: [Input.md](./src/design-system/components/Input.md)
+
+## 🎯 アクセシビリティ機能
+
+このプロジェクトで実装されているアクセシビリティ機能：
+
+### 1. キーボード操作
+- **Tab**: フォーカス移動
+- **Enter / Space**: ボタンのクリック
+- **Shift + Tab**: 逆方向へフォーカス移動
+
+### 2. スクリーンリーダー対応
+- 適切なARIA属性（`aria-label`, `aria-required`, `aria-invalid`, `aria-describedby`など）
+- `role`属性でコンポーネントの役割を明示
+- エラーメッセージの即座な読み上げ（`role="alert"`）
+
+### 3. フォーカス表示
+- WCAG 2.1準拠のフォーカスインジケーター
+- 3pxの視認性の高いフォーカスリング
+
+### 4. カラーコントラスト
+- WCAG AA基準（4.5:1以上）に準拠
+- エラーメッセージ、ボタン、テキストすべてで適切なコントラスト比を確保
+
+詳細: [カラーコントラストガイド](./docs/color-contrast.md)
+
+### 5. セマンティックHTML
+- 適切なHTML要素の使用（`<button>`, `<input>`, `<label>`など）
+- フォームの適切な構造化
+
+## 📖 学習リソース
+
+### ドキュメント
+- [Button コンポーネントの使い方](./src/design-system/components/Button.md)
+- [Input コンポーネントの使い方](./src/design-system/components/Input.md)
+- [カラーコントラストとアクセシビリティ](./docs/color-contrast.md)
+
+### 参考リンク
+- [WCAG 2.1 ガイドライン（日本語）](https://waic.jp/docs/WCAG21/)
+- [ARIA Authoring Practices Guide (APG)](https://www.w3.org/WAI/ARIA/apg/)
+- [MDN Web Accessibility](https://developer.mozilla.org/ja/docs/Web/Accessibility)
+
+## 🛠️ 技術スタック
+
+- **React 18** - UIライブラリ
+- **TypeScript** - 型安全性
+- **Vite** - ビルドツール
+- **デザイントークン** - 一貫性のあるデザイン
+
+## 📝 今後の予定
+
+以下のコンポーネントを追加予定：
+
+- [ ] Checkbox / Radio
+- [ ] Modal（モーダルダイアログ）
+- [ ] Tooltip
+- [ ] Alert / Toast
+- [ ] Tabs（タブ）
+- [ ] Select（ドロップダウン）
+
+## 🤝 コントリビューション
+
+このプロジェクトは学習目的のため、issueやプルリクエストは受け付けていません。
+
+## 📄 ライセンス
+
+MIT
+
+## 👤 作成者
+
+学習プロジェクトとして作成
