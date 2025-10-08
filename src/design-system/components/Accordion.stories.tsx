@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Accordion, AccordionSummary, AccordionContent, AccordionBackLink } from './Accordion';
 
 const meta = {
-  title: 'Components/Accordion',
+  title: 'Design System/Accordion',
   component: Accordion,
   parameters: {
     layout: 'padded',
@@ -14,54 +14,49 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {
-    children: (
-      <>
-        <AccordionSummary id="accordion-summary-1">
-          <h3 className="text-std-16N-170 desktop:text-std-18N-160">
-            アコーディオンのタイトル
-          </h3>
-        </AccordionSummary>
-        <AccordionContent>
-          <p className="text-std-16N-170">
-            ここにアコーディオンのコンテンツが表示されます。デフォルトの状態では閉じています。
-          </p>
-          <AccordionBackLink href="#accordion-summary-1">
-            「アコーディオンのタイトル」の先頭に戻る
-          </AccordionBackLink>
-        </AccordionContent>
-      </>
-    ),
-  },
+  args: {},
+  render: () => (
+    <Accordion>
+      <AccordionSummary id="accordion-summary-1">
+        <h3 className="text-std-16N-170 desktop:text-std-18N-160">
+          アコーディオンのタイトル
+        </h3>
+      </AccordionSummary>
+      <AccordionContent>
+        <p className="text-std-16N-170">
+          ここにアコーディオンのコンテンツが表示されます。デフォルトの状態では閉じています。
+        </p>
+        <AccordionBackLink href="#accordion-summary-1">
+          「アコーディオンのタイトル」の先頭に戻る
+        </AccordionBackLink>
+      </AccordionContent>
+    </Accordion>
+  ),
 };
 
 export const Open: Story = {
-  args: {
-    open: true,
-    children: (
-      <>
-        <AccordionSummary id="accordion-summary-2">
-          <h3 className="text-std-16N-170 desktop:text-std-18N-160">
-            開いた状態のアコーディオン
-          </h3>
-        </AccordionSummary>
-        <AccordionContent>
-          <p className="text-std-16N-170">
-            このアコーディオンは最初から開いた状態で表示されます。
-          </p>
-          <AccordionBackLink href="#accordion-summary-2">
-            「開いた状態のアコーディオン」の先頭に戻る
-          </AccordionBackLink>
-        </AccordionContent>
-      </>
-    ),
-  },
+  args: {},
+  render: () => (
+    <Accordion open>
+      <AccordionSummary id="accordion-summary-2">
+        <h3 className="text-std-16N-170 desktop:text-std-18N-160">
+          開いた状態のアコーディオン
+        </h3>
+      </AccordionSummary>
+      <AccordionContent>
+        <p className="text-std-16N-170">
+          このアコーディオンは最初から開いた状態で表示されます。
+        </p>
+        <AccordionBackLink href="#accordion-summary-2">
+          「開いた状態のアコーディオン」の先頭に戻る
+        </AccordionBackLink>
+      </AccordionContent>
+    </Accordion>
+  ),
 };
 
 export const MultipleAccordions: Story = {
-  args: {
-    children: null,
-  },
+  args: {},
   render: () => (
     <div className="flex flex-col gap-4">
       <Accordion>
@@ -116,9 +111,7 @@ export const MultipleAccordions: Story = {
 };
 
 export const LongContent: Story = {
-  args: {
-    children: null,
-  },
+  args: {},
   render: () => (
     <Accordion>
       <AccordionSummary id="accordion-summary-6">
