@@ -30,7 +30,7 @@ export const AccordionSummary: React.FC<AccordionSummaryProps> = ({
   return (
     <summary
       id={id}
-      className={`group/summary relative flex cursor-default items-center gap-4 bg-gray-50 px-4 py-2.5 text-base leading-[1.7] text-blue-900 marker:[content:''] hover:bg-blue-100 focus-visible:bg-yellow-300 focus-visible:outline focus-visible:outline-4 focus-visible:outline-black md:gap-6 md:px-6 md:py-3.5 md:text-lg md:leading-[1.6] [&::-webkit-details-marker]:hidden ${className}`}
+      className={`group/summary relative flex cursor-default items-center gap-4 bg-gray-50 px-4 py-2.5 text-base leading-[1.7] text-blue-900 hover:bg-blue-100 focus-visible:bg-yellow-300 focus-visible:outline focus-visible:outline-4 focus-visible:outline-black [&::marker]:content-[''] [&::-webkit-details-marker]:hidden md:gap-6 md:px-6 md:py-3.5 md:text-lg md:leading-[1.6] ${className}`}
       {...props}
     >
       <span className="inline-flex size-[var(--icon-size)] shrink-0 items-center justify-center rounded-full border border-current bg-white transition-transform duration-300 group-open/accordion:rotate-180 group-hover/summary:outline group-hover/summary:outline-2 group-hover/summary:outline-current">
