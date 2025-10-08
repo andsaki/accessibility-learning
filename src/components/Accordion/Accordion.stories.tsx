@@ -18,12 +18,12 @@ export const Default: Story = {
     children: (
       <>
         <AccordionSummary id="accordion-summary-1">
-          <h3 className="text-base leading-[1.7] md:text-lg md:leading-[1.6]">
+          <h3 className="text-std-16N-170 desktop:text-std-18N-160">
             アコーディオンのタイトル
           </h3>
         </AccordionSummary>
         <AccordionContent>
-          <p className="text-base leading-[1.7]">
+          <p className="text-std-16N-170">
             ここにアコーディオンのコンテンツが表示されます。デフォルトの状態では閉じています。
           </p>
           <AccordionBackLink href="#accordion-summary-1">
@@ -41,12 +41,12 @@ export const Open: Story = {
     children: (
       <>
         <AccordionSummary id="accordion-summary-2">
-          <h3 className="text-base leading-[1.7] md:text-lg md:leading-[1.6]">
+          <h3 className="text-std-16N-170 desktop:text-std-18N-160">
             開いた状態のアコーディオン
           </h3>
         </AccordionSummary>
         <AccordionContent>
-          <p className="text-base leading-[1.7]">
+          <p className="text-std-16N-170">
             このアコーディオンは最初から開いた状態で表示されます。
           </p>
           <AccordionBackLink href="#accordion-summary-2">
@@ -59,17 +59,19 @@ export const Open: Story = {
 };
 
 export const MultipleAccordions: Story = {
-  args: {},
+  args: {
+    children: null,
+  },
   render: () => (
     <div className="flex flex-col gap-4">
       <Accordion>
         <AccordionSummary id="accordion-summary-3">
-          <h3 className="text-base leading-[1.7] md:text-lg md:leading-[1.6]">
+          <h3 className="text-std-16N-170 desktop:text-std-18N-160">
             よくある質問 1
           </h3>
         </AccordionSummary>
         <AccordionContent>
-          <p className="text-base leading-[1.7]">
+          <p className="text-std-16N-170">
             回答内容がここに表示されます。複数のアコーディオンを並べることができます。
           </p>
           <AccordionBackLink href="#accordion-summary-3">
@@ -80,12 +82,12 @@ export const MultipleAccordions: Story = {
 
       <Accordion>
         <AccordionSummary id="accordion-summary-4">
-          <h3 className="text-base leading-[1.7] md:text-lg md:leading-[1.6]">
+          <h3 className="text-std-16N-170 desktop:text-std-18N-160">
             よくある質問 2
           </h3>
         </AccordionSummary>
         <AccordionContent>
-          <p className="text-base leading-[1.7]">
+          <p className="text-std-16N-170">
             別の質問への回答がここに表示されます。
           </p>
           <AccordionBackLink href="#accordion-summary-4">
@@ -96,12 +98,12 @@ export const MultipleAccordions: Story = {
 
       <Accordion>
         <AccordionSummary id="accordion-summary-5">
-          <h3 className="text-base leading-[1.7] md:text-lg md:leading-[1.6]">
+          <h3 className="text-std-16N-170 desktop:text-std-18N-160">
             よくある質問 3
           </h3>
         </AccordionSummary>
         <AccordionContent>
-          <p className="text-base leading-[1.7]">
+          <p className="text-std-16N-170">
             さらに別の質問への回答がここに表示されます。
           </p>
           <AccordionBackLink href="#accordion-summary-5">
@@ -114,16 +116,18 @@ export const MultipleAccordions: Story = {
 };
 
 export const LongContent: Story = {
-  args: {},
+  args: {
+    children: null,
+  },
   render: () => (
     <Accordion>
       <AccordionSummary id="accordion-summary-6">
-        <h3 className="text-base leading-[1.7] md:text-lg md:leading-[1.6]">
+        <h3 className="text-std-16N-170 desktop:text-std-18N-160">
           長いコンテンツの例
         </h3>
       </AccordionSummary>
       <AccordionContent>
-        <div className="flex flex-col gap-4 text-base leading-[1.7]">
+        <div className="flex flex-col gap-4 text-std-16N-170">
           <p>
             これは長いコンテンツの例です。アコーディオンは長いテキストやリストを含むことができます。
           </p>

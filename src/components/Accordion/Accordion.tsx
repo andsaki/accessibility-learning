@@ -8,7 +8,7 @@ export interface AccordionProps extends React.DetailsHTMLAttributes<HTMLDetailsE
 export const Accordion: React.FC<AccordionProps> = ({ children, className = '', ...props }) => {
   return (
     <details
-      className={`group/accordion border border-gray-300 [--icon-size:calc(20/16*1rem)] md:[--icon-size:calc(32/16*1rem)] ${className}`}
+      className={`group/accordion border border-solid-grey-420 [--icon-size:calc(20/16*1rem)] desktop:[--icon-size:calc(32/16*1rem)] ${className}`}
       {...props}
     >
       {children}
@@ -30,7 +30,7 @@ export const AccordionSummary: React.FC<AccordionSummaryProps> = ({
   return (
     <summary
       id={id}
-      className={`group/summary relative flex cursor-default items-center gap-4 bg-gray-50 px-4 py-2.5 text-base leading-[1.7] text-blue-900 hover:bg-blue-100 focus-visible:bg-yellow-300 focus-visible:outline focus-visible:outline-4 focus-visible:outline-black [&::marker]:content-[''] [&::-webkit-details-marker]:hidden md:gap-6 md:px-6 md:py-3.5 md:text-lg md:leading-[1.6] ${className}`}
+      className={`group/summary relative flex cursor-default items-center gap-4 bg-solid-grey-50 px-4 py-2.5 text-std-16N-170 text-blue-1000 hover:bg-blue-100 focus-visible:bg-yellow-300 focus-visible:outline focus-visible:outline-4 focus-visible:outline-black [&::marker]:content-[''] [&::-webkit-details-marker]:hidden desktop:gap-6 desktop:px-6 desktop:py-3.5 desktop:text-std-18N-160 ${className}`}
       {...props}
     >
       <span className="inline-flex size-[var(--icon-size)] shrink-0 items-center justify-center rounded-full border border-current bg-white transition-transform duration-300 group-open/accordion:rotate-180 group-hover/summary:outline group-hover/summary:outline-2 group-hover/summary:outline-current">
@@ -66,7 +66,7 @@ export const AccordionContent: React.FC<AccordionContentProps> = ({
 }) => {
   return (
     <div
-      className={`px-4 py-4 md:px-6 md:py-6 ${className}`}
+      className={`px-4 py-4 desktop:px-6 desktop:py-6 ${className}`}
       {...props}
     >
       {children}
@@ -88,7 +88,7 @@ export const AccordionBackLink: React.FC<AccordionBackLinkProps> = ({
   return (
     <a
       href={href}
-      className={`mt-4 inline-flex items-center gap-2 text-base leading-[1.7] text-blue-900 underline hover:no-underline focus-visible:bg-yellow-300 focus-visible:outline focus-visible:outline-4 focus-visible:outline-black ${className}`}
+      className={`mt-4 inline-flex items-center gap-2 text-std-16N-170 text-blue-1000 underline hover:no-underline focus-visible:bg-yellow-300 focus-visible:outline focus-visible:outline-4 focus-visible:outline-black ${className}`}
       {...props}
     >
       <svg
