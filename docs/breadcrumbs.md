@@ -207,7 +207,9 @@ active:text-orange-700 active:decoration-1
 視覚的に隠れたラベルとして使用する場合:
 
 ```tsx
-<BreadcrumbsLabel className="sr-only">現在位置: </BreadcrumbsLabel>
+<BreadcrumbsLabel className="sr-only" id="breadcrumb-label">
+  現在位置
+</BreadcrumbsLabel>
 ```
 
 対応するCSSクラス:
@@ -224,6 +226,63 @@ active:text-orange-700 active:decoration-1
   border-width: 0;
 }
 ```
+
+#### BreadcrumbsLabelの技術的な仕組み
+
+`BreadcrumbsLabel` コンポーネントは、JavaScriptの**残余パラメータ（rest parameters）**と**スプレッド構文（spread syntax）**を使用して、柔軟にHTML属性を受け取れます。
+
+**実装**:
+```tsx
+export const BreadcrumbsLabel = (props: BreadcrumbsLabelProps) => {
+  const { children, className, ...rest } = props;
+
+  return (
+    <span className={`${className ?? ''}`} {...rest}>
+      {children}
+    </span>
+  );
+};
+```
+
+**使用例**:
+```tsx
+<BreadcrumbsLabel
+  className="sr-only"
+  id="my-id"
+  aria-hidden="true"
+  data-testid="label"
+>
+  現在位置
+</BreadcrumbsLabel>
+```
+
+**レンダリング結果**:
+```html
+<span
+  class="sr-only"
+  id="my-id"
+  aria-hidden="true"
+  data-testid="label"
+>
+  現在位置
+</span>
+```
+
+**技術解説**:
+
+1. **`const { children, className, ...rest } = props`**
+   - `children` と `className` を個別に取り出す
+   - 残りのすべてのプロパティを `rest` オブジェクトに格納
+   - これはJavaScript（ES6）の標準機能
+
+2. **`{...rest}`**
+   - `rest` オブジェクトのすべてのプロパティを要素に展開
+   - `id`、`aria-*`、`data-*` などの属性を自動的に渡せる
+
+3. **メリット**
+   - コンポーネントが明示的に定義していない属性も使える
+   - HTML標準属性をすべて手動で定義する必要がない
+   - テストID、カスタムデータ属性などを柔軟に追加できる
 
 ## アクセシビリティチェックリスト
 
