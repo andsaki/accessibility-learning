@@ -191,6 +191,9 @@ export const Disabled: Story = {
  * 様々なタイプの入力欄を表示します。
  */
 export const InputTypes: Story = {
+  args: {
+    label: '',
+  },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
       <Input label="テキスト" type="text" placeholder="テキストを入力" />
@@ -210,6 +213,9 @@ export const InputTypes: Story = {
  * リアルタイムバリデーションのデモです。
  */
 export const Interactive: Story = {
+  args: {
+    label: '',
+  },
   render: () => {
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
@@ -247,6 +253,9 @@ export const Interactive: Story = {
  * 複数の入力欄を組み合わせたフォームのデモです。
  */
 export const FormExample: Story = {
+  args: {
+    label: '',
+  },
   render: () => {
     const [formData, setFormData] = useState({
       name: '',
@@ -287,6 +296,9 @@ export const FormExample: Story = {
  * すべてのサイズ比較
  */
 export const AllSizes: Story = {
+  args: {
+    label: '',
+  },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
       <Input label="小サイズ" size="sm" placeholder="小さい入力欄" />
@@ -300,6 +312,9 @@ export const AllSizes: Story = {
  * すべての状態比較
  */
 export const AllStates: Story = {
+  args: {
+    label: '',
+  },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
       <Input label="通常" placeholder="テキストを入力" />
