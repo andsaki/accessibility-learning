@@ -9,7 +9,8 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",
-    "build-storybook": "storybook build"
+    "build-storybook": "storybook build",
+    "deploy-storybook": "storybook build && touch storybook-static/.nojekyll"
   },
   "dependencies": {
     "@digital-go-jp/tailwind-theme-plugin": "^0.3.2",

@@ -15,6 +15,13 @@ const config: StorybookConfig = {
   "framework": {
     "name": "@storybook/react-vite",
     "options": {}
+  },
+  viteFinal: async (config) => {
+    // GitHub Pagesのサブパス対応
+    if (process.env.NODE_ENV === 'production') {
+      config.base = '/accessibility-learning/';
+    }
+    return config;
   }
 };
 export default config;
