@@ -14,7 +14,9 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
-  args: {},
+  args: {
+    children: null,
+  },
   render: () => (
     <Accordion>
       <AccordionSummary id="accordion-summary-1">
@@ -35,7 +37,9 @@ export const Default: Story = {
 };
 
 export const Open: Story = {
-  args: {},
+  args: {
+    children: null,
+  },
   render: () => (
     <Accordion open>
       <AccordionSummary id="accordion-summary-2">
@@ -56,7 +60,9 @@ export const Open: Story = {
 };
 
 export const MultipleAccordions: Story = {
-  args: {},
+  args: {
+    children: null,
+  },
   render: () => (
     <div className="flex flex-col gap-4">
       <Accordion>
@@ -111,7 +117,9 @@ export const MultipleAccordions: Story = {
 };
 
 export const LongContent: Story = {
-  args: {},
+  args: {
+    children: null,
+  },
   render: () => (
     <Accordion>
       <AccordionSummary id="accordion-summary-6">
