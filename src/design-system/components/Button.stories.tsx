@@ -167,6 +167,7 @@ export const WithIcon: Story = {
  * 各バリエーションを並べて比較できます。
  */
 export const AllVariants: Story = {
+  args: {},
   render: () => (
     <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
       <Button variant="primary">Primary</Button>
@@ -182,6 +183,7 @@ export const AllVariants: Story = {
  * 各サイズを並べて比較できます。
  */
 export const AllSizes: Story = {
+  args: {},
   render: () => (
     <div style={{ display: 'flex', gap: '1rem', alignItems: 'center' }}>
       <Button size="sm">Small</Button>
@@ -197,6 +199,7 @@ export const AllSizes: Story = {
  * 通常、ローディング、無効化の状態を比較できます。
  */
 export const AllStates: Story = {
+  args: {},
   render: () => (
     <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
       <Button>通常</Button>
