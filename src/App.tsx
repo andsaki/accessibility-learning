@@ -247,6 +247,42 @@ function App() {
               例: 黒文字 ({primitive.black}) と白背景 ({primitive.white})
               のコントラスト比は <strong>21:1</strong>（最大値）
             </p>
+
+            <div
+              style={{
+                marginTop: "1rem",
+                padding: "1rem",
+                backgroundColor: primitive.blue[50],
+                borderRadius: "4px",
+                border: `1px solid ${primitive.blue[200]}`,
+              }}
+            >
+              <h4 style={{ marginTop: 0, color: primitive.blue[900] }}>
+                📐 コントラスト比の計算方法
+              </h4>
+              <p style={{ margin: "0.5rem 0", lineHeight: "1.8", color: primitive.gray[900] }}>
+                コントラスト比 = (明るい方の輝度 + 0.05) ÷ (暗い方の輝度 + 0.05)
+              </p>
+              <p style={{ margin: "0.5rem 0", fontSize: "14px", color: primitive.gray[700] }}>
+                ※ 輝度は0.0（完全な黒）〜 1.0（完全な白）の値
+              </p>
+              <div style={{ marginTop: "0.75rem" }}>
+                <p style={{ margin: "0.25rem 0", fontSize: "14px", color: primitive.gray[900] }}>
+                  <strong>例1: 白背景 + グレー文字 = 3:1</strong>
+                  <br />
+                  <span style={{ fontSize: "13px", color: primitive.gray[700] }}>
+                    白(輝度1.0) ÷ グレー(輝度0.4) = (1.0+0.05)÷(0.4+0.05) ≈ 3:1
+                  </span>
+                </p>
+                <p style={{ margin: "0.25rem 0", fontSize: "14px", color: primitive.gray[900] }}>
+                  <strong>例2: 白背景 + 黒文字 = 21:1</strong>
+                  <br />
+                  <span style={{ fontSize: "13px", color: primitive.gray[700] }}>
+                    白(輝度1.0) ÷ 黒(輝度0.0) = (1.0+0.05)÷(0.0+0.05) = 21:1（最大）
+                  </span>
+                </p>
+              </div>
+            </div>
           </div>
 
           <div style={{ marginTop: "2rem" }}>
@@ -283,6 +319,19 @@ function App() {
                     <strong>大きいテキスト:</strong> 3:1 以上
                   </li>
                   <li>18px以上の通常テキスト、または14px以上の太字</li>
+                  <li>
+                    <div style={{
+                      fontSize: '18px',
+                      color: accessibilityLevels.contrastDemos.ratio3to1.text,
+                      backgroundColor: accessibilityLevels.contrastDemos.ratio3to1.background,
+                      padding: '0.5rem',
+                      marginTop: '0.5rem',
+                      borderRadius: '4px',
+                      border: `1px solid ${colors.border.default}`
+                    }}>
+                      これが{accessibilityLevels.contrastDemos.ratio3to1.actualRatio}のコントラスト（18px）- {accessibilityLevels.contrastDemos.ratio3to1.label}
+                    </div>
+                  </li>
                   <li>⚠️ 通常サイズのテキストには基準なし</li>
                   <li style={{ color: primitive.red[700], fontWeight: 600 }}>
                     ❌ 実用的ではありません。AAレベル以上を推奨
@@ -313,6 +362,19 @@ function App() {
                     <strong>通常テキスト:</strong> 4.5:1 以上
                   </li>
                   <li>
+                    <div style={{
+                      fontSize: '16px',
+                      color: accessibilityLevels.contrastDemos.ratio4_5to1.text,
+                      backgroundColor: accessibilityLevels.contrastDemos.ratio4_5to1.background,
+                      padding: '0.5rem',
+                      marginTop: '0.5rem',
+                      borderRadius: '4px',
+                      border: `1px solid ${colors.border.default}`
+                    }}>
+                      これが{accessibilityLevels.contrastDemos.ratio4_5to1.actualRatio}のコントラスト（16px）- {accessibilityLevels.contrastDemos.ratio4_5to1.label}
+                    </div>
+                  </li>
+                  <li>
                     <strong>大きいテキスト:</strong> 3:1 以上
                   </li>
                   <li>✅ ほとんどのWebサイトで推奨される標準</li>
@@ -340,6 +402,19 @@ function App() {
                 >
                   <li>
                     <strong>通常テキスト:</strong> 7:1 以上
+                  </li>
+                  <li>
+                    <div style={{
+                      fontSize: '16px',
+                      color: accessibilityLevels.contrastDemos.ratio7to1.text,
+                      backgroundColor: accessibilityLevels.contrastDemos.ratio7to1.background,
+                      padding: '0.5rem',
+                      marginTop: '0.5rem',
+                      borderRadius: '4px',
+                      border: `1px solid ${colors.border.default}`
+                    }}>
+                      これが{accessibilityLevels.contrastDemos.ratio7to1.actualRatio}のコントラスト（16px）- {accessibilityLevels.contrastDemos.ratio7to1.label} ✓✓
+                    </div>
                   </li>
                   <li>
                     <strong>大きいテキスト:</strong> 4.5:1 以上

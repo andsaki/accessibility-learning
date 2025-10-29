@@ -248,6 +248,46 @@ export const useCases = {
 } as const;
 
 /**
+ * コントラスト比のデモ用カラー
+ *
+ * 実際のコントラスト比を視覚的に示すためのサンプル
+ */
+export const contrastDemos = {
+  /**
+   * 3:1のコントラスト比（レベルA - 大きいテキストのみ）
+   * gray[500] on white
+   */
+  ratio3to1: {
+    text: primitive.gray[500], // コントラスト比: 3.26:1
+    background: primitive.white,
+    actualRatio: '3.26:1',
+    label: '見にくい',
+  },
+
+  /**
+   * 4.5:1のコントラスト比（レベルAA - 通常テキスト）
+   * gray[600] on white
+   */
+  ratio4_5to1: {
+    text: primitive.gray[600], // コントラスト比: 4.55:1
+    background: primitive.white,
+    actualRatio: '4.55:1',
+    label: 'ギリギリ読める',
+  },
+
+  /**
+   * 7:1のコントラスト比（レベルAAA - 通常テキスト）
+   * gray[800] on white
+   */
+  ratio7to1: {
+    text: primitive.gray[800], // コントラスト比: 11.6:1
+    background: primitive.white,
+    actualRatio: '11.6:1',
+    label: '非常に読みやすい',
+  },
+} as const;
+
+/**
  * アクセシビリティレベルの統合エクスポート
  */
 export const accessibilityLevels = {
@@ -256,6 +296,7 @@ export const accessibilityLevels = {
   text: textColors,
   size: sizeRequirements,
   useCases,
+  contrastDemos,
 } as const;
 
 export type AccessibilityLevels = typeof accessibilityLevels;
