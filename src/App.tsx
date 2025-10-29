@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button, Input } from "./design-system/components";
-import { colors, accessibilityLevels } from "./design-system/tokens";
+import { colors, accessibilityLevels, radii, spacing, typography } from "./design-system/tokens";
 import { primitive } from "./design-system/tokens/colors";
 import "./App.css";
 
@@ -60,23 +60,23 @@ function App() {
   };
 
   return (
-    <div style={{ padding: "2rem", maxWidth: "800px", margin: "0 auto" }}>
+    <div style={{ padding: spacing.scale[8], maxWidth: "800px", margin: "0 auto" }}>
       <header>
         <h1>デザインシステム & アクセシビリティ学習</h1>
         <p>アクセシブルなコンポーネントの実装例</p>
       </header>
 
-      <main style={{ marginTop: "2rem" }}>
-        <section style={{ marginBottom: "2rem" }}>
+      <main style={{ marginTop: spacing.scale[8] }}>
+        <section style={{ marginBottom: spacing.scale[8] }}>
           <h2>Button コンポーネント</h2>
           <p>WCAG準拠のアクセシブルなボタンコンポーネントです。</p>
 
           <div
             style={{
               display: "flex",
-              gap: "1rem",
+              gap: spacing.scale[4],
               flexWrap: "wrap",
-              marginTop: "1rem",
+              marginTop: spacing.scale[4],
             }}
           >
             <Button
@@ -102,9 +102,9 @@ function App() {
           <div
             style={{
               display: "flex",
-              gap: "1rem",
+              gap: spacing.scale[4],
               flexWrap: "wrap",
-              marginTop: "1rem",
+              marginTop: spacing.scale[4],
             }}
           >
             <Button size="sm" variant="primary">
@@ -118,20 +118,20 @@ function App() {
             </Button>
           </div>
 
-          <div style={{ display: "flex", gap: "1rem", marginTop: "1rem" }}>
+          <div style={{ display: "flex", gap: spacing.scale[4], marginTop: spacing.scale[4] }}>
             <Button disabled>無効化</Button>
             <Button isLoading>読み込み中</Button>
             <Button icon="🚀">アイコン付き</Button>
           </div>
         </section>
 
-        <section style={{ marginBottom: "3rem", marginTop: "3rem" }}>
+        <section style={{ marginBottom: spacing.scale[12], marginTop: spacing.scale[12] }}>
           <h2>Input コンポーネント</h2>
           <p>
             ラベル、エラー表示、ヘルプテキストを備えたアクセシブルな入力フィールドです。
           </p>
 
-          <form onSubmit={handleSubmit} style={{ marginTop: "1.5rem" }}>
+          <form onSubmit={handleSubmit} style={{ marginTop: spacing.scale[6] }}>
             <Input
               label="お名前"
               placeholder="山田太郎"
@@ -169,7 +169,7 @@ function App() {
               required
             />
 
-            <div style={{ display: "flex", gap: "1rem", marginTop: "1rem" }}>
+            <div style={{ display: "flex", gap: spacing.scale[4], marginTop: spacing.scale[4] }}>
               <Button type="submit" variant="primary">
                 送信
               </Button>
@@ -186,14 +186,14 @@ function App() {
             </div>
           </form>
 
-          <div style={{ marginTop: "2rem" }}>
+          <div style={{ marginTop: spacing.scale[8] }}>
             <h3>サイズバリエーション</h3>
             <Input label="小サイズ" size="sm" placeholder="小さい入力欄" />
             <Input label="中サイズ" size="md" placeholder="標準の入力欄" />
             <Input label="大サイズ" size="lg" placeholder="大きい入力欄" />
           </div>
 
-          <div style={{ marginTop: "2rem" }}>
+          <div style={{ marginTop: spacing.scale[8] }}>
             <h3>無効化状態</h3>
             <Input
               label="無効な入力欄"
@@ -206,11 +206,11 @@ function App() {
 
         <section
           style={{
-            marginTop: "3rem",
-            padding: "1.5rem",
+            marginTop: spacing.scale[12],
+            padding: spacing.scale[6],
             backgroundColor: "#e3f2fd",
             border: "2px solid #2196f3",
-            borderRadius: "8px",
+            borderRadius: radii.borderRadius.lg,
           }}
         >
           <h3 style={{ color: "#1565c0", marginTop: 0 }}>
@@ -230,15 +230,15 @@ function App() {
 
         <section
           style={{
-            marginTop: "3rem",
-            padding: "2rem",
+            marginTop: spacing.scale[12],
+            padding: spacing.scale[8],
             backgroundColor: colors.background.subtle,
-            borderRadius: "8px",
+            borderRadius: radii.borderRadius.lg,
           }}
         >
           <h2>WCAGレベルとコントラスト比について</h2>
 
-          <div style={{ marginTop: "1.5rem" }}>
+          <div style={{ marginTop: spacing.scale[6] }}>
             <h3>コントラスト比とは？</h3>
             <p style={{ lineHeight: "1.8" }}>
               コントラスト比は、テキストと背景の明るさの差を数値で表したものです。
@@ -250,10 +250,10 @@ function App() {
 
             <div
               style={{
-                marginTop: "1rem",
-                padding: "1rem",
+                marginTop: spacing.scale[4],
+                padding: spacing.scale[4],
                 backgroundColor: primitive.blue[50],
-                borderRadius: "4px",
+                borderRadius: radii.borderRadius.base,
                 border: `1px solid ${primitive.blue[200]}`,
               }}
             >
@@ -263,21 +263,21 @@ function App() {
               <p style={{ margin: "0.5rem 0", lineHeight: "1.8", color: primitive.gray[900] }}>
                 コントラスト比 = (明るい方の輝度 + 0.05) ÷ (暗い方の輝度 + 0.05)
               </p>
-              <p style={{ margin: "0.5rem 0", fontSize: "14px", color: primitive.gray[700] }}>
+              <p style={{ margin: "0.5rem 0", fontSize: typography.fontSize.sm, color: primitive.gray[700] }}>
                 ※ 輝度は0.0（完全な黒）〜 1.0（完全な白）の値
               </p>
-              <div style={{ marginTop: "0.75rem" }}>
-                <p style={{ margin: "0.25rem 0", fontSize: "14px", color: primitive.gray[900] }}>
+              <div style={{ marginTop: spacing.scale[3] }}>
+                <p style={{ margin: "0.25rem 0", fontSize: typography.fontSize.sm, color: primitive.gray[900] }}>
                   <strong>例1: 白背景 + グレー文字 = 3:1</strong>
                   <br />
-                  <span style={{ fontSize: "13px", color: primitive.gray[700] }}>
+                  <span style={{ fontSize: typography.fontSize.xs, color: primitive.gray[700] }}>
                     白(輝度1.0) ÷ グレー(輝度0.4) = (1.0+0.05)÷(0.4+0.05) ≈ 3:1
                   </span>
                 </p>
-                <p style={{ margin: "0.25rem 0", fontSize: "14px", color: primitive.gray[900] }}>
+                <p style={{ margin: "0.25rem 0", fontSize: typography.fontSize.sm, color: primitive.gray[900] }}>
                   <strong>例2: 白背景 + 黒文字 = 21:1</strong>
                   <br />
-                  <span style={{ fontSize: "13px", color: primitive.gray[700] }}>
+                  <span style={{ fontSize: typography.fontSize.xs, color: primitive.gray[700] }}>
                     白(輝度1.0) ÷ 黒(輝度0.0) = (1.0+0.05)÷(0.0+0.05) = 21:1（最大）
                   </span>
                 </p>
@@ -285,22 +285,22 @@ function App() {
             </div>
           </div>
 
-          <div style={{ marginTop: "2rem" }}>
+          <div style={{ marginTop: spacing.scale[8] }}>
             <h3>WCAGレベルとコントラスト比の基準</h3>
 
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
-                gap: "1.5rem",
-                marginTop: "1rem",
+                gap: spacing.scale[6],
+                marginTop: spacing.scale[4],
               }}
             >
               <div
                 style={{
-                  padding: "1rem",
+                  padding: spacing.scale[4],
                   backgroundColor: primitive.gray[100],
-                  borderRadius: "4px",
+                  borderRadius: radii.borderRadius.base,
                   border: `2px solid ${colors.border.default}`,
                 }}
               >
@@ -310,7 +310,7 @@ function App() {
                 <ul
                   style={{
                     margin: "0.5rem 0",
-                    paddingLeft: "1.5rem",
+                    paddingLeft: spacing.scale[6],
                     lineHeight: "1.8",
                     color: primitive.gray[900],
                   }}
@@ -321,12 +321,12 @@ function App() {
                   <li>18px以上の通常テキスト、または14px以上の太字</li>
                   <li>
                     <div style={{
-                      fontSize: '18px',
+                      fontSize: typography.fontSize.lg,
                       color: accessibilityLevels.contrastDemos.ratio3to1.text,
                       backgroundColor: accessibilityLevels.contrastDemos.ratio3to1.background,
-                      padding: '0.5rem',
-                      marginTop: '0.5rem',
-                      borderRadius: '4px',
+                      padding: spacing.scale[2],
+                      marginTop: spacing.scale[2],
+                      borderRadius: radii.borderRadius.base,
                       border: `1px solid ${colors.border.default}`
                     }}>
                       これが{accessibilityLevels.contrastDemos.ratio3to1.actualRatio}のコントラスト（18px）- {accessibilityLevels.contrastDemos.ratio3to1.label}
@@ -341,9 +341,9 @@ function App() {
 
               <div
                 style={{
-                  padding: "1rem",
+                  padding: spacing.scale[4],
                   backgroundColor: primitive.blue[50],
-                  borderRadius: "4px",
+                  borderRadius: radii.borderRadius.base,
                   border: `2px solid ${primitive.blue[500]}`,
                 }}
               >
@@ -353,7 +353,7 @@ function App() {
                 <ul
                   style={{
                     margin: "0.5rem 0",
-                    paddingLeft: "1.5rem",
+                    paddingLeft: spacing.scale[6],
                     lineHeight: "1.8",
                     color: primitive.gray[900],
                   }}
@@ -363,12 +363,12 @@ function App() {
                   </li>
                   <li>
                     <div style={{
-                      fontSize: '16px',
+                      fontSize: typography.fontSize.base,
                       color: accessibilityLevels.contrastDemos.ratio4_5to1.text,
                       backgroundColor: accessibilityLevels.contrastDemos.ratio4_5to1.background,
-                      padding: '0.5rem',
-                      marginTop: '0.5rem',
-                      borderRadius: '4px',
+                      padding: spacing.scale[2],
+                      marginTop: spacing.scale[2],
+                      borderRadius: radii.borderRadius.base,
                       border: `1px solid ${colors.border.default}`
                     }}>
                       これが{accessibilityLevels.contrastDemos.ratio4_5to1.actualRatio}のコントラスト（16px）- {accessibilityLevels.contrastDemos.ratio4_5to1.label}
@@ -383,9 +383,9 @@ function App() {
 
               <div
                 style={{
-                  padding: "1rem",
+                  padding: spacing.scale[4],
                   backgroundColor: primitive.orange[50],
-                  borderRadius: "4px",
+                  borderRadius: radii.borderRadius.base,
                   border: `2px solid ${primitive.orange[600]}`,
                 }}
               >
@@ -395,7 +395,7 @@ function App() {
                 <ul
                   style={{
                     margin: "0.5rem 0",
-                    paddingLeft: "1.5rem",
+                    paddingLeft: spacing.scale[6],
                     lineHeight: "1.8",
                     color: primitive.gray[900],
                   }}
@@ -405,12 +405,12 @@ function App() {
                   </li>
                   <li>
                     <div style={{
-                      fontSize: '16px',
+                      fontSize: typography.fontSize.base,
                       color: accessibilityLevels.contrastDemos.ratio7to1.text,
                       backgroundColor: accessibilityLevels.contrastDemos.ratio7to1.background,
-                      padding: '0.5rem',
-                      marginTop: '0.5rem',
-                      borderRadius: '4px',
+                      padding: spacing.scale[2],
+                      marginTop: spacing.scale[2],
+                      borderRadius: radii.borderRadius.base,
                       border: `1px solid ${colors.border.default}`
                     }}>
                       これが{accessibilityLevels.contrastDemos.ratio7to1.actualRatio}のコントラスト（16px）- {accessibilityLevels.contrastDemos.ratio7to1.label} ✓✓
@@ -425,27 +425,27 @@ function App() {
             </div>
           </div>
 
-          <div style={{ marginTop: "2rem" }}>
+          <div style={{ marginTop: spacing.scale[8] }}>
             <h3>実際の例</h3>
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
-                gap: "1rem",
-                marginTop: "1rem",
+                gap: spacing.scale[4],
+                marginTop: spacing.scale[4],
               }}
             >
               <div
                 style={{
-                  padding: "1rem",
+                  padding: spacing.scale[4],
                   backgroundColor: accessibilityLevels.button.AA.primary.bg,
                   color: accessibilityLevels.button.AA.primary.text,
-                  borderRadius: "4px",
+                  borderRadius: radii.borderRadius.base,
                 }}
               >
                 <strong>コントラスト比 4.5:1</strong> - レベルAA Primary ボタン
                 <br />
-                <span style={{ fontSize: "14px" }}>
+                <span style={{ fontSize: typography.fontSize.sm }}>
                   背景: {accessibilityLevels.button.AA.primary.bg} / 文字:{" "}
                   {accessibilityLevels.button.AA.primary.text}
                 </span>
@@ -453,16 +453,16 @@ function App() {
 
               <div
                 style={{
-                  padding: "1rem",
+                  padding: spacing.scale[4],
                   backgroundColor: accessibilityLevels.button.AAA.primary.bg,
                   color: accessibilityLevels.button.AAA.primary.text,
-                  borderRadius: "4px",
+                  borderRadius: radii.borderRadius.base,
                 }}
               >
                 <strong>コントラスト比 4.59:1</strong> - レベルAAA Primary
                 ボタン
                 <br />
-                <span style={{ fontSize: "14px" }}>
+                <span style={{ fontSize: typography.fontSize.sm }}>
                   背景: {accessibilityLevels.button.AAA.primary.bg} / 文字:{" "}
                   {accessibilityLevels.button.AAA.primary.text}
                 </span>
@@ -470,16 +470,16 @@ function App() {
 
               <div
                 style={{
-                  padding: "1rem",
+                  padding: spacing.scale[4],
                   backgroundColor: accessibilityLevels.focus.AAA.background,
                   color: accessibilityLevels.focus.AAA.text,
-                  borderRadius: "4px",
+                  borderRadius: radii.borderRadius.base,
                   border: `1px solid ${colors.border.default}`,
                 }}
               >
                 <strong>コントラスト比 19.56:1</strong> - レベルAAA フォーカス
                 <br />
-                <span style={{ fontSize: "14px" }}>
+                <span style={{ fontSize: typography.fontSize.sm }}>
                   背景: {accessibilityLevels.focus.AAA.background} / 文字:{" "}
                   {accessibilityLevels.focus.AAA.text}
                 </span>
@@ -487,15 +487,15 @@ function App() {
 
               <div
                 style={{
-                  padding: "1rem",
+                  padding: spacing.scale[4],
                   backgroundColor: primitive.gray[900],
                   color: primitive.white,
-                  borderRadius: "4px",
+                  borderRadius: radii.borderRadius.base,
                 }}
               >
                 <strong>コントラスト比 16.1:1</strong> - 濃いグレー背景と白文字
                 <br />
-                <span style={{ fontSize: "14px" }}>
+                <span style={{ fontSize: typography.fontSize.sm }}>
                   背景: {primitive.gray[900]} / 文字: {primitive.white}
                 </span>
               </div>
@@ -504,10 +504,10 @@ function App() {
 
           <div
             style={{
-              marginTop: "2rem",
-              padding: "1rem",
+              marginTop: spacing.scale[8],
+              padding: spacing.scale[4],
               backgroundColor: colors.background.default,
-              borderRadius: "4px",
+              borderRadius: radii.borderRadius.base,
               border: `2px solid ${primitive.green[500]}`,
             }}
           >
@@ -517,7 +517,7 @@ function App() {
             <p style={{ margin: "0.5rem 0", lineHeight: "1.8" }}>
               オンラインツールを使って簡単に確認できます：
             </p>
-            <ul style={{ margin: "0.5rem 0", paddingLeft: "1.5rem" }}>
+            <ul style={{ margin: "0.5rem 0", paddingLeft: spacing.scale[6] }}>
               <li>
                 <a
                   href="https://webaim.org/resources/contrastchecker/"

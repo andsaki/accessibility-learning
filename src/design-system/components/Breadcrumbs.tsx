@@ -1,7 +1,5 @@
 import React from 'react';
-import { colors } from '../tokens/colors';
-import { spacing } from '../tokens/spacing';
-import { typography } from '../tokens/typography';
+import { colors, spacing, typography } from '../tokens';
 
 export interface BreadcrumbsProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;

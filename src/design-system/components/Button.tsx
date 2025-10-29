@@ -1,5 +1,5 @@
 import React from 'react';
-import { colors, spacing, typography, accessibilityLevels } from '../tokens';
+import { colors, spacing, typography, accessibilityLevels, radii } from '../tokens';
 import type { WCAGLevel } from '../tokens';
 import './Button.css';
 
@@ -70,7 +70,7 @@ export const Button: React.FC<ButtonProps> = ({
   const baseStyles: React.CSSProperties = {
     fontFamily: typography.fontFamily.base,
     fontWeight: typography.fontWeight.semibold,
-    borderRadius: '0.375rem',
+    borderRadius: radii.borderRadius.md,
     border: 'none',
     cursor: disabled || isLoading ? 'not-allowed' : 'pointer',
     display: 'inline-flex',

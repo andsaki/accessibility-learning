@@ -1,9 +1,6 @@
 import React, { useId } from 'react';
-import { colors } from '../tokens/colors';
-import { spacing } from '../tokens/spacing';
-import { typography } from '../tokens/typography';
-import { accessibilityLevels } from '../tokens/accessibility-levels';
-import type { WCAGLevel } from '../tokens/accessibility-levels';
+import { colors, spacing, typography, accessibilityLevels, radii } from '../tokens';
+import type { WCAGLevel } from '../tokens';
 
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /** ラベルテキスト */
@@ -94,7 +91,7 @@ export const Input: React.FC<InputProps> = ({
   const inputStyles: React.CSSProperties = {
     width: '100%',
     fontFamily: typography.fontFamily.base,
-    borderRadius: '0.375rem',
+    borderRadius: radii.borderRadius.md,
     border: `2px solid ${error ? colors.input.borderError : colors.input.border}`,
     outline: 'none',
     transition: 'all 0.2s ease-in-out',
