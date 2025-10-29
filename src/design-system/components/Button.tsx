@@ -1,8 +1,6 @@
 import React from 'react';
-import { colors } from '../tokens/colors';
-import { spacing } from '../tokens/spacing';
-import { typography } from '../tokens/typography';
-import { accessibilityLevels, WCAGLevel } from '../tokens/accessibility-levels';
+import { colors, spacing, typography, accessibilityLevels } from '../tokens';
+import type { WCAGLevel } from '../tokens';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** ボタンのバリエーション */
