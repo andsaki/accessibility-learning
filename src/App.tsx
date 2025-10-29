@@ -67,9 +67,17 @@ function App() {
       </header>
 
       <main style={{ marginTop: spacing.scale[8] }}>
-        <section style={{ marginBottom: spacing.scale[8] }}>
-          <h2>Button コンポーネント</h2>
-          <p>WCAG準拠のアクセシブルなボタンコンポーネントです。</p>
+        <section
+          style={{
+            marginBottom: spacing.scale[12],
+            padding: spacing.scale[6],
+            backgroundColor: colors.background.default,
+            borderRadius: radii.borderRadius.lg,
+            border: `1px solid ${colors.border.default}`,
+          }}
+        >
+          <h2 style={{ marginTop: 0, color: primitive.gray[900] }}>Button コンポーネント</h2>
+          <p style={{ color: primitive.gray[700] }}>WCAG準拠のアクセシブルなボタンコンポーネントです。</p>
 
           <div
             style={{
@@ -125,9 +133,17 @@ function App() {
           </div>
         </section>
 
-        <section style={{ marginBottom: spacing.scale[12], marginTop: spacing.scale[12] }}>
-          <h2>Input コンポーネント</h2>
-          <p>
+        <section
+          style={{
+            marginBottom: spacing.scale[12],
+            padding: spacing.scale[6],
+            backgroundColor: colors.background.default,
+            borderRadius: radii.borderRadius.lg,
+            border: `1px solid ${colors.border.default}`,
+          }}
+        >
+          <h2 style={{ marginTop: 0, color: primitive.gray[900] }}>Input コンポーネント</h2>
+          <p style={{ color: primitive.gray[700] }}>
             ラベル、エラー表示、ヘルプテキストを備えたアクセシブルな入力フィールドです。
           </p>
 
@@ -206,17 +222,17 @@ function App() {
 
         <section
           style={{
-            marginTop: spacing.scale[12],
+            marginBottom: spacing.scale[12],
             padding: spacing.scale[6],
-            backgroundColor: "#e3f2fd",
-            border: "2px solid #2196f3",
+            backgroundColor: primitive.blue[50],
+            border: `2px solid ${primitive.blue[500]}`,
             borderRadius: radii.borderRadius.lg,
           }}
         >
-          <h3 style={{ color: "#1565c0", marginTop: 0 }}>
+          <h3 style={{ color: primitive.blue[900], marginTop: 0 }}>
             アクセシビリティ機能
           </h3>
-          <ul style={{ lineHeight: "1.8", color: "#1565c0" }}>
+          <ul style={{ lineHeight: typography.lineHeight.relaxed, color: primitive.blue[900] }}>
             <li>✅ キーボード操作対応（Tab、Enter、Space）</li>
             <li>✅ フォーカスインジケーター表示</li>
             <li>✅ スクリーンリーダー対応（ARIA属性）</li>
@@ -230,13 +246,14 @@ function App() {
 
         <section
           style={{
-            marginTop: spacing.scale[12],
-            padding: spacing.scale[8],
-            backgroundColor: colors.background.subtle,
+            marginBottom: spacing.scale[12],
+            padding: spacing.scale[6],
+            backgroundColor: colors.background.default,
             borderRadius: radii.borderRadius.lg,
+            border: `1px solid ${colors.border.default}`,
           }}
         >
-          <h2 style={{ color: primitive.gray[900] }}>WCAGレベルとコントラスト比について</h2>
+          <h2 style={{ marginTop: 0, color: primitive.gray[900] }}>WCAGレベルとコントラスト比について</h2>
 
           <div style={{ marginTop: spacing.scale[6] }}>
             <h3 style={{ color: primitive.gray[900] }}>コントラスト比とは？</h3>
@@ -545,13 +562,14 @@ function App() {
 
         <section
           style={{
-            marginTop: spacing.scale[12],
-            padding: spacing.scale[8],
-            backgroundColor: colors.background.subtle,
+            marginBottom: spacing.scale[12],
+            padding: spacing.scale[6],
+            backgroundColor: colors.background.default,
             borderRadius: radii.borderRadius.lg,
+            border: `1px solid ${colors.border.default}`,
           }}
         >
-          <h2 style={{ color: primitive.gray[900] }}>デザイントークンシステム</h2>
+          <h2 style={{ marginTop: 0, color: primitive.gray[900] }}>デザイントークンシステム</h2>
           <p style={{ lineHeight: typography.lineHeight.normal, color: primitive.gray[900] }}>
             このプロジェクトでは、一貫性のあるデザインを実現するために
             <strong>デザイントークン</strong>を使用しています。
@@ -708,6 +726,34 @@ function App() {
               </ul>
 
               <h4 style={{ marginTop: spacing.scale[4], color: primitive.blue[900] }}>
+                行間（Line Height）
+              </h4>
+              <p style={{ margin: `${spacing.scale[2]} 0`, color: primitive.gray[700], fontSize: typography.fontSize.sm }}>
+                <strong>WCAG 2.1推奨:</strong> 本文の行高は最低1.5以上（読みやすさ向上）
+              </p>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[3], marginTop: spacing.scale[2] }}>
+                <div style={{ padding: spacing.scale[3], backgroundColor: primitive.gray[50], borderRadius: radii.borderRadius.base }}>
+                  <strong style={{ color: primitive.gray[900] }}>tight (1.25)</strong> - 大見出し用
+                  <div style={{ marginTop: spacing.scale[2], lineHeight: typography.lineHeight.tight, color: primitive.gray[700], fontSize: typography.fontSize.lg }}>
+                    大きい文字は目の移動が少ないため、<br />
+                    行高は詰めても読みやすい
+                  </div>
+                </div>
+                <div style={{ padding: spacing.scale[3], backgroundColor: primitive.gray[50], borderRadius: radii.borderRadius.base }}>
+                  <strong style={{ color: primitive.gray[900] }}>normal (1.5)</strong> - 本文用（WCAG推奨） ★
+                  <div style={{ marginTop: spacing.scale[2], lineHeight: typography.lineHeight.normal, color: primitive.gray[700] }}>
+                    小さい文字は行を見失いやすいため、間隔が必要です。本文には1.5以上が推奨されています。これにより、文章が読みやすくなります。
+                  </div>
+                </div>
+                <div style={{ padding: spacing.scale[3], backgroundColor: primitive.gray[50], borderRadius: radii.borderRadius.base }}>
+                  <strong style={{ color: primitive.gray[900] }}>relaxed (1.625)</strong> - 長文用
+                  <div style={{ marginTop: spacing.scale[2], lineHeight: typography.lineHeight.relaxed, color: primitive.gray[700] }}>
+                    長文を読む場合、さらに広い行間にすることで目の疲れを軽減できます。ブログ記事や説明文など、じっくり読む文章に最適です。
+                  </div>
+                </div>
+              </div>
+
+              <h4 style={{ marginTop: spacing.scale[6], color: primitive.blue[900] }}>
                 フォントサイズスケール
               </h4>
               <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[2], marginTop: spacing.scale[2] }}>
