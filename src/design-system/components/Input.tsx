@@ -2,6 +2,8 @@ import React, { useId } from 'react';
 import { colors } from '../tokens/colors';
 import { spacing } from '../tokens/spacing';
 import { typography } from '../tokens/typography';
+import { accessibilityLevels } from '../tokens/accessibility-levels';
+import type { WCAGLevel } from '../tokens/accessibility-levels';
 
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /** ラベルテキスト */
@@ -14,6 +16,8 @@ export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElem
   size?: 'sm' | 'md' | 'lg';
   /** 必須項目かどうか */
   required?: boolean;
+  /** WCAGアクセシビリティレベル (A/AA/AAA) @default 'AA' */
+  wcagLevel?: WCAGLevel;
 }
 
 /**
@@ -33,6 +37,7 @@ export const Input: React.FC<InputProps> = ({
   size = 'md',
   required = false,
   disabled = false,
+  wcagLevel = 'AA',
   id,
   ...props
 }) => {
@@ -42,18 +47,45 @@ export const Input: React.FC<InputProps> = ({
   const errorId = `${inputId}-error`;
   const helperId = `${inputId}-helper`;
 
+  // WCAGレベルに応じたフォーカススタイルを取得
+  const levelFocus = accessibilityLevels.focus[wcagLevel];
+
+  // キーボード操作によるフォーカスかどうかを追跡
+  const [isKeyboardFocus, setIsKeyboardFocus] = React.useState(false);
+
+  // グローバルなキーボード/マウスの使用を検出
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Tab') {
+        setIsKeyboardFocus(true);
+      }
+    };
+
+    const handleMouseDown = () => {
+      setIsKeyboardFocus(false);
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('mousedown', handleMouseDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('mousedown', handleMouseDown);
+    };
+  }, []);
+
   // サイズスタイル
   const sizeStyles: Record<string, React.CSSProperties> = {
     sm: {
-      padding: `${spacing.xs} ${spacing.sm}`,
+      padding: `${spacing.input.paddingY.sm} ${spacing.input.paddingX.sm}`,
       fontSize: typography.fontSize.sm,
     },
     md: {
-      padding: `${spacing.sm} ${spacing.md}`,
+      padding: `${spacing.input.paddingY.md} ${spacing.input.paddingX.md}`,
       fontSize: typography.fontSize.base,
     },
     lg: {
-      padding: `${spacing.md} ${spacing.lg}`,
+      padding: `${spacing.input.paddingY.lg} ${spacing.input.paddingX.lg}`,
       fontSize: typography.fontSize.lg,
     },
   };
@@ -74,21 +106,21 @@ export const Input: React.FC<InputProps> = ({
 
   const labelStyles: React.CSSProperties = {
     display: 'block',
-    marginBottom: spacing.xs,
+    marginBottom: spacing.input.gap,
     fontSize: typography.fontSize.sm,
     fontWeight: typography.fontWeight.medium,
     color: colors.input.label,
   };
 
   const helperTextStyles: React.CSSProperties = {
-    marginTop: spacing.xs,
+    marginTop: spacing.input.gap,
     fontSize: typography.fontSize.sm,
     color: error ? colors.input.errorText : colors.input.helperText,
     lineHeight: typography.lineHeight.normal,
   };
 
   const containerStyles: React.CSSProperties = {
-    marginBottom: spacing.md,
+    marginBottom: spacing.scale[4], // 16px
   };
 
   // aria-describedbyの値を構築
@@ -107,7 +139,7 @@ export const Input: React.FC<InputProps> = ({
         {/* 必須項目の表示 */}
         {required && (
           <span
-            style={{ color: colors.input.errorText, marginLeft: spacing.xs }}
+            style={{ color: colors.input.errorText, marginLeft: spacing.scale[1] }}
             aria-label="必須"
           >
             *
@@ -125,14 +157,14 @@ export const Input: React.FC<InputProps> = ({
         aria-describedby={getAriaDescribedBy()}
         style={inputStyles}
         {...props}
-        // フォーカス時のスタイル: 黄色背景
+        // フォーカス時のスタイル: WCAGレベルに応じて変更
         onFocus={(e) => {
-          if (!disabled) {
-            e.currentTarget.style.backgroundColor = colors.focus.background;
-            e.currentTarget.style.color = colors.focus.text;
-            e.currentTarget.style.borderColor = colors.focus.outline;
-            e.currentTarget.style.outline = `3px solid ${colors.focus.outline}`;
-            e.currentTarget.style.outlineOffset = '2px';
+          if (!disabled && isKeyboardFocus) {
+            e.currentTarget.style.backgroundColor = levelFocus.background;
+            e.currentTarget.style.color = levelFocus.text;
+            e.currentTarget.style.borderColor = levelFocus.outline;
+            e.currentTarget.style.outline = `${levelFocus.outlineWidth} solid ${levelFocus.outline}`;
+            e.currentTarget.style.outlineOffset = levelFocus.outlineOffset;
           }
           props.onFocus?.(e);
         }}

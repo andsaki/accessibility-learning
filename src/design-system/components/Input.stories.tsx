@@ -58,6 +58,11 @@ const meta = {
       control: 'boolean',
       description: '無効化状態',
     },
+    wcagLevel: {
+      control: 'select',
+      options: ['A', 'AA', 'AAA'],
+      description: 'WCAGアクセシビリティレベル',
+    },
   },
   decorators: [
     (Story) => (
@@ -330,6 +335,65 @@ export const AllStates: Story = {
         error="エラーメッセージが表示されます"
       />
       <Input label="無効化" value="編集不可" disabled />
+    </div>
+  ),
+};
+
+/**
+ * WCAGレベル比較
+ *
+ * A/AA/AAAの3つのアクセシビリティレベルを比較できます。
+ * Tabキーでフォーカスを移動して、各レベルのフォーカススタイルを確認してください。
+ */
+export const WCAGLevels: Story = {
+  args: {},
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      <div
+        style={{
+          padding: '1rem',
+          backgroundColor: '#fff3cd',
+          borderRadius: '8px',
+          border: '2px solid #ffc107',
+        }}
+      >
+        <h3 style={{ marginTop: 0, color: '#856404' }}>⚠️ テスト方法</h3>
+        <p style={{ margin: '0.5rem 0', color: '#856404' }}>
+          <strong>Tabキーでフォーカス移動</strong> → WCAGレベルに応じたフォーカススタイルが表示される
+          <br />
+          マウスクリックではフォーカススタイルは表示されません
+        </p>
+      </div>
+
+      <div>
+        <h3 style={{ marginBottom: '0.5rem', fontSize: '14px', fontWeight: 'bold' }}>
+          レベルA（最低限のフォーカス表示）
+        </h3>
+        <p style={{ marginBottom: '1rem', fontSize: '12px', color: '#666' }}>
+          薄い青のアウトライン（2px）+ 黒文字
+        </p>
+        <Input wcagLevel="A" label="お名前" placeholder="山田太郎" />
+      </div>
+
+      <div>
+        <h3 style={{ marginBottom: '0.5rem', fontSize: '14px', fontWeight: 'bold' }}>
+          レベルAA（推奨）★
+        </h3>
+        <p style={{ marginBottom: '1rem', fontSize: '12px', color: '#666' }}>
+          薄い青背景 + 濃い青アウトライン（3px）+ 黒文字 + オフセット（2px）
+        </p>
+        <Input wcagLevel="AA" label="メールアドレス" type="email" placeholder="example@example.com" />
+      </div>
+
+      <div>
+        <h3 style={{ marginBottom: '0.5rem', fontSize: '14px', fontWeight: 'bold' }}>
+          レベルAAA（最高レベル）
+        </h3>
+        <p style={{ marginBottom: '1rem', fontSize: '12px', color: '#666' }}>
+          黄色背景 + 黒アウトライン（4px）+ 黒文字 + オフセット（2px）
+        </p>
+        <Input wcagLevel="AAA" label="パスワード" type="password" placeholder="••••••••" />
+      </div>
     </div>
   ),
 };
