@@ -128,11 +128,16 @@ export const Button: React.FC<ButtonProps> = ({
       onFocus={(e) => {
         // フォーカス時のクラスを追加
         e.currentTarget.setAttribute('data-focused', 'true');
+        // テキスト色がinheritの場合は専用の属性を追加
+        if (levelFocus.text === 'inherit') {
+          e.currentTarget.setAttribute('data-focus-text-inherit', 'true');
+        }
         props.onFocus?.(e);
       }}
       onBlur={(e) => {
         // フォーカス時のクラスを削除
         e.currentTarget.removeAttribute('data-focused');
+        e.currentTarget.removeAttribute('data-focus-text-inherit');
         props.onBlur?.(e);
       }}
       {...props}

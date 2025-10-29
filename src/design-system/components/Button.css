@@ -18,13 +18,20 @@ button:hover:not([data-focused]):not(:disabled) {
 /* フォーカス時のスタイル（最優先） */
 button[data-focused] {
   background-color: var(--focus-bg) !important;
-  color: var(--focus-text) !important;
   outline: var(--focus-outline-width) solid var(--focus-outline) !important;
   outline-offset: var(--focus-outline-offset) !important;
+}
+
+/* フォーカス時のテキスト色（inheritでない場合のみ適用） */
+button[data-focused]:not([data-focus-text-inherit]) {
+  color: var(--focus-text) !important;
 }
 
 /* フォーカス中はホバーエフェクトを無効化 */
 button[data-focused]:hover {
   background-color: var(--focus-bg) !important;
+}
+
+button[data-focused]:hover:not([data-focus-text-inherit]) {
   color: var(--focus-text) !important;
 }
