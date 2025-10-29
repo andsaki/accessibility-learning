@@ -60,7 +60,7 @@ function App() {
   };
 
   return (
-    <div style={{ padding: spacing.scale[8], maxWidth: "800px", margin: "0 auto" }}>
+    <div style={{ padding: spacing.scale[8], maxWidth: "1200px" }}>
       <header>
         <h1>デザインシステム & アクセシビリティ学習</h1>
         <p>アクセシブルなコンポーネントの実装例</p>
@@ -539,6 +539,217 @@ function App() {
                 </a>
               </li>
               <li>Chrome DevTools の Lighthouse（アクセシビリティ監査）</li>
+            </ul>
+          </div>
+        </section>
+
+        <section
+          style={{
+            marginTop: spacing.scale[12],
+            padding: spacing.scale[8],
+            backgroundColor: colors.background.subtle,
+            borderRadius: radii.borderRadius.lg,
+          }}
+        >
+          <h2>デザイントークンシステム</h2>
+          <p style={{ lineHeight: typography.lineHeight.normal }}>
+            このプロジェクトでは、一貫性のあるデザインを実現するために
+            <strong>デザイントークン</strong>を使用しています。
+          </p>
+
+          <div style={{ marginTop: spacing.scale[8] }}>
+            <h3>📏 スペーシング（spacing.ts）</h3>
+            <div
+              style={{
+                marginTop: spacing.scale[4],
+                padding: spacing.scale[4],
+                backgroundColor: colors.background.default,
+                borderRadius: radii.borderRadius.base,
+                border: `1px solid ${colors.border.default}`,
+              }}
+            >
+              <h4 style={{ marginTop: 0, color: primitive.blue[900] }}>
+                なぜ8pxグリッド？
+              </h4>
+              <ul style={{ margin: `${spacing.scale[2]} 0`, paddingLeft: spacing.scale[6], lineHeight: typography.lineHeight.relaxed, color: primitive.gray[900] }}>
+                <li><strong>倍数で計算しやすい</strong>: 8の倍数は2,4でも割り切れる</li>
+                <li><strong>デザイナーとの共通言語</strong>: Figma、Sketchなどでも標準</li>
+                <li><strong>レティナディスプレイ対応</strong>: 8px = 4dp（デザインポイント）</li>
+                <li><strong>業界標準</strong>: Material Design、Ant Designなど主要システムが採用</li>
+              </ul>
+
+              <h4 style={{ marginTop: spacing.scale[4], color: primitive.blue[900] }}>
+                使い方の原則
+              </h4>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[2], marginTop: spacing.scale[2] }}>
+                <div style={{ padding: spacing.scale[2], backgroundColor: primitive.gray[50], borderRadius: radii.borderRadius.base }}>
+                  <strong>小さい余白（4px, 8px）</strong>: 関連する要素の間
+                  <div style={{ marginTop: spacing.scale[1], fontSize: typography.fontSize.sm, color: primitive.gray[700] }}>
+                    例: spacing.scale[1] = 4px, spacing.scale[2] = 8px
+                  </div>
+                </div>
+                <div style={{ padding: spacing.scale[2], backgroundColor: primitive.gray[50], borderRadius: radii.borderRadius.base }}>
+                  <strong>中程度（16px, 24px）</strong>: セクション内の要素
+                  <div style={{ marginTop: spacing.scale[1], fontSize: typography.fontSize.sm, color: primitive.gray[700] }}>
+                    例: spacing.scale[4] = 16px, spacing.scale[6] = 24px
+                  </div>
+                </div>
+                <div style={{ padding: spacing.scale[2], backgroundColor: primitive.gray[50], borderRadius: radii.borderRadius.base }}>
+                  <strong>大きい余白（32px以上）</strong>: セクション間、ページ構造
+                  <div style={{ marginTop: spacing.scale[1], fontSize: typography.fontSize.sm, color: primitive.gray[700] }}>
+                    例: spacing.scale[8] = 32px, spacing.scale[12] = 48px
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style={{ marginTop: spacing.scale[8] }}>
+            <h3>🎨 カラー（colors.ts）</h3>
+            <div
+              style={{
+                marginTop: spacing.scale[4],
+                padding: spacing.scale[4],
+                backgroundColor: colors.background.default,
+                borderRadius: radii.borderRadius.base,
+                border: `1px solid ${colors.border.default}`,
+              }}
+            >
+              <h4 style={{ marginTop: 0, color: primitive.blue[900] }}>
+                3層構造のカラーシステム
+              </h4>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[3], marginTop: spacing.scale[2] }}>
+                <div>
+                  <div style={{ padding: spacing.scale[2], backgroundColor: primitive.blue[50], borderRadius: radii.borderRadius.base, border: `2px solid ${primitive.blue[500]}` }}>
+                    <strong style={{ color: primitive.blue[900] }}>1. プリミティブトークン（primitive）</strong>
+                    <p style={{ margin: `${spacing.scale[1]} 0`, fontSize: typography.fontSize.sm, color: primitive.gray[700] }}>
+                      基礎となるカラーパレット。グレースケール、ブルー、レッド、グリーンなど。
+                      <br />
+                      例: primitive.blue[500], primitive.gray[900]
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <div style={{ padding: spacing.scale[2], backgroundColor: primitive.green[50], borderRadius: radii.borderRadius.base, border: `2px solid ${primitive.green[500]}` }}>
+                    <strong style={{ color: primitive.green[900] }}>2. セマンティックトークン（colors）</strong>
+                    <p style={{ margin: `${spacing.scale[1]} 0`, fontSize: typography.fontSize.sm, color: primitive.gray[700] }}>
+                      意味を持った色の定義。text.primary、background.default、border.focusなど。
+                      <br />
+                      例: colors.text.primary, colors.background.subtle
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <div style={{ padding: spacing.scale[2], backgroundColor: primitive.orange[50], borderRadius: radii.borderRadius.base, border: `2px solid ${primitive.orange[500]}` }}>
+                    <strong style={{ color: primitive.orange[900] }}>3. コンポーネントトークン</strong>
+                    <p style={{ margin: `${spacing.scale[1]} 0`, fontSize: typography.fontSize.sm, color: primitive.gray[700] }}>
+                      特定のコンポーネント用の色。button.primary.bg、input.borderErrorなど。
+                      <br />
+                      例: colors.button.primary.bg, colors.input.borderError
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style={{ marginTop: spacing.scale[8] }}>
+            <h3>📐 ボーダー半径（radii.ts）</h3>
+            <div
+              style={{
+                marginTop: spacing.scale[4],
+                padding: spacing.scale[4],
+                backgroundColor: colors.background.default,
+                borderRadius: radii.borderRadius.base,
+                border: `1px solid ${colors.border.default}`,
+              }}
+            >
+              <h4 style={{ marginTop: 0, color: primitive.blue[900] }}>
+                角丸のバリエーション
+              </h4>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[2], marginTop: spacing.scale[2] }}>
+                <div style={{ padding: spacing.scale[2], backgroundColor: primitive.blue[500], color: primitive.white, borderRadius: radii.borderRadius.sm }}>
+                  sm (2px) - radii.borderRadius.sm
+                </div>
+                <div style={{ padding: spacing.scale[2], backgroundColor: primitive.blue[500], color: primitive.white, borderRadius: radii.borderRadius.base }}>
+                  base (4px) - radii.borderRadius.base
+                </div>
+                <div style={{ padding: spacing.scale[2], backgroundColor: primitive.blue[500], color: primitive.white, borderRadius: radii.borderRadius.md }}>
+                  md (6px) - radii.borderRadius.md
+                </div>
+                <div style={{ padding: spacing.scale[2], backgroundColor: primitive.blue[500], color: primitive.white, borderRadius: radii.borderRadius.lg }}>
+                  lg (8px) - radii.borderRadius.lg
+                </div>
+                <div style={{ padding: spacing.scale[2], backgroundColor: primitive.blue[500], color: primitive.white, borderRadius: radii.borderRadius.xl }}>
+                  xl (12px) - radii.borderRadius.xl
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style={{ marginTop: spacing.scale[8] }}>
+            <h3>🔤 タイポグラフィ（typography.ts）</h3>
+            <div
+              style={{
+                marginTop: spacing.scale[4],
+                padding: spacing.scale[4],
+                backgroundColor: colors.background.default,
+                borderRadius: radii.borderRadius.base,
+                border: `1px solid ${colors.border.default}`,
+              }}
+            >
+              <h4 style={{ marginTop: 0, color: primitive.blue[900] }}>
+                なぜrem単位？
+              </h4>
+              <ul style={{ margin: `${spacing.scale[2]} 0`, paddingLeft: spacing.scale[6], lineHeight: typography.lineHeight.relaxed, color: primitive.gray[900] }}>
+                <li><strong>ユーザーのブラウザ設定を尊重</strong>: 文字サイズの拡大縮小が容易</li>
+                <li><strong>アクセシビリティの向上</strong>: 視覚障害者への配慮</li>
+                <li><strong>レスポンシブデザインに最適</strong>: 一括でサイズ調整が可能</li>
+              </ul>
+
+              <h4 style={{ marginTop: spacing.scale[4], color: primitive.blue[900] }}>
+                フォントサイズスケール
+              </h4>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[2], marginTop: spacing.scale[2] }}>
+                <div style={{ fontSize: typography.fontSize.xs, padding: spacing.scale[2], backgroundColor: primitive.gray[50], borderRadius: radii.borderRadius.base, color: primitive.gray[900] }}>
+                  xs (12px) - typography.fontSize.xs
+                </div>
+                <div style={{ fontSize: typography.fontSize.sm, padding: spacing.scale[2], backgroundColor: primitive.gray[50], borderRadius: radii.borderRadius.base, color: primitive.gray[900] }}>
+                  sm (14px) - typography.fontSize.sm
+                </div>
+                <div style={{ fontSize: typography.fontSize.base, padding: spacing.scale[2], backgroundColor: primitive.gray[50], borderRadius: radii.borderRadius.base, color: primitive.gray[900] }}>
+                  base (16px) - typography.fontSize.base ← 基準サイズ
+                </div>
+                <div style={{ fontSize: typography.fontSize.lg, padding: spacing.scale[2], backgroundColor: primitive.gray[50], borderRadius: radii.borderRadius.base, color: primitive.gray[900] }}>
+                  lg (18px) - typography.fontSize.lg
+                </div>
+                <div style={{ fontSize: typography.fontSize.xl, padding: spacing.scale[2], backgroundColor: primitive.gray[50], borderRadius: radii.borderRadius.base, color: primitive.gray[900] }}>
+                  xl (20px) - typography.fontSize.xl
+                </div>
+                <div style={{ fontSize: typography.fontSize['2xl'], padding: spacing.scale[2], backgroundColor: primitive.gray[50], borderRadius: radii.borderRadius.base, color: primitive.gray[900] }}>
+                  2xl (24px) - typography.fontSize['2xl']
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div
+            style={{
+              marginTop: spacing.scale[8],
+              padding: spacing.scale[4],
+              backgroundColor: primitive.green[50],
+              borderRadius: radii.borderRadius.base,
+              border: `2px solid ${primitive.green[500]}`,
+            }}
+          >
+            <h4 style={{ marginTop: 0, color: primitive.green[900] }}>
+              ✅ トークンを使うメリット
+            </h4>
+            <ul style={{ margin: `${spacing.scale[2]} 0`, paddingLeft: spacing.scale[6], lineHeight: typography.lineHeight.relaxed, color: primitive.gray[900] }}>
+              <li><strong>一貫性</strong>: デザインが統一され、プロフェッショナルな見た目に</li>
+              <li><strong>保守性</strong>: トークンを変更するだけで全体に反映</li>
+              <li><strong>開発効率</strong>: 値を覚える必要がなく、迷わない</li>
+              <li><strong>コミュニケーション</strong>: デザイナーとの共通言語</li>
             </ul>
           </div>
         </section>
