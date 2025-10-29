@@ -99,7 +99,7 @@ export const Button: React.FC<ButtonProps> = ({
       aria-disabled={disabled || isLoading} // 無効化状態を明示的に伝える
       style={styles}
       {...props}
-      // フォーカス時のスタイル: デジタル庁スタイルの黄色背景
+      // フォーカス時のスタイル: 黄色背景
       onFocus={(e) => {
         e.currentTarget.style.backgroundColor = colors.focus.background;
         e.currentTarget.style.color = colors.focus.text;

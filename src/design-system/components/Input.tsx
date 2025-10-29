@@ -125,7 +125,7 @@ export const Input: React.FC<InputProps> = ({
         aria-describedby={getAriaDescribedBy()}
         style={inputStyles}
         {...props}
-        // フォーカス時のスタイル: デジタル庁スタイルの黄色背景
+        // フォーカス時のスタイル: 黄色背景
         onFocus={(e) => {
           if (!disabled) {
             e.currentTarget.style.backgroundColor = colors.focus.background;

@@ -1,6 +1,6 @@
 # フォーカススタイルのデザイン
 
-デジタル庁スタイルの黄色背景フォーカスインジケーターについて説明します。
+黄色背景フォーカスインジケーターについて説明します。
 
 ## なぜ黄色背景なのか
 
@@ -26,9 +26,9 @@
 - 警告標識にも使われる色
 - フォーカス位置を即座に把握できる
 
-## デジタル庁の実装例
+## 実装例
 
-デジタル庁のWebサイトでは、以下のようなフォーカススタイルが使用されています：
+以下のようなフォーカススタイルの実装が推奨されます：
 
 ```css
 :focus {
@@ -183,7 +183,7 @@ onBlur={(e) => {
 - 背景色によっては見えにくい
 - 色覚異常の方には判別しにくい場合がある
 
-### 2. デジタル庁方式（現在の実装）
+### 2. 黄色背景方式（現在の実装）
 
 ```css
 :focus {
@@ -361,14 +361,13 @@ export const Link: React.FC<LinkProps> = ({ children, ...props }) => {
 
 ## 参考リンク
 
-- [デジタル庁ウェブサイト](https://www.digital.go.jp/)
 - [WCAG 2.1 - 2.4.7 フォーカスの可視化](https://waic.jp/docs/WCAG21/#focus-visible)
 - [WCAG 2.2 - 2.4.11 フォーカスの外観](https://www.w3.org/WAI/WCAG22/Understanding/focus-appearance)
 - [GOV.UK Design System - Focus state](https://design-system.service.gov.uk/get-started/focus-states/)
 
 ## まとめ
 
-デジタル庁スタイルの黄色背景フォーカスインジケーターは：
+黄色背景フォーカスインジケーターは：
 
 - ✅ 視認性が非常に高い（コントラスト比 19.56:1）
 - ✅ 色覚異常の方にも配慮

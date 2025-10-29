@@ -209,7 +209,7 @@ Accordionは4つのサブコンポーネントで構成されています：
 ### 4. フォーカス表示
 
 - `focus-visible:` でキーボード操作時のみフォーカス表示
-- デジタル庁デザインシステムの黄色フォーカスインジケーター
+- デザインシステムの黄色フォーカスインジケーター
 - 4pxの黒いアウトラインで視認性を確保
 
 ### 5. カラーコントラスト
@@ -269,14 +269,14 @@ Accordionは4つのサブコンポーネントで構成されています：
 
 このコンポーネントは以下のデザイントークンを使用しています：
 
-- **colors**: デジタル庁デザインシステムの色
+- **colors**: デザインシステムの色
   - `text-blue-1000`: テキスト・アイコン色
   - `bg-solid-grey-50`: サマリー背景色
   - `bg-blue-100`: ホバー時背景色
   - `bg-yellow-300`: フォーカス時背景色
   - `border-solid-grey-420`: ボーダー色
 
-- **typography**: デジタル庁デザインシステムのタイポグラフィ
+- **typography**: デザインシステムのタイポグラフィ
   - `text-std-16N-170`: モバイル用テキスト（16px, 行間1.7）
   - `text-std-18N-160`: デスクトップ用テキスト（18px, 行間1.6）
 
@@ -290,7 +290,6 @@ Accordionは4つのサブコンポーネントで構成されています：
 
 ## 参考リンク
 
-- [デジタル庁デザインシステム](https://design.digital.go.jp/)
 - [WCAG 2.1 ガイドライン](https://www.w3.org/WAI/WCAG21/quickref/)
 - [MDN - details 要素](https://developer.mozilla.org/ja/docs/Web/HTML/Element/details)
 - [MDN - summary 要素](https://developer.mozilla.org/ja/docs/Web/HTML/Element/summary)
