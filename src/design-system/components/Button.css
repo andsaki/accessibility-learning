@@ -1,0 +1,24 @@
+/**
+ * Button コンポーネントのスタイル
+ * ホバーとフォーカスの状態を正しく管理します
+ */
+
+/* ホバー時のスタイル（フォーカスしていない場合のみ） */
+button:hover:not([data-focused]):not(:disabled) {
+  background-color: var(--hover-bg) !important;
+  border-color: var(--hover-border) !important;
+}
+
+/* フォーカス時のスタイル（最優先） */
+button[data-focused] {
+  background-color: var(--focus-bg) !important;
+  color: var(--focus-text) !important;
+  outline: var(--focus-outline-width) solid var(--focus-outline) !important;
+  outline-offset: var(--focus-outline-offset) !important;
+}
+
+/* フォーカス中でもホバーエフェクトを無効化 */
+button[data-focused]:hover {
+  background-color: var(--focus-bg) !important;
+  border-color: var(--focus-outline) !important;
+}

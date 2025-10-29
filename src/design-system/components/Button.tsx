@@ -1,6 +1,7 @@
 import React from 'react';
 import { colors, spacing, typography, accessibilityLevels } from '../tokens';
 import type { WCAGLevel } from '../tokens';
+import './Button.css';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** ボタンのバリエーション */
@@ -98,53 +99,43 @@ export const Button: React.FC<ButtonProps> = ({
     ...sizeStyles[size],
   };
 
+  // ホバー用のトークン
+  const hoverColors = {
+    primary: colors.button.primary,
+    secondary: colors.button.secondary,
+    outline: colors.button.outline,
+  }[variant];
+
   return (
     <button
       type={type}
       disabled={disabled || isLoading}
-      aria-busy={isLoading} // スクリーンリーダーにローディング状態を伝える
-      aria-disabled={disabled || isLoading} // 無効化状態を明示的に伝える
-      style={styles}
-      {...props}
-      // ホバー時のスタイル
-      onMouseEnter={(e) => {
-        if (!disabled && !isLoading) {
-          if (variant === 'primary') {
-            e.currentTarget.style.backgroundColor = colors.button.primary.bgHover;
-            e.currentTarget.style.borderColor = colors.button.primary.borderHover;
-          } else if (variant === 'secondary') {
-            e.currentTarget.style.backgroundColor = colors.button.secondary.bgHover;
-            e.currentTarget.style.borderColor = colors.button.secondary.borderHover;
-          } else if (variant === 'outline') {
-            e.currentTarget.style.backgroundColor = colors.button.outline.bgHover;
-            e.currentTarget.style.borderColor = colors.button.outline.borderHover;
-          }
-        }
-        props.onMouseEnter?.(e);
+      aria-busy={isLoading}
+      aria-disabled={disabled || isLoading}
+      style={{
+        ...styles,
+        // CSS変数でホバー/フォーカス色を定義
+        ['--hover-bg' as string]: disabled || isLoading ? '' : hoverColors.bgHover,
+        ['--hover-border' as string]: disabled || isLoading ? '' : hoverColors.borderHover || hoverColors.bgHover,
+        ['--focus-bg' as string]: levelFocus.background,
+        ['--focus-text' as string]: levelFocus.text,
+        ['--focus-outline' as string]: levelFocus.outline,
+        ['--focus-outline-width' as string]: levelFocus.outlineWidth,
+        ['--focus-outline-offset' as string]: levelFocus.outlineOffset,
       }}
-      onMouseLeave={(e) => {
-        if (!disabled && !isLoading) {
-          e.currentTarget.style.backgroundColor = variantStyles[variant].backgroundColor || '';
-          e.currentTarget.style.borderColor = '';
-        }
-        props.onMouseLeave?.(e);
-      }}
-      // フォーカス時のスタイル: WCAGレベルに応じた表示
+      onMouseEnter={props.onMouseEnter}
+      onMouseLeave={props.onMouseLeave}
       onFocus={(e) => {
-        e.currentTarget.style.backgroundColor = levelFocus.background;
-        e.currentTarget.style.color = levelFocus.text;
-        e.currentTarget.style.outline = `${levelFocus.outlineWidth} solid ${levelFocus.outline}`;
-        e.currentTarget.style.outlineOffset = levelFocus.outlineOffset;
+        // フォーカス時のクラスを追加
+        e.currentTarget.setAttribute('data-focused', 'true');
         props.onFocus?.(e);
       }}
       onBlur={(e) => {
-        // 元のスタイルに戻す
-        e.currentTarget.style.backgroundColor = variantStyles[variant].backgroundColor || '';
-        e.currentTarget.style.color = variantStyles[variant].color || '';
-        e.currentTarget.style.outline = 'none';
-        e.currentTarget.style.outlineOffset = '0';
+        // フォーカス時のクラスを削除
+        e.currentTarget.removeAttribute('data-focused');
         props.onBlur?.(e);
       }}
+      {...props}
     >
       {/* ローディング状態の表示 */}
       {isLoading && (
