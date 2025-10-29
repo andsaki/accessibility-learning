@@ -114,10 +114,9 @@ export const Button: React.FC<ButtonProps> = ({
       aria-disabled={disabled || isLoading}
       style={{
         ...styles,
-        // CSS変数でホバー/アクティブ/フォーカス色を定義
+        // CSS変数でホバー/フォーカス色を定義
         ['--hover-bg' as string]: disabled || isLoading ? '' : interactionColors.bgHover,
         ['--hover-border' as string]: disabled || isLoading ? '' : interactionColors.borderHover || interactionColors.bgHover,
-        ['--active-bg' as string]: disabled || isLoading ? '' : interactionColors.bgActive,
         ['--focus-bg' as string]: levelFocus.background,
         ['--focus-text' as string]: levelFocus.text,
         ['--focus-outline' as string]: levelFocus.outline,
