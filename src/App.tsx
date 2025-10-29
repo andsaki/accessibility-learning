@@ -187,14 +187,14 @@ function App() {
           </form>
 
           <div style={{ marginTop: spacing.scale[8] }}>
-            <h3>サイズバリエーション</h3>
+            <h3 style={{ color: primitive.gray[900] }}>サイズバリエーション</h3>
             <Input label="小サイズ" size="sm" placeholder="小さい入力欄" />
             <Input label="中サイズ" size="md" placeholder="標準の入力欄" />
             <Input label="大サイズ" size="lg" placeholder="大きい入力欄" />
           </div>
 
           <div style={{ marginTop: spacing.scale[8] }}>
-            <h3>無効化状態</h3>
+            <h3 style={{ color: primitive.gray[900] }}>無効化状態</h3>
             <Input
               label="無効な入力欄"
               value="編集できません"
@@ -236,11 +236,11 @@ function App() {
             borderRadius: radii.borderRadius.lg,
           }}
         >
-          <h2>WCAGレベルとコントラスト比について</h2>
+          <h2 style={{ color: primitive.gray[900] }}>WCAGレベルとコントラスト比について</h2>
 
           <div style={{ marginTop: spacing.scale[6] }}>
-            <h3>コントラスト比とは？</h3>
-            <p style={{ lineHeight: "1.8" }}>
+            <h3 style={{ color: primitive.gray[900] }}>コントラスト比とは？</h3>
+            <p style={{ lineHeight: "1.8", color: primitive.gray[900] }}>
               コントラスト比は、テキストと背景の明るさの差を数値で表したものです。
               数値が大きいほど見やすく、小さいほど見にくくなります。
               <br />
@@ -286,7 +286,7 @@ function App() {
           </div>
 
           <div style={{ marginTop: spacing.scale[8] }}>
-            <h3>WCAGレベルとコントラスト比の基準</h3>
+            <h3 style={{ color: primitive.gray[900] }}>WCAGレベルとコントラスト比の基準</h3>
 
             <div
               style={{
@@ -426,7 +426,7 @@ function App() {
           </div>
 
           <div style={{ marginTop: spacing.scale[8] }}>
-            <h3>実際の例</h3>
+            <h3 style={{ color: primitive.gray[900] }}>実際の例</h3>
             <div
               style={{
                 display: "flex",
@@ -514,10 +514,10 @@ function App() {
             <h4 style={{ marginTop: 0, color: primitive.green[800] }}>
               💡 コントラスト比の確認方法
             </h4>
-            <p style={{ margin: "0.5rem 0", lineHeight: "1.8" }}>
+            <p style={{ margin: "0.5rem 0", lineHeight: "1.8", color: primitive.gray[900] }}>
               オンラインツールを使って簡単に確認できます：
             </p>
-            <ul style={{ margin: "0.5rem 0", paddingLeft: spacing.scale[6] }}>
+            <ul style={{ margin: "0.5rem 0", paddingLeft: spacing.scale[6], color: primitive.gray[900] }}>
               <li>
                 <a
                   href="https://webaim.org/resources/contrastchecker/"
@@ -551,14 +551,14 @@ function App() {
             borderRadius: radii.borderRadius.lg,
           }}
         >
-          <h2>デザイントークンシステム</h2>
-          <p style={{ lineHeight: typography.lineHeight.normal }}>
+          <h2 style={{ color: primitive.gray[900] }}>デザイントークンシステム</h2>
+          <p style={{ lineHeight: typography.lineHeight.normal, color: primitive.gray[900] }}>
             このプロジェクトでは、一貫性のあるデザインを実現するために
             <strong>デザイントークン</strong>を使用しています。
           </p>
 
           <div style={{ marginTop: spacing.scale[8] }}>
-            <h3>📏 スペーシング（spacing.ts）</h3>
+            <h3 style={{ color: primitive.gray[900] }}>📏 スペーシング（spacing.ts）</h3>
             <div
               style={{
                 marginTop: spacing.scale[4],
@@ -605,7 +605,7 @@ function App() {
           </div>
 
           <div style={{ marginTop: spacing.scale[8] }}>
-            <h3>🎨 カラー（colors.ts）</h3>
+            <h3 style={{ color: primitive.gray[900] }}>🎨 カラー（colors.ts）</h3>
             <div
               style={{
                 marginTop: spacing.scale[4],
@@ -654,7 +654,7 @@ function App() {
           </div>
 
           <div style={{ marginTop: spacing.scale[8] }}>
-            <h3>📐 ボーダー半径（radii.ts）</h3>
+            <h3 style={{ color: primitive.gray[900] }}>📐 ボーダー半径（radii.ts）</h3>
             <div
               style={{
                 marginTop: spacing.scale[4],
@@ -688,7 +688,7 @@ function App() {
           </div>
 
           <div style={{ marginTop: spacing.scale[8] }}>
-            <h3>🔤 タイポグラフィ（typography.ts）</h3>
+            <h3 style={{ color: primitive.gray[900] }}>🔤 タイポグラフィ（typography.ts）</h3>
             <div
               style={{
                 marginTop: spacing.scale[4],
