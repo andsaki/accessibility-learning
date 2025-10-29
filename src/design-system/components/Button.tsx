@@ -43,6 +43,29 @@ export const Button: React.FC<ButtonProps> = ({
 
   // キーボード操作によるフォーカスかどうかを追跡
   const [isKeyboardFocus, setIsKeyboardFocus] = React.useState(false);
+  const buttonRef = React.useRef<HTMLButtonElement>(null);
+
+  // グローバルなキーボード/マウスの使用を検出
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Tab') {
+        setIsKeyboardFocus(true);
+      }
+    };
+
+    const handleMouseDown = () => {
+      setIsKeyboardFocus(false);
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('mousedown', handleMouseDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('mousedown', handleMouseDown);
+    };
+  }, []);
+
   // ベーススタイル: すべてのボタンに共通するスタイル
   const baseStyles: React.CSSProperties = {
     fontFamily: typography.fontFamily.base,
@@ -53,7 +76,7 @@ export const Button: React.FC<ButtonProps> = ({
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    gap: spacing.sm,
+    gap: spacing.button.gap,
     transition: 'all 0.2s ease-in-out',
     opacity: disabled || isLoading ? 0.6 : 1, // 無効化時は透明度を下げる
     outline: 'none', // デフォルトのアウトラインを削除（カスタムフォーカススタイルを使用）
@@ -82,15 +105,15 @@ export const Button: React.FC<ButtonProps> = ({
   // サイズスタイル: sm、md、lgのサイズを定義
   const sizeStyles: Record<string, React.CSSProperties> = {
     sm: {
-      padding: `${spacing.xs} ${spacing.sm}`,
+      padding: `${spacing.button.paddingY.sm} ${spacing.button.paddingX.sm}`,
       fontSize: typography.fontSize.sm,
     },
     md: {
-      padding: `${spacing.sm} ${spacing.md}`,
+      padding: `${spacing.button.paddingY.md} ${spacing.button.paddingX.md}`,
       fontSize: typography.fontSize.base,
     },
     lg: {
-      padding: `${spacing.md} ${spacing.lg}`,
+      padding: `${spacing.button.paddingY.lg} ${spacing.button.paddingX.lg}`,
       fontSize: typography.fontSize.lg,
     },
   };
@@ -103,14 +126,23 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   // ホバー/アクティブ用のトークン
-  const interactionColors = {
-    primary: colors.button.primary,
-    secondary: colors.button.secondary,
-    outline: colors.button.outline,
-  }[variant];
+  const getInteractionColors = () => {
+    switch (variant) {
+      case 'primary':
+        return colors.button.primary;
+      case 'secondary':
+        return colors.button.secondary;
+      case 'outline':
+        return colors.button.outline;
+      default:
+        return colors.button.primary;
+    }
+  };
+  const interactionColors = getInteractionColors();
 
   return (
     <button
+      ref={buttonRef}
       type={type}
       disabled={disabled || isLoading}
       aria-busy={isLoading}
@@ -119,20 +151,12 @@ export const Button: React.FC<ButtonProps> = ({
         ...styles,
         // CSS変数でホバー/フォーカス色を定義
         ['--hover-bg' as string]: disabled || isLoading ? '' : interactionColors.bgHover,
-        ['--hover-border' as string]: disabled || isLoading ? '' : interactionColors.borderHover || interactionColors.bgHover,
+        ['--hover-border' as string]: disabled || isLoading ? '' : (interactionColors.borderHover || interactionColors.bgHover),
         ['--focus-bg' as string]: levelFocus.background,
         ['--focus-text' as string]: levelFocus.text,
         ['--focus-outline' as string]: levelFocus.outline,
         ['--focus-outline-width' as string]: levelFocus.outlineWidth,
         ['--focus-outline-offset' as string]: levelFocus.outlineOffset,
-      }}
-      onMouseDown={() => {
-        // マウスクリックの場合はフォーカス表示しない
-        setIsKeyboardFocus(false);
-      }}
-      onKeyDown={() => {
-        // キーボード操作の場合はフォーカス表示する
-        setIsKeyboardFocus(true);
       }}
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}
@@ -151,7 +175,6 @@ export const Button: React.FC<ButtonProps> = ({
         // フォーカス時のクラスを削除
         e.currentTarget.removeAttribute('data-focused');
         e.currentTarget.removeAttribute('data-focus-text-inherit');
-        setIsKeyboardFocus(false);
         props.onBlur?.(e);
       }}
       {...props}

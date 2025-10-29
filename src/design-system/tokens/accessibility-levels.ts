@@ -35,13 +35,14 @@ export const focusStyles = {
    * レベルA: 最低限のフォーカス表示
    * - 薄い青いアウトライン
    * - コントラスト比: 約3:1
+   * - 黒文字で視認性を確保
    */
   A: {
     background: 'transparent',
     outline: primitive.blue[300], // 薄い青
     outlineWidth: '2px',
     outlineOffset: '0px',
-    text: 'inherit',
+    text: primitive.black,
   },
 
   /**

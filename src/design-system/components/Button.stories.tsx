@@ -318,13 +318,33 @@ export const FocusComparison: Story = {
  * - **マウスクリック**: フォーカススタイルは表示されません
  *
  * ## 動作確認
- * 1. マウスでボタンをクリック → フォーカススタイルは表示されない
- * 2. Tabキーでフォーカス移動 → WCAGレベルに応じたフォーカススタイルが表示される
+ * 1. **右上の「Open canvas in new tab」ボタンをクリック**してキャンバスを新しいタブで開く
+ * 2. マウスでボタンをクリック → フォーカススタイルは表示されない
+ * 3. Tabキーでフォーカス移動 → WCAGレベルに応じたフォーカススタイルが表示される
+ *
+ * ※ Storybook内のiframeではTabキーが正しく動作しない場合があるため、
+ *   新しいタブで開いて確認することを推奨します。
  */
 export const KeyboardInteraction: Story = {
   args: {},
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      <div style={{
+        padding: '1rem',
+        backgroundColor: '#fff3cd',
+        borderRadius: '8px',
+        marginBottom: '1rem',
+        border: '2px solid #ffc107'
+      }}>
+        <h3 style={{ marginTop: 0, fontSize: '16px', fontWeight: 'bold', color: '#856404' }}>
+          ⚠️ 動作確認方法
+        </h3>
+        <p style={{ margin: '0.5rem 0', fontSize: '14px', lineHeight: '1.6', color: '#856404' }}>
+          Storybook内ではTabキーが正しく動作しない場合があります。<br />
+          <strong>右上の「Open canvas in new tab」ボタンで新しいタブを開いて確認してください。</strong>
+        </p>
+      </div>
+
       <div style={{
         padding: '1rem',
         backgroundColor: '#f5f5f5',

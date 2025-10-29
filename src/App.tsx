@@ -185,6 +185,7 @@ function App() {
             <li>✅ WCAG AA準拠のカラーコントラスト</li>
             <li>✅ 適切なセマンティックHTML</li>
           </ul>
+
         </section>
       </main>
     </div>
