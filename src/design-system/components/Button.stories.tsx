@@ -304,3 +304,104 @@ export const FocusComparison: Story = {
     </div>
   ),
 };
+
+/**
+ * キーボード操作の一覧
+ *
+ * キーボードのみでフォーカス表示が有効になる実装です。
+ * マウスクリックではフォーカススタイルが表示されません。
+ *
+ * ## 操作方法
+ * - **Tab**: 次のボタンにフォーカス移動
+ * - **Shift + Tab**: 前のボタンにフォーカス移動
+ * - **Enter または Space**: ボタンを実行
+ * - **マウスクリック**: フォーカススタイルは表示されません
+ *
+ * ## 動作確認
+ * 1. マウスでボタンをクリック → フォーカススタイルは表示されない
+ * 2. Tabキーでフォーカス移動 → WCAGレベルに応じたフォーカススタイルが表示される
+ */
+export const KeyboardInteraction: Story = {
+  args: {},
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      <div style={{
+        padding: '1rem',
+        backgroundColor: '#f5f5f5',
+        borderRadius: '8px',
+        marginBottom: '1rem'
+      }}>
+        <h3 style={{ marginTop: 0, fontSize: '16px', fontWeight: 'bold' }}>
+          💡 操作ヒント
+        </h3>
+        <ul style={{ margin: 0, paddingLeft: '1.5rem', fontSize: '14px', lineHeight: '1.8' }}>
+          <li><strong>Tab</strong>: 次のボタンにフォーカス移動</li>
+          <li><strong>Shift + Tab</strong>: 前のボタンにフォーカス移動</li>
+          <li><strong>Enter または Space</strong>: ボタンを実行</li>
+          <li><strong>マウスクリック</strong>: フォーカススタイルは表示されない</li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 style={{ marginBottom: '0.5rem', fontSize: '14px', fontWeight: 'bold' }}>
+          レベルA（最低限のフォーカス表示）
+        </h3>
+        <p style={{ marginBottom: '1rem', fontSize: '12px', color: '#666' }}>
+          薄い青のアウトライン（2px）のみ
+        </p>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <Button wcagLevel="A" variant="primary">Primary</Button>
+          <Button wcagLevel="A" variant="secondary">Secondary</Button>
+          <Button wcagLevel="A" variant="outline">Outline</Button>
+        </div>
+      </div>
+
+      <div>
+        <h3 style={{ marginBottom: '0.5rem', fontSize: '14px', fontWeight: 'bold' }}>
+          レベルAA（推奨）★
+        </h3>
+        <p style={{ marginBottom: '1rem', fontSize: '12px', color: '#666' }}>
+          薄い青背景 + 濃い青アウトライン（3px）+ オフセット（2px）
+        </p>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <Button wcagLevel="AA" variant="primary">Primary</Button>
+          <Button wcagLevel="AA" variant="secondary">Secondary</Button>
+          <Button wcagLevel="AA" variant="outline">Outline</Button>
+        </div>
+      </div>
+
+      <div>
+        <h3 style={{ marginBottom: '0.5rem', fontSize: '14px', fontWeight: 'bold' }}>
+          レベルAAA（最高レベル）
+        </h3>
+        <p style={{ marginBottom: '1rem', fontSize: '12px', color: '#666' }}>
+          黄色背景 + 黒アウトライン（4px）+ オフセット（2px）
+        </p>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <Button wcagLevel="AAA" variant="primary">Primary</Button>
+          <Button wcagLevel="AAA" variant="secondary">Secondary</Button>
+          <Button wcagLevel="AAA" variant="outline">Outline</Button>
+        </div>
+      </div>
+
+      <div style={{
+        marginTop: '2rem',
+        padding: '1rem',
+        backgroundColor: '#e3f2fd',
+        borderRadius: '8px',
+        borderLeft: '4px solid #2196f3'
+      }}>
+        <h4 style={{ marginTop: 0, fontSize: '14px', fontWeight: 'bold' }}>
+          🎯 実装のポイント
+        </h4>
+        <p style={{ margin: 0, fontSize: '13px', lineHeight: '1.6' }}>
+          このボタンは <code>:focus-visible</code> の動作を再現しています。
+          マウスクリックでは視覚的なフォーカス表示を行わず、
+          キーボード操作（Tab/Shift+Tab）時のみフォーカスインジケーターを表示します。
+          これにより、キーボードユーザーには明確なフォーカス位置を示しながら、
+          マウスユーザーには不要な視覚的ノイズを与えない設計になっています。
+        </p>
+      </div>
+    </div>
+  ),
+};

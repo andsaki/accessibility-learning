@@ -40,6 +40,9 @@ export const Button: React.FC<ButtonProps> = ({
   // WCAGレベルに応じたカラートークンを取得
   const levelColors = accessibilityLevels.button[wcagLevel];
   const levelFocus = accessibilityLevels.focus[wcagLevel];
+
+  // キーボード操作によるフォーカスかどうかを追跡
+  const [isKeyboardFocus, setIsKeyboardFocus] = React.useState(false);
   // ベーススタイル: すべてのボタンに共通するスタイル
   const baseStyles: React.CSSProperties = {
     fontFamily: typography.fontFamily.base,
@@ -123,14 +126,24 @@ export const Button: React.FC<ButtonProps> = ({
         ['--focus-outline-width' as string]: levelFocus.outlineWidth,
         ['--focus-outline-offset' as string]: levelFocus.outlineOffset,
       }}
+      onMouseDown={() => {
+        // マウスクリックの場合はフォーカス表示しない
+        setIsKeyboardFocus(false);
+      }}
+      onKeyDown={() => {
+        // キーボード操作の場合はフォーカス表示する
+        setIsKeyboardFocus(true);
+      }}
       onMouseEnter={props.onMouseEnter}
       onMouseLeave={props.onMouseLeave}
       onFocus={(e) => {
-        // フォーカス時のクラスを追加
-        e.currentTarget.setAttribute('data-focused', 'true');
-        // テキスト色がinheritの場合は専用の属性を追加
-        if (levelFocus.text === 'inherit') {
-          e.currentTarget.setAttribute('data-focus-text-inherit', 'true');
+        // キーボードフォーカスの場合のみ表示
+        if (isKeyboardFocus) {
+          e.currentTarget.setAttribute('data-focused', 'true');
+          // テキスト色がinheritの場合は専用の属性を追加
+          if (levelFocus.text === 'inherit') {
+            e.currentTarget.setAttribute('data-focus-text-inherit', 'true');
+          }
         }
         props.onFocus?.(e);
       }}
@@ -138,6 +151,7 @@ export const Button: React.FC<ButtonProps> = ({
         // フォーカス時のクラスを削除
         e.currentTarget.removeAttribute('data-focused');
         e.currentTarget.removeAttribute('data-focus-text-inherit');
+        setIsKeyboardFocus(false);
         props.onBlur?.(e);
       }}
       {...props}
