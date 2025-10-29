@@ -1,12 +1,27 @@
 /**
  * Button コンポーネントのスタイル
- * ホバーとフォーカスの状態を正しく管理します
+ * ホバー/アクティブ/フォーカスの状態を正しく管理します
+ *
+ * 優先順位:
+ * 1. フォーカス（最優先・キーボードユーザー用）
+ * 2. アクティブ（クリック中）
+ * 3. ホバー（マウスホバー）
+ * 4. デフォルト
  */
 
 /* ホバー時のスタイル（フォーカスしていない場合のみ） */
-button:hover:not([data-focused]):not(:disabled) {
+button:hover:not([data-focused]):not(:active):not(:disabled) {
   background-color: var(--hover-bg) !important;
   border-color: var(--hover-border) !important;
+  transition: all 0.15s ease;
+}
+
+/* アクティブ時のスタイル（クリック中・フォーカスしていない場合） */
+button:active:not([data-focused]):not(:disabled) {
+  background-color: var(--active-bg) !important;
+  transform: translateY(1px);
+  box-shadow: none !important;
+  transition: all 0.05s ease;
 }
 
 /* フォーカス時のスタイル（最優先） */
@@ -17,8 +32,10 @@ button[data-focused] {
   outline-offset: var(--focus-outline-offset) !important;
 }
 
-/* フォーカス中でもホバーエフェクトを無効化 */
-button[data-focused]:hover {
+/* フォーカス中はホバー/アクティブエフェクトを無効化 */
+button[data-focused]:hover,
+button[data-focused]:active {
   background-color: var(--focus-bg) !important;
-  border-color: var(--focus-outline) !important;
+  color: var(--focus-text) !important;
+  transform: none !important;
 }
