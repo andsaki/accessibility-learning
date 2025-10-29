@@ -63,11 +63,11 @@ export const Input: React.FC<InputProps> = ({
     width: '100%',
     fontFamily: typography.fontFamily.base,
     borderRadius: '0.375rem',
-    border: `2px solid ${error ? colors.error : colors.neutral[200]}`,
+    border: `2px solid ${error ? colors.input.borderError : colors.input.border}`,
     outline: 'none',
     transition: 'all 0.2s ease-in-out',
-    backgroundColor: disabled ? colors.neutral[100] : colors.background.default,
-    color: disabled ? colors.text.disabled : colors.text.primary,
+    backgroundColor: disabled ? colors.input.bgDisabled : colors.input.bg,
+    color: disabled ? colors.input.textDisabled : colors.input.text,
     cursor: disabled ? 'not-allowed' : 'text',
     ...sizeStyles[size],
   };
@@ -77,13 +77,13 @@ export const Input: React.FC<InputProps> = ({
     marginBottom: spacing.xs,
     fontSize: typography.fontSize.sm,
     fontWeight: typography.fontWeight.medium,
-    color: colors.text.primary,
+    color: colors.input.label,
   };
 
   const helperTextStyles: React.CSSProperties = {
     marginTop: spacing.xs,
     fontSize: typography.fontSize.sm,
-    color: error ? colors.error : colors.text.secondary,
+    color: error ? colors.input.errorText : colors.input.helperText,
     lineHeight: typography.lineHeight.normal,
   };
 
@@ -107,7 +107,7 @@ export const Input: React.FC<InputProps> = ({
         {/* 必須項目の表示 */}
         {required && (
           <span
-            style={{ color: colors.error, marginLeft: spacing.xs }}
+            style={{ color: colors.input.errorText, marginLeft: spacing.xs }}
             aria-label="必須"
           >
             *
@@ -138,9 +138,9 @@ export const Input: React.FC<InputProps> = ({
         }}
         onBlur={(e) => {
           // 元のスタイルに戻す
-          e.currentTarget.style.backgroundColor = disabled ? colors.neutral[100] : colors.background.default;
-          e.currentTarget.style.color = disabled ? colors.text.disabled : colors.text.primary;
-          e.currentTarget.style.borderColor = error ? colors.error : colors.neutral[200];
+          e.currentTarget.style.backgroundColor = disabled ? colors.input.bgDisabled : colors.input.bg;
+          e.currentTarget.style.color = disabled ? colors.input.textDisabled : colors.input.text;
+          e.currentTarget.style.borderColor = error ? colors.input.borderError : colors.input.border;
           e.currentTarget.style.outline = 'none';
           e.currentTarget.style.outlineOffset = '0';
           props.onBlur?.(e);

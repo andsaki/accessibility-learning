@@ -1,4 +1,7 @@
 import React from 'react';
+import { colors } from '../tokens/colors';
+import { spacing } from '../tokens/spacing';
+import { typography } from '../tokens/typography';
 
 export interface BreadcrumbsProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
@@ -48,10 +51,19 @@ export const BreadcrumbItem: React.FC<BreadcrumbItemProps> = ({
   isCurrent = false,
   ...props
 }) => {
+  const itemStyles: React.CSSProperties = {
+    display: 'inline',
+    wordBreak: 'break-word',
+    fontSize: typography.fontSize.base,
+    lineHeight: typography.lineHeight.normal,
+    color: isCurrent ? colors.breadcrumbs.textCurrent : colors.breadcrumbs.text,
+  };
+
   return (
     <li
       aria-current={isCurrent ? 'page' : undefined}
-      className={`inline break-words text-oln-16N-100 ${className}`}
+      className={className}
+      style={itemStyles}
       {...props}
     >
       {children}
@@ -71,11 +83,42 @@ export const BreadcrumbLink: React.FC<BreadcrumbLinkProps> = ({
   href,
   ...props
 }) => {
+  const linkStyles: React.CSSProperties = {
+    color: colors.breadcrumbs.link,
+    fontSize: typography.fontSize.base,
+    lineHeight: typography.lineHeight.normal,
+    textDecoration: 'underline',
+    textUnderlineOffset: '0.1875rem',
+  };
+
   return (
     <>
       <a
         href={href}
-        className={`text-blue-1000 text-oln-16N-100 underline underline-offset-[calc(3/16*1rem)] hover:text-blue-900 hover:decoration-[calc(3/16*1rem)] active:text-orange-700 active:decoration-1 focus-visible:rounded-4 focus-visible:outline focus-visible:outline-4 focus-visible:outline-black focus-visible:outline-offset-[calc(2/16*1rem)] focus-visible:bg-yellow-300 focus-visible:text-blue-1000 focus-visible:ring-[calc(2/16*1rem)] focus-visible:ring-yellow-300 ${className}`}
+        className={className}
+        style={linkStyles}
+        onMouseEnter={(e) => {
+          e.currentTarget.style.color = colors.breadcrumbs.linkHover;
+          e.currentTarget.style.textDecorationThickness = '0.1875rem';
+        }}
+        onMouseLeave={(e) => {
+          e.currentTarget.style.color = colors.breadcrumbs.link;
+          e.currentTarget.style.textDecorationThickness = '';
+        }}
+        onFocus={(e) => {
+          e.currentTarget.style.backgroundColor = colors.focus.background;
+          e.currentTarget.style.color = colors.breadcrumbs.link;
+          e.currentTarget.style.outline = `4px solid ${colors.focus.outline}`;
+          e.currentTarget.style.outlineOffset = '0.125rem';
+          e.currentTarget.style.borderRadius = '0.25rem';
+        }}
+        onBlur={(e) => {
+          e.currentTarget.style.backgroundColor = '';
+          e.currentTarget.style.color = colors.breadcrumbs.link;
+          e.currentTarget.style.outline = '';
+          e.currentTarget.style.outlineOffset = '';
+          e.currentTarget.style.borderRadius = '';
+        }}
         {...props}
       >
         {children}
@@ -93,11 +136,22 @@ export const BreadcrumbSeparator: React.FC<BreadcrumbSeparatorProps> = ({
   className = '',
   ...props
 }) => {
+  const separatorStyles: React.CSSProperties = {
+    display: 'inline',
+    color: colors.breadcrumbs.separator,
+  };
+
+  const svgStyles: React.CSSProperties = {
+    display: 'inline',
+    marginLeft: spacing.xs,
+    marginRight: spacing.xs,
+  };
+
   return (
-    <span className={`inline ${className}`} {...props}>
+    <span className={className} style={separatorStyles} {...props}>
       <svg
         aria-hidden={true}
-        className="mx-2 inline"
+        style={svgStyles}
         fill="none"
         height="12"
         viewBox="0 0 12 12"

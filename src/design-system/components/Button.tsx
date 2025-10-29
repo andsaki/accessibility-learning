@@ -54,17 +54,19 @@ export const Button: React.FC<ButtonProps> = ({
   // バリアントスタイル: primary、secondary、outlineの見た目を定義
   const variantStyles: Record<string, React.CSSProperties> = {
     primary: {
-      backgroundColor: colors.primary[500],
-      color: colors.text.inverse,
+      backgroundColor: disabled ? colors.button.primary.bgDisabled : colors.button.primary.bg,
+      color: disabled ? colors.button.primary.textDisabled : colors.button.primary.text,
+      border: `1px solid ${disabled ? colors.button.primary.bgDisabled : colors.button.primary.border}`,
     },
     secondary: {
-      backgroundColor: colors.neutral[200],
-      color: colors.text.primary,
+      backgroundColor: disabled ? colors.button.secondary.bgDisabled : colors.button.secondary.bg,
+      color: disabled ? colors.button.secondary.textDisabled : colors.button.secondary.text,
+      border: `1px solid ${disabled ? colors.button.secondary.borderHover : colors.button.secondary.border}`,
     },
     outline: {
-      backgroundColor: 'transparent',
-      color: colors.primary[500],
-      border: `2px solid ${colors.primary[500]}`,
+      backgroundColor: disabled ? colors.button.outline.bgDisabled : colors.button.outline.bg,
+      color: disabled ? colors.button.outline.textDisabled : colors.button.outline.text,
+      border: `2px solid ${disabled ? (colors.button.outline.borderDisabled || colors.border.default) : colors.button.outline.border}`,
     },
   };
 
@@ -99,6 +101,29 @@ export const Button: React.FC<ButtonProps> = ({
       aria-disabled={disabled || isLoading} // 無効化状態を明示的に伝える
       style={styles}
       {...props}
+      // ホバー時のスタイル
+      onMouseEnter={(e) => {
+        if (!disabled && !isLoading) {
+          if (variant === 'primary') {
+            e.currentTarget.style.backgroundColor = colors.button.primary.bgHover;
+            e.currentTarget.style.borderColor = colors.button.primary.borderHover;
+          } else if (variant === 'secondary') {
+            e.currentTarget.style.backgroundColor = colors.button.secondary.bgHover;
+            e.currentTarget.style.borderColor = colors.button.secondary.borderHover;
+          } else if (variant === 'outline') {
+            e.currentTarget.style.backgroundColor = colors.button.outline.bgHover;
+            e.currentTarget.style.borderColor = colors.button.outline.borderHover;
+          }
+        }
+        props.onMouseEnter?.(e);
+      }}
+      onMouseLeave={(e) => {
+        if (!disabled && !isLoading) {
+          e.currentTarget.style.backgroundColor = variantStyles[variant].backgroundColor || '';
+          e.currentTarget.style.borderColor = '';
+        }
+        props.onMouseLeave?.(e);
+      }}
       // フォーカス時のスタイル: 黄色背景
       onFocus={(e) => {
         e.currentTarget.style.backgroundColor = colors.focus.background;
