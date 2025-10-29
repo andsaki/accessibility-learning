@@ -2,6 +2,7 @@ import React from 'react';
 import { colors } from '../tokens/colors';
 import { spacing } from '../tokens/spacing';
 import { typography } from '../tokens/typography';
+import { accessibilityLevels, WCAGLevel } from '../tokens/accessibility-levels';
 
 export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   /** ボタンのバリエーション */
@@ -12,6 +13,8 @@ export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElemen
   isLoading?: boolean;
   /** テキストの前に表示するアイコン */
   icon?: React.ReactNode;
+  /** WCAGアクセシビリティレベル (A/AA/AAA) @default 'AA' */
+  wcagLevel?: WCAGLevel;
 }
 
 /**
@@ -32,8 +35,12 @@ export const Button: React.FC<ButtonProps> = ({
   icon,
   disabled,
   type = 'button',
+  wcagLevel = 'AA',
   ...props
 }) => {
+  // WCAGレベルに応じたカラートークンを取得
+  const levelColors = accessibilityLevels.button[wcagLevel];
+  const levelFocus = accessibilityLevels.focus[wcagLevel];
   // ベーススタイル: すべてのボタンに共通するスタイル
   const baseStyles: React.CSSProperties = {
     fontFamily: typography.fontFamily.base,
@@ -51,22 +58,22 @@ export const Button: React.FC<ButtonProps> = ({
     position: 'relative',
   };
 
-  // バリアントスタイル: primary、secondary、outlineの見た目を定義
+  // バリアントスタイル: WCAGレベルとバリアントに応じた見た目を定義
   const variantStyles: Record<string, React.CSSProperties> = {
     primary: {
-      backgroundColor: disabled ? colors.button.primary.bgDisabled : colors.button.primary.bg,
-      color: disabled ? colors.button.primary.textDisabled : colors.button.primary.text,
-      border: `1px solid ${disabled ? colors.button.primary.bgDisabled : colors.button.primary.border}`,
+      backgroundColor: disabled ? colors.button.primary.bgDisabled : levelColors.primary.bg,
+      color: disabled ? colors.button.primary.textDisabled : levelColors.primary.text,
+      border: `1px solid ${disabled ? colors.button.primary.bgDisabled : levelColors.primary.border}`,
     },
     secondary: {
-      backgroundColor: disabled ? colors.button.secondary.bgDisabled : colors.button.secondary.bg,
-      color: disabled ? colors.button.secondary.textDisabled : colors.button.secondary.text,
-      border: `1px solid ${disabled ? colors.button.secondary.borderHover : colors.button.secondary.border}`,
+      backgroundColor: disabled ? colors.button.secondary.bgDisabled : levelColors.secondary.bg,
+      color: disabled ? colors.button.secondary.textDisabled : levelColors.secondary.text,
+      border: `1px solid ${disabled ? colors.button.secondary.borderHover : levelColors.secondary.border}`,
     },
     outline: {
-      backgroundColor: disabled ? colors.button.outline.bgDisabled : colors.button.outline.bg,
-      color: disabled ? colors.button.outline.textDisabled : colors.button.outline.text,
-      border: `2px solid ${disabled ? (colors.button.outline.borderDisabled || colors.border.default) : colors.button.outline.border}`,
+      backgroundColor: disabled ? colors.button.outline.bgDisabled : 'transparent',
+      color: disabled ? colors.button.outline.textDisabled : levelColors.primary.bg,
+      border: `2px solid ${disabled ? (colors.button.outline.borderDisabled || colors.border.default) : levelColors.primary.bg}`,
     },
   };
 
@@ -124,12 +131,12 @@ export const Button: React.FC<ButtonProps> = ({
         }
         props.onMouseLeave?.(e);
       }}
-      // フォーカス時のスタイル: 黄色背景
+      // フォーカス時のスタイル: WCAGレベルに応じた表示
       onFocus={(e) => {
-        e.currentTarget.style.backgroundColor = colors.focus.background;
-        e.currentTarget.style.color = colors.focus.text;
-        e.currentTarget.style.outline = `3px solid ${colors.focus.outline}`;
-        e.currentTarget.style.outlineOffset = '2px';
+        e.currentTarget.style.backgroundColor = levelFocus.background;
+        e.currentTarget.style.color = levelFocus.text;
+        e.currentTarget.style.outline = `${levelFocus.outlineWidth} solid ${levelFocus.outline}`;
+        e.currentTarget.style.outlineOffset = levelFocus.outlineOffset;
         props.onFocus?.(e);
       }}
       onBlur={(e) => {

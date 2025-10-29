@@ -42,6 +42,11 @@ const meta = {
       options: ['sm', 'md', 'lg'],
       description: 'ボタンのサイズ',
     },
+    wcagLevel: {
+      control: 'select',
+      options: ['A', 'AA', 'AAA'],
+      description: 'WCAGアクセシビリティレベル',
+    },
     isLoading: {
       control: 'boolean',
       description: 'ローディング状態',
@@ -205,6 +210,97 @@ export const AllStates: Story = {
       <Button>通常</Button>
       <Button isLoading>ローディング</Button>
       <Button disabled>無効化</Button>
+    </div>
+  ),
+};
+
+/**
+ * WCAGレベル比較
+ *
+ * A/AA/AAAの3つのアクセシビリティレベルを比較できます。
+ * - レベルA: 最低限（大きいテキストのみ推奨）
+ * - レベルAA: 標準（ほとんどのサイトで推奨）★
+ * - レベルAAA: 最高（公共機関・医療・金融など）
+ */
+export const WCAGLevels: Story = {
+  args: {},
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      <div>
+        <h3 style={{ marginBottom: '0.5rem', fontSize: '14px', fontWeight: 'bold' }}>
+          レベルA（最低限）
+        </h3>
+        <p style={{ marginBottom: '1rem', fontSize: '12px', color: '#666' }}>
+          コントラスト比: 3:1 | 大きいテキストのみ推奨
+        </p>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <Button wcagLevel="A" variant="primary">Primary</Button>
+          <Button wcagLevel="A" variant="secondary">Secondary</Button>
+          <Button wcagLevel="A" variant="outline">Outline</Button>
+        </div>
+      </div>
+
+      <div>
+        <h3 style={{ marginBottom: '0.5rem', fontSize: '14px', fontWeight: 'bold' }}>
+          レベルAA（推奨）★
+        </h3>
+        <p style={{ marginBottom: '1rem', fontSize: '12px', color: '#666' }}>
+          コントラスト比: 4.5:1 | ほとんどのサイトで推奨
+        </p>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <Button wcagLevel="AA" variant="primary">Primary</Button>
+          <Button wcagLevel="AA" variant="secondary">Secondary</Button>
+          <Button wcagLevel="AA" variant="outline">Outline</Button>
+        </div>
+      </div>
+
+      <div>
+        <h3 style={{ marginBottom: '0.5rem', fontSize: '14px', fontWeight: 'bold' }}>
+          レベルAAA（最高）
+        </h3>
+        <p style={{ marginBottom: '1rem', fontSize: '12px', color: '#666' }}>
+          コントラスト比: 7:1 | 公共機関・医療・金融など
+        </p>
+        <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+          <Button wcagLevel="AAA" variant="primary">Primary</Button>
+          <Button wcagLevel="AAA" variant="secondary">Secondary</Button>
+          <Button wcagLevel="AAA" variant="outline">Outline</Button>
+        </div>
+      </div>
+    </div>
+  ),
+};
+
+/**
+ * フォーカス表示の比較
+ *
+ * 各WCAGレベルでのフォーカス表示の違いを確認できます。
+ * Tabキーでフォーカスを移動して確認してください。
+ */
+export const FocusComparison: Story = {
+  args: {},
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      <div>
+        <h3 style={{ marginBottom: '0.5rem', fontSize: '14px', fontWeight: 'bold' }}>
+          レベルA: 薄い青アウトライン（コントラスト比 3:1）
+        </h3>
+        <Button wcagLevel="A">フォーカスしてみてください</Button>
+      </div>
+
+      <div>
+        <h3 style={{ marginBottom: '0.5rem', fontSize: '14px', fontWeight: 'bold' }}>
+          レベルAA: 青背景 + 濃い青アウトライン（コントラスト比 4.5:1）
+        </h3>
+        <Button wcagLevel="AA">フォーカスしてみてください</Button>
+      </div>
+
+      <div>
+        <h3 style={{ marginBottom: '0.5rem', fontSize: '14px', fontWeight: 'bold' }}>
+          レベルAAA: 黄色背景 + 黒アウトライン（コントラスト比 19.56:1）
+        </h3>
+        <Button wcagLevel="AAA">フォーカスしてみてください</Button>
+      </div>
     </div>
   ),
 };
