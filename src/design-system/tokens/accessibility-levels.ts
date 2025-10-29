@@ -24,6 +24,7 @@
 
 import { primitive } from './colors';
 
+// WCAGアクセシビリティレベルの型定義
 export type WCAGLevel = 'A' | 'AA' | 'AAA';
 
 /**
