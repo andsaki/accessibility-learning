@@ -440,12 +440,119 @@ const handleClick = () => { ... };
    const data: User[] = ...
    ```
 
+## 📖 Storybookの作成
+
+### 必須ルール
+
+**新しいコンポーネントを作成したら、必ずStorybookストーリーを作成する**
+
+```tsx
+// ✅ 必須: コンポーネント作成時は必ずストーリーも作成
+src/components/SectionHeading.tsx
+src/components/SectionHeading.stories.tsx  // ← 必ず作成
+
+src/design-system/components/Button.tsx
+src/design-system/components/Button.stories.tsx  // ← 必ず作成
+```
+
+### Storybookストーリーの構成
+
+```tsx
+import type { Meta, StoryObj } from '@storybook/react';
+import { ComponentName } from './ComponentName';
+
+const meta = {
+  title: 'Design System/ComponentName',  // または 'Components/ComponentName'
+  component: ComponentName,
+  parameters: {
+    layout: 'padded',
+    docs: {
+      description: {
+        component: 'コンポーネントの説明を簡潔に記載',
+      },
+    },
+  },
+  tags: ['autodocs'],
+  argTypes: {
+    // propsの説明
+  },
+} satisfies Meta<typeof ComponentName>;
+
+export default meta;
+type Story = StoryObj<typeof meta>;
+
+// ✅ 最低限必要なストーリー
+export const Default: Story = {
+  args: {
+    children: 'サンプルテキスト',
+  },
+};
+
+// ✅ バリエーション
+export const Variants: Story = {
+  // ...
+};
+
+// ✅ 使用例
+export const UsageExample: Story = {
+  // 実際の使用方法を示す
+};
+```
+
+### 作成すべきストーリー
+
+1. **Default**: デフォルト状態
+2. **Variants/Sizes**: バリエーションやサイズ展開
+3. **States**: 状態（hover, focus, disabled, loading, error など）
+4. **Interactive**: インタラクティブなデモ（ボタンクリック、フォーム送信など）
+5. **Accessibility**: アクセシビリティ機能の説明
+6. **UsageExample**: 実際の使用例とコードサンプル
+
+### 実例
+
+#### Button.stories.tsx
+```tsx
+export const Default: Story = { /* デフォルト */ };
+export const Variants: Story = { /* primary, secondary, outline */ };
+export const Sizes: Story = { /* sm, md, lg */ };
+export const States: Story = { /* loading, disabled */ };
+export const WCAGLevels: Story = { /* A, AA, AAA */ };
+export const WithIcons: Story = { /* アイコン付き */ };
+```
+
+#### SectionHeading.stories.tsx
+```tsx
+export const Default: Story = { /* デフォルト */ };
+export const WithEmoji: Story = { /* 絵文字付き */ };
+export const AllLevels: Story = { /* h2, h3, h4 */ };
+export const VariousEmojis: Story = { /* 様々な絵文字 */ };
+export const UsageExample: Story = { /* 使用例 */ };
+```
+
+### Storybookの配置場所
+
+- `src/design-system/components/*.stories.tsx`
+  - 再利用可能なコンポーネント（Button, Input, Accordionなど）
+  - title: `'Design System/ComponentName'`
+
+- `src/components/*.stories.tsx`
+  - アプリ固有のコンポーネント（TableOfContents, SectionHeadingなど）
+  - title: `'Components/ComponentName'`
+
+### メリット
+
+- **ドキュメント化**: コンポーネントの使い方が明確
+- **テスト**: 各状態を視覚的に確認できる
+- **開発効率**: 独立した環境でコンポーネントを開発
+- **デザインレビュー**: デザイナーと開発者が同じものを見て議論できる
+
 ## 📚 参考資料
 
 ### 必読ドキュメント
 
 - [WCAG 2.1 ガイドライン](https://www.w3.org/WAI/WCAG21/quickref/)
 - [ARIA Authoring Practices](https://www.w3.org/WAI/ARIA/apg/)
+- [Storybook Documentation](https://storybook.js.org/docs)
 - [プロジェクトREADME](../README.md)
 
 ### デザイントークン一覧
@@ -470,6 +577,7 @@ const handleClick = () => { ... };
 - [ ] TypeScript型定義
 - [ ] レスポンシブ対応
 - [ ] `:focus-visible`パターン実装
+- [ ] Storybookストーリーの作成
 
 ---
 
