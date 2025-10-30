@@ -3,3 +3,6 @@ export type { ButtonProps } from './Button';
 
 export { Input } from './Input';
 export type { InputProps } from './Input';
+
+export { Accordion, AccordionSummary, AccordionContent } from './Accordion';
+export type { AccordionProps, AccordionSummaryProps, AccordionContentProps } from './Accordion';

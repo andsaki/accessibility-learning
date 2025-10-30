@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Button, Input } from "./design-system/components";
+import { Button, Input, Accordion, AccordionSummary, AccordionContent } from "./design-system/components";
 import { colors, accessibilityLevels, radii, spacing, typography } from "./design-system/tokens";
 import { primitive } from "./design-system/tokens/colors";
 import { breakpointValues } from "./design-system/tokens/breakpoints";
@@ -77,6 +77,7 @@ function App() {
   const tocItems = [
     { id: "button-component", title: "Buttonコンポーネント" },
     { id: "input-component", title: "Inputコンポーネント" },
+    { id: "accordion-component", title: "Accordionコンポーネント" },
     { id: "accessibility-features", title: "アクセシビリティ機能" },
     { id: "wcag-levels", title: "WCAGレベルとコントラスト比" },
     { id: "design-tokens", title: "デザイントークンシステム" },
@@ -271,6 +272,138 @@ function App() {
               disabled
               helperText="この項目は編集できません"
             />
+          </div>
+        </section>
+
+        <section
+          id="accordion-component"
+          style={{
+            marginBottom: spacing.scale[12],
+            padding: spacing.scale[6],
+            backgroundColor: colors.background.default,
+            borderRadius: radii.borderRadius.lg,
+            border: `1px solid ${colors.border.default}`,
+          }}
+        >
+          <h2 style={{ marginTop: 0, color: primitive.gray[900] }}>Accordion コンポーネント</h2>
+          <p style={{ color: primitive.gray[700] }}>
+            ネイティブの&lt;details&gt;/&lt;summary&gt;要素を使用したアクセシブルなアコーディオンです。
+            キーボード操作とスクリーンリーダーに完全対応しています。
+          </p>
+
+          <div style={{ marginTop: spacing.scale[6] }}>
+            <h3 style={{ color: primitive.gray[900], marginBottom: spacing.scale[4] }}>基本的な使い方</h3>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[4] }}>
+              <Accordion>
+                <AccordionSummary>アクセシビリティとは？</AccordionSummary>
+                <AccordionContent>
+                  <p style={{ marginBottom: spacing.scale[2] }}>
+                    アクセシビリティ（Accessibility、a11y）とは、障害の有無に関わらず、すべての人がWebサイトやアプリケーションを利用できるようにすることです。
+                  </p>
+                  <p>
+                    視覚障害、聴覚障害、運動障害、認知障害など、さまざまな障害を持つ人々が情報にアクセスできるようにする必要があります。
+                  </p>
+                </AccordionContent>
+              </Accordion>
+
+              <Accordion defaultOpen>
+                <AccordionSummary>WCAGとは？</AccordionSummary>
+                <AccordionContent>
+                  <p style={{ marginBottom: spacing.scale[2] }}>
+                    WCAG（Web Content Accessibility Guidelines）は、Webコンテンツをよりアクセシブルにするための国際的なガイドラインです。
+                  </p>
+                  <ul style={{ paddingLeft: spacing.scale[5] }}>
+                    <li>レベルA: 最低限のアクセシビリティ</li>
+                    <li>レベルAA: 推奨される標準（ほとんどのサイトで目指すべき）</li>
+                    <li>レベルAAA: 最高レベルのアクセシビリティ</li>
+                  </ul>
+                </AccordionContent>
+              </Accordion>
+
+              <Accordion>
+                <AccordionSummary>デザイントークンとは？</AccordionSummary>
+                <AccordionContent>
+                  <p style={{ marginBottom: spacing.scale[2] }}>
+                    デザイントークンは、色、サイズ、間隔などのデザイン要素を変数として定義したものです。
+                  </p>
+                  <p>
+                    一貫性のあるデザインシステムを構築し、保守性を高めるために使用されます。
+                    このプロジェクトでは3層構造（Primitive → Global → Component）を採用しています。
+                  </p>
+                </AccordionContent>
+              </Accordion>
+            </div>
+          </div>
+
+          <div style={{ marginTop: spacing.scale[8] }}>
+            <h3 style={{ color: primitive.gray[900], marginBottom: spacing.scale[4] }}>
+              WCAGレベル別フォーカススタイル
+            </h3>
+            <p style={{ color: primitive.gray[700], marginBottom: spacing.scale[4] }}>
+              Accordionコンポーネントは、WCAGレベルに応じて異なるフォーカススタイルを適用できます。
+              <strong>Tabキー</strong>でフォーカスを当てて確認してください（マウスクリックではフォーカススタイルは表示されません）。
+            </p>
+
+            <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[6] }}>
+              <div>
+                <h4 style={{ color: primitive.gray[800], marginBottom: spacing.scale[2] }}>
+                  Level A（最低限）
+                </h4>
+                <Accordion wcagLevel="A" defaultOpen>
+                  <AccordionSummary>レベルAのフォーカススタイル</AccordionSummary>
+                  <AccordionContent>
+                    薄い青色のアウトライン（2px）でフォーカスを示します。
+                    プロトタイプやMVPなど、最低限のアクセシビリティが必要な場合に使用します。
+                  </AccordionContent>
+                </Accordion>
+              </div>
+
+              <div>
+                <h4 style={{ color: primitive.gray[800], marginBottom: spacing.scale[2] }}>
+                  Level AA（推奨）★
+                </h4>
+                <Accordion wcagLevel="AA" defaultOpen>
+                  <AccordionSummary>レベルAAのフォーカススタイル</AccordionSummary>
+                  <AccordionContent>
+                    薄い青背景＋濃い青アウトライン（3px＋オフセット2px）でフォーカスを示します。
+                    ほとんどのWebサイトで推奨される標準レベルです（デフォルト）。
+                  </AccordionContent>
+                </Accordion>
+              </div>
+
+              <div>
+                <h4 style={{ color: primitive.gray[800], marginBottom: spacing.scale[2] }}>
+                  Level AAA（最高）
+                </h4>
+                <Accordion wcagLevel="AAA" defaultOpen>
+                  <AccordionSummary>レベルAAAのフォーカススタイル</AccordionSummary>
+                  <AccordionContent>
+                    黄色背景＋黒アウトライン（4px＋オフセット2px）で非常に目立つフォーカスを示します。
+                    公共機関、医療、金融など、最高レベルのアクセシビリティが必要な場合に使用します。
+                  </AccordionContent>
+                </Accordion>
+              </div>
+            </div>
+          </div>
+
+          <div style={{
+            marginTop: spacing.scale[8],
+            padding: spacing.scale[4],
+            backgroundColor: primitive.blue[50],
+            borderRadius: radii.borderRadius.md,
+            border: `1px solid ${primitive.blue[200]}`,
+          }}>
+            <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
+              💡 アコーディオンの特徴
+            </h4>
+            <ul style={{ color: primitive.blue[900], lineHeight: typography.lineHeight.relaxed }}>
+              <li><strong>セマンティックHTML</strong>: ネイティブの&lt;details&gt;/&lt;summary&gt;要素を使用</li>
+              <li><strong>キーボード操作</strong>: Tab、Enter、Spaceキーで完全に操作可能</li>
+              <li><strong>スクリーンリーダー対応</strong>: 自動的に適切なARIA属性が付与される</li>
+              <li><strong>フォーカス表示</strong>: キーボード操作時のみ視覚的に表示</li>
+              <li><strong>スムーズアニメーション</strong>: アイコンの回転アニメーション</li>
+              <li><strong>デザイントークン</strong>: すべてのスタイルはトークンから取得</li>
+            </ul>
           </div>
         </section>
 
