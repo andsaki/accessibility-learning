@@ -37,12 +37,9 @@ jobs:
       - name: Build Storybook
         run: npm run build-storybook
 
-      - name: Combine artifacts
+      - name: Setup deployment directory
         run: |
-          mkdir -p dist-combined/app
-          mkdir -p dist-combined/storybook
-          cp -r dist/* dist-combined/app/
-          cp -r storybook-static/* dist-combined/storybook/
+          mkdir -p dist-combined
 
       - name: Create landing page
         run: |
@@ -141,6 +138,13 @@ jobs:
           </body>
           </html>
           EOF
+
+      - name: Copy app and storybook
+        run: |
+          mkdir -p dist-combined/app
+          mkdir -p dist-combined/storybook
+          cp -r dist/* dist-combined/app/
+          cp -r storybook-static/* dist-combined/storybook/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
