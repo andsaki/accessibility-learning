@@ -1,0 +1,158 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build main app
+        run: npm run build
+
+      - name: Build Storybook
+        run: npm run build-storybook
+
+      - name: Create index page
+        run: |
+          mkdir -p dist-combined
+          mv dist dist-combined/app
+          mv storybook-static dist-combined/storybook
+          cat > dist-combined/index.html << 'EOF'
+          <!DOCTYPE html>
+          <html lang="ja">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>アクセシビリティ & デザインシステム学習</title>
+            <style>
+              * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+              }
+              body {
+                font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                min-height: 100vh;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 20px;
+              }
+              .container {
+                max-width: 800px;
+                width: 100%;
+              }
+              .card {
+                background: white;
+                border-radius: 16px;
+                padding: 48px;
+                box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+              }
+              h1 {
+                font-size: 2rem;
+                margin-bottom: 16px;
+                color: #1a202c;
+              }
+              p {
+                color: #4a5568;
+                margin-bottom: 32px;
+                line-height: 1.6;
+              }
+              .links {
+                display: grid;
+                gap: 16px;
+              }
+              a {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 20px 24px;
+                background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                color: white;
+                text-decoration: none;
+                border-radius: 12px;
+                font-weight: 600;
+                transition: transform 0.2s, box-shadow 0.2s;
+              }
+              a:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 20px rgba(102, 126, 234, 0.4);
+              }
+              .icon {
+                font-size: 1.5rem;
+              }
+              @media (max-width: 640px) {
+                .card {
+                  padding: 32px 24px;
+                }
+                h1 {
+                  font-size: 1.5rem;
+                }
+              }
+            </style>
+          </head>
+          <body>
+            <div class="container">
+              <div class="card">
+                <h1>🎨 アクセシビリティ & デザインシステム学習</h1>
+                <p>WCAG準拠のアクセシブルなコンポーネントと、スケーラブルなデザイントークンシステムを学ぶプロジェクトです。</p>
+                <div class="links">
+                  <a href="./app/">
+                    <span>📱 メインアプリケーション</span>
+                    <span class="icon">→</span>
+                  </a>
+                  <a href="./storybook/">
+                    <span>📚 Storybook（コンポーネントカタログ）</span>
+                    <span class="icon">→</span>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </body>
+          </html>
+          EOF
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist-combined'
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
