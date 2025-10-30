@@ -6,6 +6,7 @@ import { breakpointValues } from "./design-system/tokens/breakpoints";
 import { TableOfContents } from "./components/TableOfContents";
 import { HamburgerButton } from "./components/HamburgerButton";
 import { MobileDrawer } from "./components/MobileDrawer";
+import { SectionHeading } from "./components/SectionHeading";
 import { useActiveSection } from "./hooks/useActiveSection";
 import "./App.css";
 
@@ -258,14 +259,14 @@ function App() {
           </form>
 
           <div style={{ marginTop: spacing.scale[8] }}>
-            <h3 style={{ color: primitive.gray[900] }}>サイズバリエーション</h3>
+            <SectionHeading>サイズバリエーション</SectionHeading>
             <Input label="小サイズ" size="sm" placeholder="小さい入力欄" />
             <Input label="中サイズ" size="md" placeholder="標準の入力欄" />
             <Input label="大サイズ" size="lg" placeholder="大きい入力欄" />
           </div>
 
           <div style={{ marginTop: spacing.scale[8] }}>
-            <h3 style={{ color: primitive.gray[900] }}>無効化状態</h3>
+            <SectionHeading>無効化状態</SectionHeading>
             <Input
               label="無効な入力欄"
               value="編集できません"
@@ -292,7 +293,7 @@ function App() {
           </p>
 
           <div style={{ marginTop: spacing.scale[6] }}>
-            <h3 style={{ color: primitive.gray[900], marginBottom: spacing.scale[4] }}>基本的な使い方</h3>
+            <SectionHeading>基本的な使い方</SectionHeading>
             <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[4] }}>
               <Accordion>
                 <AccordionSummary>アクセシビリティとは？</AccordionSummary>
@@ -336,9 +337,7 @@ function App() {
           </div>
 
           <div style={{ marginTop: spacing.scale[8] }}>
-            <h3 style={{ color: primitive.gray[900], marginBottom: spacing.scale[4] }}>
-              WCAGレベル別フォーカススタイル
-            </h3>
+            <SectionHeading>WCAGレベル別フォーカススタイル</SectionHeading>
             <p style={{ color: primitive.gray[700], marginBottom: spacing.scale[4] }}>
               <strong>Tabキー</strong>でアコーディオンにフォーカスを当てて、各レベルの違いを確認してください。
             </p>
@@ -434,7 +433,7 @@ function App() {
           <h2 style={{ marginTop: 0, color: primitive.gray[900] }}>WCAGレベルとコントラスト比について</h2>
 
           <div style={{ marginTop: spacing.scale[6] }}>
-            <h3 style={{ color: primitive.gray[900] }}>コントラスト比とは？</h3>
+            <SectionHeading>コントラスト比とは？</SectionHeading>
             <p style={{ lineHeight: "1.8", color: primitive.gray[900] }}>
               コントラスト比は、テキストと背景の明るさの差を数値で表したものです。
               数値が大きいほど見やすく、小さいほど見にくくなります。
@@ -481,7 +480,7 @@ function App() {
           </div>
 
           <div style={{ marginTop: spacing.scale[8] }}>
-            <h3 style={{ color: primitive.gray[900] }}>WCAGレベルとコントラスト比の基準</h3>
+            <SectionHeading>WCAGレベルとコントラスト比の基準</SectionHeading>
 
             <div
               style={{
@@ -621,7 +620,7 @@ function App() {
           </div>
 
           <div style={{ marginTop: spacing.scale[8] }}>
-            <h3 style={{ color: primitive.gray[900] }}>実際の例</h3>
+            <SectionHeading>実際の例</SectionHeading>
             <div
               style={{
                 display: "flex",
@@ -755,7 +754,7 @@ function App() {
           </p>
 
           <div style={{ marginTop: spacing.scale[8] }}>
-            <h3 style={{ color: primitive.gray[900] }}>📏 スペーシング（spacing.ts）</h3>
+            <SectionHeading emoji="📏">スペーシング（spacing.ts）</SectionHeading>
             <div
               style={{
                 marginTop: spacing.scale[4],
@@ -802,7 +801,7 @@ function App() {
           </div>
 
           <div style={{ marginTop: spacing.scale[8] }}>
-            <h3 style={{ color: primitive.gray[900] }}>🎨 カラー（colors.ts）</h3>
+            <SectionHeading emoji="🎨">カラー（colors.ts）</SectionHeading>
             <div
               style={{
                 marginTop: spacing.scale[4],
@@ -851,7 +850,7 @@ function App() {
           </div>
 
           <div style={{ marginTop: spacing.scale[8] }}>
-            <h3 style={{ color: primitive.gray[900] }}>🌍 トークンの3階層とは？</h3>
+            <SectionHeading emoji="🌍">トークンの3階層とは？</SectionHeading>
             <div
               style={{
                 marginTop: spacing.scale[4],
@@ -1014,7 +1013,7 @@ function App() {
           </div>
 
           <div style={{ marginTop: spacing.scale[8] }}>
-            <h3 style={{ color: primitive.gray[900] }}>📐 ボーダー半径（radii.ts）</h3>
+            <SectionHeading emoji="📐">ボーダー半径（radii.ts）</SectionHeading>
             <div
               style={{
                 marginTop: spacing.scale[4],
@@ -1048,7 +1047,7 @@ function App() {
           </div>
 
           <div style={{ marginTop: spacing.scale[8] }}>
-            <h3 style={{ color: primitive.gray[900] }}>🔤 タイポグラフィ（typography.ts）</h3>
+            <SectionHeading emoji="🔤">タイポグラフィ（typography.ts）</SectionHeading>
             <div
               style={{
                 marginTop: spacing.scale[4],
