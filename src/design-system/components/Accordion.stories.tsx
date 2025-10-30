@@ -45,6 +45,7 @@ export const Default: Story = {
 export const Open: Story = {
   args: {
     defaultOpen: true,
+    children: null,
   },
   render: (args) => (
     <Accordion {...args}>
@@ -61,6 +62,7 @@ export const Open: Story = {
 export const Multiple: Story = {
   args: {
     defaultOpen: false,
+    children: null,
   },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -115,6 +117,7 @@ export const Multiple: Story = {
 export const RichContent: Story = {
   args: {
     defaultOpen: true,
+    children: null,
   },
   render: (args) => (
     <Accordion {...args}>
@@ -189,6 +192,7 @@ export const RichContent: Story = {
 export const Accessibility: Story = {
   args: {
     defaultOpen: true,
+    children: null,
   },
   render: (args) => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
