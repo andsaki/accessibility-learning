@@ -90,6 +90,12 @@ const DrawerWithButton = () => {
 };
 
 export const Default: Story = {
+  args: {
+    isOpen: false,
+    onClose: () => {},
+    items: mockItems,
+    activeId: 'section-1',
+  },
   render: () => <DrawerWithButton />,
   parameters: {
     docs: {
@@ -133,6 +139,15 @@ export const Closed: Story = {
 };
 
 export const LongList: Story = {
+  args: {
+    isOpen: true,
+    onClose: () => {},
+    items: Array.from({ length: 20 }, (_, i) => ({
+      id: `section-${i + 1}`,
+      title: `セクション ${i + 1}`,
+    })),
+    activeId: 'section-10',
+  },
   render: () => {
     const [isOpen, setIsOpen] = useState(true);
     const longItems = Array.from({ length: 20 }, (_, i) => ({
@@ -162,6 +177,12 @@ export const LongList: Story = {
 };
 
 export const Accessibility: Story = {
+  args: {
+    isOpen: false,
+    onClose: () => {},
+    items: mockItems,
+    activeId: 'section-1',
+  },
   render: () => <DrawerWithButton />,
   parameters: {
     docs: {

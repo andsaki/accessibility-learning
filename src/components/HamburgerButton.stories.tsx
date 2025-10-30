@@ -44,6 +44,10 @@ const HamburgerWithState = () => {
 };
 
 export const Default: Story = {
+  args: {
+    isOpen: false,
+    onClick: () => {},
+  },
   render: () => <HamburgerWithState />,
   parameters: {
     docs: {
@@ -57,6 +61,7 @@ export const Default: Story = {
 export const Closed: Story = {
   args: {
     isOpen: false,
+    onClick: () => {},
   },
   parameters: {
     docs: {
@@ -70,6 +75,7 @@ export const Closed: Story = {
 export const Open: Story = {
   args: {
     isOpen: true,
+    onClick: () => {},
   },
   parameters: {
     docs: {
@@ -81,6 +87,10 @@ export const Open: Story = {
 };
 
 export const Accessibility: Story = {
+  args: {
+    isOpen: false,
+    onClick: () => {},
+  },
   render: () => <HamburgerWithState />,
   parameters: {
     docs: {

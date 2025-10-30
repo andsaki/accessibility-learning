@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { TableOfContents } from './TableOfContents';
-import { useState } from 'react';
 
 const meta = {
   title: 'Components/TableOfContents',
@@ -73,6 +72,9 @@ const ScrollableDemo = () => {
 };
 
 export const Default: Story = {
+  args: {
+    items: mockItems,
+  },
   render: () => <ScrollableDemo />,
   parameters: {
     docs: {
@@ -129,6 +131,9 @@ export const ShortList: Story = {
 };
 
 export const Accessibility: Story = {
+  args: {
+    items: mockItems,
+  },
   render: () => <ScrollableDemo />,
   parameters: {
     docs: {

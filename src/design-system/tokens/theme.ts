@@ -54,7 +54,7 @@ export const darkTheme = {
 /**
  * テーマの統合型
  */
-export type Theme = typeof lightTheme;
+export type Theme = typeof lightTheme | typeof darkTheme;
 
 /**
  * テーマを取得する関数

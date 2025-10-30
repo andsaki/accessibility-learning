@@ -125,20 +125,16 @@ export const Button: React.FC<ButtonProps> = ({
     ...sizeStyles[size],
   };
 
-  // ホバー/アクティブ用のトークン
-  const getInteractionColors = () => {
-    switch (variant) {
-      case 'primary':
-        return colors.button.primary;
-      case 'secondary':
-        return colors.button.secondary;
-      case 'outline':
-        return colors.button.outline;
-      default:
-        return colors.button.primary;
-    }
-  };
-  const interactionColors = getInteractionColors();
+  // ホバー/アクティブ用のトークンを直接取得
+  const hoverBg =
+    variant === 'primary' ? colors.button.primary.bgHover :
+    variant === 'secondary' ? colors.button.secondary.bgHover :
+    colors.button.outline.bgHover;
+
+  const hoverBorder =
+    variant === 'primary' ? colors.button.primary.borderHover :
+    variant === 'secondary' ? colors.button.secondary.borderHover :
+    (colors.button.outline.borderHover || colors.button.outline.bgHover);
 
   return (
     <button
@@ -150,8 +146,8 @@ export const Button: React.FC<ButtonProps> = ({
       style={{
         ...styles,
         // CSS変数でホバー/フォーカス色を定義
-        ['--hover-bg' as string]: disabled || isLoading ? '' : interactionColors.bgHover,
-        ['--hover-border' as string]: disabled || isLoading ? '' : (interactionColors.borderHover || interactionColors.bgHover),
+        ['--hover-bg' as string]: disabled || isLoading ? '' : hoverBg,
+        ['--hover-border' as string]: disabled || isLoading ? '' : hoverBorder,
         ['--focus-bg' as string]: levelFocus.background,
         ['--focus-text' as string]: levelFocus.text,
         ['--focus-outline' as string]: levelFocus.outline,
@@ -164,17 +160,12 @@ export const Button: React.FC<ButtonProps> = ({
         // キーボードフォーカスの場合のみ表示
         if (isKeyboardFocus) {
           e.currentTarget.setAttribute('data-focused', 'true');
-          // テキスト色がinheritの場合は専用の属性を追加
-          if (levelFocus.text === 'inherit') {
-            e.currentTarget.setAttribute('data-focus-text-inherit', 'true');
-          }
         }
         props.onFocus?.(e);
       }}
       onBlur={(e) => {
         // フォーカス時のクラスを削除
         e.currentTarget.removeAttribute('data-focused');
-        e.currentTarget.removeAttribute('data-focus-text-inherit');
         props.onBlur?.(e);
       }}
       {...props}

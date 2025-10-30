@@ -346,7 +346,9 @@ export const AllStates: Story = {
  * Tabキーでフォーカスを移動して、各レベルのフォーカススタイルを確認してください。
  */
 export const WCAGLevels: Story = {
-  args: {},
+  args: {
+    label: 'WCAG Levels',
+  },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       <div

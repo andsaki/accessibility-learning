@@ -141,8 +141,8 @@ export const BreadcrumbSeparator: React.FC<BreadcrumbSeparatorProps> = ({
 
   const svgStyles: React.CSSProperties = {
     display: 'inline',
-    marginLeft: spacing.xs,
-    marginRight: spacing.xs,
+    marginLeft: spacing.scale[1],
+    marginRight: spacing.scale[1],
   };
 
   return (
