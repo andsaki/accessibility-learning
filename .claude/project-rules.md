@@ -129,8 +129,62 @@ style={{
 // - 大きいテキスト（18px以上）: 3:1以上
 
 // WCAGレベルを指定可能なコンポーネント
-<Button wcagLevel="AA" />      // デフォルト
+<Button wcagLevel="AA" />      // デフォルト（推奨）
 <Button wcagLevel="AAA" />     // より高いコントラスト
+<Input wcagLevel="AA" />       // 入力フィールドも対応
+<Accordion wcagLevel="AA" />   // アコーディオンも対応
+```
+
+#### 6. WCAGレベルの実装ルール
+
+**すべてのインタラクティブコンポーネントに`wcagLevel`プロパティを実装する**
+
+```tsx
+// ✅ 必須実装: wcagLevelプロパティ
+export interface ComponentProps {
+  /** WCAGアクセシビリティレベル (A/AA/AAA) @default 'AA' */
+  wcagLevel?: WCAGLevel;
+  // ... 他のprops
+}
+
+// ✅ デフォルト値は'AA'
+const { wcagLevel = 'AA', ...props } = componentProps;
+
+// ✅ accessibilityLevelsトークンを使用
+import { accessibilityLevels } from '../tokens';
+const levelFocus = accessibilityLevels.focus[wcagLevel];
+
+// ✅ キーボードフォーカス時にレベル別スタイルを適用
+if (isKeyboardFocus) {
+  element.style.backgroundColor = levelFocus.background;
+  element.style.color = levelFocus.text;
+  element.style.outline = `${levelFocus.outlineWidth} solid ${levelFocus.outline}`;
+  element.style.outlineOffset = levelFocus.outlineOffset;
+}
+```
+
+**実装が必要なコンポーネント:**
+- ✅ Button（実装済み）
+- ✅ Input（実装済み）
+- ✅ Accordion（実装済み）
+- ⏳ Checkbox（将来）
+- ⏳ Radio（将来）
+- ⏳ Select（将来）
+- ⏳ Modal（将来）
+
+**WCAGレベルの選び方:**
+- **Level A**: 最低限（プロトタイプ、MVP）
+  - アウトライン: 2px、薄い青
+  - 背景: 透明
+- **Level AA**: 推奨（デフォルト）★
+  - アウトライン: 3px、濃い青
+  - 背景: 薄い青
+  - オフセット: 2px
+- **Level AAA**: 最高（公共機関、医療、金融）
+  - アウトライン: 4px、黒
+  - 背景: 黄色
+  - オフセット: 2px
+  - コントラスト比: 19.56:1
 ```
 
 ## 📐 レスポンシブデザイン

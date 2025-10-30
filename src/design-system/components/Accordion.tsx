@@ -1,5 +1,6 @@
 import React from 'react';
-import { colors, spacing, typography, radii } from '../tokens';
+import { colors, spacing, typography, radii, accessibilityLevels } from '../tokens';
+import type { WCAGLevel } from '../tokens';
 import './Accordion.css';
 
 export interface AccordionProps extends React.DetailsHTMLAttributes<HTMLDetailsElement> {
@@ -7,6 +8,8 @@ export interface AccordionProps extends React.DetailsHTMLAttributes<HTMLDetailsE
   className?: string;
   /** 初期状態で開いているか */
   defaultOpen?: boolean;
+  /** WCAGアクセシビリティレベル (A/AA/AAA) @default 'AA' */
+  wcagLevel?: WCAGLevel;
 }
 
 /**
@@ -23,6 +26,7 @@ export const Accordion: React.FC<AccordionProps> = ({
   children,
   className = '',
   defaultOpen = false,
+  wcagLevel = 'AA',
   ...props
 }) => {
   const accordionStyles: React.CSSProperties = {
@@ -32,11 +36,13 @@ export const Accordion: React.FC<AccordionProps> = ({
     overflow: 'hidden',
   };
 
+  // wcagLevelを子コンポーネントに渡すためのContext（簡易版）
   return (
     <details
       className={className}
       style={accordionStyles}
       open={defaultOpen}
+      data-wcag-level={wcagLevel}
       {...props}
     >
       {children}
@@ -56,6 +62,23 @@ export const AccordionSummary: React.FC<AccordionSummaryProps> = ({
 }) => {
   // キーボード操作によるフォーカスかどうかを追跡
   const [isKeyboardFocus, setIsKeyboardFocus] = React.useState(false);
+  const summaryRef = React.useRef<HTMLElement>(null);
+
+  // 親のdetails要素からwcagLevelを取得
+  const [wcagLevel, setWcagLevel] = React.useState<WCAGLevel>('AA');
+
+  React.useEffect(() => {
+    if (summaryRef.current) {
+      const detailsElement = summaryRef.current.closest('details');
+      const level = detailsElement?.getAttribute('data-wcag-level') as WCAGLevel;
+      if (level) {
+        setWcagLevel(level);
+      }
+    }
+  }, []);
+
+  // WCAGレベルに応じたフォーカススタイルを取得
+  const levelFocus = accessibilityLevels.focus[wcagLevel];
 
   React.useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -96,6 +119,7 @@ export const AccordionSummary: React.FC<AccordionSummaryProps> = ({
 
   return (
     <summary
+      ref={summaryRef}
       className={className}
       style={summaryStyles}
       onMouseEnter={(e) => {
@@ -106,14 +130,16 @@ export const AccordionSummary: React.FC<AccordionSummaryProps> = ({
       }}
       onFocus={(e) => {
         if (isKeyboardFocus) {
-          e.currentTarget.style.backgroundColor = colors.focus.background;
-          e.currentTarget.style.outline = `4px solid ${colors.focus.outline}`;
-          e.currentTarget.style.outlineOffset = '2px';
+          e.currentTarget.style.backgroundColor = levelFocus.background;
+          e.currentTarget.style.color = levelFocus.text;
+          e.currentTarget.style.outline = `${levelFocus.outlineWidth} solid ${levelFocus.outline}`;
+          e.currentTarget.style.outlineOffset = levelFocus.outlineOffset;
         }
         props.onFocus?.(e);
       }}
       onBlur={(e) => {
         e.currentTarget.style.backgroundColor = colors.accordion.bg;
+        e.currentTarget.style.color = colors.accordion.text;
         e.currentTarget.style.outline = 'none';
         e.currentTarget.style.outlineOffset = '0';
         props.onBlur?.(e);

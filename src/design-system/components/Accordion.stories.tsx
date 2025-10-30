@@ -250,3 +250,110 @@ export const Accessibility: Story = {
     },
   },
 };
+
+export const WCAGLevels: Story = {
+  args: {
+    children: null,
+  },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+      <div>
+        <h3 style={{ marginBottom: '16px', fontSize: '20px', fontWeight: 600 }}>
+          Level A（最低限）
+        </h3>
+        <Accordion wcagLevel="A" defaultOpen>
+          <AccordionSummary>レベルAのフォーカススタイル</AccordionSummary>
+          <AccordionContent>
+            <p>
+              レベルAは最低限のアクセシビリティです。薄い青色のアウトライン（2px）でフォーカスを示します。
+            </p>
+            <ul style={{ marginTop: '8px', paddingLeft: '20px' }}>
+              <li>アウトライン: 薄い青（#64b5f6）</li>
+              <li>太さ: 2px</li>
+              <li>オフセット: なし</li>
+              <li>背景: 透明</li>
+            </ul>
+          </AccordionContent>
+        </Accordion>
+      </div>
+
+      <div>
+        <h3 style={{ marginBottom: '16px', fontSize: '20px', fontWeight: 600 }}>
+          Level AA（推奨）★
+        </h3>
+        <Accordion wcagLevel="AA" defaultOpen>
+          <AccordionSummary>レベルAAのフォーカススタイル</AccordionSummary>
+          <AccordionContent>
+            <p>
+              レベルAAはほとんどのWebサイトで推奨される標準です。薄い青背景＋濃い青アウトライン（3px＋オフセット）でフォーカスを示します。
+            </p>
+            <ul style={{ marginTop: '8px', paddingLeft: '20px' }}>
+              <li>アウトライン: 濃い青（#1976d2）</li>
+              <li>太さ: 3px</li>
+              <li>オフセット: 2px</li>
+              <li>背景: 薄い青（#e3f2fd）</li>
+            </ul>
+          </AccordionContent>
+        </Accordion>
+      </div>
+
+      <div>
+        <h3 style={{ marginBottom: '16px', fontSize: '20px', fontWeight: 600 }}>
+          Level AAA（最高）
+        </h3>
+        <Accordion wcagLevel="AAA" defaultOpen>
+          <AccordionSummary>レベルAAAのフォーカススタイル</AccordionSummary>
+          <AccordionContent>
+            <p>
+              レベルAAAは最高レベルのアクセシビリティです。黄色背景＋黒アウトライン（4px＋オフセット）で非常に目立つフォーカスを示します。
+            </p>
+            <ul style={{ marginTop: '8px', paddingLeft: '20px' }}>
+              <li>アウトライン: 黒（#000000）</li>
+              <li>太さ: 4px</li>
+              <li>オフセット: 2px</li>
+              <li>背景: 黄色（#ffff00）</li>
+              <li>コントラスト比: 19.56:1（最高）</li>
+            </ul>
+          </AccordionContent>
+        </Accordion>
+      </div>
+
+      <div style={{
+        marginTop: '16px',
+        padding: '16px',
+        backgroundColor: '#f5f5f5',
+        borderRadius: '8px',
+        fontSize: '14px',
+        lineHeight: 1.6
+      }}>
+        <strong>💡 試してみよう:</strong><br />
+        Tabキーでアコーディオンをフォーカスして、各レベルのフォーカススタイルの違いを確認してください。
+        マウスクリックではフォーカススタイルは表示されません（キーボード操作時のみ）。
+      </div>
+    </div>
+  ),
+  parameters: {
+    docs: {
+      description: {
+        story: `
+### WCAGレベル別のフォーカススタイル
+
+このストーリーでは、各WCAGレベルのフォーカススタイルの違いを比較できます。
+
+**使い方:**
+\`\`\`tsx
+<Accordion wcagLevel="AA">
+  <AccordionSummary>タイトル</AccordionSummary>
+  <AccordionContent>内容</AccordionContent>
+</Accordion>
+\`\`\`
+
+**レベルの選び方:**
+- **Level A**: プロトタイプやMVPなど、最低限のアクセシビリティが必要な場合
+- **Level AA**: ほとんどのWebサイトで推奨（デフォルト）
+- **Level AAA**: 公共機関、医療、金融など、最高レベルのアクセシビリティが必要な場合
+        `,
+      },
+    },
+  },
+};
