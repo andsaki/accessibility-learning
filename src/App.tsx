@@ -340,50 +340,39 @@ function App() {
               WCAGレベル別フォーカススタイル
             </h3>
             <p style={{ color: primitive.gray[700], marginBottom: spacing.scale[4] }}>
-              Accordionコンポーネントは、WCAGレベルに応じて異なるフォーカススタイルを適用できます。
-              <strong>Tabキー</strong>でフォーカスを当てて確認してください（マウスクリックではフォーカススタイルは表示されません）。
+              <strong>Tabキー</strong>でアコーディオンにフォーカスを当てて、各レベルの違いを確認してください。
             </p>
 
-            <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[6] }}>
-              <div>
-                <h4 style={{ color: primitive.gray[800], marginBottom: spacing.scale[2] }}>
-                  Level A（最低限）
-                </h4>
-                <Accordion wcagLevel="A" defaultOpen>
-                  <AccordionSummary>レベルAのフォーカススタイル</AccordionSummary>
-                  <AccordionContent>
-                    薄い青色のアウトライン（2px）でフォーカスを示します。
-                    プロトタイプやMVPなど、最低限のアクセシビリティが必要な場合に使用します。
-                  </AccordionContent>
-                </Accordion>
-              </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[4] }}>
+              <Accordion wcagLevel="A">
+                <AccordionSummary>Level A（最低限）</AccordionSummary>
+                <AccordionContent>
+                  薄い青色のアウトライン（2px）。プロトタイプやMVP向け。
+                </AccordionContent>
+              </Accordion>
 
-              <div>
-                <h4 style={{ color: primitive.gray[800], marginBottom: spacing.scale[2] }}>
-                  Level AA（推奨）★
-                </h4>
-                <Accordion wcagLevel="AA" defaultOpen>
-                  <AccordionSummary>レベルAAのフォーカススタイル</AccordionSummary>
-                  <AccordionContent>
-                    薄い青背景＋濃い青アウトライン（3px＋オフセット2px）でフォーカスを示します。
-                    ほとんどのWebサイトで推奨される標準レベルです（デフォルト）。
-                  </AccordionContent>
-                </Accordion>
-              </div>
+              <Accordion wcagLevel="AA" defaultOpen>
+                <AccordionSummary>Level AA（推奨）★</AccordionSummary>
+                <AccordionContent>
+                  薄い青背景＋濃い青アウトライン（3px）。ほとんどのWebサイトで推奨（デフォルト）。
+                </AccordionContent>
+              </Accordion>
 
-              <div>
-                <h4 style={{ color: primitive.gray[800], marginBottom: spacing.scale[2] }}>
-                  Level AAA（最高）
-                </h4>
-                <Accordion wcagLevel="AAA" defaultOpen>
-                  <AccordionSummary>レベルAAAのフォーカススタイル</AccordionSummary>
-                  <AccordionContent>
-                    黄色背景＋黒アウトライン（4px＋オフセット2px）で非常に目立つフォーカスを示します。
-                    公共機関、医療、金融など、最高レベルのアクセシビリティが必要な場合に使用します。
-                  </AccordionContent>
-                </Accordion>
-              </div>
+              <Accordion wcagLevel="AAA">
+                <AccordionSummary>Level AAA（最高）</AccordionSummary>
+                <AccordionContent>
+                  黄色背景＋黒アウトライン（4px）。公共機関、医療、金融など。
+                </AccordionContent>
+              </Accordion>
             </div>
+
+            <p style={{
+              marginTop: spacing.scale[4],
+              fontSize: typography.fontSize.sm,
+              color: primitive.gray[600]
+            }}>
+              💡 WCAGレベルとコントラスト比の詳細は<a href="#wcag-levels" style={{ color: colors.text.link }}>こちらのセクション</a>をご覧ください
+            </p>
           </div>
 
           <div style={{
