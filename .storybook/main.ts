@@ -8,7 +8,6 @@ const config: StorybookConfig = {
   "addons": [
     "@chromatic-com/storybook",
     "@storybook/addon-docs",
-    "@storybook/addon-onboarding",
     "@storybook/addon-a11y",
     "@storybook/addon-vitest"
   ],
@@ -17,10 +16,8 @@ const config: StorybookConfig = {
     "options": {}
   },
   viteFinal: async (config) => {
-    // GitHub Pagesのサブパス対応
-    if (process.env.NODE_ENV === 'production') {
-      config.base = '/accessibility-learning/';
-    }
+    // 相対パスで解決（サブディレクトリ対応）
+    config.base = './';
     return config;
   }
 };
