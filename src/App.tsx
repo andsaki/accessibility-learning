@@ -62,8 +62,8 @@ function App() {
   return (
     <div style={{ padding: spacing.scale[8], maxWidth: "1200px" }}>
       <header>
-        <h1>デザインシステム & アクセシビリティ学習</h1>
-        <p>アクセシブルなコンポーネントの実装例</p>
+        <h1 style={{ marginBottom: spacing.scale[2] }}>デザインシステム & アクセシビリティ学習</h1>
+        <p style={{ color: primitive.gray[700] }}>アクセシブルなコンポーネントの実装例</p>
       </header>
 
       <main style={{ marginTop: spacing.scale[8] }}>
