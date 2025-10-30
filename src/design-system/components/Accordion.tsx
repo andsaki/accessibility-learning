@@ -1,14 +1,42 @@
 import React from 'react';
+import { colors, spacing, typography, radii } from '../tokens';
+import './Accordion.css';
 
 export interface AccordionProps extends React.DetailsHTMLAttributes<HTMLDetailsElement> {
   children: React.ReactNode;
   className?: string;
+  /** 初期状態で開いているか */
+  defaultOpen?: boolean;
 }
 
-export const Accordion: React.FC<AccordionProps> = ({ children, className = '', ...props }) => {
+/**
+ * アクセシブルなアコーディオンコンポーネント
+ *
+ * 機能:
+ * - ネイティブの<details>/<summary>要素を使用
+ * - キーボード操作完全対応（Enter、Space）
+ * - スクリーンリーダー対応（自動的にaria属性が付与される）
+ * - フォーカス表示
+ * - スムーズなアニメーション
+ */
+export const Accordion: React.FC<AccordionProps> = ({
+  children,
+  className = '',
+  defaultOpen = false,
+  ...props
+}) => {
+  const accordionStyles: React.CSSProperties = {
+    border: `1px solid ${colors.accordion.border}`,
+    borderRadius: radii.borderRadius.md,
+    backgroundColor: colors.accordion.bg,
+    overflow: 'hidden',
+  };
+
   return (
     <details
-      className={`group/accordion border border-solid-grey-420 [--icon-size:calc(20/16*1rem)] desktop:[--icon-size:calc(32/16*1rem)] ${className}`}
+      className={className}
+      style={accordionStyles}
+      open={defaultOpen}
       {...props}
     >
       {children}
@@ -24,33 +52,106 @@ export interface AccordionSummaryProps extends React.HTMLAttributes<HTMLElement>
 export const AccordionSummary: React.FC<AccordionSummaryProps> = ({
   children,
   className = '',
-  id,
   ...props
 }) => {
+  // キーボード操作によるフォーカスかどうかを追跡
+  const [isKeyboardFocus, setIsKeyboardFocus] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Tab') {
+        setIsKeyboardFocus(true);
+      }
+    };
+
+    const handleMouseDown = () => {
+      setIsKeyboardFocus(false);
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('mousedown', handleMouseDown);
+
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('mousedown', handleMouseDown);
+    };
+  }, []);
+
+  const summaryStyles: React.CSSProperties = {
+    display: 'flex',
+    alignItems: 'center',
+    gap: spacing.scale[3],
+    padding: `${spacing.scale[3]} ${spacing.scale[4]}`,
+    cursor: 'pointer',
+    listStyle: 'none',
+    backgroundColor: colors.accordion.bg,
+    color: colors.accordion.text,
+    fontFamily: typography.fontFamily.base,
+    fontSize: typography.fontSize.base,
+    fontWeight: typography.fontWeight.semibold,
+    lineHeight: typography.lineHeight.normal,
+    transition: 'background-color 0.2s ease',
+    outline: 'none',
+  };
+
   return (
     <summary
-      id={id}
-      className={`group/summary relative flex cursor-default items-center gap-4 bg-solid-grey-50 px-4 py-2.5 text-std-16N-170 text-blue-1000 hover:bg-blue-100 focus-visible:bg-yellow-300 focus-visible:outline focus-visible:outline-4 focus-visible:outline-black [&::marker]:content-[''] [&::-webkit-details-marker]:hidden desktop:gap-6 desktop:px-6 desktop:py-3.5 desktop:text-std-18N-160 ${className}`}
+      className={className}
+      style={summaryStyles}
+      onMouseEnter={(e) => {
+        e.currentTarget.style.backgroundColor = colors.accordion.bgHover;
+      }}
+      onMouseLeave={(e) => {
+        e.currentTarget.style.backgroundColor = colors.accordion.bg;
+      }}
+      onFocus={(e) => {
+        if (isKeyboardFocus) {
+          e.currentTarget.style.backgroundColor = colors.focus.background;
+          e.currentTarget.style.outline = `4px solid ${colors.focus.outline}`;
+          e.currentTarget.style.outlineOffset = '2px';
+        }
+        props.onFocus?.(e);
+      }}
+      onBlur={(e) => {
+        e.currentTarget.style.backgroundColor = colors.accordion.bg;
+        e.currentTarget.style.outline = 'none';
+        e.currentTarget.style.outlineOffset = '0';
+        props.onBlur?.(e);
+      }}
       {...props}
     >
-      <span className="inline-flex size-[var(--icon-size)] shrink-0 items-center justify-center rounded-full border border-current bg-white transition-transform duration-300 group-open/accordion:rotate-180 group-hover/summary:outline group-hover/summary:outline-2 group-hover/summary:outline-current">
-        <svg
-          width="16"
-          height="16"
-          viewBox="0 0 16 16"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="pointer-events-none size-4"
-          aria-hidden="true"
-        >
-          <path
-            d="M8 11L3 6L4.41 4.59L8 8.17L11.59 4.59L13 6L8 11Z"
-            fill="currentColor"
-          />
-        </svg>
-      </span>
-      <span className="flex-1">{children}</span>
+      <AccordionIcon />
+      <span style={{ flex: 1 }}>{children}</span>
     </summary>
+  );
+};
+
+/** アコーディオンの開閉アイコン */
+const AccordionIcon: React.FC = () => {
+  const iconStyles: React.CSSProperties = {
+    width: '24px',
+    height: '24px',
+    flexShrink: 0,
+    color: colors.accordion.icon,
+    transition: 'transform 0.3s ease',
+  };
+
+  return (
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      style={iconStyles}
+      aria-hidden="true"
+      className="accordion-icon"
+    >
+      <path
+        d="M7 10L12 15L17 10H7Z"
+        fill="currentColor"
+      />
+    </svg>
   );
 };
 
@@ -64,48 +165,22 @@ export const AccordionContent: React.FC<AccordionContentProps> = ({
   className = '',
   ...props
 }) => {
+  const contentStyles: React.CSSProperties = {
+    padding: `${spacing.scale[4]} ${spacing.scale[4]}`,
+    backgroundColor: colors.accordion.bg,
+    color: colors.accordion.text,
+    fontSize: typography.fontSize.base,
+    lineHeight: typography.lineHeight.relaxed,
+    borderTop: `1px solid ${colors.accordion.border}`,
+  };
+
   return (
     <div
-      className={`px-4 py-4 desktop:px-6 desktop:py-6 ${className}`}
+      className={className}
+      style={contentStyles}
       {...props}
     >
       {children}
     </div>
-  );
-};
-
-export interface AccordionBackLinkProps extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
-  children: React.ReactNode;
-  className?: string;
-}
-
-export const AccordionBackLink: React.FC<AccordionBackLinkProps> = ({
-  children,
-  className = '',
-  href = '#',
-  ...props
-}) => {
-  return (
-    <a
-      href={href}
-      className={`mt-4 inline-flex items-center gap-2 text-std-16N-170 text-blue-1000 underline hover:no-underline focus-visible:bg-yellow-300 focus-visible:outline focus-visible:outline-4 focus-visible:outline-black ${className}`}
-      {...props}
-    >
-      <svg
-        width="16"
-        height="16"
-        viewBox="0 0 16 16"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="pointer-events-none size-4"
-        aria-hidden="true"
-      >
-        <path
-          d="M8 5L13 10L11.59 11.41L8 7.83L4.41 11.41L3 10L8 5Z"
-          fill="currentColor"
-        />
-      </svg>
-      {children}
-    </a>
   );
 };
