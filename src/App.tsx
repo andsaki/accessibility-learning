@@ -1,12 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button, Input } from "./design-system/components";
 import { colors, accessibilityLevels, radii, spacing, typography } from "./design-system/tokens";
 import { primitive } from "./design-system/tokens/colors";
+import { breakpointValues } from "./design-system/tokens/breakpoints";
+import { TableOfContents } from "./components/TableOfContents";
+import { HamburgerButton } from "./components/HamburgerButton";
+import { MobileDrawer } from "./components/MobileDrawer";
+import { useActiveSection } from "./hooks/useActiveSection";
 import "./App.css";
 
 function App() {
   const [count, setCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [isMobile, setIsMobile] = useState(window.innerWidth < breakpointValues.md);
+  const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < breakpointValues.md);
+    };
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
 
   // Input用のstate
   const [formData, setFormData] = useState({
@@ -59,24 +74,62 @@ function App() {
     }
   };
 
+  const tocItems = [
+    { id: "button-component", title: "Buttonコンポーネント" },
+    { id: "input-component", title: "Inputコンポーネント" },
+    { id: "accessibility-features", title: "アクセシビリティ機能" },
+    { id: "wcag-levels", title: "WCAGレベルとコントラスト比" },
+    { id: "design-tokens", title: "デザイントークンシステム" },
+  ];
+
+  const activeId = useActiveSection(tocItems);
+
   return (
-    <div style={{ padding: spacing.scale[8], maxWidth: "1200px" }}>
+    <div style={{ padding: isMobile ? spacing.scale[3] : spacing.scale[8], maxWidth: "1400px", margin: "0 auto" }}>
+      {isMobile && (
+        <>
+          <HamburgerButton isOpen={isDrawerOpen} onClick={() => setIsDrawerOpen(!isDrawerOpen)} />
+          <MobileDrawer
+            isOpen={isDrawerOpen}
+            onClose={() => setIsDrawerOpen(false)}
+            items={tocItems}
+            activeId={activeId}
+          />
+        </>
+      )}
+
       <header>
-        <h1 style={{ marginBottom: spacing.scale[2] }}>デザインシステム & アクセシビリティ学習</h1>
+        <h1 style={{ marginBottom: spacing.scale[2], fontSize: isMobile ? "1.5rem" : "2rem" }}>デザインシステム & アクセシビリティ学習</h1>
         <p style={{ color: primitive.gray[700] }}>アクセシブルなコンポーネントの実装例</p>
       </header>
 
-      <main style={{ marginTop: spacing.scale[8] }}>
-        <section
-          style={{
-            marginBottom: spacing.scale[12],
-            padding: spacing.scale[6],
-            backgroundColor: colors.background.default,
-            borderRadius: radii.borderRadius.lg,
-            border: `1px solid ${colors.border.default}`,
-          }}
-        >
-          <h2 style={{ marginTop: 0, color: primitive.gray[900] }}>Button コンポーネント</h2>
+      <div style={{
+        display: "flex",
+        flexDirection: isMobile ? "column" : "row",
+        gap: isMobile ? spacing.scale[4] : spacing.scale[8],
+        marginTop: spacing.scale[8]
+      }}>
+        {!isMobile && (
+          <aside style={{
+            width: "280px",
+            flexShrink: 0
+          }}>
+            <TableOfContents items={tocItems} />
+          </aside>
+        )}
+
+        <main style={{ flex: 1, minWidth: 0 }}>
+          <section
+            id="button-component"
+            style={{
+              marginBottom: spacing.scale[12],
+              padding: spacing.scale[6],
+              backgroundColor: colors.background.default,
+              borderRadius: radii.borderRadius.lg,
+              border: `1px solid ${colors.border.default}`,
+            }}
+          >
+            <h2 style={{ marginTop: 0, color: primitive.gray[900] }}>Button コンポーネント</h2>
           <p style={{ color: primitive.gray[700] }}>WCAG準拠のアクセシブルなボタンコンポーネントです。</p>
 
           <div
@@ -134,6 +187,7 @@ function App() {
         </section>
 
         <section
+          id="input-component"
           style={{
             marginBottom: spacing.scale[12],
             padding: spacing.scale[6],
@@ -221,6 +275,7 @@ function App() {
         </section>
 
         <section
+          id="accessibility-features"
           style={{
             marginBottom: spacing.scale[12],
             padding: spacing.scale[6],
@@ -245,6 +300,7 @@ function App() {
         </section>
 
         <section
+          id="wcag-levels"
           style={{
             marginBottom: spacing.scale[12],
             padding: spacing.scale[6],
@@ -561,6 +617,7 @@ function App() {
         </section>
 
         <section
+          id="design-tokens"
           style={{
             marginBottom: spacing.scale[12],
             padding: spacing.scale[6],
@@ -666,6 +723,169 @@ function App() {
                       例: colors.button.primary.bg, colors.input.borderError
                     </p>
                   </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style={{ marginTop: spacing.scale[8] }}>
+            <h3 style={{ color: primitive.gray[900] }}>🌍 トークンの3階層とは？</h3>
+            <div
+              style={{
+                marginTop: spacing.scale[4],
+                padding: spacing.scale[4],
+                backgroundColor: primitive.blue[50],
+                borderRadius: radii.borderRadius.base,
+                border: `2px solid ${primitive.blue[500]}`,
+              }}
+            >
+              <p style={{ margin: 0, lineHeight: typography.lineHeight.relaxed, color: primitive.gray[900] }}>
+                デザイントークンは<strong>3つの階層</strong>で構成され、段階的に抽象化されています。<br />
+                これにより、保守性が高く、変更に強いデザインシステムを実現できます。
+              </p>
+
+              <div
+                style={{
+                  marginTop: spacing.scale[6],
+                  padding: spacing.scale[4],
+                  backgroundColor: primitive.gray[50],
+                  borderRadius: radii.borderRadius.base,
+                  border: `1px solid ${primitive.gray[300]}`,
+                }}
+              >
+                <h4 style={{ marginTop: 0, marginBottom: spacing.scale[3], color: primitive.gray[800], fontSize: typography.fontSize.lg }}>
+                  🍱 料理に例えると...
+                </h4>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[2], fontSize: typography.fontSize.sm, lineHeight: typography.lineHeight.relaxed }}>
+                  <div>
+                    <strong style={{ color: primitive.gray[900] }}>1. Primitive（食材）</strong>
+                    <span style={{ color: primitive.gray[700] }}> → 卵、砂糖、小麦粉など生の素材</span>
+                  </div>
+                  <div>
+                    <strong style={{ color: primitive.blue[900] }}>2. Global（調味料・下ごしらえ）</strong>
+                    <span style={{ color: primitive.gray[700] }}> → 甘いタレ、塩味の調味料など、汎用的な中間素材</span>
+                  </div>
+                  <div>
+                    <strong style={{ color: primitive.gray[900] }}>3. Component（完成した料理）</strong>
+                    <span style={{ color: primitive.gray[700] }}> → ハンバーグ、サラダなど、目的に合わせた最終形</span>
+                  </div>
+                </div>
+              </div>
+
+              <h4 style={{ marginTop: spacing.scale[6], color: primitive.blue[900] }}>
+                具体的な階層の役割
+              </h4>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[3], marginTop: spacing.scale[2] }}>
+                <div style={{ padding: spacing.scale[3], backgroundColor: primitive.white, borderRadius: radii.borderRadius.base, border: `1px solid ${primitive.gray[300]}` }}>
+                  <div style={{ fontSize: typography.fontSize.sm, color: primitive.gray[600], marginBottom: spacing.scale[1] }}>
+                    レイヤー 1
+                  </div>
+                  <strong style={{ color: primitive.gray[900], fontSize: typography.fontSize.base }}>Primitive tokens（プリミティブトークン）</strong>
+                  <p style={{ margin: `${spacing.scale[2]} 0 ${spacing.scale[1]} 0`, fontSize: typography.fontSize.sm, color: primitive.gray[700], lineHeight: typography.lineHeight.relaxed }}>
+                    色や数値などの<strong>生の値</strong>。意味を持たない基本パーツ。
+                  </p>
+                  <div style={{ padding: spacing.scale[2], backgroundColor: primitive.gray[50], borderRadius: radii.borderRadius.sm, fontSize: typography.fontSize.sm }}>
+                    <code style={{ color: primitive.blue[700] }}>#3B82F6</code>
+                    <span style={{ margin: '0 8px', color: primitive.gray[400] }}>|</span>
+                    <code style={{ color: primitive.blue[700] }}>16px</code>
+                    <span style={{ margin: '0 8px', color: primitive.gray[400] }}>|</span>
+                    <code style={{ color: primitive.blue[700] }}>primitive.gray[900]</code>
+                  </div>
+                </div>
+
+                <div style={{ padding: spacing.scale[3], backgroundColor: primitive.blue[100], borderRadius: radii.borderRadius.base, border: `2px solid ${primitive.blue[500]}` }}>
+                  <div style={{ fontSize: typography.fontSize.sm, color: primitive.blue[700], marginBottom: spacing.scale[1] }}>
+                    レイヤー 2 ⭐ <strong>今日の主役</strong>
+                  </div>
+                  <strong style={{ color: primitive.blue[900], fontSize: typography.fontSize.base }}>Global tokens（グローバルトークン）</strong>
+                  <p style={{ margin: `${spacing.scale[2]} 0 ${spacing.scale[1]} 0`, fontSize: typography.fontSize.sm, color: primitive.gray[700], lineHeight: typography.lineHeight.relaxed }}>
+                    Primitiveに<strong>意味のある名前</strong>を付けたもの。「どこで使うか」が分かりやすい。<br />
+                    アプリ全体で再利用できる共通部品。
+                  </p>
+                  <div style={{ padding: spacing.scale[2], backgroundColor: primitive.white, borderRadius: radii.borderRadius.sm, fontSize: typography.fontSize.sm }}>
+                    <div style={{ marginBottom: spacing.scale[1] }}>
+                      <code style={{ color: primitive.blue[700] }}>colors.text.primary</code>
+                      <span style={{ color: primitive.gray[600] }}> = primitive.gray[900]</span>
+                    </div>
+                    <div style={{ marginBottom: spacing.scale[1] }}>
+                      <code style={{ color: primitive.blue[700] }}>spacing.scale[4]</code>
+                      <span style={{ color: primitive.gray[600] }}> = 16px</span>
+                    </div>
+                    <div>
+                      <code style={{ color: primitive.blue[700] }}>radii.borderRadius.base</code>
+                      <span style={{ color: primitive.gray[600] }}> = 4px</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div style={{ padding: spacing.scale[3], backgroundColor: primitive.white, borderRadius: radii.borderRadius.base, border: `1px solid ${primitive.gray[300]}` }}>
+                  <div style={{ fontSize: typography.fontSize.sm, color: primitive.gray[600], marginBottom: spacing.scale[1] }}>
+                    レイヤー 3
+                  </div>
+                  <strong style={{ color: primitive.gray[900], fontSize: typography.fontSize.base }}>Component tokens（コンポーネントトークン）</strong>
+                  <p style={{ margin: `${spacing.scale[2]} 0 ${spacing.scale[1]} 0`, fontSize: typography.fontSize.sm, color: primitive.gray[700], lineHeight: typography.lineHeight.relaxed }}>
+                    特定のコンポーネント専用の値。Globalトークンを組み合わせて作る。
+                  </p>
+                  <div style={{ padding: spacing.scale[2], backgroundColor: primitive.gray[50], borderRadius: radii.borderRadius.sm, fontSize: typography.fontSize.sm }}>
+                    <div style={{ marginBottom: spacing.scale[1] }}>
+                      <code style={{ color: primitive.blue[700] }}>button.padding</code>
+                      <span style={{ color: primitive.gray[600] }}> = spacing.scale[3]</span>
+                    </div>
+                    <div style={{ marginBottom: spacing.scale[1] }}>
+                      <code style={{ color: primitive.blue[700] }}>input.borderError</code>
+                      <span style={{ color: primitive.gray[600] }}> = colors.border.error</span>
+                    </div>
+                    <div>
+                      <code style={{ color: primitive.blue[700] }}>card.borderRadius</code>
+                      <span style={{ color: primitive.gray[600] }}> = radii.borderRadius.lg</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <h4 style={{ marginTop: spacing.scale[6], color: primitive.blue[900] }}>
+                なぜ3階層に分けるの？
+              </h4>
+              <div
+                style={{
+                  marginTop: spacing.scale[3],
+                  padding: spacing.scale[4],
+                  backgroundColor: primitive.white,
+                  borderRadius: radii.borderRadius.base,
+                  border: `1px solid ${primitive.blue[300]}`,
+                }}
+              >
+                <div style={{ fontSize: typography.fontSize.sm, lineHeight: typography.lineHeight.relaxed, color: primitive.gray[900] }}>
+                  <div style={{ marginBottom: spacing.scale[3] }}>
+                    <strong style={{ color: primitive.green[700] }}>✅ 変更に強い</strong>
+                    <p style={{ margin: `${spacing.scale[1]} 0`, color: primitive.gray[700] }}>
+                      例: 「メインカラーを青→緑に変更」したい場合<br />
+                      → <code style={{ backgroundColor: primitive.gray[100], padding: '2px 4px', borderRadius: '2px' }}>primitive.blue[500]</code> の値を1箇所変えるだけで、それを参照する全てに反映される
+                    </p>
+                  </div>
+                  <div style={{ marginBottom: spacing.scale[3] }}>
+                    <strong style={{ color: primitive.blue[700] }}>✅ コードが読みやすい</strong>
+                    <p style={{ margin: `${spacing.scale[1]} 0`, color: primitive.gray[700] }}>
+                      <code style={{ backgroundColor: primitive.red[50], padding: '2px 4px', borderRadius: '2px', color: primitive.red[700] }}>color: #212121</code> より
+                      <code style={{ backgroundColor: primitive.green[50], padding: '2px 4px', borderRadius: '2px', color: primitive.green[700] }}>color: colors.text.primary</code> の方が意図が明確
+                    </p>
+                  </div>
+                  <div>
+                    <strong style={{ color: primitive.orange[700] }}>✅ テーマ切り替えが簡単</strong>
+                    <p style={{ margin: `${spacing.scale[1]} 0`, color: primitive.gray[700] }}>
+                      ライトモード/ダークモードでGlobalトークンの参照先を変えるだけ
+                    </p>
+                  </div>
+                </div>
+              </div>
+
+              <div style={{ marginTop: spacing.scale[4], padding: spacing.scale[3], backgroundColor: primitive.gray[50], borderRadius: radii.borderRadius.base, border: `1px solid ${primitive.gray[300]}` }}>
+                <strong style={{ color: primitive.gray[900] }}>📦 このプロジェクトのGlobalトークン</strong>
+                <div style={{ marginTop: spacing.scale[2], fontSize: typography.fontSize.sm, color: primitive.gray[700], display: 'flex', flexWrap: 'wrap', gap: spacing.scale[2] }}>
+                  <code style={{ backgroundColor: primitive.blue[100], padding: '4px 8px', borderRadius: '4px', color: primitive.blue[900] }}>spacing</code>
+                  <code style={{ backgroundColor: primitive.blue[100], padding: '4px 8px', borderRadius: '4px', color: primitive.blue[900] }}>typography</code>
+                  <code style={{ backgroundColor: primitive.blue[100], padding: '4px 8px', borderRadius: '4px', color: primitive.blue[900] }}>colors</code>
+                  <code style={{ backgroundColor: primitive.blue[100], padding: '4px 8px', borderRadius: '4px', color: primitive.blue[900] }}>radii</code>
                 </div>
               </div>
             </div>
@@ -799,7 +1019,8 @@ function App() {
             </ul>
           </div>
         </section>
-      </main>
+        </main>
+      </div>
     </div>
   );
 }
