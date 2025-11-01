@@ -40,8 +40,8 @@ export const focusStyles = {
   A: {
     background: 'transparent',
     outline: primitive.blue[300], // 薄い青
-    outlineWidth: '2px',
-    outlineOffset: '0px',
+    outlineWidth: '0.125rem', // 2px
+    outlineOffset: '0',
     text: primitive.black,
   },
 
@@ -53,8 +53,8 @@ export const focusStyles = {
   AA: {
     background: primitive.blue[50], // 薄い青背景
     outline: primitive.blue[700], // 濃い青
-    outlineWidth: '3px',
-    outlineOffset: '2px',
+    outlineWidth: '0.1875rem', // 3px
+    outlineOffset: '0.125rem', // 2px
     text: primitive.gray[900],
   },
 
@@ -66,8 +66,8 @@ export const focusStyles = {
   AAA: {
     background: '#ffff00', // 黄色
     outline: primitive.black,
-    outlineWidth: '4px',
-    outlineOffset: '2px',
+    outlineWidth: '0.25rem', // 4px
+    outlineOffset: '0.125rem', // 2px
     text: primitive.black,
   },
 } as const;
@@ -173,17 +173,17 @@ export const sizeRequirements = {
    * レベルA: 大きいテキストのみ
    */
   A: {
-    minFontSize: '24px', // 18pt
-    minFontSizeBold: '18.5px', // 14pt bold
-    description: '大きいテキスト（18pt/24px以上、または14pt/18.5px太字以上）のみ使用可能',
+    minFontSize: '1.5rem', // 24px = 18pt
+    minFontSizeBold: '1.15625rem', // 18.5px = 14pt bold
+    description: '大きいテキスト（18pt/1.5rem以上、または14pt/1.15625rem太字以上）のみ使用可能',
   },
 
   /**
    * レベルAA: 通常サイズ可能
    */
   AA: {
-    minFontSize: '16px', // 通常サイズ
-    minFontSizeBold: '14px', // 太字
+    minFontSize: '1rem', // 16px = 通常サイズ
+    minFontSizeBold: '0.875rem', // 14px = 太字
     description: '通常サイズのテキストから使用可能',
   },
 
@@ -191,8 +191,8 @@ export const sizeRequirements = {
    * レベルAAA: すべてのサイズ
    */
   AAA: {
-    minFontSize: '12px',
-    minFontSizeBold: '12px',
+    minFontSize: '0.75rem', // 12px
+    minFontSizeBold: '0.75rem', // 12px
     description: 'すべてのサイズで最高の可読性を提供',
   },
 } as const;
