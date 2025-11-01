@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Button, Input, Accordion, AccordionSummary, AccordionContent } from "./design-system/components";
+import { Button, Input, Accordion, AccordionSummary, AccordionContent, Form, formSchemas } from "./design-system/components";
 import { colors, accessibilityLevels, radii, spacing, typography } from "./design-system/tokens";
 import { primitive } from "./design-system/tokens/colors";
 import { breakpointValues } from "./design-system/tokens/breakpoints";
@@ -8,6 +8,7 @@ import { HamburgerButton } from "./components/HamburgerButton";
 import { MobileDrawer } from "./components/MobileDrawer";
 import { SectionHeading } from "./components/SectionHeading";
 import { useActiveSection } from "./hooks/useActiveSection";
+import { z } from "zod";
 import "./App.css";
 
 function App() {
@@ -78,6 +79,7 @@ function App() {
   const tocItems = [
     { id: "button-component", title: "Buttonコンポーネント" },
     { id: "input-component", title: "Inputコンポーネント" },
+    { id: "form-component", title: "Formコンポーネント" },
     { id: "accordion-component", title: "Accordionコンポーネント" },
     { id: "accessibility-features", title: "アクセシビリティ機能" },
     { id: "wcag-levels", title: "WCAGレベルとコントラスト比" },
@@ -273,6 +275,129 @@ function App() {
               disabled
               helperText="この項目は編集できません"
             />
+          </div>
+        </section>
+
+        <section
+          id="form-component"
+          style={{
+            marginBottom: spacing.scale[12],
+            padding: spacing.scale[6],
+            backgroundColor: colors.background.default,
+            borderRadius: radii.borderRadius.lg,
+            border: `1px solid ${colors.border.default}`,
+          }}
+        >
+          <h2 style={{ marginTop: 0, color: primitive.gray[900] }}>Form コンポーネント</h2>
+          <p style={{ color: primitive.gray[700] }}>
+            react-hook-formとZodを統合したアクセシブルなフォームコンポーネントです。
+            バリデーション、エラー表示、型安全性が統合されています。
+          </p>
+
+          <div style={{ marginTop: spacing.scale[6] }}>
+            <SectionHeading>基本的な使い方</SectionHeading>
+            <Form
+              schema={z.object({
+                email: formSchemas.email,
+                password: formSchemas.required('パスワード'),
+              })}
+              fields={[
+                {
+                  name: 'email',
+                  label: 'メールアドレス',
+                  type: 'email',
+                  placeholder: 'example@example.com',
+                  required: true,
+                },
+                {
+                  name: 'password',
+                  label: 'パスワード',
+                  type: 'password',
+                  placeholder: '••••••••',
+                  required: true,
+                },
+              ]}
+              onSubmit={(data) => {
+                alert(`ログイン成功!\nEmail: ${data.email}`);
+                console.log('Login data:', data);
+              }}
+              submitText="ログイン"
+              submitVariant="primary"
+              wcagLevel="AA"
+            />
+          </div>
+
+          <div style={{ marginTop: spacing.scale[8] }}>
+            <SectionHeading>複雑なバリデーション</SectionHeading>
+            <p style={{ color: primitive.gray[700], marginBottom: spacing.scale[4] }}>
+              パスワード確認フィールドの一致検証など、複雑なバリデーションルールを簡単に実装できます。
+            </p>
+            <Form
+              schema={z.object({
+                username: formSchemas.minLength(3, 'ユーザー名'),
+                email: formSchemas.email,
+                password: formSchemas.password,
+                confirmPassword: formSchemas.required('パスワード（確認）'),
+              }).refine((data) => data.password === data.confirmPassword, {
+                message: 'パスワードが一致しません',
+                path: ['confirmPassword'],
+              })}
+              fields={[
+                {
+                  name: 'username',
+                  label: 'ユーザー名',
+                  placeholder: 'yamada_taro',
+                  helperText: '3文字以上で入力してください',
+                  required: true,
+                },
+                {
+                  name: 'email',
+                  label: 'メールアドレス',
+                  type: 'email',
+                  placeholder: 'example@example.com',
+                  required: true,
+                },
+                {
+                  name: 'password',
+                  label: 'パスワード',
+                  type: 'password',
+                  helperText: '8文字以上、大文字・小文字・数字を含む',
+                  required: true,
+                },
+                {
+                  name: 'confirmPassword',
+                  label: 'パスワード（確認）',
+                  type: 'password',
+                  required: true,
+                },
+              ]}
+              onSubmit={(data) => {
+                alert(`会員登録成功!\nユーザー名: ${data.username}\nEmail: ${data.email}`);
+                console.log('Signup data:', data);
+              }}
+              submitText="会員登録"
+              wcagLevel="AA"
+            />
+          </div>
+
+          <div style={{
+            marginTop: spacing.scale[8],
+            padding: spacing.scale[4],
+            backgroundColor: primitive.blue[50],
+            borderRadius: radii.borderRadius.md,
+            border: `1px solid ${primitive.blue[200]}`,
+          }}>
+            <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
+              💡 Formコンポーネントの特徴
+            </h4>
+            <ul style={{ color: primitive.blue[900], lineHeight: typography.lineHeight.relaxed }}>
+              <li><strong>Zodスキーマ統合</strong>: 型安全なバリデーション</li>
+              <li><strong>react-hook-form</strong>: 高パフォーマンスなフォーム管理</li>
+              <li><strong>アクセシブルなエラー表示</strong>: aria-invalid, aria-describedby, role="alert"</li>
+              <li><strong>WCAGレベル対応</strong>: A/AA/AAA のフォーカススタイル</li>
+              <li><strong>ヘルパースキーマ</strong>: よく使うバリデーションを簡単に利用</li>
+              <li><strong>再利用可能</strong>: fields配列でフォームを簡単に定義</li>
+            </ul>
           </div>
         </section>
 
