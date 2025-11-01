@@ -1039,16 +1039,16 @@ function App() {
                   </div>
                 </div>
 
-                <div style={{ padding: spacing.scale[3], backgroundColor: primitive.blue[100], borderRadius: radii.borderRadius.base, border: `2px solid ${primitive.blue[500]}` }}>
-                  <div style={{ fontSize: typography.fontSize.sm, color: primitive.blue[700], marginBottom: spacing.scale[1] }}>
+                <div style={{ padding: spacing.scale[3], backgroundColor: primitive.white, borderRadius: radii.borderRadius.base, border: `1px solid ${primitive.gray[300]}` }}>
+                  <div style={{ fontSize: typography.fontSize.sm, color: primitive.gray[600], marginBottom: spacing.scale[1] }}>
                     レイヤー 2
                   </div>
-                  <strong style={{ color: primitive.blue[900], fontSize: typography.fontSize.base }}>Semantic tokens（セマンティックトークン）</strong>
+                  <strong style={{ color: primitive.gray[900], fontSize: typography.fontSize.base }}>Semantic tokens（セマンティックトークン）</strong>
                   <p style={{ margin: `${spacing.scale[2]} 0 ${spacing.scale[1]} 0`, fontSize: typography.fontSize.sm, color: primitive.gray[700], lineHeight: typography.lineHeight.relaxed }}>
                     Primitiveに<strong>意味のある名前</strong>を付けたもの。「どこで使うか」が分かりやすい。<br />
                     アプリ全体で再利用できる共通部品。
                   </p>
-                  <div style={{ padding: spacing.scale[2], backgroundColor: primitive.white, borderRadius: radii.borderRadius.sm, fontSize: typography.fontSize.sm }}>
+                  <div style={{ padding: spacing.scale[2], backgroundColor: primitive.gray[50], borderRadius: radii.borderRadius.sm, fontSize: typography.fontSize.sm }}>
                     <div style={{ marginBottom: spacing.scale[1] }}>
                       <code style={{ color: primitive.blue[700] }}>colors.text.primary</code>
                       <span style={{ color: primitive.gray[600] }}> = primitive.gray[900]</span>
