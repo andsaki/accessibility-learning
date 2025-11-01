@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Button, Input, Accordion, AccordionSummary, AccordionContent, Form, formSchemas, useToast } from "./design-system/components";
+import { Button, Input, Accordion, AccordionSummary, AccordionContent, Form, formSchemas, useToast, Modal } from "./design-system/components";
 import { colors, accessibilityLevels, radii, spacing, typography } from "./design-system/tokens";
 import { primitive } from "./design-system/tokens/colors";
 import { breakpointValues } from "./design-system/tokens/breakpoints";
@@ -19,6 +19,7 @@ function App() {
   const [isLoading, setIsLoading] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < breakpointValues.md);
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   useEffect(() => {
     const handleResize = () => {
@@ -84,6 +85,7 @@ function App() {
     { id: "input-component", title: "Inputコンポーネント" },
     { id: "form-component", title: "Formコンポーネント" },
     { id: "toast-component", title: "Toastコンポーネント" },
+    { id: "modal-component", title: "Modalコンポーネント" },
     { id: "accordion-component", title: "Accordionコンポーネント" },
     { id: "accessibility-features", title: "アクセシビリティ機能" },
     { id: "wcag-levels", title: "WCAGレベルとコントラスト比" },
@@ -609,6 +611,86 @@ function App() {
               <li><strong>アクセシブル</strong>: role="alert"とaria-live="polite"で支援技術に対応</li>
               <li><strong>複数表示対応</strong>: 複数のトーストを同時に表示可能</li>
               <li><strong>手動クローズ</strong>: ×ボタンでいつでも閉じられる</li>
+            </ul>
+          </div>
+        </section>
+
+        <section
+          id="modal-component"
+          style={{
+            marginBottom: spacing.scale[12],
+            padding: spacing.scale[6],
+            backgroundColor: themeColors.background.default,
+            borderRadius: radii.borderRadius.lg,
+            border: `1px solid ${themeColors.border.default}`,
+          }}
+        >
+          <SectionHeading emoji="📋">Modalコンポーネント</SectionHeading>
+          <p style={{ lineHeight: typography.lineHeight.normal, color: themeColors.text.primary }}>
+            モーダルダイアログは、ユーザーの注意を特定のタスクに集中させるために使用します。
+          </p>
+
+          <div style={{
+            marginTop: spacing.scale[6],
+            display: 'flex',
+            gap: spacing.scale[3],
+            flexWrap: 'wrap',
+          }}>
+            <Button variant="primary" onClick={() => setIsModalOpen(true)}>
+              モーダルを開く
+            </Button>
+          </div>
+
+          <Modal
+            isOpen={isModalOpen}
+            onClose={() => setIsModalOpen(false)}
+            title="モーダルの例"
+            footer={
+              <>
+                <Button variant="outline" onClick={() => setIsModalOpen(false)}>
+                  キャンセル
+                </Button>
+                <Button
+                  variant="primary"
+                  onClick={() => {
+                    success('保存しました');
+                    setIsModalOpen(false);
+                  }}
+                >
+                  保存
+                </Button>
+              </>
+            }
+          >
+            <p>これはモーダルダイアログの例です。</p>
+            <p>
+              <strong>試してみてください:</strong>
+            </p>
+            <ul style={{ lineHeight: typography.lineHeight.relaxed }}>
+              <li>Tab キーでフォーカスを移動（モーダル内を循環）</li>
+              <li>Esc キーでモーダルを閉じる</li>
+              <li>背景をクリックしてモーダルを閉じる</li>
+            </ul>
+          </Modal>
+
+          <div style={{
+            marginTop: spacing.scale[8],
+            padding: spacing.scale[4],
+            backgroundColor: primitive.blue[50],
+            borderRadius: radii.borderRadius.md,
+            border: `1px solid ${primitive.blue[200]}`,
+          }}>
+            <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
+              💡 Modalの特徴
+            </h4>
+            <ul style={{ color: primitive.blue[900], lineHeight: typography.lineHeight.relaxed }}>
+              <li><strong>role="dialog"</strong>: ダイアログであることを支援技術に伝える</li>
+              <li><strong>aria-modal="true"</strong>: モーダルであることを明示</li>
+              <li><strong>aria-labelledby</strong>: タイトルとの関連付け</li>
+              <li><strong>フォーカストラップ</strong>: Tab キーでモーダル内を循環</li>
+              <li><strong>Esc キーで閉じる</strong>: キーボード操作に対応</li>
+              <li><strong>背景スクロール防止</strong>: モーダル表示中は背景をスクロールできない</li>
+              <li><strong>フォーカス管理</strong>: 開いた時に最初の要素へ、閉じた時に元の場所へフォーカス</li>
             </ul>
           </div>
         </section>

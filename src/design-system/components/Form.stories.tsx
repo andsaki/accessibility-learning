@@ -2,6 +2,20 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Form, formSchemas } from './Form';
 import { z } from 'zod';
 
+/**
+ * アクセシブルなフォームコンポーネント
+ *
+ * WCAG 2.1 AA準拠のフォームコンポーネントです。
+ * react-hook-form と Zod を統合し、バリデーション、エラー表示、アクセシビリティが統合されています。
+ *
+ * アクセシビリティ機能:
+ * - Input コンポーネントを使用（WCAG レベル対応）
+ * - `aria-invalid` でエラー状態を明示
+ * - `aria-describedby` でエラーメッセージを関連付け
+ * - `role="alert"` でエラーをスクリーンリーダーに通知
+ * - 必須フィールドの明示（`required` 属性と視覚的な *）
+ * - フォーカス管理（エラー時に最初のエラーフィールドへフォーカス）
+ */
 const meta = {
   title: 'Design System/Form',
   component: Form,

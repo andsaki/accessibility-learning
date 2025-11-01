@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { spacing, typography, radii } from '../tokens';
+import { spacing, typography, radii, accessibilityLevels } from '../tokens';
 import { primitive } from '../tokens/colors';
 
 export type ToastType = 'success' | 'error' | 'warning' | 'info';
+export type WCAGLevel = 'A' | 'AA' | 'AAA';
 
 export interface ToastProps {
   /** トーストのID */
@@ -19,6 +20,8 @@ export interface ToastProps {
   onClose: (id: string) => void;
   /** 表示位置のインデックス */
   index?: number;
+  /** WCAGレベル（A, AA, AAA） */
+  wcagLevel?: WCAGLevel;
 }
 
 /**
@@ -40,6 +43,7 @@ export const Toast: React.FC<ToastProps> = ({
   duration = 5000,
   onClose,
   index = 0,
+  wcagLevel = 'AA',
 }) => {
   const [isVisible, setIsVisible] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
@@ -104,6 +108,12 @@ export const Toast: React.FC<ToastProps> = ({
   };
 
   const themeColor = typeColors[type];
+
+  // WCAGレベルに応じたフォーカススタイル
+  const focusStyles = {
+    outline: `${accessibilityLevels.focus[wcagLevel].outlineWidth} solid ${accessibilityLevels.focus[wcagLevel].outline}`,
+    outlineOffset: accessibilityLevels.focus[wcagLevel].outlineOffset,
+  };
 
   return (
     <div
@@ -197,6 +207,14 @@ export const Toast: React.FC<ToastProps> = ({
           borderRadius: radii.borderRadius.sm,
           transition: 'background-color 0.2s ease',
           flexShrink: 0,
+        }}
+        onFocus={(e) => {
+          e.currentTarget.style.outline = focusStyles.outline;
+          e.currentTarget.style.outlineOffset = focusStyles.outlineOffset;
+        }}
+        onBlur={(e) => {
+          e.currentTarget.style.outline = '';
+          e.currentTarget.style.outlineOffset = '';
         }}
         onMouseEnter={(e) => {
           e.currentTarget.style.backgroundColor = 'rgba(0, 0, 0, 0.1)';

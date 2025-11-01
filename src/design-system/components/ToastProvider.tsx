@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useState, useCallback } from 'react';
 import type { ReactNode } from 'react';
 import { Toast } from './Toast';
-import type { ToastType } from './Toast';
+import type { ToastType, WCAGLevel } from './Toast';
 
 export interface ToastOptions {
   type?: ToastType;
@@ -29,6 +29,8 @@ const ToastContext = createContext<ToastContextType | undefined>(undefined);
 
 export interface ToastProviderProps {
   children: ReactNode;
+  /** WCAGレベル（A, AA, AAA） */
+  wcagLevel?: WCAGLevel;
 }
 
 /**
@@ -41,7 +43,7 @@ export interface ToastProviderProps {
  *   <App />
  * </ToastProvider>
  */
-export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
+export const ToastProvider: React.FC<ToastProviderProps> = ({ children, wcagLevel = 'AA' }) => {
   const [toasts, setToasts] = useState<ToastItem[]>([]);
 
   const showToast = useCallback((message: string, options: ToastOptions = {}) => {
@@ -110,6 +112,7 @@ export const ToastProvider: React.FC<ToastProviderProps> = ({ children }) => {
             duration={toast.duration}
             onClose={removeToast}
             index={index}
+            wcagLevel={wcagLevel}
           />
         ))}
       </div>
