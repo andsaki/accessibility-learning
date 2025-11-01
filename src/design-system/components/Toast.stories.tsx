@@ -5,12 +5,11 @@ import { spacing } from '../tokens';
 
 const meta = {
   title: 'Components/Toast',
-  component: ToastProvider,
   parameters: {
     layout: 'fullscreen',
   },
   tags: ['autodocs'],
-} satisfies Meta<typeof ToastProvider>;
+} satisfies Meta;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
@@ -107,8 +106,27 @@ const ToastDemo = () => {
  * useToast フックを使ってトーストを表示します
  */
 export const Default: Story = {
-  args: {
-    children: <ToastDemo />,
+  render: () => (
+    <ToastProvider>
+      <ToastDemo />
+    </ToastProvider>
+  ),
+  parameters: {
+    docs: {
+      source: {
+        code: `
+const YourComponent = () => {
+  const { success, error, warning, info } = useToast();
+
+  return (
+    <Button onClick={() => success('操作が成功しました', '成功')}>
+      Success Toast
+    </Button>
+  );
+};
+        `,
+      },
+    },
   },
 };
 
