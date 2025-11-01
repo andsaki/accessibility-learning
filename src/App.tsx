@@ -1041,7 +1041,7 @@ function App() {
 
                 <div style={{ padding: spacing.scale[3], backgroundColor: primitive.blue[100], borderRadius: radii.borderRadius.base, border: `2px solid ${primitive.blue[500]}` }}>
                   <div style={{ fontSize: typography.fontSize.sm, color: primitive.blue[700], marginBottom: spacing.scale[1] }}>
-                    レイヤー 2 ⭐ <strong>今日の主役</strong>
+                    レイヤー 2
                   </div>
                   <strong style={{ color: primitive.blue[900], fontSize: typography.fontSize.base }}>Semantic tokens（セマンティックトークン）</strong>
                   <p style={{ margin: `${spacing.scale[2]} 0 ${spacing.scale[1]} 0`, fontSize: typography.fontSize.sm, color: primitive.gray[700], lineHeight: typography.lineHeight.relaxed }}>
