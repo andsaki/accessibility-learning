@@ -454,7 +454,7 @@ function App() {
                   </p>
                   <p>
                     一貫性のあるデザインシステムを構築し、保守性を高めるために使用されます。
-                    このプロジェクトでは3層構造（Primitive → Global → Component）を採用しています。
+                    このプロジェクトでは3層構造（Primitive → Semantic → Component）を採用しています。
                   </p>
                 </AccordionContent>
               </Accordion>
@@ -1008,7 +1008,7 @@ function App() {
                     <span style={{ color: primitive.gray[700] }}> → 卵、砂糖、小麦粉など生の素材</span>
                   </div>
                   <div>
-                    <strong style={{ color: primitive.blue[900] }}>2. Global（調味料・下ごしらえ）</strong>
+                    <strong style={{ color: primitive.blue[900] }}>2. Semantic（調味料・下ごしらえ）</strong>
                     <span style={{ color: primitive.gray[700] }}> → 甘いタレ、塩味の調味料など、汎用的な中間素材</span>
                   </div>
                   <div>
@@ -1043,7 +1043,7 @@ function App() {
                   <div style={{ fontSize: typography.fontSize.sm, color: primitive.blue[700], marginBottom: spacing.scale[1] }}>
                     レイヤー 2 ⭐ <strong>今日の主役</strong>
                   </div>
-                  <strong style={{ color: primitive.blue[900], fontSize: typography.fontSize.base }}>Global tokens（グローバルトークン）</strong>
+                  <strong style={{ color: primitive.blue[900], fontSize: typography.fontSize.base }}>Semantic tokens（セマンティックトークン）</strong>
                   <p style={{ margin: `${spacing.scale[2]} 0 ${spacing.scale[1]} 0`, fontSize: typography.fontSize.sm, color: primitive.gray[700], lineHeight: typography.lineHeight.relaxed }}>
                     Primitiveに<strong>意味のある名前</strong>を付けたもの。「どこで使うか」が分かりやすい。<br />
                     アプリ全体で再利用できる共通部品。
@@ -1070,7 +1070,7 @@ function App() {
                   </div>
                   <strong style={{ color: primitive.gray[900], fontSize: typography.fontSize.base }}>Component tokens（コンポーネントトークン）</strong>
                   <p style={{ margin: `${spacing.scale[2]} 0 ${spacing.scale[1]} 0`, fontSize: typography.fontSize.sm, color: primitive.gray[700], lineHeight: typography.lineHeight.relaxed }}>
-                    特定のコンポーネント専用の値。Globalトークンを組み合わせて作る。
+                    特定のコンポーネント専用の値。Semanticトークンを組み合わせて作る。
                   </p>
                   <div style={{ padding: spacing.scale[2], backgroundColor: primitive.gray[50], borderRadius: radii.borderRadius.sm, fontSize: typography.fontSize.sm }}>
                     <div style={{ marginBottom: spacing.scale[1] }}>
@@ -1119,14 +1119,14 @@ function App() {
                   <div>
                     <strong style={{ color: primitive.orange[700] }}>✅ テーマ切り替えが簡単</strong>
                     <p style={{ margin: `${spacing.scale[1]} 0`, color: primitive.gray[700] }}>
-                      ライトモード/ダークモードでGlobalトークンの参照先を変えるだけ
+                      ライトモード/ダークモードでSemanticトークンの参照先を変えるだけ
                     </p>
                   </div>
                 </div>
               </div>
 
               <div style={{ marginTop: spacing.scale[4], padding: spacing.scale[3], backgroundColor: primitive.gray[50], borderRadius: radii.borderRadius.base, border: `1px solid ${primitive.gray[300]}` }}>
-                <strong style={{ color: primitive.gray[900] }}>📦 このプロジェクトのGlobalトークン</strong>
+                <strong style={{ color: primitive.gray[900] }}>📦 このプロジェクトのSemanticトークン</strong>
                 <div style={{ marginTop: spacing.scale[2], fontSize: typography.fontSize.sm, color: primitive.gray[700], display: 'flex', flexWrap: 'wrap', gap: spacing.scale[2] }}>
                   <code style={{ backgroundColor: primitive.blue[100], padding: '4px 8px', borderRadius: '4px', color: primitive.blue[900] }}>spacing</code>
                   <code style={{ backgroundColor: primitive.blue[100], padding: '4px 8px', borderRadius: '4px', color: primitive.blue[900] }}>typography</code>
