@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Button, Input, Accordion, AccordionSummary, AccordionContent, Form, formSchemas } from "./design-system/components";
+import { Button, Input, Accordion, AccordionSummary, AccordionContent, Form, formSchemas, useToast } from "./design-system/components";
 import { colors, accessibilityLevels, radii, spacing, typography } from "./design-system/tokens";
 import { primitive } from "./design-system/tokens/colors";
 import { breakpointValues } from "./design-system/tokens/breakpoints";
@@ -14,6 +14,7 @@ import "./App.css";
 
 function App() {
   const { mode, toggleTheme, colors: themeColors } = useTheme();
+  const { success, error, warning, info } = useToast();
   const [count, setCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < breakpointValues.md);
@@ -82,6 +83,7 @@ function App() {
     { id: "button-component", title: "Buttonコンポーネント" },
     { id: "input-component", title: "Inputコンポーネント" },
     { id: "form-component", title: "Formコンポーネント" },
+    { id: "toast-component", title: "Toastコンポーネント" },
     { id: "accordion-component", title: "Accordionコンポーネント" },
     { id: "accessibility-features", title: "アクセシビリティ機能" },
     { id: "wcag-levels", title: "WCAGレベルとコントラスト比" },
@@ -536,6 +538,77 @@ function App() {
               <li><strong>フォーカス表示</strong>: キーボード操作時のみ視覚的に表示</li>
               <li><strong>スムーズアニメーション</strong>: アイコンの回転アニメーション</li>
               <li><strong>デザイントークン</strong>: すべてのスタイルはトークンから取得</li>
+            </ul>
+          </div>
+        </section>
+
+        <section
+          id="toast-component"
+          style={{
+            marginBottom: spacing.scale[12],
+            padding: spacing.scale[6],
+            backgroundColor: themeColors.background.default,
+            borderRadius: radii.borderRadius.lg,
+            border: `1px solid ${themeColors.border.default}`,
+          }}
+        >
+          <SectionHeading emoji="🔔">Toastコンポーネント</SectionHeading>
+          <p style={{ lineHeight: typography.lineHeight.normal, color: themeColors.text.primary }}>
+            トースト通知は、ユーザーの操作に対する一時的なフィードバックを提供します。
+          </p>
+
+          <div style={{
+            marginTop: spacing.scale[6],
+            display: 'flex',
+            gap: spacing.scale[3],
+            flexWrap: 'wrap',
+          }}>
+            <Button
+              variant="primary"
+              onClick={() => success('操作が完了しました', '成功')}
+            >
+              Success Toast
+            </Button>
+
+            <Button
+              variant="primary"
+              onClick={() => error('エラーが発生しました', 'エラー')}
+            >
+              Error Toast
+            </Button>
+
+            <Button
+              variant="primary"
+              onClick={() => warning('この操作は取り消せません', '警告')}
+            >
+              Warning Toast
+            </Button>
+
+            <Button
+              variant="primary"
+              onClick={() => info('新しいお知らせがあります', 'お知らせ')}
+            >
+              Info Toast
+            </Button>
+          </div>
+
+          <div style={{
+            marginTop: spacing.scale[8],
+            padding: spacing.scale[4],
+            backgroundColor: primitive.blue[50],
+            borderRadius: radii.borderRadius.md,
+            border: `1px solid ${primitive.blue[200]}`,
+          }}>
+            <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
+              💡 Toastの特徴
+            </h4>
+            <ul style={{ color: primitive.blue[900], lineHeight: typography.lineHeight.relaxed }}>
+              <li><strong>4種類のタイプ</strong>: success、error、warning、info</li>
+              <li><strong>自動消去</strong>: デフォルト5秒で自動的に閉じる</li>
+              <li><strong>スライドアニメーション</strong>: 画面右上からスムーズに表示</li>
+              <li><strong>アクセシブル</strong>: role="alert"とaria-live="polite"で支援技術に対応</li>
+              <li><strong>複数表示対応</strong>: 複数のトーストを同時に表示可能</li>
+              <li><strong>手動クローズ</strong>: ×ボタンでいつでも閉じられる</li>
             </ul>
           </div>
         </section>
