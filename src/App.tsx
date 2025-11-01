@@ -13,7 +13,7 @@ import { z } from "zod";
 import "./App.css";
 
 function App() {
-  const { mode, toggleTheme } = useTheme();
+  const { mode, toggleTheme, colors: themeColors } = useTheme();
   const [count, setCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < breakpointValues.md);
@@ -91,7 +91,15 @@ function App() {
   const activeId = useActiveSection(tocItems);
 
   return (
-    <div style={{ padding: isMobile ? spacing.scale[3] : spacing.scale[8], maxWidth: "1400px", margin: "0 auto" }}>
+    <div style={{
+      backgroundColor: themeColors.background.default,
+      color: themeColors.text.primary,
+      minHeight: '100vh',
+      transition: 'background-color 0.3s ease, color 0.3s ease',
+      padding: isMobile ? spacing.scale[3] : spacing.scale[8],
+      maxWidth: "1400px",
+      margin: "0 auto"
+    }}>
       {isMobile && (
         <>
           <HamburgerButton isOpen={isDrawerOpen} onClick={() => setIsDrawerOpen(!isDrawerOpen)} />
@@ -106,8 +114,8 @@ function App() {
 
       <header style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: spacing.scale[4] }}>
         <div>
-          <h1 style={{ marginBottom: spacing.scale[2], fontSize: isMobile ? "1.5rem" : "2rem" }}>デザインシステム & アクセシビリティ学習</h1>
-          <p style={{ color: primitive.gray[700] }}>アクセシブルなコンポーネントの実装例</p>
+          <h1 style={{ marginBottom: spacing.scale[2], fontSize: isMobile ? "1.5rem" : "2rem", color: themeColors.text.primary }}>デザインシステム & アクセシビリティ学習</h1>
+          <p style={{ color: themeColors.text.secondary }}>アクセシブルなコンポーネントの実装例</p>
         </div>
         <Button
           onClick={toggleTheme}
