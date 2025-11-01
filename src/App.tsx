@@ -205,7 +205,7 @@ function App() {
             </Button>
           </div>
 
-          <div style={{ display: "flex", gap: spacing.scale[4], marginTop: spacing.scale[4] }}>
+          <div style={{ display: "flex", gap: spacing.scale[4], flexWrap: "wrap", marginTop: spacing.scale[4] }}>
             <Button disabled>無効化</Button>
             <Button isLoading>読み込み中</Button>
             <Button icon="🚀">アイコン付き</Button>
