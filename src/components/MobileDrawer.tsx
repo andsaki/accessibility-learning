@@ -51,8 +51,6 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
     }
   };
 
-  if (!isOpen) return null;
-
   return (
     <>
       {/* オーバーレイ */}
@@ -67,6 +65,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
           backgroundColor: 'rgba(0, 0, 0, 0.5)',
           zIndex: 999,
           opacity: isOpen ? 1 : 0,
+          pointerEvents: isOpen ? 'auto' : 'none',
           transition: 'opacity 0.3s ease',
         }}
         aria-hidden="true"
@@ -88,9 +87,11 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
           zIndex: 1000,
           padding: spacing.scale[6],
           overflowY: 'auto',
-          boxShadow: '-4px 0 16px rgba(0, 0, 0, 0.1)',
+          boxShadow: isOpen ? '-4px 0 16px rgba(0, 0, 0, 0.1)' : 'none',
           transform: isOpen ? 'translateX(0)' : 'translateX(100%)',
-          transition: 'transform 0.3s ease',
+          opacity: isOpen ? 1 : 0,
+          transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, box-shadow 0.3s ease',
+          pointerEvents: isOpen ? 'auto' : 'none',
         }}
       >
         <div style={{ marginTop: spacing.scale[12] }}>
