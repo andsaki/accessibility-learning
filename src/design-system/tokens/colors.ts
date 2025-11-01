@@ -395,4 +395,70 @@ export const colors = {
   breadcrumbs,
 } as const;
 
+// =====================================
+// ダークモードカラー
+// =====================================
+
+/**
+ * ダークモード用のテキストカラー
+ */
+export const darkText = {
+  primary: primitive.gray[50], // 主要テキスト（ほぼ白）
+  secondary: primitive.gray[300], // 副次的なテキスト
+  tertiary: primitive.gray[400], // 補助テキスト
+  disabled: primitive.gray[600], // 無効化されたテキスト
+  inverse: primitive.gray[900], // 反転テキスト（明るい背景上で使用）
+  link: primitive.blue[400], // リンクテキスト
+  linkHover: primitive.blue[300], // リンクホバー時
+  error: primitive.red[400], // エラーテキスト
+  success: primitive.green[400], // 成功テキスト
+  warning: primitive.orange[400], // 警告テキスト
+} as const;
+
+/**
+ * ダークモード用の背景カラー
+ */
+export const darkBackground = {
+  default: primitive.gray[900], // デフォルト背景
+  paper: primitive.gray[800], // カード等の背景
+  subtle: primitive.gray[800], // 微妙な背景
+  hover: primitive.gray[700], // ホバー時の背景
+  active: primitive.gray[600], // アクティブ時の背景
+  disabled: primitive.gray[800], // 無効化時の背景
+  overlay: 'rgba(0, 0, 0, 0.7)', // オーバーレイ
+  dark: primitive.black, // 最も暗い背景
+} as const;
+
+/**
+ * ダークモード用のボーダーカラー
+ */
+export const darkBorder = {
+  default: primitive.gray[700], // デフォルトボーダー
+  subtle: primitive.gray[800], // 微妙なボーダー
+  strong: primitive.gray[600], // 強調ボーダー
+  hover: primitive.gray[600], // ホバー時
+  focus: primitive.blue[500], // フォーカス時
+  error: primitive.red[500], // エラー時
+  success: primitive.green[500], // 成功時
+  warning: primitive.orange[500], // 警告時
+} as const;
+
+/**
+ * ダークモードカラーの統合
+ */
+export const darkColors = {
+  primitive,
+  brand, // ブランドカラーは共通
+  text: darkText,
+  background: darkBackground,
+  border: darkBorder,
+  focus, // フォーカスカラーは共通
+  feedback, // フィードバックカラーは共通
+  button, // ボタンカラーは共通（背景色が変わるので調整不要）
+  input, // インプットカラーは共通
+  accordion, // アコーディオンカラーは共通
+  breadcrumbs, // パンくずカラーは共通
+} as const;
+
 export type ColorTokens = typeof colors;
+export type DarkColorTokens = typeof darkColors;

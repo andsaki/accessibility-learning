@@ -8,10 +8,12 @@ import { HamburgerButton } from "./components/HamburgerButton";
 import { MobileDrawer } from "./components/MobileDrawer";
 import { SectionHeading } from "./components/SectionHeading";
 import { useActiveSection } from "./hooks/useActiveSection";
+import { useTheme } from "./design-system/theme";
 import { z } from "zod";
 import "./App.css";
 
 function App() {
+  const { mode, toggleTheme } = useTheme();
   const [count, setCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [isMobile, setIsMobile] = useState(window.innerWidth < breakpointValues.md);
@@ -102,9 +104,19 @@ function App() {
         </>
       )}
 
-      <header>
-        <h1 style={{ marginBottom: spacing.scale[2], fontSize: isMobile ? "1.5rem" : "2rem" }}>デザインシステム & アクセシビリティ学習</h1>
-        <p style={{ color: primitive.gray[700] }}>アクセシブルなコンポーネントの実装例</p>
+      <header style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: spacing.scale[4] }}>
+        <div>
+          <h1 style={{ marginBottom: spacing.scale[2], fontSize: isMobile ? "1.5rem" : "2rem" }}>デザインシステム & アクセシビリティ学習</h1>
+          <p style={{ color: primitive.gray[700] }}>アクセシブルなコンポーネントの実装例</p>
+        </div>
+        <Button
+          onClick={toggleTheme}
+          variant="outline"
+          size="sm"
+          aria-label={mode === 'light' ? 'ダークモードに切り替え' : 'ライトモードに切り替え'}
+        >
+          {mode === 'light' ? '🌙' : '☀️'}
+        </Button>
       </header>
 
       <div style={{
