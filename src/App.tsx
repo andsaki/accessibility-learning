@@ -1373,15 +1373,77 @@ function App() {
                   <code style={{ backgroundColor: primitive.orange[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-current</code>
                 </h4>
                 <p style={{ color: primitive.gray[700], marginTop: 0 }}>
-                  現在の項目を示します。ナビゲーションやパンくずリストで使用します。値: page, step, location, date, time, true, false
+                  現在の項目を示します。ナビゲーションやパンくずリストで使用します。
                 </p>
+
+                <div style={{
+                  marginTop: spacing.scale[4],
+                  padding: spacing.scale[3],
+                  backgroundColor: primitive.white,
+                  borderRadius: radii.borderRadius.base,
+                  border: `1px solid ${primitive.orange[200]}`,
+                }}>
+                  <h5 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.orange[900], fontSize: typography.fontSize.base }}>
+                    📋 aria-current の値の種類
+                  </h5>
+                  <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: typography.fontSize.sm }}>
+                    <thead>
+                      <tr style={{ borderBottom: `2px solid ${primitive.orange[200]}` }}>
+                        <th style={{ textAlign: 'left', padding: spacing.scale[2], color: primitive.orange[900] }}>値</th>
+                        <th style={{ textAlign: 'left', padding: spacing.scale[2], color: primitive.orange[900] }}>使用場面</th>
+                        <th style={{ textAlign: 'left', padding: spacing.scale[2], color: primitive.orange[900] }}>例</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr style={{ borderBottom: `1px solid ${primitive.orange[100]}` }}>
+                        <td style={{ padding: spacing.scale[2], fontFamily: 'monospace', color: primitive.orange[800] }}>page</td>
+                        <td style={{ padding: spacing.scale[2], color: primitive.gray[700] }}>現在表示中のページ</td>
+                        <td style={{ padding: spacing.scale[2], color: primitive.gray[600], fontSize: typography.fontSize.xs }}>パンくずリスト、ページネーション</td>
+                      </tr>
+                      <tr style={{ borderBottom: `1px solid ${primitive.orange[100]}` }}>
+                        <td style={{ padding: spacing.scale[2], fontFamily: 'monospace', color: primitive.orange[800] }}>step</td>
+                        <td style={{ padding: spacing.scale[2], color: primitive.gray[700] }}>ステップ形式の現在位置</td>
+                        <td style={{ padding: spacing.scale[2], color: primitive.gray[600], fontSize: typography.fontSize.xs }}>フォームウィザード、チュートリアル</td>
+                      </tr>
+                      <tr style={{ borderBottom: `1px solid ${primitive.orange[100]}` }}>
+                        <td style={{ padding: spacing.scale[2], fontFamily: 'monospace', color: primitive.orange[800] }}>location</td>
+                        <td style={{ padding: spacing.scale[2], color: primitive.gray[700] }}>視覚的にハイライトされた場所</td>
+                        <td style={{ padding: spacing.scale[2], color: primitive.gray[600], fontSize: typography.fontSize.xs }}>フローチャート、サイトマップ</td>
+                      </tr>
+                      <tr style={{ borderBottom: `1px solid ${primitive.orange[100]}` }}>
+                        <td style={{ padding: spacing.scale[2], fontFamily: 'monospace', color: primitive.orange[800] }}>date</td>
+                        <td style={{ padding: spacing.scale[2], color: primitive.gray[700] }}>現在選択中の日付</td>
+                        <td style={{ padding: spacing.scale[2], color: primitive.gray[600], fontSize: typography.fontSize.xs }}>カレンダー、日付ピッカー</td>
+                      </tr>
+                      <tr style={{ borderBottom: `1px solid ${primitive.orange[100]}` }}>
+                        <td style={{ padding: spacing.scale[2], fontFamily: 'monospace', color: primitive.orange[800] }}>time</td>
+                        <td style={{ padding: spacing.scale[2], color: primitive.gray[700] }}>現在選択中の時刻</td>
+                        <td style={{ padding: spacing.scale[2], color: primitive.gray[600], fontSize: typography.fontSize.xs }}>タイムピッカー、スケジュール</td>
+                      </tr>
+                      <tr style={{ borderBottom: `1px solid ${primitive.orange[100]}` }}>
+                        <td style={{ padding: spacing.scale[2], fontFamily: 'monospace', color: primitive.orange[800] }}>true</td>
+                        <td style={{ padding: spacing.scale[2], color: primitive.gray[700] }}>上記に当てはまらない現在項目</td>
+                        <td style={{ padding: spacing.scale[2], color: primitive.gray[600], fontSize: typography.fontSize.xs }}>汎用的な「現在」の表示</td>
+                      </tr>
+                      <tr>
+                        <td style={{ padding: spacing.scale[2], fontFamily: 'monospace', color: primitive.orange[800] }}>false</td>
+                        <td style={{ padding: spacing.scale[2], color: primitive.gray[700] }}>現在項目ではない（デフォルト）</td>
+                        <td style={{ padding: spacing.scale[2], color: primitive.gray[600], fontSize: typography.fontSize.xs }}>通常は省略可能</td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+
                 <div style={{
                   backgroundColor: primitive.white,
                   padding: spacing.scale[3],
                   borderRadius: radii.borderRadius.base,
-                  marginTop: spacing.scale[2],
+                  marginTop: spacing.scale[3],
                   border: `1px solid ${primitive.orange[200]}`,
                 }}>
+                  <h5 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.orange[900], fontSize: typography.fontSize.base }}>
+                    💡 使用例：パンくずリスト
+                  </h5>
                   <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
                     <code>{`<BreadcrumbItem
   aria-current="page"
