@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Button, Input, Accordion, AccordionSummary, AccordionContent, Form, formSchemas, useToast, Modal } from "./design-system/components";
+import { Button, Input, Accordion, AccordionSummary, AccordionContent, Form, formSchemas, useToast, Modal, Breadcrumbs, BreadcrumbList, BreadcrumbItem, BreadcrumbLink } from "./design-system/components";
 import { colors, accessibilityLevels, radii, spacing, typography, icons } from "./design-system/tokens";
 import { primitive } from "./design-system/tokens/colors";
 import { breakpointValues } from "./design-system/tokens/breakpoints";
@@ -87,6 +87,7 @@ function App() {
     { id: "toast-component", title: "Toastコンポーネント" },
     { id: "modal-component", title: "Modalコンポーネント" },
     { id: "accordion-component", title: "Accordionコンポーネント" },
+    { id: "breadcrumbs-component", title: "Breadcrumbsコンポーネント" },
     { id: "accessibility-features", title: "アクセシビリティ機能" },
     { id: "wcag-levels", title: "WCAGレベルとコントラスト比" },
     { id: "design-tokens", title: "デザイントークンシステム" },
@@ -117,6 +118,18 @@ function App() {
       )}
 
       <header style={{ marginBottom: spacing.scale[8] }}>
+        <Breadcrumbs style={{ marginBottom: spacing.scale[4] }}>
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">ホーム</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/design-system">デザインシステム</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem isCurrent>コンポーネント一覧</BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumbs>
+
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: spacing.scale[4] }}>
           <div>
             <h1 style={{
@@ -921,6 +934,108 @@ function App() {
               <li><strong>Esc キーで閉じる</strong>: キーボード操作に対応</li>
               <li><strong>背景スクロール防止</strong>: モーダル表示中は背景をスクロールできない</li>
               <li><strong>フォーカス管理</strong>: 開いた時に最初の要素へ、閉じた時に元の場所へフォーカス</li>
+            </ul>
+          </div>
+        </section>
+
+        <section
+          id="breadcrumbs-component"
+          style={{
+            marginBottom: spacing.scale[12],
+            padding: spacing.scale[6],
+            backgroundColor: colors.background.default,
+            borderRadius: radii.borderRadius.lg,
+            border: `1px solid ${colors.border.default}`,
+          }}
+        >
+          <h2 style={{
+            marginTop: 0,
+            color: primitive.gray[900],
+            fontSize: typography.fontSize['2xl'],
+            fontWeight: 'bold',
+            borderBottom: `3px solid ${primitive.blue[500]}`,
+            paddingBottom: spacing.scale[2],
+            marginBottom: spacing.scale[4],
+            display: 'flex',
+            alignItems: 'center',
+            gap: spacing.scale[2]
+          }}>
+            <icons.component.navigation size={28} color={primitive.blue[600]} strokeWidth={2} />
+            Breadcrumbs コンポーネント
+          </h2>
+          <p style={{ color: primitive.gray[700] }}>
+            パンくずリスト（Breadcrumbs）は、ユーザーが現在いる場所を示すナビゲーション要素です。
+            Webサイトの階層構造を視覚的に表示し、ユーザーが簡単に上位階層へ戻ることができます。
+          </p>
+
+          <div style={{ marginTop: spacing.scale[6] }}>
+            <SectionHeading>基本的な使い方</SectionHeading>
+            <div style={{
+              padding: spacing.scale[4],
+              backgroundColor: primitive.gray[50],
+              borderRadius: radii.borderRadius.base,
+              border: `1px solid ${colors.border.default}`,
+            }}>
+              <Breadcrumbs>
+                <BreadcrumbList>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/">ホーム</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/category">カテゴリ</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbItem isCurrent>現在のページ</BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumbs>
+            </div>
+          </div>
+
+          <div style={{ marginTop: spacing.scale[8] }}>
+            <SectionHeading>階層の深いナビゲーション</SectionHeading>
+            <div style={{
+              padding: spacing.scale[4],
+              backgroundColor: primitive.gray[50],
+              borderRadius: radii.borderRadius.base,
+              border: `1px solid ${colors.border.default}`,
+            }}>
+              <Breadcrumbs>
+                <BreadcrumbList>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/">ホーム</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/products">商品一覧</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/products/electronics">電化製品</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbItem>
+                    <BreadcrumbLink href="/products/electronics/computers">コンピューター</BreadcrumbLink>
+                  </BreadcrumbItem>
+                  <BreadcrumbItem isCurrent>ノートパソコン</BreadcrumbItem>
+                </BreadcrumbList>
+              </Breadcrumbs>
+            </div>
+          </div>
+
+          <div style={{
+            marginTop: spacing.scale[8],
+            padding: spacing.scale[4],
+            backgroundColor: primitive.blue[50],
+            borderRadius: radii.borderRadius.md,
+            border: `1px solid ${primitive.blue[200]}`,
+          }}>
+            <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
+              💡 Breadcrumbsの特徴
+            </h4>
+            <ul style={{ color: primitive.blue[900], lineHeight: typography.lineHeight.relaxed }}>
+              <li><strong>セマンティックHTML</strong>: &lt;nav aria-label="パンくずリスト"&gt;でアクセシブル</li>
+              <li><strong>構造化マークアップ</strong>: &lt;ol&gt;と&lt;li&gt;でリスト構造を明示</li>
+              <li><strong>aria-current="page"</strong>: 現在のページを支援技術に明示</li>
+              <li><strong>視覚的セパレーター</strong>: SVGアイコンでリンク間を区切り</li>
+              <li><strong>キーボード操作対応</strong>: Tabキーでフォーカス移動可能</li>
+              <li><strong>フォーカススタイル</strong>: キーボード操作時にわかりやすいフォーカス表示</li>
+              <li><strong>ホバースタイル</strong>: マウス操作時の視覚的フィードバック</li>
             </ul>
           </div>
         </section>

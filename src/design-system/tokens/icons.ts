@@ -18,6 +18,7 @@ import {
   ClipboardList,  // 📋 Form/Modal
   FolderOpen,     // 📁 Accordion
   Bell,           // 🔔 Toast
+  Navigation,     // 🧭 Breadcrumbs
   Target,         // 🎯 WCAG
   Palette,        // 🎨 Design Tokens
   Rainbow,        // 🌈 デザイン哲学
@@ -48,6 +49,8 @@ export const component = {
   modal: ClipboardList,
   accordion: FolderOpen,
   toast: Bell,
+  breadcrumbs: Navigation,
+  navigation: Navigation,
 } as const;
 
 /**

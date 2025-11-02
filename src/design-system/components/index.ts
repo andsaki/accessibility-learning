@@ -18,3 +18,6 @@ export type { ToastOptions } from './ToastProvider';
 
 export { Modal } from './Modal';
 export type { ModalProps } from './Modal';
+
+export { Breadcrumbs, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator } from './Breadcrumbs';
+export type { BreadcrumbsProps, BreadcrumbListProps, BreadcrumbItemProps, BreadcrumbLinkProps, BreadcrumbSeparatorProps } from './Breadcrumbs';
