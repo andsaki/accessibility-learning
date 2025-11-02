@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Button, Input, Accordion, AccordionSummary, AccordionContent, Form, formSchemas, useToast, Modal } from "./design-system/components";
-import { colors, accessibilityLevels, radii, spacing, typography } from "./design-system/tokens";
+import { colors, accessibilityLevels, radii, spacing, typography, icons } from "./design-system/tokens";
 import { primitive } from "./design-system/tokens/colors";
 import { breakpointValues } from "./design-system/tokens/breakpoints";
 import { TableOfContents } from "./components/TableOfContents";
@@ -119,8 +119,17 @@ function App() {
       <header style={{ marginBottom: spacing.scale[8] }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: spacing.scale[4] }}>
           <div>
-            <h1 style={{ marginBottom: spacing.scale[2], fontSize: isMobile ? "1.75rem" : "2.5rem", color: themeColors.text.primary, fontWeight: typography.fontWeight.bold }}>
-              🌸 優しい体験のためのデザインシステム
+            <h1 style={{
+              marginBottom: spacing.scale[2],
+              fontSize: isMobile ? "1.75rem" : "2.5rem",
+              color: themeColors.text.primary,
+              fontWeight: typography.fontWeight.bold,
+              display: 'flex',
+              alignItems: 'center',
+              gap: spacing.scale[2]
+            }}>
+              <icons.philosophy.kind size={isMobile ? 28 : 40} color={primitive.pink?.[400] || primitive.blue[400]} strokeWidth={1.5} />
+              優しい体験のためのデザインシステム
             </h1>
             <p style={{ color: themeColors.text.secondary, fontSize: typography.fontSize.lg, lineHeight: typography.lineHeight.normal }}>
               すべてのユーザーに寄り添う、アクセシブルで心地よいUIコンポーネント集
@@ -132,7 +141,11 @@ function App() {
             size="sm"
             aria-label={mode === 'light' ? 'ダークモードに切り替え' : 'ライトモードに切り替え'}
           >
-            {mode === 'light' ? '🌙' : '☀️'}
+            {mode === 'light' ? (
+              <icons.concept.theme.dark size={20} strokeWidth={2} />
+            ) : (
+              <icons.concept.theme.light size={20} strokeWidth={2} />
+            )}
           </Button>
         </div>
 
@@ -148,8 +161,12 @@ function App() {
             color: primitive.blue[900],
             fontSize: typography.fontSize.xl,
             fontWeight: typography.fontWeight.semibold,
+            display: 'flex',
+            alignItems: 'center',
+            gap: spacing.scale[2]
           }}>
-            🌈 デザイン哲学：優しさの3原則
+            <icons.philosophy.overview size={24} color={primitive.blue[600]} strokeWidth={2} />
+            デザイン哲学：優しさの3原則
           </h2>
 
           <div style={{
@@ -164,7 +181,7 @@ function App() {
               borderRadius: radii.borderRadius.lg,
               border: `1px solid ${primitive.blue[200]}`,
             }}>
-              <div style={{ fontSize: typography.fontSize['2xl'], marginBottom: spacing.scale[2] }}>🤝</div>
+              <icons.philosophy.inclusive size={32} color={primitive.blue[500]} strokeWidth={1.5} style={{ marginBottom: spacing.scale[2] }} />
               <h3 style={{
                 marginTop: 0,
                 marginBottom: spacing.scale[2],
@@ -190,7 +207,7 @@ function App() {
               borderRadius: radii.borderRadius.lg,
               border: `1px solid ${primitive.blue[200]}`,
             }}>
-              <div style={{ fontSize: typography.fontSize['2xl'], marginBottom: spacing.scale[2] }}>💫</div>
+              <icons.philosophy.pleasant size={32} color={primitive.blue[500]} strokeWidth={1.5} style={{ marginBottom: spacing.scale[2] }} />
               <h3 style={{
                 marginTop: 0,
                 marginBottom: spacing.scale[2],
@@ -216,7 +233,7 @@ function App() {
               borderRadius: radii.borderRadius.lg,
               border: `1px solid ${primitive.blue[200]}`,
             }}>
-              <div style={{ fontSize: typography.fontSize['2xl'], marginBottom: spacing.scale[2] }}>🌱</div>
+              <icons.philosophy.scalable size={32} color={primitive.blue[500]} strokeWidth={1.5} style={{ marginBottom: spacing.scale[2] }} />
               <h3 style={{
                 marginTop: 0,
                 marginBottom: spacing.scale[2],
@@ -286,7 +303,21 @@ function App() {
               border: `1px solid ${colors.border.default}`,
             }}
           >
-            <h2 style={{ marginTop: 0, color: primitive.gray[900], fontSize: typography.fontSize['2xl'], fontWeight: 'bold', borderBottom: `3px solid ${primitive.blue[500]}`, paddingBottom: spacing.scale[2], marginBottom: spacing.scale[4] }}>🔘 Button コンポーネント</h2>
+            <h2 style={{
+            marginTop: 0,
+            color: primitive.gray[900],
+            fontSize: typography.fontSize['2xl'],
+            fontWeight: 'bold',
+            borderBottom: `3px solid ${primitive.blue[500]}`,
+            paddingBottom: spacing.scale[2],
+            marginBottom: spacing.scale[4],
+            display: 'flex',
+            alignItems: 'center',
+            gap: spacing.scale[2]
+          }}>
+            <icons.component.button size={28} color={primitive.blue[600]} strokeWidth={2} />
+            Button コンポーネント
+          </h2>
           <p style={{ color: primitive.gray[700] }}>WCAG準拠のアクセシブルなボタンコンポーネントです。</p>
 
           <div
@@ -353,7 +384,21 @@ function App() {
             border: `1px solid ${colors.border.default}`,
           }}
         >
-          <h2 style={{ marginTop: 0, color: primitive.gray[900], fontSize: typography.fontSize['2xl'], fontWeight: 'bold', borderBottom: `3px solid ${primitive.blue[500]}`, paddingBottom: spacing.scale[2], marginBottom: spacing.scale[4] }}>📝 Input コンポーネント</h2>
+          <h2 style={{
+            marginTop: 0,
+            color: primitive.gray[900],
+            fontSize: typography.fontSize['2xl'],
+            fontWeight: 'bold',
+            borderBottom: `3px solid ${primitive.blue[500]}`,
+            paddingBottom: spacing.scale[2],
+            marginBottom: spacing.scale[4],
+            display: 'flex',
+            alignItems: 'center',
+            gap: spacing.scale[2]
+          }}>
+            <icons.component.input size={28} color={primitive.blue[600]} strokeWidth={2} />
+            Input コンポーネント
+          </h2>
           <p style={{ color: primitive.gray[700] }}>
             ラベル、エラー表示、ヘルプテキストを備えたアクセシブルな入力フィールドです。
           </p>
@@ -441,7 +486,21 @@ function App() {
             border: `1px solid ${colors.border.default}`,
           }}
         >
-          <h2 style={{ marginTop: 0, color: primitive.gray[900], fontSize: typography.fontSize['2xl'], fontWeight: 'bold', borderBottom: `3px solid ${primitive.blue[500]}`, paddingBottom: spacing.scale[2], marginBottom: spacing.scale[4] }}>📋 Form コンポーネント</h2>
+          <h2 style={{
+            marginTop: 0,
+            color: primitive.gray[900],
+            fontSize: typography.fontSize['2xl'],
+            fontWeight: 'bold',
+            borderBottom: `3px solid ${primitive.blue[500]}`,
+            paddingBottom: spacing.scale[2],
+            marginBottom: spacing.scale[4],
+            display: 'flex',
+            alignItems: 'center',
+            gap: spacing.scale[2]
+          }}>
+            <icons.component.form size={28} color={primitive.blue[600]} strokeWidth={2} />
+            Form コンポーネント
+          </h2>
           <p style={{ color: primitive.gray[700] }}>
             react-hook-formとZodを統合したアクセシブルなフォームコンポーネントです。
             バリデーション、エラー表示、型安全性が統合されています。
@@ -564,7 +623,21 @@ function App() {
             border: `1px solid ${colors.border.default}`,
           }}
         >
-          <h2 style={{ marginTop: 0, color: primitive.gray[900], fontSize: typography.fontSize['2xl'], fontWeight: 'bold', borderBottom: `3px solid ${primitive.blue[500]}`, paddingBottom: spacing.scale[2], marginBottom: spacing.scale[4] }}>📁 Accordion コンポーネント</h2>
+          <h2 style={{
+            marginTop: 0,
+            color: primitive.gray[900],
+            fontSize: typography.fontSize['2xl'],
+            fontWeight: 'bold',
+            borderBottom: `3px solid ${primitive.blue[500]}`,
+            paddingBottom: spacing.scale[2],
+            marginBottom: spacing.scale[4],
+            display: 'flex',
+            alignItems: 'center',
+            gap: spacing.scale[2]
+          }}>
+            <icons.component.accordion size={28} color={primitive.blue[600]} strokeWidth={2} />
+            Accordion コンポーネント
+          </h2>
           <p style={{ color: primitive.gray[700] }}>
             ネイティブの&lt;details&gt;/&lt;summary&gt;要素を使用したアクセシブルなアコーディオンです。
             キーボード操作とスクリーンリーダーに完全対応しています。
@@ -678,13 +751,27 @@ function App() {
           style={{
             marginBottom: spacing.scale[12],
             padding: spacing.scale[6],
-            backgroundColor: themeColors.background.default,
+            backgroundColor: colors.background.default,
             borderRadius: radii.borderRadius.lg,
-            border: `1px solid ${themeColors.border.default}`,
+            border: `1px solid ${colors.border.default}`,
           }}
         >
-          <SectionHeading emoji="🔔">Toastコンポーネント</SectionHeading>
-          <p style={{ lineHeight: typography.lineHeight.normal, color: themeColors.text.primary }}>
+          <h2 style={{
+            marginTop: 0,
+            color: primitive.gray[900],
+            fontSize: typography.fontSize['2xl'],
+            fontWeight: 'bold',
+            borderBottom: `3px solid ${primitive.blue[500]}`,
+            paddingBottom: spacing.scale[2],
+            marginBottom: spacing.scale[4],
+            display: 'flex',
+            alignItems: 'center',
+            gap: spacing.scale[2]
+          }}>
+            <icons.component.toast size={28} color={primitive.blue[600]} strokeWidth={2} />
+            Toast コンポーネント
+          </h2>
+          <p style={{ lineHeight: typography.lineHeight.normal, color: primitive.gray[700] }}>
             トースト通知は、ユーザーの操作に対する一時的なフィードバックを提供します。
           </p>
 
@@ -749,13 +836,27 @@ function App() {
           style={{
             marginBottom: spacing.scale[12],
             padding: spacing.scale[6],
-            backgroundColor: themeColors.background.default,
+            backgroundColor: colors.background.default,
             borderRadius: radii.borderRadius.lg,
-            border: `1px solid ${themeColors.border.default}`,
+            border: `1px solid ${colors.border.default}`,
           }}
         >
-          <SectionHeading emoji="📋">Modalコンポーネント</SectionHeading>
-          <p style={{ lineHeight: typography.lineHeight.normal, color: themeColors.text.primary }}>
+          <h2 style={{
+            marginTop: 0,
+            color: primitive.gray[900],
+            fontSize: typography.fontSize['2xl'],
+            fontWeight: 'bold',
+            borderBottom: `3px solid ${primitive.blue[500]}`,
+            paddingBottom: spacing.scale[2],
+            marginBottom: spacing.scale[4],
+            display: 'flex',
+            alignItems: 'center',
+            gap: spacing.scale[2]
+          }}>
+            <icons.component.modal size={28} color={primitive.blue[600]} strokeWidth={2} />
+            Modal コンポーネント
+          </h2>
+          <p style={{ lineHeight: typography.lineHeight.normal, color: primitive.gray[700] }}>
             モーダルダイアログは、ユーザーの注意を特定のタスクに集中させるために使用します。
           </p>
 
@@ -859,7 +960,21 @@ function App() {
             border: `1px solid ${colors.border.default}`,
           }}
         >
-          <h2 style={{ marginTop: 0, color: primitive.gray[900], fontSize: typography.fontSize['2xl'], fontWeight: 'bold', borderBottom: `3px solid ${primitive.blue[500]}`, paddingBottom: spacing.scale[2], marginBottom: spacing.scale[4] }}>🎯 WCAGレベルとコントラスト比について</h2>
+          <h2 style={{
+            marginTop: 0,
+            color: primitive.gray[900],
+            fontSize: typography.fontSize['2xl'],
+            fontWeight: 'bold',
+            borderBottom: `3px solid ${primitive.blue[500]}`,
+            paddingBottom: spacing.scale[2],
+            marginBottom: spacing.scale[4],
+            display: 'flex',
+            alignItems: 'center',
+            gap: spacing.scale[2]
+          }}>
+            <icons.concept.wcag size={28} color={primitive.blue[600]} strokeWidth={2} />
+            WCAGレベルとコントラスト比について
+          </h2>
 
           <div style={{ marginTop: spacing.scale[6] }}>
             <SectionHeading>コントラスト比とは？</SectionHeading>
@@ -1176,7 +1291,21 @@ function App() {
             border: `1px solid ${colors.border.default}`,
           }}
         >
-          <h2 style={{ marginTop: 0, color: primitive.gray[900], fontSize: typography.fontSize['2xl'], fontWeight: 'bold', borderBottom: `3px solid ${primitive.blue[500]}`, paddingBottom: spacing.scale[2], marginBottom: spacing.scale[4] }}>🎨 デザイントークンシステム</h2>
+          <h2 style={{
+            marginTop: 0,
+            color: primitive.gray[900],
+            fontSize: typography.fontSize['2xl'],
+            fontWeight: 'bold',
+            borderBottom: `3px solid ${primitive.blue[500]}`,
+            paddingBottom: spacing.scale[2],
+            marginBottom: spacing.scale[4],
+            display: 'flex',
+            alignItems: 'center',
+            gap: spacing.scale[2]
+          }}>
+            <icons.concept.designTokens size={28} color={primitive.blue[600]} strokeWidth={2} />
+            デザイントークンシステム
+          </h2>
           <p style={{ lineHeight: typography.lineHeight.normal, color: primitive.gray[900] }}>
             このプロジェクトでは、一貫性のあるデザインを実現するために
             <strong>デザイントークン</strong>を使用しています。

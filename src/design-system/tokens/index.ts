@@ -13,6 +13,7 @@ export { radii } from './radii';
 export { transitions } from './transitions';
 export { accessibilityLevels } from './accessibility-levels';
 export { breakpoints } from './breakpoints';
+export { icons } from './icons';
 
 // 個別のトークンも必要に応じて使用可能
 export type { ColorTokens } from './colors';
@@ -23,6 +24,7 @@ export type { RadiiTokens } from './radii';
 export type { TransitionTokens } from './transitions';
 export type { WCAGLevel, AccessibilityLevels } from './accessibility-levels';
 export type { Breakpoints } from './breakpoints';
+export type { IconTokens } from './icons';
 
 // 統合オブジェクトとしてもエクスポート
 import { colors } from './colors';
@@ -33,6 +35,7 @@ import { radii } from './radii';
 import { transitions } from './transitions';
 import { accessibilityLevels } from './accessibility-levels';
 import { breakpoints } from './breakpoints';
+import { icons } from './icons';
 
 /**
  * すべてのデザイントークンを含むオブジェクト
@@ -47,6 +50,7 @@ export const tokens = {
   transitions,
   accessibilityLevels,
   breakpoints,
+  icons,
 } as const;
 
 export type DesignTokens = typeof tokens;
