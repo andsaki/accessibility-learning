@@ -144,7 +144,7 @@ function App() {
               gap: spacing.scale[2]
             }}>
               <icons.philosophy.kind size={isMobile ? 28 : 40} color={primitive.pink?.[400] || primitive.blue[400]} strokeWidth={1.5} />
-              優しい体験のためのデザインシステム
+              優しい体験を学ぶデザインシステム
             </h1>
             <p style={{ color: themeColors.text.secondary, fontSize: typography.fontSize.lg, lineHeight: typography.lineHeight.normal }}>
               すべてのユーザーに寄り添う、アクセシブルで心地よいUIコンポーネント集
