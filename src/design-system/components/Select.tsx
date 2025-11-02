@@ -141,7 +141,7 @@ export const Select: React.FC<SelectProps> = ({
         htmlFor={selectId}
         style={{
           display: 'block',
-          marginBottom: spacing.input.labelMarginBottom,
+          marginBottom: spacing.scale[2],
           fontSize: typography.fontSize.sm,
           fontWeight: typography.fontWeight.medium,
           color: colors.input.label,
@@ -197,7 +197,7 @@ export const Select: React.FC<SelectProps> = ({
           id={errorId}
           role="alert"
           style={{
-            marginTop: spacing.input.errorMarginTop,
+            marginTop: spacing.scale[1],
             fontSize: typography.fontSize.sm,
             color: colors.text.error,
           }}
@@ -211,7 +211,7 @@ export const Select: React.FC<SelectProps> = ({
         <p
           id={helperId}
           style={{
-            marginTop: spacing.input.helperMarginTop,
+            marginTop: spacing.scale[1],
             fontSize: typography.fontSize.sm,
             color: colors.input.helperText,
           }}
