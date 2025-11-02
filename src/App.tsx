@@ -88,6 +88,7 @@ function App() {
     { id: "modal-component", title: "Modalコンポーネント" },
     { id: "accordion-component", title: "Accordionコンポーネント" },
     { id: "breadcrumbs-component", title: "Breadcrumbsコンポーネント" },
+    { id: "aria-guide", title: "ARIAラベルとrole属性" },
     { id: "accessibility-features", title: "アクセシビリティ機能" },
     { id: "wcag-levels", title: "WCAGレベルとコントラスト比" },
     { id: "design-tokens", title: "デザイントークンシステム" },
@@ -1036,6 +1037,452 @@ function App() {
               <li><strong>キーボード操作対応</strong>: Tabキーでフォーカス移動可能</li>
               <li><strong>フォーカススタイル</strong>: キーボード操作時にわかりやすいフォーカス表示</li>
               <li><strong>ホバースタイル</strong>: マウス操作時の視覚的フィードバック</li>
+            </ul>
+          </div>
+        </section>
+
+        <section
+          id="aria-guide"
+          style={{
+            marginBottom: spacing.scale[12],
+            padding: spacing.scale[6],
+            backgroundColor: colors.background.default,
+            borderRadius: radii.borderRadius.lg,
+            border: `1px solid ${colors.border.default}`,
+          }}
+        >
+          <h2 style={{
+            marginTop: 0,
+            color: primitive.gray[900],
+            fontSize: typography.fontSize['2xl'],
+            fontWeight: 'bold',
+            borderBottom: `3px solid ${primitive.purple[500]}`,
+            paddingBottom: spacing.scale[2],
+            marginBottom: spacing.scale[4],
+            display: 'flex',
+            alignItems: 'center',
+            gap: spacing.scale[2]
+          }}>
+            <icons.section.accessibility size={28} color={primitive.purple[600]} strokeWidth={2} />
+            ARIAラベルとrole属性ガイド
+          </h2>
+          <p style={{ color: primitive.gray[700], marginBottom: spacing.scale[6] }}>
+            ARIA（Accessible Rich Internet Applications）は、Webアプリケーションをスクリーンリーダーなどの支援技術に対してアクセシブルにするための仕様です。
+            適切なARIA属性を使用することで、視覚障害者やキーボードユーザーに対して、より良いユーザー体験を提供できます。
+          </p>
+
+          <div style={{ marginTop: spacing.scale[8] }}>
+            <SectionHeading>主要なARIA属性</SectionHeading>
+
+            <div style={{
+              display: 'grid',
+              gap: spacing.scale[4],
+              marginBottom: spacing.scale[8]
+            }}>
+              {/* aria-label */}
+              <div style={{
+                padding: spacing.scale[4],
+                backgroundColor: primitive.purple[50],
+                borderRadius: radii.borderRadius.md,
+                border: `1px solid ${primitive.purple[200]}`,
+              }}>
+                <h4 style={{ marginTop: 0, color: primitive.purple[900] }}>
+                  <code style={{ backgroundColor: primitive.purple[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-label</code>
+                </h4>
+                <p style={{ color: primitive.gray[700] }}>
+                  要素に対して、スクリーンリーダーが読み上げるラベルを指定します。視覚的なテキストがない要素に使用します。
+                </p>
+                <div style={{
+                  backgroundColor: primitive.white,
+                  padding: spacing.scale[3],
+                  borderRadius: radii.borderRadius.base,
+                  marginTop: spacing.scale[2],
+                  border: `1px solid ${primitive.purple[200]}`,
+                }}>
+                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto' }}>
+                    <code>{`<button aria-label="メニューを開く">
+  <icons.menu />
+</button>`}</code>
+                  </pre>
+                </div>
+                <div style={{ marginTop: spacing.scale[3] }}>
+                  <Button
+                    aria-label="設定を開く"
+                    icon={<icons.component.button size={16} />}
+                    variant="outline"
+                    size="sm"
+                  >
+                  </Button>
+                  <span style={{ marginLeft: spacing.scale[2], fontSize: typography.fontSize.sm, color: primitive.gray[600] }}>
+                    ← アイコンのみのボタンに aria-label を使用
+                  </span>
+                </div>
+              </div>
+
+              {/* aria-labelledby */}
+              <div style={{
+                padding: spacing.scale[4],
+                backgroundColor: primitive.blue[50],
+                borderRadius: radii.borderRadius.md,
+                border: `1px solid ${primitive.blue[200]}`,
+              }}>
+                <h4 style={{ marginTop: 0, color: primitive.blue[900] }}>
+                  <code style={{ backgroundColor: primitive.blue[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-labelledby</code>
+                </h4>
+                <p style={{ color: primitive.gray[700] }}>
+                  他の要素のIDを参照して、その要素のテキストをラベルとして使用します。複数のIDをスペース区切りで指定できます。
+                </p>
+                <div style={{
+                  backgroundColor: primitive.white,
+                  padding: spacing.scale[3],
+                  borderRadius: radii.borderRadius.base,
+                  marginTop: spacing.scale[2],
+                  border: `1px solid ${primitive.blue[200]}`,
+                }}>
+                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto' }}>
+                    <code>{`<h2 id="section-title">ユーザー設定</h2>
+<section aria-labelledby="section-title">
+  {/* セクションの内容 */}
+</section>`}</code>
+                  </pre>
+                </div>
+              </div>
+
+              {/* aria-describedby */}
+              <div style={{
+                padding: spacing.scale[4],
+                backgroundColor: primitive.green[50],
+                borderRadius: radii.borderRadius.md,
+                border: `1px solid ${primitive.green[200]}`,
+              }}>
+                <h4 style={{ marginTop: 0, color: primitive.green[900] }}>
+                  <code style={{ backgroundColor: primitive.green[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-describedby</code>
+                </h4>
+                <p style={{ color: primitive.gray[700] }}>
+                  要素の説明や補足情報を提供する他の要素のIDを参照します。エラーメッセージやヒントテキストに使用します。
+                </p>
+                <div style={{
+                  backgroundColor: primitive.white,
+                  padding: spacing.scale[3],
+                  borderRadius: radii.borderRadius.base,
+                  marginTop: spacing.scale[2],
+                  border: `1px solid ${primitive.green[200]}`,
+                }}>
+                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto' }}>
+                    <code>{`<input
+  type="password"
+  aria-describedby="password-hint"
+/>
+<span id="password-hint">
+  8文字以上、英数字を含む
+</span>`}</code>
+                  </pre>
+                </div>
+                <div style={{ marginTop: spacing.scale[3] }}>
+                  <Input
+                    type="password"
+                    placeholder="パスワード"
+                    aria-describedby="demo-password-hint"
+                  />
+                  <span id="demo-password-hint" style={{
+                    display: 'block',
+                    marginTop: spacing.scale[1],
+                    fontSize: typography.fontSize.sm,
+                    color: primitive.gray[600]
+                  }}>
+                    8文字以上、英数字を含む
+                  </span>
+                </div>
+              </div>
+
+              {/* aria-current */}
+              <div style={{
+                padding: spacing.scale[4],
+                backgroundColor: primitive.orange[50],
+                borderRadius: radii.borderRadius.md,
+                border: `1px solid ${primitive.orange[200]}`,
+              }}>
+                <h4 style={{ marginTop: 0, color: primitive.orange[900] }}>
+                  <code style={{ backgroundColor: primitive.orange[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-current</code>
+                </h4>
+                <p style={{ color: primitive.gray[700] }}>
+                  現在の項目を示します。ナビゲーションやパンくずリストで使用します。値: page, step, location, date, time, true, false
+                </p>
+                <div style={{
+                  backgroundColor: primitive.white,
+                  padding: spacing.scale[3],
+                  borderRadius: radii.borderRadius.base,
+                  marginTop: spacing.scale[2],
+                  border: `1px solid ${primitive.orange[200]}`,
+                }}>
+                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto' }}>
+                    <code>{`<BreadcrumbItem
+  aria-current="page"
+  isCurrent
+>
+  現在のページ
+</BreadcrumbItem>`}</code>
+                  </pre>
+                </div>
+                <div style={{ marginTop: spacing.scale[3] }}>
+                  <Breadcrumbs>
+                    <BreadcrumbList>
+                      <BreadcrumbItem>
+                        <BreadcrumbLink href="/">ホーム</BreadcrumbLink>
+                      </BreadcrumbItem>
+                      <BreadcrumbItem>
+                        <BreadcrumbLink href="/products">商品</BreadcrumbLink>
+                      </BreadcrumbItem>
+                      <BreadcrumbItem isCurrent>現在のページ</BreadcrumbItem>
+                    </BreadcrumbList>
+                  </Breadcrumbs>
+                </div>
+              </div>
+
+              {/* aria-expanded */}
+              <div style={{
+                padding: spacing.scale[4],
+                backgroundColor: primitive.pink[50],
+                borderRadius: radii.borderRadius.md,
+                border: `1px solid ${primitive.pink[200]}`,
+              }}>
+                <h4 style={{ marginTop: 0, color: primitive.pink[900] }}>
+                  <code style={{ backgroundColor: primitive.pink[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-expanded</code>
+                </h4>
+                <p style={{ color: primitive.gray[700] }}>
+                  要素が展開されているか折りたたまれているかを示します。アコーディオンやドロップダウンメニューで使用します。
+                </p>
+                <div style={{
+                  backgroundColor: primitive.white,
+                  padding: spacing.scale[3],
+                  borderRadius: radii.borderRadius.base,
+                  marginTop: spacing.scale[2],
+                  border: `1px solid ${primitive.pink[200]}`,
+                }}>
+                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto' }}>
+                    <code>{`<AccordionSummary
+  aria-expanded={isOpen}
+>
+  セクションタイトル
+</AccordionSummary>`}</code>
+                  </pre>
+                </div>
+                <div style={{ marginTop: spacing.scale[3] }}>
+                  <Accordion>
+                    <AccordionSummary>
+                      クリックして展開/折りたたみ（aria-expandedが自動で切り替わります）
+                    </AccordionSummary>
+                    <AccordionContent>
+                      このコンテンツは、AccordionSummaryの aria-expanded 属性によって、スクリーンリーダーに展開状態が伝えられます。
+                    </AccordionContent>
+                  </Accordion>
+                </div>
+              </div>
+
+              {/* aria-hidden */}
+              <div style={{
+                padding: spacing.scale[4],
+                backgroundColor: primitive.gray[100],
+                borderRadius: radii.borderRadius.md,
+                border: `1px solid ${primitive.gray[300]}`,
+              }}>
+                <h4 style={{ marginTop: 0, color: primitive.gray[900] }}>
+                  <code style={{ backgroundColor: primitive.gray[200], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-hidden</code>
+                </h4>
+                <p style={{ color: primitive.gray[700] }}>
+                  要素をスクリーンリーダーから隠します。装飾的なアイコンやSVGに使用します。
+                </p>
+                <div style={{
+                  backgroundColor: primitive.white,
+                  padding: spacing.scale[3],
+                  borderRadius: radii.borderRadius.base,
+                  marginTop: spacing.scale[2],
+                  border: `1px solid ${primitive.gray[300]}`,
+                }}>
+                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto' }}>
+                    <code>{`<svg aria-hidden="true">
+  <path d="..." />
+</svg>
+<span>アイコンの意味を説明するテキスト</span>`}</code>
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style={{ marginTop: spacing.scale[8] }}>
+            <SectionHeading>主要なrole属性</SectionHeading>
+
+            <div style={{
+              display: 'grid',
+              gap: spacing.scale[4],
+            }}>
+              {/* role="button" */}
+              <div style={{
+                padding: spacing.scale[4],
+                backgroundColor: primitive.blue[50],
+                borderRadius: radii.borderRadius.md,
+                border: `1px solid ${primitive.blue[200]}`,
+              }}>
+                <h4 style={{ marginTop: 0, color: primitive.blue[900] }}>
+                  <code style={{ backgroundColor: primitive.blue[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>role="button"</code>
+                </h4>
+                <p style={{ color: primitive.gray[700] }}>
+                  div や span などの要素をボタンとして扱います。可能な限り &lt;button&gt; 要素を使用してください。
+                </p>
+                <div style={{
+                  backgroundColor: primitive.white,
+                  padding: spacing.scale[3],
+                  borderRadius: radii.borderRadius.base,
+                  marginTop: spacing.scale[2],
+                  border: `1px solid ${primitive.blue[200]}`,
+                }}>
+                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto' }}>
+                    <code>{`<!-- ❌ 避けるべき -->
+<div role="button" tabIndex={0}>
+  クリック
+</div>
+
+<!-- ✅ 推奨 -->
+<button>クリック</button>`}</code>
+                  </pre>
+                </div>
+              </div>
+
+              {/* role="dialog" */}
+              <div style={{
+                padding: spacing.scale[4],
+                backgroundColor: primitive.purple[50],
+                borderRadius: radii.borderRadius.md,
+                border: `1px solid ${primitive.purple[200]}`,
+              }}>
+                <h4 style={{ marginTop: 0, color: primitive.purple[900] }}>
+                  <code style={{ backgroundColor: primitive.purple[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>role="dialog"</code>
+                </h4>
+                <p style={{ color: primitive.gray[700] }}>
+                  モーダルダイアログを示します。aria-labelledby または aria-label と組み合わせて使用します。
+                </p>
+                <div style={{
+                  backgroundColor: primitive.white,
+                  padding: spacing.scale[3],
+                  borderRadius: radii.borderRadius.base,
+                  marginTop: spacing.scale[2],
+                  border: `1px solid ${primitive.purple[200]}`,
+                }}>
+                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto' }}>
+                    <code>{`<div
+  role="dialog"
+  aria-labelledby="dialog-title"
+  aria-modal="true"
+>
+  <h2 id="dialog-title">確認</h2>
+  {/* ダイアログの内容 */}
+</div>`}</code>
+                  </pre>
+                </div>
+              </div>
+
+              {/* role="navigation" */}
+              <div style={{
+                padding: spacing.scale[4],
+                backgroundColor: primitive.green[50],
+                borderRadius: radii.borderRadius.md,
+                border: `1px solid ${primitive.green[200]}`,
+              }}>
+                <h4 style={{ marginTop: 0, color: primitive.green[900] }}>
+                  <code style={{ backgroundColor: primitive.green[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>role="navigation"</code>
+                </h4>
+                <p style={{ color: primitive.gray[700] }}>
+                  ナビゲーションリンクのグループを示します。&lt;nav&gt; 要素を使用すれば、暗黙的にこのroleが付与されます。
+                </p>
+                <div style={{
+                  backgroundColor: primitive.white,
+                  padding: spacing.scale[3],
+                  borderRadius: radii.borderRadius.base,
+                  marginTop: spacing.scale[2],
+                  border: `1px solid ${primitive.green[200]}`,
+                }}>
+                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto' }}>
+                    <code>{`<!-- ✅ 推奨: セマンティックHTML -->
+<nav aria-label="メインナビゲーション">
+  <ul>
+    <li><a href="/">ホーム</a></li>
+  </ul>
+</nav>
+
+<!-- または -->
+<div role="navigation" aria-label="...">
+  {/* ナビゲーション */}
+</div>`}</code>
+                  </pre>
+                </div>
+              </div>
+
+              {/* role="alert" */}
+              <div style={{
+                padding: spacing.scale[4],
+                backgroundColor: primitive.red[50],
+                borderRadius: radii.borderRadius.md,
+                border: `1px solid ${primitive.red[200]}`,
+              }}>
+                <h4 style={{ marginTop: 0, color: primitive.red[900] }}>
+                  <code style={{ backgroundColor: primitive.red[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>role="alert"</code>
+                </h4>
+                <p style={{ color: primitive.gray[700] }}>
+                  重要なメッセージを即座にスクリーンリーダーに通知します。エラーメッセージや警告に使用します。
+                </p>
+                <div style={{
+                  backgroundColor: primitive.white,
+                  padding: spacing.scale[3],
+                  borderRadius: radii.borderRadius.base,
+                  marginTop: spacing.scale[2],
+                  border: `1px solid ${primitive.red[200]}`,
+                }}>
+                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto' }}>
+                    <code>{`<div role="alert">
+  エラー: フォームの送信に失敗しました
+</div>`}</code>
+                  </pre>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style={{
+            marginTop: spacing.scale[8],
+            padding: spacing.scale[4],
+            backgroundColor: primitive.yellow,
+            borderRadius: radii.borderRadius.md,
+            border: `2px solid ${primitive.black}`,
+          }}>
+            <h4 style={{ color: primitive.black, marginTop: 0 }}>
+              💡 ARIAの第一原則
+            </h4>
+            <ul style={{ color: primitive.black, lineHeight: typography.lineHeight.relaxed }}>
+              <li><strong>セマンティックHTMLを優先する</strong>: 可能な限り、適切なHTML要素を使用してください</li>
+              <li><strong>ARIAは最後の手段</strong>: ネイティブHTML要素で実現できない場合のみARIAを使用</li>
+              <li><strong>不要なARIAは追加しない</strong>: &lt;button&gt; に role="button" は不要です</li>
+              <li><strong>テストを忘れずに</strong>: スクリーンリーダーで実際に確認してください</li>
+            </ul>
+          </div>
+
+          <div style={{
+            marginTop: spacing.scale[6],
+            padding: spacing.scale[4],
+            backgroundColor: primitive.blue[50],
+            borderRadius: radii.borderRadius.md,
+            border: `1px solid ${primitive.blue[200]}`,
+          }}>
+            <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
+              📚 このデザインシステムで使用しているARIA属性
+            </h4>
+            <ul style={{ color: primitive.blue[900], lineHeight: typography.lineHeight.relaxed }}>
+              <li><strong>Button</strong>: aria-busy (ローディング状態)</li>
+              <li><strong>Input</strong>: aria-invalid, aria-describedby (エラー表示)</li>
+              <li><strong>Modal</strong>: role="dialog", aria-modal, aria-labelledby</li>
+              <li><strong>Accordion</strong>: aria-expanded, aria-controls</li>
+              <li><strong>Breadcrumbs</strong>: aria-label, aria-current</li>
+              <li><strong>Toast</strong>: role="alert", role="status"</li>
             </ul>
           </div>
         </section>
