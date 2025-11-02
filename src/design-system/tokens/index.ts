@@ -5,7 +5,7 @@
  */
 
 // 各トークンを統合オブジェクトとしてエクスポート
-export { colors } from './colors';
+export { colors, primitive } from './colors';
 export { typography } from './typography';
 export { spacing } from './spacing';
 export { shadows } from './shadows';
