@@ -116,19 +116,148 @@ function App() {
         </>
       )}
 
-      <header style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: spacing.scale[4] }}>
-        <div>
-          <h1 style={{ marginBottom: spacing.scale[2], fontSize: isMobile ? "1.5rem" : "2rem", color: themeColors.text.primary }}>デザインシステム & アクセシビリティ学習</h1>
-          <p style={{ color: themeColors.text.secondary }}>アクセシブルなコンポーネントの実装例</p>
+      <header style={{ marginBottom: spacing.scale[8] }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: spacing.scale[4] }}>
+          <div>
+            <h1 style={{ marginBottom: spacing.scale[2], fontSize: isMobile ? "1.75rem" : "2.5rem", color: themeColors.text.primary, fontWeight: typography.fontWeight.bold }}>
+              🌸 優しい体験のためのデザインシステム
+            </h1>
+            <p style={{ color: themeColors.text.secondary, fontSize: typography.fontSize.lg, lineHeight: typography.lineHeight.normal }}>
+              すべてのユーザーに寄り添う、アクセシブルで心地よいUIコンポーネント集
+            </p>
+          </div>
+          <Button
+            onClick={toggleTheme}
+            variant="outline"
+            size="sm"
+            aria-label={mode === 'light' ? 'ダークモードに切り替え' : 'ライトモードに切り替え'}
+          >
+            {mode === 'light' ? '🌙' : '☀️'}
+          </Button>
         </div>
-        <Button
-          onClick={toggleTheme}
-          variant="outline"
-          size="sm"
-          aria-label={mode === 'light' ? 'ダークモードに切り替え' : 'ライトモードに切り替え'}
-        >
-          {mode === 'light' ? '🌙' : '☀️'}
-        </Button>
+
+        <div style={{
+          padding: spacing.scale[6],
+          backgroundColor: primitive.blue[50],
+          borderRadius: radii.borderRadius.xl,
+          border: `2px solid ${primitive.blue[200]}`,
+        }}>
+          <h2 style={{
+            marginTop: 0,
+            marginBottom: spacing.scale[3],
+            color: primitive.blue[900],
+            fontSize: typography.fontSize.xl,
+            fontWeight: typography.fontWeight.semibold,
+          }}>
+            🌈 デザイン哲学：優しさの3原則
+          </h2>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
+            gap: spacing.scale[4],
+            marginTop: spacing.scale[4],
+          }}>
+            <div style={{
+              padding: spacing.scale[4],
+              backgroundColor: primitive.white,
+              borderRadius: radii.borderRadius.lg,
+              border: `1px solid ${primitive.blue[200]}`,
+            }}>
+              <div style={{ fontSize: typography.fontSize['2xl'], marginBottom: spacing.scale[2] }}>🤝</div>
+              <h3 style={{
+                marginTop: 0,
+                marginBottom: spacing.scale[2],
+                color: primitive.blue[900],
+                fontSize: typography.fontSize.base,
+                fontWeight: typography.fontWeight.semibold,
+              }}>
+                誰一人として置き去りにしない
+              </h3>
+              <p style={{
+                margin: 0,
+                color: primitive.gray[700],
+                fontSize: typography.fontSize.sm,
+                lineHeight: typography.lineHeight.relaxed,
+              }}>
+                視覚・聴覚・運動機能に関わらず、すべての人が等しく情報にアクセスできる設計
+              </p>
+            </div>
+
+            <div style={{
+              padding: spacing.scale[4],
+              backgroundColor: primitive.white,
+              borderRadius: radii.borderRadius.lg,
+              border: `1px solid ${primitive.blue[200]}`,
+            }}>
+              <div style={{ fontSize: typography.fontSize['2xl'], marginBottom: spacing.scale[2] }}>💫</div>
+              <h3 style={{
+                marginTop: 0,
+                marginBottom: spacing.scale[2],
+                color: primitive.blue[900],
+                fontSize: typography.fontSize.base,
+                fontWeight: typography.fontWeight.semibold,
+              }}>
+                心地よさを感じる体験
+              </h3>
+              <p style={{
+                margin: 0,
+                color: primitive.gray[700],
+                fontSize: typography.fontSize.sm,
+                lineHeight: typography.lineHeight.relaxed,
+              }}>
+                柔らかな色彩、滑らかな動き、適切な余白で、ストレスのない使い心地を実現
+              </p>
+            </div>
+
+            <div style={{
+              padding: spacing.scale[4],
+              backgroundColor: primitive.white,
+              borderRadius: radii.borderRadius.lg,
+              border: `1px solid ${primitive.blue[200]}`,
+            }}>
+              <div style={{ fontSize: typography.fontSize['2xl'], marginBottom: spacing.scale[2] }}>🌱</div>
+              <h3 style={{
+                marginTop: 0,
+                marginBottom: spacing.scale[2],
+                color: primitive.blue[900],
+                fontSize: typography.fontSize.base,
+                fontWeight: typography.fontWeight.semibold,
+              }}>
+                成長し続ける仕組み
+              </h3>
+              <p style={{
+                margin: 0,
+                color: primitive.gray[700],
+                fontSize: typography.fontSize.sm,
+                lineHeight: typography.lineHeight.relaxed,
+              }}>
+                スケーラブルなトークンシステムで、プロジェクトとともに進化するデザイン
+              </p>
+            </div>
+          </div>
+
+          <div style={{
+            marginTop: spacing.scale[4],
+            padding: spacing.scale[3],
+            backgroundColor: primitive.white,
+            borderRadius: radii.borderRadius.md,
+            fontSize: typography.fontSize.sm,
+            color: primitive.blue[800],
+          }}>
+            <strong>📚 詳しくは：</strong>
+            {' '}
+            <a
+              href="https://github.com/andsaki/accessibility-learning/blob/master/DESIGN_PHILOSOPHY.md"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: primitive.blue[700], textDecoration: 'underline' }}
+            >
+              DESIGN_PHILOSOPHY.md
+            </a>
+            {' '}をご覧ください
+          </div>
+        </div>
       </header>
 
       <div style={{
