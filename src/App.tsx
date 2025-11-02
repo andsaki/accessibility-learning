@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Button, Input, Accordion, AccordionSummary, AccordionContent, Form, formSchemas, useToast, Modal, Breadcrumbs, BreadcrumbList, BreadcrumbItem, BreadcrumbLink } from "./design-system/components";
+import { Button, Input, Select, Accordion, AccordionSummary, AccordionContent, Form, formSchemas, useToast, Modal, Breadcrumbs, BreadcrumbList, BreadcrumbItem, BreadcrumbLink } from "./design-system/components";
 import { colors, accessibilityLevels, radii, spacing, typography, icons } from "./design-system/tokens";
 import { primitive } from "./design-system/tokens/colors";
 import { breakpointValues } from "./design-system/tokens/breakpoints";
@@ -83,6 +83,7 @@ function App() {
   const tocItems = [
     { id: "button-component", title: "Buttonコンポーネント" },
     { id: "input-component", title: "Inputコンポーネント" },
+    { id: "select-component", title: "Selectコンポーネント" },
     { id: "form-component", title: "Formコンポーネント" },
     { id: "toast-component", title: "Toastコンポーネント" },
     { id: "modal-component", title: "Modalコンポーネント" },
@@ -487,6 +488,171 @@ function App() {
               disabled
               helperText="この項目は編集できません"
             />
+          </div>
+        </section>
+
+        <section
+          id="select-component"
+          style={{
+            marginBottom: spacing.scale[12],
+            padding: spacing.scale[6],
+            backgroundColor: colors.background.default,
+            borderRadius: radii.borderRadius.lg,
+            border: `1px solid ${colors.border.default}`,
+          }}
+        >
+          <h2 style={{
+            marginTop: 0,
+            color: primitive.gray[900],
+            fontSize: typography.fontSize['2xl'],
+            fontWeight: 'bold',
+            borderBottom: `3px solid ${primitive.blue[500]}`,
+            paddingBottom: spacing.scale[2],
+            marginBottom: spacing.scale[4],
+            display: 'flex',
+            alignItems: 'center',
+            gap: spacing.scale[2]
+          }}>
+            <icons.component.input size={28} color={primitive.blue[600]} strokeWidth={2} />
+            Select コンポーネント
+          </h2>
+          <p style={{ color: primitive.gray[700] }}>
+            セレクトボックス（ドロップダウンメニュー）コンポーネントです。
+            ユーザーが選択肢の中から1つを選ぶインターフェースを提供します。
+          </p>
+
+          <div style={{ marginTop: spacing.scale[6] }}>
+            <SectionHeading>基本的な使い方</SectionHeading>
+            <div style={{ maxWidth: '400px' }}>
+              <Select
+                label="国を選択"
+                options={[
+                  { value: 'jp', label: '日本' },
+                  { value: 'us', label: 'アメリカ' },
+                  { value: 'uk', label: 'イギリス' },
+                  { value: 'fr', label: 'フランス' },
+                  { value: 'de', label: 'ドイツ' },
+                ]}
+                placeholder="選択してください"
+              />
+            </div>
+          </div>
+
+          <div style={{ marginTop: spacing.scale[8] }}>
+            <SectionHeading>ヘルプテキスト付き</SectionHeading>
+            <div style={{ maxWidth: '400px' }}>
+              <Select
+                label="配送先の国"
+                options={[
+                  { value: 'jp', label: '日本' },
+                  { value: 'us', label: 'アメリカ' },
+                  { value: 'uk', label: 'イギリス' },
+                ]}
+                placeholder="選択してください"
+                helperText="お住まいの国を選択してください"
+              />
+            </div>
+          </div>
+
+          <div style={{ marginTop: spacing.scale[8] }}>
+            <SectionHeading>エラー状態</SectionHeading>
+            <div style={{ maxWidth: '400px' }}>
+              <Select
+                label="国を選択"
+                options={[
+                  { value: 'jp', label: '日本' },
+                  { value: 'us', label: 'アメリカ' },
+                  { value: 'uk', label: 'イギリス' },
+                ]}
+                placeholder="選択してください"
+                error="国の選択は必須です"
+              />
+            </div>
+          </div>
+
+          <div style={{ marginTop: spacing.scale[8] }}>
+            <SectionHeading>必須項目</SectionHeading>
+            <div style={{ maxWidth: '400px' }}>
+              <Select
+                label="国を選択"
+                options={[
+                  { value: 'jp', label: '日本' },
+                  { value: 'us', label: 'アメリカ' },
+                  { value: 'uk', label: 'イギリス' },
+                ]}
+                placeholder="選択してください"
+                required
+              />
+            </div>
+          </div>
+
+          <div style={{ marginTop: spacing.scale[8] }}>
+            <SectionHeading>無効化状態</SectionHeading>
+            <div style={{ maxWidth: '400px' }}>
+              <Select
+                label="国を選択"
+                options={[
+                  { value: 'jp', label: '日本' },
+                  { value: 'us', label: 'アメリカ' },
+                  { value: 'uk', label: 'イギリス' },
+                ]}
+                placeholder="選択してください"
+                disabled
+              />
+            </div>
+          </div>
+
+          <div style={{ marginTop: spacing.scale[8] }}>
+            <SectionHeading>サイズバリエーション</SectionHeading>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[4], maxWidth: '400px' }}>
+              <Select
+                label="小（sm）"
+                options={[
+                  { value: 'jp', label: '日本' },
+                  { value: 'us', label: 'アメリカ' },
+                ]}
+                placeholder="選択してください"
+                size="sm"
+              />
+              <Select
+                label="中（md）- デフォルト"
+                options={[
+                  { value: 'jp', label: '日本' },
+                  { value: 'us', label: 'アメリカ' },
+                ]}
+                placeholder="選択してください"
+                size="md"
+              />
+              <Select
+                label="大（lg）"
+                options={[
+                  { value: 'jp', label: '日本' },
+                  { value: 'us', label: 'アメリカ' },
+                ]}
+                placeholder="選択してください"
+                size="lg"
+              />
+            </div>
+          </div>
+
+          <div style={{
+            marginTop: spacing.scale[8],
+            padding: spacing.scale[4],
+            backgroundColor: primitive.blue[50],
+            borderRadius: radii.borderRadius.md,
+            border: `1px solid ${primitive.blue[200]}`,
+          }}>
+            <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
+              💡 Selectの特徴
+            </h4>
+            <ul style={{ color: primitive.blue[900], lineHeight: typography.lineHeight.relaxed }}>
+              <li><strong>ラベル関連付け</strong>: for/id属性で自動関連付け</li>
+              <li><strong>エラー表示</strong>: aria-invalid, aria-describedby, role="alert"</li>
+              <li><strong>必須項目</strong>: aria-required属性でスクリーンリーダーに通知</li>
+              <li><strong>WCAGレベル対応</strong>: A/AA/AAAの3段階</li>
+              <li><strong>キーボードフォーカス</strong>: Tabキー操作時のみフォーカススタイル表示</li>
+              <li><strong>ネイティブselect要素</strong>: アクセシビリティとユーザビリティを両立</li>
+            </ul>
           </div>
         </section>
 
