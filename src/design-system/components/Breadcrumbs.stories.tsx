@@ -109,6 +109,9 @@ export const CustomLabel: Story = {
 };
 
 export const WCAGLevels: Story = {
+  args: {
+    children: <></>,
+  },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       <div>
