@@ -1,7 +1,43 @@
 import React from 'react';
-import { colors, spacing, typography } from '../tokens';
+import { colors, spacing, typography, primitive } from '../tokens';
 
 export type WCAGLevel = 'A' | 'AA' | 'AAA';
+
+// WCAGレベルに応じたカラーマッピング
+const getWCAGColors = (level: WCAGLevel) => {
+  switch (level) {
+    case 'A':
+      // Level A: 最小限のコントラスト（3:1程度）
+      return {
+        text: primitive.gray[500],      // 3.26:1
+        textCurrent: primitive.gray[700], // 7.00:1
+        link: primitive.blue[500],       // 3.46:1
+        linkHover: primitive.blue[600],  // 4.77:1
+        separator: primitive.gray[400],
+      };
+    case 'AA':
+      // Level AA: 推奨レベル（4.5:1以上）
+      return {
+        text: primitive.gray[600],       // 4.55:1
+        textCurrent: primitive.gray[900], // 12.63:1
+        link: primitive.blue[700],        // 7.67:1
+        linkHover: primitive.blue[800],   // 10.07:1
+        separator: primitive.gray[400],
+      };
+    case 'AAA':
+      // Level AAA: 最高レベル（7:1以上）
+      return {
+        text: primitive.gray[700],        // 7.00:1
+        textCurrent: primitive.gray[900], // 12.63:1
+        link: primitive.blue[800],        // 10.07:1
+        linkHover: primitive.blue[900],   // 13.05:1
+        separator: primitive.gray[500],
+      };
+  }
+};
+
+// Context for passing WCAG level to child components
+const BreadcrumbsContext = React.createContext<WCAGLevel>('AA');
 
 export interface BreadcrumbsProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
@@ -24,9 +60,11 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
   };
 
   return (
-    <nav className={className} {...navProps} {...props}>
-      {children}
-    </nav>
+    <BreadcrumbsContext.Provider value={wcagLevel}>
+      <nav className={className} {...navProps} {...props}>
+        {children}
+      </nav>
+    </BreadcrumbsContext.Provider>
   );
 };
 
@@ -59,12 +97,15 @@ export const BreadcrumbItem: React.FC<BreadcrumbItemProps> = ({
   isCurrent = false,
   ...props
 }) => {
+  const wcagLevel = React.useContext(BreadcrumbsContext);
+  const wcagColors = getWCAGColors(wcagLevel);
+
   const itemStyles: React.CSSProperties = {
     display: 'inline',
     wordBreak: 'break-word',
     fontSize: typography.fontSize.base,
     lineHeight: typography.lineHeight.normal,
-    color: isCurrent ? colors.breadcrumbs.textCurrent : colors.breadcrumbs.text,
+    color: isCurrent ? wcagColors.textCurrent : wcagColors.text,
   };
 
   return (
@@ -91,8 +132,11 @@ export const BreadcrumbLink: React.FC<BreadcrumbLinkProps> = ({
   href,
   ...props
 }) => {
+  const wcagLevel = React.useContext(BreadcrumbsContext);
+  const wcagColors = getWCAGColors(wcagLevel);
+
   const linkStyles: React.CSSProperties = {
-    color: colors.breadcrumbs.link,
+    color: wcagColors.link,
     fontSize: typography.fontSize.base,
     lineHeight: typography.lineHeight.normal,
     textDecoration: 'underline',
@@ -106,23 +150,23 @@ export const BreadcrumbLink: React.FC<BreadcrumbLinkProps> = ({
         className={className}
         style={linkStyles}
         onMouseEnter={(e) => {
-          e.currentTarget.style.color = colors.breadcrumbs.linkHover;
+          e.currentTarget.style.color = wcagColors.linkHover;
           e.currentTarget.style.textDecorationThickness = '0.1875rem';
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.color = colors.breadcrumbs.link;
+          e.currentTarget.style.color = wcagColors.link;
           e.currentTarget.style.textDecorationThickness = '';
         }}
         onFocus={(e) => {
           e.currentTarget.style.backgroundColor = colors.focus.background;
-          e.currentTarget.style.color = colors.breadcrumbs.link;
+          e.currentTarget.style.color = wcagColors.link;
           e.currentTarget.style.outline = `4px solid ${colors.focus.outline}`;
           e.currentTarget.style.outlineOffset = '0.125rem';
           e.currentTarget.style.borderRadius = '0.25rem';
         }}
         onBlur={(e) => {
           e.currentTarget.style.backgroundColor = '';
-          e.currentTarget.style.color = colors.breadcrumbs.link;
+          e.currentTarget.style.color = wcagColors.link;
           e.currentTarget.style.outline = '';
           e.currentTarget.style.outlineOffset = '';
           e.currentTarget.style.borderRadius = '';
@@ -144,9 +188,12 @@ export const BreadcrumbSeparator: React.FC<BreadcrumbSeparatorProps> = ({
   className = '',
   ...props
 }) => {
+  const wcagLevel = React.useContext(BreadcrumbsContext);
+  const wcagColors = getWCAGColors(wcagLevel);
+
   const separatorStyles: React.CSSProperties = {
     display: 'inline',
-    color: colors.breadcrumbs.separator,
+    color: wcagColors.separator,
   };
 
   const svgStyles: React.CSSProperties = {
