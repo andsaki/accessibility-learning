@@ -14,6 +14,8 @@ const getWCAGColors = (level: WCAGLevel) => {
         link: primitive.blue[500],       // 3.46:1
         linkHover: primitive.blue[600],  // 4.77:1
         separator: primitive.gray[400],
+        focusOutline: primitive.blue[300], // 薄い青のフォーカス
+        focusBackground: primitive.blue[50],
       };
     case 'AA':
       // Level AA: 推奨レベル（4.5:1以上）
@@ -23,6 +25,8 @@ const getWCAGColors = (level: WCAGLevel) => {
         link: primitive.blue[700],        // 7.67:1
         linkHover: primitive.blue[800],   // 10.07:1
         separator: primitive.gray[400],
+        focusOutline: primitive.blue[500], // 中程度の青のフォーカス
+        focusBackground: primitive.blue[50],
       };
     case 'AAA':
       // Level AAA: 最高レベル（7:1以上）
@@ -32,6 +36,8 @@ const getWCAGColors = (level: WCAGLevel) => {
         link: primitive.blue[800],        // 10.07:1
         linkHover: primitive.blue[900],   // 13.05:1
         separator: primitive.gray[500],
+        focusOutline: primitive.blue[700], // 濃い青のフォーカス
+        focusBackground: primitive.blue[50],
       };
   }
 };
@@ -158,9 +164,9 @@ export const BreadcrumbLink: React.FC<BreadcrumbLinkProps> = ({
           e.currentTarget.style.textDecorationThickness = '';
         }}
         onFocus={(e) => {
-          e.currentTarget.style.backgroundColor = colors.focus.background;
+          e.currentTarget.style.backgroundColor = wcagColors.focusBackground;
           e.currentTarget.style.color = wcagColors.link;
-          e.currentTarget.style.outline = `4px solid ${colors.focus.outline}`;
+          e.currentTarget.style.outline = `4px solid ${wcagColors.focusOutline}`;
           e.currentTarget.style.outlineOffset = '0.125rem';
           e.currentTarget.style.borderRadius = '0.25rem';
         }}
