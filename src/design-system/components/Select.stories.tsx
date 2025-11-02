@@ -160,6 +160,11 @@ export const ManyOptions: Story = {
 };
 
 export const WCAGLevels: Story = {
+  args: {
+    label: '国を選択',
+    options: countryOptions,
+    placeholder: '選択してください',
+  },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       <div style={{

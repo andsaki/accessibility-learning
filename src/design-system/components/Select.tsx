@@ -100,7 +100,7 @@ export const Select: React.FC<SelectProps> = ({
     border: error
       ? `2px solid ${colors.input.borderError}`
       : `2px solid ${colors.input.border}`,
-    backgroundColor: disabled ? colors.input.backgroundDisabled : colors.input.background,
+    backgroundColor: disabled ? colors.input.bgDisabled : colors.input.bg,
     color: disabled ? colors.input.textDisabled : colors.input.text,
     transition: 'border-color 0.2s, box-shadow 0.2s',
     width: '100%',
