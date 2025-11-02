@@ -98,8 +98,8 @@ export const Select: React.FC<SelectProps> = ({
     fontFamily: typography.fontFamily.base,
     borderRadius: radii.borderRadius.md,
     border: error
-      ? `${spacing.input.borderWidth} solid ${colors.border.error}`
-      : `${spacing.input.borderWidth} solid ${colors.input.border}`,
+      ? `2px solid ${colors.input.borderError}`
+      : `2px solid ${colors.input.border}`,
     backgroundColor: disabled ? colors.input.backgroundDisabled : colors.input.background,
     color: disabled ? colors.input.textDisabled : colors.input.text,
     transition: 'border-color 0.2s, box-shadow 0.2s',
