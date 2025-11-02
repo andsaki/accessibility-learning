@@ -129,6 +129,51 @@ export const buttonColors = {
 } as const;
 
 /**
+ * Breadcrumbsカラー（レベル別）
+ */
+export const breadcrumbsColors = {
+  /**
+   * レベルA: 最小限のコントラスト（3:1程度）
+   */
+  A: {
+    text: primitive.gray[500],      // 3.26:1
+    textCurrent: primitive.gray[700], // 7.00:1
+    link: primitive.blue[500],       // 3.46:1
+    linkHover: primitive.blue[600],  // 4.77:1
+    separator: primitive.gray[400],
+    focusOutline: primitive.blue[300],
+    focusBackground: primitive.blue[50],
+  },
+
+  /**
+   * レベルAA: 推奨レベル（4.5:1以上）
+   */
+  AA: {
+    text: primitive.gray[600],       // 4.55:1
+    textCurrent: primitive.gray[900], // 12.63:1
+    link: primitive.blue[700],        // 7.67:1
+    linkHover: primitive.blue[800],   // 10.07:1
+    separator: primitive.gray[400],
+    focusOutline: primitive.blue[500],
+    focusBackground: primitive.blue[50],
+  },
+
+  /**
+   * レベルAAA: 最高レベル（7:1以上）
+   * 警告色（オレンジ）で強調
+   */
+  AAA: {
+    text: primitive.gray[700],        // 7.00:1
+    textCurrent: primitive.gray[900], // 12.63:1
+    link: primitive.orange[800],      // 濃いオレンジ
+    linkHover: primitive.orange[900], // 最も濃いオレンジ
+    separator: primitive.gray[500],
+    focusOutline: primitive.orange[600],
+    focusBackground: primitive.orange[50],
+  },
+} as const;
+
+/**
  * テキストカラー（レベル別）
  */
 export const textColors = {
@@ -293,6 +338,7 @@ export const contrastDemos = {
 export const accessibilityLevels = {
   focus: focusStyles,
   button: buttonColors,
+  breadcrumbs: breadcrumbsColors,
   text: textColors,
   size: sizeRequirements,
   useCases,

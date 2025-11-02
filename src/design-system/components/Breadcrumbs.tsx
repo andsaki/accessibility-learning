@@ -1,46 +1,6 @@
 import React from 'react';
-import { spacing, typography, primitive } from '../tokens';
-
-export type WCAGLevel = 'A' | 'AA' | 'AAA';
-
-// WCAGレベルに応じたカラーマッピング
-const getWCAGColors = (level: WCAGLevel) => {
-  switch (level) {
-    case 'A':
-      // Level A: 最小限のコントラスト（3:1程度）
-      return {
-        text: primitive.gray[500],      // 3.26:1
-        textCurrent: primitive.gray[700], // 7.00:1
-        link: primitive.blue[500],       // 3.46:1
-        linkHover: primitive.blue[600],  // 4.77:1
-        separator: primitive.gray[400],
-        focusOutline: primitive.blue[300], // 薄い青のフォーカス
-        focusBackground: primitive.blue[50],
-      };
-    case 'AA':
-      // Level AA: 推奨レベル（4.5:1以上）
-      return {
-        text: primitive.gray[600],       // 4.55:1
-        textCurrent: primitive.gray[900], // 12.63:1
-        link: primitive.blue[700],        // 7.67:1
-        linkHover: primitive.blue[800],   // 10.07:1
-        separator: primitive.gray[400],
-        focusOutline: primitive.blue[500], // 中程度の青のフォーカス
-        focusBackground: primitive.blue[50],
-      };
-    case 'AAA':
-      // Level AAA: 最高レベル（7:1以上）- 警告色で強調
-      return {
-        text: primitive.gray[700],        // 7.00:1
-        textCurrent: primitive.gray[900], // 12.63:1
-        link: primitive.orange[800],      // 濃いオレンジ
-        linkHover: primitive.orange[900], // 最も濃いオレンジ
-        separator: primitive.gray[500],
-        focusOutline: primitive.orange[600], // オレンジのフォーカス
-        focusBackground: primitive.orange[50],
-      };
-  }
-};
+import { spacing, typography, accessibilityLevels } from '../tokens';
+import type { WCAGLevel } from '../tokens';
 
 // Context for passing WCAG level to child components
 const BreadcrumbsContext = React.createContext<WCAGLevel>('AA');
@@ -104,14 +64,14 @@ export const BreadcrumbItem: React.FC<BreadcrumbItemProps> = ({
   ...props
 }) => {
   const wcagLevel = React.useContext(BreadcrumbsContext);
-  const wcagColors = getWCAGColors(wcagLevel);
+  const levelColors = accessibilityLevels.breadcrumbs[wcagLevel];
 
   const itemStyles: React.CSSProperties = {
     display: 'inline',
     wordBreak: 'break-word',
     fontSize: typography.fontSize.base,
     lineHeight: typography.lineHeight.normal,
-    color: isCurrent ? wcagColors.textCurrent : wcagColors.text,
+    color: isCurrent ? levelColors.textCurrent : levelColors.text,
   };
 
   return (
@@ -139,10 +99,10 @@ export const BreadcrumbLink: React.FC<BreadcrumbLinkProps> = ({
   ...props
 }) => {
   const wcagLevel = React.useContext(BreadcrumbsContext);
-  const wcagColors = getWCAGColors(wcagLevel);
+  const levelColors = accessibilityLevels.breadcrumbs[wcagLevel];
 
   const linkStyles: React.CSSProperties = {
-    color: wcagColors.link,
+    color: levelColors.link,
     fontSize: typography.fontSize.base,
     lineHeight: typography.lineHeight.normal,
     textDecoration: 'underline',
@@ -156,23 +116,23 @@ export const BreadcrumbLink: React.FC<BreadcrumbLinkProps> = ({
         className={className}
         style={linkStyles}
         onMouseEnter={(e) => {
-          e.currentTarget.style.color = wcagColors.linkHover;
+          e.currentTarget.style.color = levelColors.linkHover;
           e.currentTarget.style.textDecorationThickness = '0.1875rem';
         }}
         onMouseLeave={(e) => {
-          e.currentTarget.style.color = wcagColors.link;
+          e.currentTarget.style.color = levelColors.link;
           e.currentTarget.style.textDecorationThickness = '';
         }}
         onFocus={(e) => {
-          e.currentTarget.style.backgroundColor = wcagColors.focusBackground;
-          e.currentTarget.style.color = wcagColors.link;
-          e.currentTarget.style.outline = `4px solid ${wcagColors.focusOutline}`;
+          e.currentTarget.style.backgroundColor = levelColors.focusBackground;
+          e.currentTarget.style.color = levelColors.link;
+          e.currentTarget.style.outline = `4px solid ${levelColors.focusOutline}`;
           e.currentTarget.style.outlineOffset = '0.125rem';
           e.currentTarget.style.borderRadius = '0.25rem';
         }}
         onBlur={(e) => {
           e.currentTarget.style.backgroundColor = '';
-          e.currentTarget.style.color = wcagColors.link;
+          e.currentTarget.style.color = levelColors.link;
           e.currentTarget.style.outline = '';
           e.currentTarget.style.outlineOffset = '';
           e.currentTarget.style.borderRadius = '';
@@ -195,11 +155,11 @@ export const BreadcrumbSeparator: React.FC<BreadcrumbSeparatorProps> = ({
   ...props
 }) => {
   const wcagLevel = React.useContext(BreadcrumbsContext);
-  const wcagColors = getWCAGColors(wcagLevel);
+  const levelColors = accessibilityLevels.breadcrumbs[wcagLevel];
 
   const separatorStyles: React.CSSProperties = {
     display: 'inline',
-    color: wcagColors.separator,
+    color: levelColors.separator,
   };
 
   const svgStyles: React.CSSProperties = {
