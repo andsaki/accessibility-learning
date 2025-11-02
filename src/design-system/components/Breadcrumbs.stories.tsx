@@ -104,3 +104,72 @@ export const CustomLabel: Story = {
     ),
   },
 };
+
+export const WCAGLevels: Story = {
+  args: {
+    children: null,
+  },
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      <div>
+        <h3 style={{ marginBottom: '0.5rem', fontSize: '1.125rem', fontWeight: 'bold' }}>
+          WCAG Level A
+        </h3>
+        <p style={{ marginBottom: '1rem', color: '#6B7280', fontSize: '0.875rem' }}>
+          基本的なアクセシビリティ要件を満たします
+        </p>
+        <Breadcrumbs wcagLevel="A">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">ホーム</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/products">商品</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem isCurrent>カテゴリ</BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumbs>
+      </div>
+
+      <div>
+        <h3 style={{ marginBottom: '0.5rem', fontSize: '1.125rem', fontWeight: 'bold' }}>
+          WCAG Level AA (デフォルト)
+        </h3>
+        <p style={{ marginBottom: '1rem', color: '#6B7280', fontSize: '0.875rem' }}>
+          推奨されるアクセシビリティレベル。コントラスト比4.5:1以上
+        </p>
+        <Breadcrumbs wcagLevel="AA">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">ホーム</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/products">商品</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem isCurrent>カテゴリ</BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumbs>
+      </div>
+
+      <div>
+        <h3 style={{ marginBottom: '0.5rem', fontSize: '1.125rem', fontWeight: 'bold' }}>
+          WCAG Level AAA
+        </h3>
+        <p style={{ marginBottom: '1rem', color: '#6B7280', fontSize: '0.875rem' }}>
+          最高レベルのアクセシビリティ。コントラスト比7:1以上
+        </p>
+        <Breadcrumbs wcagLevel="AAA">
+          <BreadcrumbList>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/">ホーム</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem>
+              <BreadcrumbLink href="/products">商品</BreadcrumbLink>
+            </BreadcrumbItem>
+            <BreadcrumbItem isCurrent>カテゴリ</BreadcrumbItem>
+          </BreadcrumbList>
+        </Breadcrumbs>
+      </div>
+    </div>
+  ),
+};

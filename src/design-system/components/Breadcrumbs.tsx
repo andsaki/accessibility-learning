@@ -1,20 +1,30 @@
 import React from 'react';
 import { colors, spacing, typography } from '../tokens';
 
+export type WCAGLevel = 'A' | 'AA' | 'AAA';
+
 export interface BreadcrumbsProps extends React.HTMLAttributes<HTMLElement> {
   children: React.ReactNode;
   className?: string;
   label?: string;
+  wcagLevel?: WCAGLevel;
 }
 
 export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
   children,
   className = '',
   label = 'パンくずリスト',
+  wcagLevel = 'AA',
   ...props
 }) => {
+  // WCAGレベルに応じたセマンティック属性を追加
+  const navProps = {
+    'aria-label': label,
+    'data-wcag-level': wcagLevel,
+  };
+
   return (
-    <nav aria-label={label} className={className} {...props}>
+    <nav className={className} {...navProps} {...props}>
       {children}
     </nav>
   );
