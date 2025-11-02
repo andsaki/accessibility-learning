@@ -137,6 +137,11 @@ export const primitive = {
   // White & Black
   white: '#ffffff',
   black: '#000000',
+
+  // Yellow (Accessibility)
+  // WCAGレベルAAAのフォーカス背景色として使用
+  // コントラスト比: 19.56:1 (黒文字との組み合わせ)
+  yellow: '#ffff00',
 } as const;
 
 // =====================================
@@ -242,7 +247,7 @@ export const border = {
  */
 export const focus = {
   ring: primitive.blue[500], // フォーカスリング
-  background: '#ffff00', // 高コントラスト背景（黄色）
+  background: primitive.yellow, // 高コントラスト背景（黄色）
   outline: primitive.black, // アウトライン
   text: primitive.black, // テキスト（フォーカス時）
 } as const;

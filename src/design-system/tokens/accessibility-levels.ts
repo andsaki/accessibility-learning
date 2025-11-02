@@ -64,7 +64,7 @@ export const focusStyles = {
    * - コントラスト比: 19.56:1
    */
   AAA: {
-    background: '#ffff00', // 黄色
+    background: primitive.yellow, // 黄色
     outline: primitive.black,
     outlineWidth: '0.25rem', // 4px
     outlineOffset: '0.125rem', // 2px
@@ -168,7 +168,7 @@ export const breadcrumbsColors = {
     linkHover: primitive.blue[900],   // 13.05:1
     separator: primitive.gray[500],
     focusOutline: primitive.black,    // 黒のアウトライン
-    focusBackground: '#ffff00',       // 黄色背景（他コンポーネントと統一）
+    focusBackground: primitive.yellow, // 黄色背景（他コンポーネントと統一）
   },
 } as const;
 
