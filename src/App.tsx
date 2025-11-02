@@ -332,7 +332,7 @@ function App() {
             <icons.component.button size={28} color={primitive.blue[600]} strokeWidth={2} />
             Button コンポーネント
           </h2>
-          <p style={{ color: primitive.gray[700] }}>WCAG準拠のアクセシブルなボタンコンポーネントです。</p>
+          <p style={{ color: primitive.gray[700], marginTop: 0 }}>WCAG準拠のアクセシブルなボタンコンポーネントです。</p>
 
           <div
             style={{
@@ -413,7 +413,7 @@ function App() {
             <icons.component.input size={28} color={primitive.blue[600]} strokeWidth={2} />
             Input コンポーネント
           </h2>
-          <p style={{ color: primitive.gray[700] }}>
+          <p style={{ color: primitive.gray[700], marginTop: 0 }}>
             ラベル、エラー表示、ヘルプテキストを備えたアクセシブルな入力フィールドです。
           </p>
 
@@ -515,7 +515,7 @@ function App() {
             <icons.component.form size={28} color={primitive.blue[600]} strokeWidth={2} />
             Form コンポーネント
           </h2>
-          <p style={{ color: primitive.gray[700] }}>
+          <p style={{ color: primitive.gray[700], marginTop: 0 }}>
             react-hook-formとZodを統合したアクセシブルなフォームコンポーネントです。
             バリデーション、エラー表示、型安全性が統合されています。
           </p>
@@ -652,7 +652,7 @@ function App() {
             <icons.component.accordion size={28} color={primitive.blue[600]} strokeWidth={2} />
             Accordion コンポーネント
           </h2>
-          <p style={{ color: primitive.gray[700] }}>
+          <p style={{ color: primitive.gray[700], marginTop: 0 }}>
             ネイティブの&lt;details&gt;/&lt;summary&gt;要素を使用したアクセシブルなアコーディオンです。
             キーボード操作とスクリーンリーダーに完全対応しています。
           </p>
@@ -964,7 +964,7 @@ function App() {
             <icons.component.navigation size={28} color={primitive.blue[600]} strokeWidth={2} />
             Breadcrumbs コンポーネント
           </h2>
-          <p style={{ color: primitive.gray[700] }}>
+          <p style={{ color: primitive.gray[700], marginTop: 0 }}>
             パンくずリスト（Breadcrumbs）は、ユーザーが現在いる場所を示すナビゲーション要素です。
             Webサイトの階層構造を視覚的に表示し、ユーザーが簡単に上位階層へ戻ることができます。
           </p>
@@ -1086,10 +1086,10 @@ function App() {
                 borderRadius: radii.borderRadius.md,
                 border: `1px solid ${primitive.pink[200]}`,
               }}>
-                <h4 style={{ marginTop: 0, color: primitive.pink[900] }}>
+                <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.pink[900] }}>
                   <code style={{ backgroundColor: primitive.pink[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-label</code>
                 </h4>
-                <p style={{ color: primitive.gray[700] }}>
+                <p style={{ color: primitive.gray[700], marginTop: 0 }}>
                   要素に対して、スクリーンリーダーが読み上げるラベルを指定します。視覚的なテキストがない要素に使用します。
                 </p>
                 <div style={{
@@ -1126,10 +1126,10 @@ function App() {
                 borderRadius: radii.borderRadius.md,
                 border: `1px solid ${primitive.blue[200]}`,
               }}>
-                <h4 style={{ marginTop: 0, color: primitive.blue[900] }}>
+                <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.blue[900] }}>
                   <code style={{ backgroundColor: primitive.blue[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-labelledby</code>
                 </h4>
-                <p style={{ color: primitive.gray[700] }}>
+                <p style={{ color: primitive.gray[700], marginTop: 0 }}>
                   他の要素のIDを参照して、その要素のテキストをラベルとして使用します。複数のIDをスペース区切りで指定できます。
                 </p>
                 <div style={{
@@ -1155,10 +1155,10 @@ function App() {
                 borderRadius: radii.borderRadius.md,
                 border: `1px solid ${primitive.green[200]}`,
               }}>
-                <h4 style={{ marginTop: 0, color: primitive.green[900] }}>
+                <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.green[900] }}>
                   <code style={{ backgroundColor: primitive.green[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-describedby</code>
                 </h4>
-                <p style={{ color: primitive.gray[700] }}>
+                <p style={{ color: primitive.gray[700], marginTop: 0 }}>
                   要素の説明や補足情報を提供する他の要素のIDを参照します。エラーメッセージやヒントテキストに使用します。
                 </p>
                 <div style={{
@@ -1203,10 +1203,10 @@ function App() {
                 borderRadius: radii.borderRadius.md,
                 border: `1px solid ${primitive.orange[200]}`,
               }}>
-                <h4 style={{ marginTop: 0, color: primitive.orange[900] }}>
+                <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.orange[900] }}>
                   <code style={{ backgroundColor: primitive.orange[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-current</code>
                 </h4>
-                <p style={{ color: primitive.gray[700] }}>
+                <p style={{ color: primitive.gray[700], marginTop: 0 }}>
                   現在の項目を示します。ナビゲーションやパンくずリストで使用します。値: page, step, location, date, time, true, false
                 </p>
                 <div style={{
@@ -1247,10 +1247,10 @@ function App() {
                 borderRadius: radii.borderRadius.md,
                 border: `1px solid ${primitive.pink[200]}`,
               }}>
-                <h4 style={{ marginTop: 0, color: primitive.pink[900] }}>
+                <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.pink[900] }}>
                   <code style={{ backgroundColor: primitive.pink[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-expanded</code>
                 </h4>
-                <p style={{ color: primitive.gray[700] }}>
+                <p style={{ color: primitive.gray[700], marginTop: 0 }}>
                   要素が展開されているか折りたたまれているかを示します。アコーディオンやドロップダウンメニューで使用します。
                 </p>
                 <div style={{
@@ -1287,10 +1287,10 @@ function App() {
                 borderRadius: radii.borderRadius.md,
                 border: `1px solid ${primitive.gray[300]}`,
               }}>
-                <h4 style={{ marginTop: 0, color: primitive.gray[900] }}>
+                <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.gray[900] }}>
                   <code style={{ backgroundColor: primitive.gray[200], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-hidden</code>
                 </h4>
-                <p style={{ color: primitive.gray[700] }}>
+                <p style={{ color: primitive.gray[700], marginTop: 0 }}>
                   要素をスクリーンリーダーから隠します。装飾的なアイコンやSVGに使用します。
                 </p>
                 <div style={{
@@ -1325,10 +1325,10 @@ function App() {
                 borderRadius: radii.borderRadius.md,
                 border: `1px solid ${primitive.blue[200]}`,
               }}>
-                <h4 style={{ marginTop: 0, color: primitive.blue[900] }}>
+                <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.blue[900] }}>
                   <code style={{ backgroundColor: primitive.blue[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>role="button"</code>
                 </h4>
-                <p style={{ color: primitive.gray[700] }}>
+                <p style={{ color: primitive.gray[700], marginTop: 0 }}>
                   div や span などの要素をボタンとして扱います。可能な限り &lt;button&gt; 要素を使用してください。
                 </p>
                 <div style={{
@@ -1357,10 +1357,10 @@ function App() {
                 borderRadius: radii.borderRadius.md,
                 border: `1px solid ${primitive.pink[200]}`,
               }}>
-                <h4 style={{ marginTop: 0, color: primitive.pink[900] }}>
+                <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.pink[900] }}>
                   <code style={{ backgroundColor: primitive.pink[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>role="dialog"</code>
                 </h4>
-                <p style={{ color: primitive.gray[700] }}>
+                <p style={{ color: primitive.gray[700], marginTop: 0 }}>
                   モーダルダイアログを示します。aria-labelledby または aria-label と組み合わせて使用します。
                 </p>
                 <div style={{
@@ -1390,10 +1390,10 @@ function App() {
                 borderRadius: radii.borderRadius.md,
                 border: `1px solid ${primitive.green[200]}`,
               }}>
-                <h4 style={{ marginTop: 0, color: primitive.green[900] }}>
+                <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.green[900] }}>
                   <code style={{ backgroundColor: primitive.green[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>role="navigation"</code>
                 </h4>
-                <p style={{ color: primitive.gray[700] }}>
+                <p style={{ color: primitive.gray[700], marginTop: 0 }}>
                   ナビゲーションリンクのグループを示します。&lt;nav&gt; 要素を使用すれば、暗黙的にこのroleが付与されます。
                 </p>
                 <div style={{
@@ -1426,10 +1426,10 @@ function App() {
                 borderRadius: radii.borderRadius.md,
                 border: `1px solid ${primitive.red[200]}`,
               }}>
-                <h4 style={{ marginTop: 0, color: primitive.red[900] }}>
+                <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.red[900] }}>
                   <code style={{ backgroundColor: primitive.red[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>role="alert"</code>
                 </h4>
-                <p style={{ color: primitive.gray[700] }}>
+                <p style={{ color: primitive.gray[700], marginTop: 0 }}>
                   重要なメッセージを即座にスクリーンリーダーに通知します。エラーメッセージや警告に使用します。
                 </p>
                 <div style={{
@@ -1558,7 +1558,7 @@ function App() {
                 border: `1px solid ${primitive.blue[200]}`,
               }}
             >
-              <h4 style={{ marginTop: 0, color: primitive.blue[900] }}>
+              <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.blue[900] }}>
                 📐 コントラスト比の計算方法
               </h4>
               <p style={{ margin: "0.5rem 0", lineHeight: "1.8", color: primitive.gray[900] }}>
@@ -1605,7 +1605,7 @@ function App() {
                   border: `2px solid ${colors.border.default}`,
                 }}
               >
-                <h4 style={{ marginTop: 0, color: primitive.gray[800] }}>
+                <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.gray[800] }}>
                   レベルA（最低限）
                 </h4>
                 <ul
@@ -1648,7 +1648,7 @@ function App() {
                   border: `2px solid ${primitive.blue[500]}`,
                 }}
               >
-                <h4 style={{ marginTop: 0, color: primitive.blue[900] }}>
+                <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.blue[900] }}>
                   レベルAA（推奨）★
                 </h4>
                 <ul
@@ -1690,7 +1690,7 @@ function App() {
                   border: `2px solid ${primitive.orange[600]}`,
                 }}
               >
-                <h4 style={{ marginTop: 0, color: primitive.orange[900] }}>
+                <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.orange[900] }}>
                   レベルAAA（最高）
                 </h4>
                 <ul
@@ -1812,7 +1812,7 @@ function App() {
               border: `2px solid ${primitive.green[500]}`,
             }}
           >
-            <h4 style={{ marginTop: 0, color: primitive.green[800] }}>
+            <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.green[800] }}>
               💡 コントラスト比の確認方法
             </h4>
             <p style={{ margin: "0.5rem 0", lineHeight: "1.8", color: primitive.gray[900] }}>
@@ -1885,7 +1885,7 @@ function App() {
                 border: `1px solid ${colors.border.default}`,
               }}
             >
-              <h4 style={{ marginTop: 0, color: primitive.blue[900] }}>
+              <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.blue[900] }}>
                 なぜ8pxグリッド？
               </h4>
               <ul style={{ margin: `${spacing.scale[2]} 0`, paddingLeft: spacing.scale[6], lineHeight: typography.lineHeight.relaxed, color: primitive.gray[900] }}>
@@ -1932,7 +1932,7 @@ function App() {
                 border: `1px solid ${colors.border.default}`,
               }}
             >
-              <h4 style={{ marginTop: 0, color: primitive.blue[900] }}>
+              <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.blue[900] }}>
                 3層構造のカラーシステム
               </h4>
               <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[3], marginTop: spacing.scale[2] }}>
@@ -2144,7 +2144,7 @@ function App() {
                 border: `1px solid ${colors.border.default}`,
               }}
             >
-              <h4 style={{ marginTop: 0, color: primitive.blue[900] }}>
+              <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.blue[900] }}>
                 角丸のバリエーション
               </h4>
               <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[2], marginTop: spacing.scale[2] }}>
@@ -2178,7 +2178,7 @@ function App() {
                 border: `1px solid ${colors.border.default}`,
               }}
             >
-              <h4 style={{ marginTop: 0, color: primitive.blue[900] }}>
+              <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.blue[900] }}>
                 なぜrem単位？
               </h4>
               <ul style={{ margin: `${spacing.scale[2]} 0`, paddingLeft: spacing.scale[6], lineHeight: typography.lineHeight.relaxed, color: primitive.gray[900] }}>
@@ -2250,7 +2250,7 @@ function App() {
               border: `2px solid ${primitive.green[500]}`,
             }}
           >
-            <h4 style={{ marginTop: 0, color: primitive.green[900] }}>
+            <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.green[900] }}>
               ✅ トークンを使うメリット
             </h4>
             <ul style={{ margin: `${spacing.scale[2]} 0`, paddingLeft: spacing.scale[6], lineHeight: typography.lineHeight.relaxed, color: primitive.gray[900] }}>
