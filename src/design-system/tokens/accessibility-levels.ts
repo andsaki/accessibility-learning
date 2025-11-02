@@ -167,8 +167,8 @@ export const breadcrumbsColors = {
     link: primitive.blue[800],        // 10.07:1
     linkHover: primitive.blue[900],   // 13.05:1
     separator: primitive.gray[500],
-    focusOutline: primitive.blue[700],
-    focusBackground: primitive.blue[50],
+    focusOutline: primitive.black,    // 黒のアウトライン
+    focusBackground: '#ffff00',       // 黄色背景（他コンポーネントと統一）
   },
 } as const;
 
