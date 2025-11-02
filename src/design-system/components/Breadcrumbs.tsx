@@ -1,5 +1,5 @@
 import React from 'react';
-import { colors, spacing, typography, primitive } from '../tokens';
+import { spacing, typography, primitive } from '../tokens';
 
 export type WCAGLevel = 'A' | 'AA' | 'AAA';
 
@@ -29,15 +29,15 @@ const getWCAGColors = (level: WCAGLevel) => {
         focusBackground: primitive.blue[50],
       };
     case 'AAA':
-      // Level AAA: 最高レベル（7:1以上）
+      // Level AAA: 最高レベル（7:1以上）- 警告色で強調
       return {
         text: primitive.gray[700],        // 7.00:1
         textCurrent: primitive.gray[900], // 12.63:1
-        link: primitive.blue[800],        // 10.07:1
-        linkHover: primitive.blue[900],   // 13.05:1
+        link: primitive.orange[800],      // 濃いオレンジ
+        linkHover: primitive.orange[900], // 最も濃いオレンジ
         separator: primitive.gray[500],
-        focusOutline: primitive.blue[700], // 濃い青のフォーカス
-        focusBackground: primitive.blue[50],
+        focusOutline: primitive.orange[600], // オレンジのフォーカス
+        focusBackground: primitive.orange[50],
       };
   }
 };
