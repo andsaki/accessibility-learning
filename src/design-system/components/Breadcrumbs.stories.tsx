@@ -168,16 +168,16 @@ export const WCAGLevels: Story = {
 
       <div style={{
         padding: '1.5rem',
-        backgroundColor: '#FFFAF0',
+        backgroundColor: '#FAFAFA',
         borderRadius: '0.5rem',
-        border: '2px solid #F57C00'
+        border: '2px solid #0D47A1'
       }}>
         <h3 style={{ marginBottom: '0.5rem', fontSize: '1.125rem', fontWeight: 'bold', color: '#1F2937' }}>
           WCAG Level AAA
         </h3>
         <p style={{ marginBottom: '1rem', color: '#6B7280', fontSize: '0.875rem' }}>
           最高レベルのアクセシビリティ（視覚障害への最大配慮）<br />
-          リンク色: <code style={{ backgroundColor: '#FFF3E0', padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>#EF6C00</code> (コントラスト比 7:1以上) 🟠
+          リンク色: <code style={{ backgroundColor: '#E3F2FD', padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>#1565C0</code> (コントラスト比 10.07:1)
         </p>
         <Breadcrumbs wcagLevel="AAA">
           <BreadcrumbList>

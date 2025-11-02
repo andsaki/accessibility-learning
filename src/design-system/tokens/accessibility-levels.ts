@@ -160,16 +160,15 @@ export const breadcrumbsColors = {
 
   /**
    * レベルAAA: 最高レベル（7:1以上）
-   * 警告色（オレンジ）で強調
    */
   AAA: {
     text: primitive.gray[700],        // 7.00:1
     textCurrent: primitive.gray[900], // 12.63:1
-    link: primitive.orange[800],      // 濃いオレンジ
-    linkHover: primitive.orange[900], // 最も濃いオレンジ
+    link: primitive.blue[800],        // 10.07:1
+    linkHover: primitive.blue[900],   // 13.05:1
     separator: primitive.gray[500],
-    focusOutline: primitive.orange[600],
-    focusBackground: primitive.orange[50],
+    focusOutline: primitive.blue[700],
+    focusBackground: primitive.blue[50],
   },
 } as const;
 
