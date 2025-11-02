@@ -106,6 +106,9 @@ export const CustomLabel: Story = {
 };
 
 export const WCAGLevels: Story = {
+  args: {
+    children: null,
+  },
   argTypes: {
     children: {
       table: {
