@@ -13,6 +13,9 @@ const meta = {
       control: 'text',
       description: 'ナビゲーションのラベル',
     },
+    children: {
+      control: false,
+    },
   },
 } satisfies Meta<typeof Breadcrumbs>;
 
@@ -106,17 +109,6 @@ export const CustomLabel: Story = {
 };
 
 export const WCAGLevels: Story = {
-  args: {
-    children: <></>,
-  },
-  argTypes: {
-    children: {
-      control: false,
-      table: {
-        disable: true,
-      },
-    },
-  },
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       <div>
