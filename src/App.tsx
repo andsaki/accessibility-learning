@@ -1056,14 +1056,14 @@ function App() {
             color: primitive.gray[900],
             fontSize: typography.fontSize['2xl'],
             fontWeight: 'bold',
-            borderBottom: `3px solid ${primitive.purple[500]}`,
+            borderBottom: `3px solid ${primitive.pink[500]}`,
             paddingBottom: spacing.scale[2],
             marginBottom: spacing.scale[4],
             display: 'flex',
             alignItems: 'center',
             gap: spacing.scale[2]
           }}>
-            <icons.section.accessibility size={28} color={primitive.purple[600]} strokeWidth={2} />
+            <icons.philosophy.inclusive size={28} color={primitive.pink[600]} strokeWidth={2} />
             ARIAラベルとrole属性ガイド
           </h2>
           <p style={{ color: primitive.gray[700], marginBottom: spacing.scale[6] }}>
@@ -1082,12 +1082,12 @@ function App() {
               {/* aria-label */}
               <div style={{
                 padding: spacing.scale[4],
-                backgroundColor: primitive.purple[50],
+                backgroundColor: primitive.pink[50],
                 borderRadius: radii.borderRadius.md,
-                border: `1px solid ${primitive.purple[200]}`,
+                border: `1px solid ${primitive.pink[200]}`,
               }}>
-                <h4 style={{ marginTop: 0, color: primitive.purple[900] }}>
-                  <code style={{ backgroundColor: primitive.purple[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-label</code>
+                <h4 style={{ marginTop: 0, color: primitive.pink[900] }}>
+                  <code style={{ backgroundColor: primitive.pink[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-label</code>
                 </h4>
                 <p style={{ color: primitive.gray[700] }}>
                   要素に対して、スクリーンリーダーが読み上げるラベルを指定します。視覚的なテキストがない要素に使用します。
@@ -1097,7 +1097,7 @@ function App() {
                   padding: spacing.scale[3],
                   borderRadius: radii.borderRadius.base,
                   marginTop: spacing.scale[2],
-                  border: `1px solid ${primitive.purple[200]}`,
+                  border: `1px solid ${primitive.pink[200]}`,
                 }}>
                   <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto' }}>
                     <code>{`<button aria-label="メニューを開く">
@@ -1180,6 +1180,7 @@ function App() {
                 </div>
                 <div style={{ marginTop: spacing.scale[3] }}>
                   <Input
+                    label="パスワード"
                     type="password"
                     placeholder="パスワード"
                     aria-describedby="demo-password-hint"
@@ -1352,12 +1353,12 @@ function App() {
               {/* role="dialog" */}
               <div style={{
                 padding: spacing.scale[4],
-                backgroundColor: primitive.purple[50],
+                backgroundColor: primitive.pink[50],
                 borderRadius: radii.borderRadius.md,
-                border: `1px solid ${primitive.purple[200]}`,
+                border: `1px solid ${primitive.pink[200]}`,
               }}>
-                <h4 style={{ marginTop: 0, color: primitive.purple[900] }}>
-                  <code style={{ backgroundColor: primitive.purple[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>role="dialog"</code>
+                <h4 style={{ marginTop: 0, color: primitive.pink[900] }}>
+                  <code style={{ backgroundColor: primitive.pink[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>role="dialog"</code>
                 </h4>
                 <p style={{ color: primitive.gray[700] }}>
                   モーダルダイアログを示します。aria-labelledby または aria-label と組み合わせて使用します。
@@ -1367,7 +1368,7 @@ function App() {
                   padding: spacing.scale[3],
                   borderRadius: radii.borderRadius.base,
                   marginTop: spacing.scale[2],
-                  border: `1px solid ${primitive.purple[200]}`,
+                  border: `1px solid ${primitive.pink[200]}`,
                 }}>
                   <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto' }}>
                     <code>{`<div
