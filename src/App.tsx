@@ -157,7 +157,7 @@ function App() {
               border: `1px solid ${colors.border.default}`,
             }}
           >
-            <h2 style={{ marginTop: 0, color: primitive.gray[900] }}>Button コンポーネント</h2>
+            <h2 style={{ marginTop: 0, color: primitive.gray[900], fontSize: typography.fontSize['2xl'], fontWeight: 'bold', borderBottom: `3px solid ${primitive.blue[500]}`, paddingBottom: spacing.scale[2], marginBottom: spacing.scale[4] }}>🔘 Button コンポーネント</h2>
           <p style={{ color: primitive.gray[700] }}>WCAG準拠のアクセシブルなボタンコンポーネントです。</p>
 
           <div
@@ -224,7 +224,7 @@ function App() {
             border: `1px solid ${colors.border.default}`,
           }}
         >
-          <h2 style={{ marginTop: 0, color: primitive.gray[900] }}>Input コンポーネント</h2>
+          <h2 style={{ marginTop: 0, color: primitive.gray[900], fontSize: typography.fontSize['2xl'], fontWeight: 'bold', borderBottom: `3px solid ${primitive.blue[500]}`, paddingBottom: spacing.scale[2], marginBottom: spacing.scale[4] }}>📝 Input コンポーネント</h2>
           <p style={{ color: primitive.gray[700] }}>
             ラベル、エラー表示、ヘルプテキストを備えたアクセシブルな入力フィールドです。
           </p>
@@ -312,7 +312,7 @@ function App() {
             border: `1px solid ${colors.border.default}`,
           }}
         >
-          <h2 style={{ marginTop: 0, color: primitive.gray[900] }}>Form コンポーネント</h2>
+          <h2 style={{ marginTop: 0, color: primitive.gray[900], fontSize: typography.fontSize['2xl'], fontWeight: 'bold', borderBottom: `3px solid ${primitive.blue[500]}`, paddingBottom: spacing.scale[2], marginBottom: spacing.scale[4] }}>📋 Form コンポーネント</h2>
           <p style={{ color: primitive.gray[700] }}>
             react-hook-formとZodを統合したアクセシブルなフォームコンポーネントです。
             バリデーション、エラー表示、型安全性が統合されています。
@@ -435,7 +435,7 @@ function App() {
             border: `1px solid ${colors.border.default}`,
           }}
         >
-          <h2 style={{ marginTop: 0, color: primitive.gray[900] }}>Accordion コンポーネント</h2>
+          <h2 style={{ marginTop: 0, color: primitive.gray[900], fontSize: typography.fontSize['2xl'], fontWeight: 'bold', borderBottom: `3px solid ${primitive.blue[500]}`, paddingBottom: spacing.scale[2], marginBottom: spacing.scale[4] }}>📁 Accordion コンポーネント</h2>
           <p style={{ color: primitive.gray[700] }}>
             ネイティブの&lt;details&gt;/&lt;summary&gt;要素を使用したアクセシブルなアコーディオンです。
             キーボード操作とスクリーンリーダーに完全対応しています。
@@ -730,7 +730,7 @@ function App() {
             border: `1px solid ${colors.border.default}`,
           }}
         >
-          <h2 style={{ marginTop: 0, color: primitive.gray[900] }}>WCAGレベルとコントラスト比について</h2>
+          <h2 style={{ marginTop: 0, color: primitive.gray[900], fontSize: typography.fontSize['2xl'], fontWeight: 'bold', borderBottom: `3px solid ${primitive.blue[500]}`, paddingBottom: spacing.scale[2], marginBottom: spacing.scale[4] }}>🎯 WCAGレベルとコントラスト比について</h2>
 
           <div style={{ marginTop: spacing.scale[6] }}>
             <SectionHeading>コントラスト比とは？</SectionHeading>
@@ -1047,7 +1047,7 @@ function App() {
             border: `1px solid ${colors.border.default}`,
           }}
         >
-          <h2 style={{ marginTop: 0, color: primitive.gray[900] }}>デザイントークンシステム</h2>
+          <h2 style={{ marginTop: 0, color: primitive.gray[900], fontSize: typography.fontSize['2xl'], fontWeight: 'bold', borderBottom: `3px solid ${primitive.blue[500]}`, paddingBottom: spacing.scale[2], marginBottom: spacing.scale[4] }}>🎨 デザイントークンシステム</h2>
           <p style={{ lineHeight: typography.lineHeight.normal, color: primitive.gray[900] }}>
             このプロジェクトでは、一貫性のあるデザインを実現するために
             <strong>デザイントークン</strong>を使用しています。
