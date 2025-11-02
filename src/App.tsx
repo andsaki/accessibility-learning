@@ -1099,7 +1099,7 @@ function App() {
                   marginTop: spacing.scale[2],
                   border: `1px solid ${primitive.pink[200]}`,
                 }}>
-                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto' }}>
+                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
                     <code>{`<button aria-label="メニューを開く">
   <icons.menu />
 </button>`}</code>
@@ -1139,7 +1139,7 @@ function App() {
                   marginTop: spacing.scale[2],
                   border: `1px solid ${primitive.blue[200]}`,
                 }}>
-                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto' }}>
+                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
                     <code>{`<h2 id="section-title">ユーザー設定</h2>
 <section aria-labelledby="section-title">
   {/* セクションの内容 */}
@@ -1168,7 +1168,7 @@ function App() {
                   marginTop: spacing.scale[2],
                   border: `1px solid ${primitive.green[200]}`,
                 }}>
-                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto' }}>
+                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
                     <code>{`<input
   type="password"
   aria-describedby="password-hint"
@@ -1216,7 +1216,7 @@ function App() {
                   marginTop: spacing.scale[2],
                   border: `1px solid ${primitive.orange[200]}`,
                 }}>
-                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto' }}>
+                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
                     <code>{`<BreadcrumbItem
   aria-current="page"
   isCurrent
@@ -1260,7 +1260,7 @@ function App() {
                   marginTop: spacing.scale[2],
                   border: `1px solid ${primitive.pink[200]}`,
                 }}>
-                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto' }}>
+                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
                     <code>{`<AccordionSummary
   aria-expanded={isOpen}
 >
@@ -1300,7 +1300,7 @@ function App() {
                   marginTop: spacing.scale[2],
                   border: `1px solid ${primitive.gray[300]}`,
                 }}>
-                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto' }}>
+                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
                     <code>{`<svg aria-hidden="true">
   <path d="..." />
 </svg>
@@ -1338,7 +1338,7 @@ function App() {
                   marginTop: spacing.scale[2],
                   border: `1px solid ${primitive.blue[200]}`,
                 }}>
-                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto' }}>
+                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
                     <code>{`<!-- ❌ 避けるべき -->
 <div role="button" tabIndex={0}>
   クリック
@@ -1370,7 +1370,7 @@ function App() {
                   marginTop: spacing.scale[2],
                   border: `1px solid ${primitive.pink[200]}`,
                 }}>
-                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto' }}>
+                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
                     <code>{`<div
   role="dialog"
   aria-labelledby="dialog-title"
@@ -1403,7 +1403,7 @@ function App() {
                   marginTop: spacing.scale[2],
                   border: `1px solid ${primitive.green[200]}`,
                 }}>
-                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto' }}>
+                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
                     <code>{`<!-- ✅ 推奨: セマンティックHTML -->
 <nav aria-label="メインナビゲーション">
   <ul>
@@ -1439,7 +1439,7 @@ function App() {
                   marginTop: spacing.scale[2],
                   border: `1px solid ${primitive.red[200]}`,
                 }}>
-                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto' }}>
+                  <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
                     <code>{`<div role="alert">
   エラー: フォームの送信に失敗しました
 </div>`}</code>
