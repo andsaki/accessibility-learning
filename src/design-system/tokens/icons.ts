@@ -19,6 +19,7 @@ import {
   FolderOpen,     // 📁 Accordion
   Bell,           // 🔔 Toast
   Navigation,     // 🧭 Breadcrumbs
+  Type,           // 🔤 Text
   Target,         // 🎯 WCAG
   Palette,        // 🎨 Design Tokens
   Rainbow,        // 🌈 デザイン哲学
@@ -49,6 +50,7 @@ export const component = {
   modal: ClipboardList,
   accordion: FolderOpen,
   toast: Bell,
+  text: Type,
   breadcrumbs: Navigation,
   navigation: Navigation,
 } as const;

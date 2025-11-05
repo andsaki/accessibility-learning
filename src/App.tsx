@@ -91,6 +91,7 @@ function App() {
     { id: "toast-component", title: "Toastコンポーネント" },
     { id: "modal-component", title: "Modalコンポーネント" },
     { id: "accordion-component", title: "Accordionコンポーネント" },
+    { id: "text-component", title: "Textコンポーネント" },
     { id: "breadcrumbs-component", title: "Breadcrumbsコンポーネント" },
     { id: "aria-guide", title: "ARIAラベルとrole属性" },
     { id: "accessibility-features", title: "アクセシビリティ機能" },

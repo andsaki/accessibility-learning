@@ -1,4 +1,5 @@
 import { Button, Input, Select, Form, Accordion, AccordionSummary, AccordionContent, Modal, Breadcrumbs, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, formSchemas } from "../design-system/components";
+import { Text } from "../design-system/components/Text";
 import { colors, radii, spacing, typography, icons } from "../design-system/tokens";
 import { primitive } from "../design-system/tokens/colors";
 import { SectionHeading } from "../components/SectionHeading";
@@ -840,6 +841,288 @@ export function ComponentDemos({
             <li><strong>Esc キーで閉じる</strong>: キーボード操作に対応</li>
             <li><strong>背景スクロール防止</strong>: モーダル表示中は背景をスクロールできない</li>
             <li><strong>フォーカス管理</strong>: 開いた時に最初の要素へ、閉じた時に元の場所へフォーカス</li>
+          </ul>
+        </div>
+      </section>
+
+      <section
+        id="text-component"
+        style={{
+          marginBottom: spacing.scale[12],
+          padding: spacing.scale[6],
+          backgroundColor: colors.background.default,
+          borderRadius: radii.borderRadius.lg,
+          border: `1px solid ${colors.border.default}`,
+        }}
+      >
+        <h2 style={{
+          marginTop: 0,
+          color: primitive.gray[900],
+          fontSize: typography.fontSize['2xl'],
+          fontWeight: 'bold',
+          borderBottom: `3px solid ${primitive.blue[500]}`,
+          paddingBottom: spacing.scale[2],
+          marginBottom: spacing.scale[4],
+          display: 'flex',
+          alignItems: 'center',
+          gap: spacing.scale[2]
+        }}>
+          <icons.component.text size={28} color={primitive.blue[600]} strokeWidth={2} />
+          Text コンポーネント
+        </h2>
+        <p style={{ color: primitive.gray[700], marginTop: 0 }}>
+          タイポグラフィトークンを使用したテキスト表示コンポーネントです。
+          セマンティックなHTML要素の選択と柔軟なスタイリングが可能です。
+        </p>
+
+        <div style={{ marginTop: spacing.scale[6] }}>
+          <SectionHeading>見出しレベル</SectionHeading>
+          <div style={{
+            padding: spacing.scale[4],
+            backgroundColor: primitive.gray[50],
+            borderRadius: radii.borderRadius.base,
+            border: `1px solid ${colors.border.default}`,
+          }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[3] }}>
+              <Text variant="h1">見出し1 - ページタイトル</Text>
+              <Text variant="h2">見出し2 - セクションタイトル</Text>
+              <Text variant="h3">見出し3 - サブセクション</Text>
+              <Text variant="h4">見出し4 - 小見出し</Text>
+              <Text variant="h5">見出し5 - より小さい見出し</Text>
+              <Text variant="h6">見出し6 - 最小の見出し</Text>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ marginTop: spacing.scale[8] }}>
+          <SectionHeading>本文バリエーション</SectionHeading>
+          <div style={{
+            padding: spacing.scale[4],
+            backgroundColor: primitive.gray[50],
+            borderRadius: radii.borderRadius.base,
+            border: `1px solid ${colors.border.default}`,
+          }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[3] }}>
+              <Text variant="body-large">大きめの本文テキスト - 重要な説明文などに使用</Text>
+              <Text variant="body">標準の本文テキスト - 最も一般的に使用されるサイズ</Text>
+              <Text variant="body-small">小さめの本文テキスト - 補足情報などに使用</Text>
+              <Text variant="caption">キャプションテキスト - 画像の説明などに使用</Text>
+              <Text variant="overline">OVERLINE TEXT - ラベルやカテゴリに使用</Text>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ marginTop: spacing.scale[8] }}>
+          <SectionHeading>テキスト装飾</SectionHeading>
+          <div style={{
+            padding: spacing.scale[4],
+            backgroundColor: primitive.gray[50],
+            borderRadius: radii.borderRadius.base,
+            border: `1px solid ${colors.border.default}`,
+          }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[2] }}>
+              <Text>通常のテキスト</Text>
+              <Text bold>太字のテキスト</Text>
+              <Text italic>イタリック体のテキスト</Text>
+              <Text underline>下線付きテキスト</Text>
+              <Text strikethrough>打ち消し線付きテキスト</Text>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ marginTop: spacing.scale[8] }}>
+          <SectionHeading>カラーバリエーション</SectionHeading>
+          <div style={{
+            padding: spacing.scale[4],
+            backgroundColor: primitive.gray[50],
+            borderRadius: radii.borderRadius.base,
+            border: `1px solid ${colors.border.default}`,
+          }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[2] }}>
+              <Text color={primitive.blue[600]}>青色のテキスト</Text>
+              <Text color={primitive.red[600]}>赤色のテキスト</Text>
+              <Text color={primitive.green[600]}>緑色のテキスト</Text>
+              <Text color={primitive.pink?.[600] || primitive.blue[600]}>ピンク色のテキスト</Text>
+            </div>
+          </div>
+        </div>
+
+        <div style={{ marginTop: spacing.scale[8] }}>
+          <SectionHeading>WCAGレベルの違い（A / AA / AAA）</SectionHeading>
+
+          <div style={{
+            padding: spacing.scale[4],
+            backgroundColor: primitive.blue[50],
+            borderRadius: radii.borderRadius.md,
+            border: `1px solid ${primitive.blue[200]}`,
+            marginBottom: spacing.scale[4],
+          }}>
+            <Text variant="body" color={primitive.blue[900]}>
+              <strong>WCAG（Web Content Accessibility Guidelines）</strong>は、Webコンテンツをアクセシブルにするための国際的なガイドラインです。
+              3つの適合レベル（A、AA、AAA）があり、レベルが上がるほど厳格な基準となります。
+            </Text>
+          </div>
+
+          <div style={{
+            padding: spacing.scale[4],
+            backgroundColor: primitive.gray[50],
+            borderRadius: radii.borderRadius.base,
+            border: `1px solid ${colors.border.default}`,
+          }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[5] }}>
+              <div style={{
+                padding: spacing.scale[4],
+                backgroundColor: primitive.white,
+                borderRadius: radii.borderRadius.md,
+                border: `2px solid ${primitive.gray[300]}`,
+              }}>
+                <Text variant="h6" color={primitive.gray[900]} style={{ marginBottom: spacing.scale[2] }}>
+                  レベルA（最低限）
+                </Text>
+                <Text variant="body-small" color={primitive.gray[700]} style={{ marginBottom: spacing.scale[2] }}>
+                  コントラスト比: <strong>3:1</strong>（大きいテキストのみ）
+                </Text>
+                <Text variant="body-small" color={primitive.gray[700]} style={{ marginBottom: spacing.scale[2] }}>
+                  最も基本的なアクセシビリティ要件。これを満たさないと多くのユーザーがコンテンツにアクセスできない。
+                </Text>
+                <div style={{
+                  marginTop: spacing.scale[3],
+                  paddingTop: spacing.scale[3],
+                  borderTop: `1px solid ${primitive.gray[200]}`,
+                }}>
+                  <Text variant="body-small" bold color={primitive.gray[800]} style={{ marginBottom: spacing.scale[1] }}>
+                    主な要件例：
+                  </Text>
+                  <ul style={{
+                    margin: 0,
+                    paddingLeft: spacing.scale[5],
+                    fontSize: typography.fontSize.sm,
+                    lineHeight: typography.lineHeight.relaxed,
+                    color: primitive.gray[700],
+                  }}>
+                    <li>キーボードで操作可能</li>
+                    <li>画像に代替テキスト（alt属性）を提供</li>
+                    <li>動画に字幕を提供</li>
+                    <li>十分な時間を提供（自動更新の制御）</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div style={{
+                padding: spacing.scale[4],
+                backgroundColor: primitive.white,
+                borderRadius: radii.borderRadius.md,
+                border: `2px solid ${primitive.blue[400]}`,
+              }}>
+                <Text variant="h6" color={primitive.blue[700]} style={{ marginBottom: spacing.scale[2] }}>
+                  レベルAA（推奨）⭐
+                </Text>
+                <Text variant="body-small" color={primitive.gray[700]} style={{ marginBottom: spacing.scale[2] }}>
+                  コントラスト比: <strong>4.5:1</strong>（通常テキスト）、<strong>3:1</strong>（大きいテキスト18px以上）
+                </Text>
+                <Text variant="body-small" color={primitive.gray[700]} style={{ marginBottom: spacing.scale[2] }}>
+                  ほとんどのWebサイトが目指すべき標準レベル。法律や規制で要求されることが多い（米国のADA、欧州のEAA、日本のJIS X 8341-3など）。
+                </Text>
+                <div style={{
+                  marginTop: spacing.scale[3],
+                  paddingTop: spacing.scale[3],
+                  borderTop: `1px solid ${primitive.blue[200]}`,
+                }}>
+                  <Text variant="body-small" bold color={primitive.blue[800]} style={{ marginBottom: spacing.scale[1] }}>
+                    レベルAに加えて：
+                  </Text>
+                  <ul style={{
+                    margin: 0,
+                    paddingLeft: spacing.scale[5],
+                    fontSize: typography.fontSize.sm,
+                    lineHeight: typography.lineHeight.relaxed,
+                    color: primitive.gray[700],
+                  }}>
+                    <li>十分なカラーコントラスト（4.5:1以上）</li>
+                    <li>テキストのリサイズ（200%まで拡大可能）</li>
+                    <li>キーボードフォーカスの視覚的表示</li>
+                    <li>明確な見出し構造（h1-h6）</li>
+                    <li>フォームのエラー識別と説明</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div style={{
+                padding: spacing.scale[4],
+                backgroundColor: primitive.white,
+                borderRadius: radii.borderRadius.md,
+                border: `2px solid ${primitive.green[400]}`,
+              }}>
+                <Text variant="h6" color={primitive.green[700]} style={{ marginBottom: spacing.scale[2] }}>
+                  レベルAAA（最高）
+                </Text>
+                <Text variant="body-small" color={primitive.gray[700]} style={{ marginBottom: spacing.scale[2] }}>
+                  コントラスト比: <strong>7:1</strong>（通常テキスト）、<strong>4.5:1</strong>（大きいテキスト18px以上）
+                </Text>
+                <Text variant="body-small" color={primitive.gray[700]} style={{ marginBottom: spacing.scale[2] }}>
+                  最も厳格なアクセシビリティ基準。公共機関、医療、金融、教育機関などで推奨。
+                  <strong>すべてのコンテンツでAAA達成は現実的でない場合が多い</strong>ため、重要な部分に適用することが推奨される。
+                </Text>
+                <div style={{
+                  marginTop: spacing.scale[3],
+                  paddingTop: spacing.scale[3],
+                  borderTop: `1px solid ${primitive.green[200]}`,
+                }}>
+                  <Text variant="body-small" bold color={primitive.green[800]} style={{ marginBottom: spacing.scale[1] }}>
+                    レベルAAに加えて：
+                  </Text>
+                  <ul style={{
+                    margin: 0,
+                    paddingLeft: spacing.scale[5],
+                    fontSize: typography.fontSize.sm,
+                    lineHeight: typography.lineHeight.relaxed,
+                    color: primitive.gray[700],
+                  }}>
+                    <li>非常に高いコントラスト比（7:1以上）</li>
+                    <li>音声のみのコンテンツに代替テキストを提供</li>
+                    <li>手話動画の提供</li>
+                    <li>より広い行間隔（1.5倍以上）</li>
+                    <li>専門用語の説明や読み方の提供</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div style={{
+            marginTop: spacing.scale[4],
+            padding: spacing.scale[3],
+            backgroundColor: primitive.yellow,
+            borderRadius: radii.borderRadius.md,
+            border: `2px solid ${primitive.gray[400]}`,
+          }}>
+            <Text variant="body-small" bold color={primitive.gray[900]}>
+              💡 実用的な選び方
+            </Text>
+            <ul style={{ margin: `${spacing.scale[2]} 0 0 0`, paddingLeft: spacing.scale[5], fontSize: typography.fontSize.sm, lineHeight: typography.lineHeight.relaxed }}>
+              <li><strong>一般的なWebサイト</strong>: AA を目指す</li>
+              <li><strong>公共サービス、医療、金融</strong>: AAA を検討</li>
+              <li><strong>最低限</strong>: A は避け、少なくとも AA を満たす</li>
+            </ul>
+          </div>
+        </div>
+
+        <div style={{
+          marginTop: spacing.scale[8],
+          padding: spacing.scale[4],
+          backgroundColor: primitive.blue[50],
+          borderRadius: radii.borderRadius.md,
+          border: `1px solid ${primitive.blue[200]}`,
+        }}>
+          <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
+            💡 Textコンポーネントの特徴
+          </h4>
+          <ul style={{ color: primitive.blue[900], lineHeight: typography.lineHeight.relaxed }}>
+            <li><strong>タイポグラフィトークン</strong>: デザインシステムの一貫性を保つ</li>
+            <li><strong>セマンティックHTML</strong>: variantに応じて適切なHTML要素を自動選択</li>
+            <li><strong>柔軟なカスタマイズ</strong>: as propでHTML要素を上書き可能</li>
+            <li><strong>アクセシブルな色</strong>: デフォルトで適切なコントラスト比を提供</li>
+            <li><strong>レスポンシブ対応</strong>: rem単位でユーザーの設定を尊重</li>
           </ul>
         </div>
       </section>
