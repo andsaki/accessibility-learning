@@ -87,6 +87,8 @@ function App() {
     { id: "button-component", title: "Buttonコンポーネント" },
     { id: "input-component", title: "Inputコンポーネント" },
     { id: "select-component", title: "Selectコンポーネント" },
+    { id: "checkbox-component", title: "Checkboxコンポーネント" },
+    { id: "radio-component", title: "Radioコンポーネント" },
     { id: "form-component", title: "Formコンポーネント" },
     { id: "toast-component", title: "Toastコンポーネント" },
     { id: "modal-component", title: "Modalコンポーネント" },
