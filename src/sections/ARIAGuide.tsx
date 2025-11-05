@@ -1,10 +1,13 @@
-import { Button, Input, Accordion, AccordionSummary, AccordionContent, Breadcrumbs, BreadcrumbList, BreadcrumbItem, BreadcrumbLink } from "../design-system/components";
+import { useState } from "react";
+import { Button, Input, Accordion, AccordionSummary, AccordionContent, Breadcrumbs, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, Modal } from "../design-system/components";
 import { colors, radii, spacing, typography, icons } from "../design-system/tokens";
 import { primitive } from "../design-system/tokens/colors";
 import { SectionHeading } from "../components/SectionHeading";
 import { Tooltip } from "../components/Tooltip";
 
 export const ARIAGuide = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <section
       id="aria-guide"
@@ -502,23 +505,76 @@ export const ARIAGuide = () => {
             <p style={{ color: primitive.gray[700], marginTop: 0 }}>
               モーダルダイアログを示します。aria-labelledby または aria-label と組み合わせて使用します。
             </p>
+
             <div style={{
               backgroundColor: primitive.white,
               padding: spacing.scale[3],
               borderRadius: radii.borderRadius.base,
-              marginTop: spacing.scale[2],
+              marginTop: spacing.scale[3],
+              border: `1px solid ${primitive.pink[200]}`,
+            }}>
+              <h5 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.pink[900], fontSize: typography.fontSize.base }}>
+                💡 モーダルのアクセシビリティ要件
+              </h5>
+              <ul style={{ color: primitive.gray[700], lineHeight: typography.lineHeight.relaxed, margin: 0, paddingLeft: spacing.scale[5] }}>
+                <li>role="dialog" と aria-modal="true" を使用</li>
+                <li>aria-labelledby でタイトルを参照</li>
+                <li>フォーカストラップ（Tab キーでモーダル内を循環）</li>
+                <li>Esc キーで閉じる機能</li>
+                <li>背景スクロールの防止</li>
+                <li>開いた時に最初のフォーカス可能要素にフォーカス</li>
+                <li>閉じた時に元の場所にフォーカスを戻す</li>
+              </ul>
+            </div>
+
+            <div style={{
+              backgroundColor: primitive.white,
+              padding: spacing.scale[3],
+              borderRadius: radii.borderRadius.base,
+              marginTop: spacing.scale[3],
               border: `1px solid ${primitive.pink[200]}`,
             }}>
               <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
-                <code>{`<div
-  role="dialog"
-  aria-labelledby="dialog-title"
-  aria-modal="true"
+                <code>{`<Modal
+  isOpen={isOpen}
+  onClose={() => setIsOpen(false)}
+  title="確認"
 >
-  <h2 id="dialog-title">確認</h2>
-  {/* ダイアログの内容 */}
-</div>`}</code>
+  この操作を実行してもよろしいですか？
+</Modal>`}</code>
               </pre>
+            </div>
+
+            <div style={{ marginTop: spacing.scale[3] }}>
+              <Button onClick={() => setIsModalOpen(true)} variant="primary">
+                モーダルを開く
+              </Button>
+              <Modal
+                isOpen={isModalOpen}
+                onClose={() => setIsModalOpen(false)}
+                title="アクセシブルなモーダル"
+                footer={
+                  <>
+                    <Button variant="outline" onClick={() => setIsModalOpen(false)}>
+                      キャンセル
+                    </Button>
+                    <Button variant="primary" onClick={() => setIsModalOpen(false)}>
+                      OK
+                    </Button>
+                  </>
+                }
+              >
+                <p style={{ margin: 0, color: primitive.gray[700] }}>
+                  このモーダルは以下のアクセシビリティ機能を実装しています：
+                </p>
+                <ul style={{ color: primitive.gray[700], lineHeight: typography.lineHeight.relaxed }}>
+                  <li>フォーカストラップ（Tabキーでモーダル内を循環）</li>
+                  <li>Escキーで閉じる</li>
+                  <li>背景スクロール防止</li>
+                  <li>適切なARIA属性（role="dialog", aria-modal="true"）</li>
+                  <li>閉じた後、元の要素にフォーカスを戻す</li>
+                </ul>
+              </Modal>
             </div>
           </div>
 
