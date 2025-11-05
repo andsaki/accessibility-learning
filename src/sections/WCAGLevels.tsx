@@ -30,6 +30,64 @@ export function WCAGLevels() {
         WCAGレベルとコントラスト比について
       </h2>
 
+      <div
+        style={{
+          padding: spacing.scale[5],
+          backgroundColor: primitive.yellow[50],
+          borderRadius: radii.borderRadius.lg,
+          border: `3px solid ${primitive.yellow[400]}`,
+          marginBottom: spacing.scale[8],
+        }}
+      >
+        <h3 style={{ marginTop: 0, marginBottom: spacing.scale[3], color: primitive.gray[900], fontSize: typography.fontSize.xl }}>
+          📚 WCAGレベル（A/AA/AAA）とは？
+        </h3>
+        <p style={{ lineHeight: "1.8", color: primitive.gray[900], marginBottom: spacing.scale[4] }}>
+          WCAG（Web Content Accessibility Guidelines）は、Webコンテンツをアクセシブルにするための国際的なガイドラインです。
+          3つのレベル（A/AA/AAA）で、達成すべきアクセシビリティの基準を定めています。
+        </p>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[3] }}>
+          <div style={{ padding: spacing.scale[3], backgroundColor: primitive.white, borderRadius: radii.borderRadius.md, border: `1px solid ${primitive.gray[300]}` }}>
+            <h4 style={{ margin: 0, marginBottom: spacing.scale[1], color: primitive.gray[800], fontSize: typography.fontSize.base }}>
+              🔹 レベルA（最低限）
+            </h4>
+            <p style={{ margin: 0, lineHeight: "1.6", color: primitive.gray[700], fontSize: typography.fontSize.sm }}>
+              Webコンテンツの最低限のアクセシビリティレベル。これを満たさないと、多くのユーザーがコンテンツにアクセスできません。
+              <strong>しかし、Aだけでは不十分です。</strong>
+            </p>
+          </div>
+
+          <div style={{ padding: spacing.scale[3], backgroundColor: primitive.blue[50], borderRadius: radii.borderRadius.md, border: `2px solid ${primitive.blue[400]}` }}>
+            <h4 style={{ margin: 0, marginBottom: spacing.scale[1], color: primitive.blue[900], fontSize: typography.fontSize.base }}>
+              ⭐ レベルAA（推奨）- 実用的な標準
+            </h4>
+            <p style={{ margin: 0, lineHeight: "1.6", color: primitive.gray[900], fontSize: typography.fontSize.sm }}>
+              <strong>ほとんどのWebサイトで目指すべき標準レベルです。</strong>
+              多くの国や組織で法的要件として採用されています。日本の公的機関も原則AAレベルを求めています。
+              このデザインシステムもAAレベルを標準としています。
+            </p>
+          </div>
+
+          <div style={{ padding: spacing.scale[3], backgroundColor: primitive.white, borderRadius: radii.borderRadius.md, border: `1px solid ${primitive.orange[400]}` }}>
+            <h4 style={{ margin: 0, marginBottom: spacing.scale[1], color: primitive.orange[900], fontSize: typography.fontSize.base }}>
+              🏆 レベルAAA（最高）
+            </h4>
+            <p style={{ margin: 0, lineHeight: "1.6", color: primitive.gray[700], fontSize: typography.fontSize.sm }}>
+              最高レベルのアクセシビリティ。全てのコンテンツでAAAを達成するのは現実的ではありませんが、
+              重要なコンテンツ（医療情報、法的文書など）では目指す価値があります。
+            </p>
+          </div>
+        </div>
+
+        <div style={{ marginTop: spacing.scale[4], padding: spacing.scale[3], backgroundColor: primitive.blue[100], borderRadius: radii.borderRadius.md }}>
+          <p style={{ margin: 0, lineHeight: "1.6", color: primitive.blue[900], fontSize: typography.fontSize.sm, fontWeight: 600 }}>
+            💡 このデザインシステムでは、全てのコンポーネントで<strong>レベルAA</strong>をデフォルトにしています。
+            必要に応じてA/AAAも選択可能です。
+          </p>
+        </div>
+      </div>
+
       <div style={{ marginTop: spacing.scale[6] }}>
         <SectionHeading>コントラスト比とは？</SectionHeading>
         <p style={{ lineHeight: "1.8", color: primitive.gray[900] }}>
