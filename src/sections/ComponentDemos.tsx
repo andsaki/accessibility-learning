@@ -3,6 +3,7 @@ import { Text } from "../design-system/components/Text";
 import { TextArea } from "../design-system/components/TextArea";
 import { Checkbox } from "../design-system/components/Checkbox";
 import { Radio, RadioGroup } from "../design-system/components/Radio";
+import { Loading, InlineLoading } from "../design-system/components/Loading";
 import { colors, radii, spacing, typography, icons } from "../design-system/tokens";
 import { primitive } from "../design-system/tokens/colors";
 import { SectionHeading } from "../components/SectionHeading";
@@ -553,6 +554,59 @@ export function ComponentDemos({
             <li><strong>キーボード操作</strong>: 矢印キーで選択変更、Spaceキーで選択</li>
             <li><strong>排他的選択</strong>: name属性で同じグループ内は1つのみ選択可能</li>
             <li><strong>フォーカス表示</strong>: Tabキー操作時のみフォーカススタイル表示</li>
+          </ul>
+        </div>
+      </section>
+
+      <section
+        id="loading-component"
+        style={{
+          marginBottom: spacing.scale[12],
+          padding: spacing.scale[6],
+          backgroundColor: colors.background.default,
+          borderRadius: radii.borderRadius.lg,
+          border: `1px solid ${colors.border.default}`,
+        }}
+      >
+        <h2 style={{
+          marginTop: 0,
+          color: primitive.gray[900],
+          fontSize: typography.fontSize['2xl'],
+          fontWeight: 'bold',
+          borderBottom: `3px solid ${primitive.blue[500]}`,
+          paddingBottom: spacing.scale[2],
+          marginBottom: spacing.scale[4],
+          display: 'flex',
+          alignItems: 'center',
+          gap: spacing.scale[2]
+        }}>
+          <icons.component.button size={28} color={primitive.blue[600]} strokeWidth={2} />
+          Loading コンポーネント
+        </h2>
+        <p style={{ color: primitive.gray[700] }}>
+          ローディングスピナーコンポーネントです。
+          データの読み込み中やAPI通信中などの処理待ち状態を表示します。
+        </p>
+
+        <LoadingSection />
+
+        <div style={{
+          marginTop: spacing.scale[8],
+          padding: spacing.scale[4],
+          backgroundColor: primitive.blue[50],
+          borderRadius: radii.borderRadius.md,
+          border: `1px solid ${primitive.blue[200]}`,
+        }}>
+          <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
+            💡 Loadingの特徴
+          </h4>
+          <ul style={{ color: primitive.blue[900], lineHeight: typography.lineHeight.relaxed }}>
+            <li><strong>スクリーンリーダー対応</strong>: role="status", aria-label, aria-live</li>
+            <li><strong>サイズバリエーション</strong>: sm/md/lg/xlの4サイズ</li>
+            <li><strong>カラーバリエーション</strong>: primary/secondary/whiteの3色</li>
+            <li><strong>フルスクリーン表示</strong>: オーバーレイでモーダル風に表示可能</li>
+            <li><strong>インラインローディング</strong>: ボタン内やテキスト内での使用に最適</li>
+            <li><strong>SVGアニメーション</strong>: 滑らかな回転アニメーション</li>
           </ul>
         </div>
       </section>
@@ -1578,3 +1632,71 @@ function TextAreaSection() {
     </>
   );
 }
+
+// Loading Section Component
+function LoadingSection() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [isButtonLoading, setIsButtonLoading] = useState(false);
+
+  return (
+    <>
+      <div style={{ marginTop: spacing.scale[6] }}>
+        <SectionHeading>サイズバリエーション</SectionHeading>
+        <div style={{ display: "flex", alignItems: "center", gap: spacing.scale[8] }}>
+          <Loading size="sm" label="Small" />
+          <Loading size="md" label="Medium" />
+          <Loading size="lg" label="Large" />
+          <Loading size="xl" label="XLarge" />
+        </div>
+      </div>
+
+      <div style={{ marginTop: spacing.scale[8] }}>
+        <SectionHeading>インラインローディング</SectionHeading>
+        <div style={{ display: "flex", flexDirection: "column", gap: spacing.scale[3] }}>
+          <div style={{ fontSize: "14px", display: "flex", alignItems: "center", gap: "8px" }}>
+            <InlineLoading size="sm" color="primary" />
+            <span>データを読み込んでいます...</span>
+          </div>
+          <div style={{ fontSize: "16px", display: "flex", alignItems: "center", gap: "8px" }}>
+            <InlineLoading size="md" color="primary" />
+            <span>処理中です...</span>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ marginTop: spacing.scale[8] }}>
+        <SectionHeading>ボタン内でのローディング</SectionHeading>
+        <Button
+          onClick={() => {
+            setIsButtonLoading(true);
+            setTimeout(() => setIsButtonLoading(false), 2000);
+          }}
+          disabled={isButtonLoading}
+        >
+          {isButtonLoading ? (
+            <span style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+              <InlineLoading size="sm" color="primary" />
+              送信中...
+            </span>
+          ) : (
+            "送信"
+          )}
+        </Button>
+      </div>
+
+      <div style={{ marginTop: spacing.scale[8] }}>
+        <SectionHeading>フルスクリーンオーバーレイ</SectionHeading>
+        <Button
+          onClick={() => {
+            setIsLoading(true);
+            setTimeout(() => setIsLoading(false), 3000);
+          }}
+        >
+          ローディングを表示（3秒間）
+        </Button>
+        {isLoading && <Loading fullscreen label="データを読み込んでいます..." />}
+      </div>
+    </>
+  );
+}
+

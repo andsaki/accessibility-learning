@@ -90,6 +90,7 @@ function App() {
     { id: "textarea-component", title: "TextAreaコンポーネント" },
     { id: "checkbox-component", title: "Checkboxコンポーネント" },
     { id: "radio-component", title: "Radioコンポーネント" },
+    { id: "loading-component", title: "Loadingコンポーネント" },
     { id: "form-component", title: "Formコンポーネント" },
     { id: "toast-component", title: "Toastコンポーネント" },
     { id: "modal-component", title: "Modalコンポーネント" },
