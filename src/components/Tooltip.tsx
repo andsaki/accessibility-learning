@@ -126,18 +126,22 @@ export const Tooltip: React.FC<TooltipProps> = ({
   };
 
   return (
-    <span style={{ position: 'relative', display: 'inline-block' }}>
+    <span
+      style={{ position: 'relative', display: 'inline-block' }}
+      onMouseEnter={showTooltip}
+      onMouseLeave={hideTooltip}
+      onFocus={showTooltip}
+      onBlur={hideTooltip}
+    >
       <span
-        onMouseEnter={showTooltip}
-        onMouseLeave={hideTooltip}
-        onFocus={showTooltip}
-        onBlur={hideTooltip}
         aria-describedby={isVisible ? tooltipId.current : undefined}
         style={{
           outline: isFocusVisible ? `2px solid ${colors.border.focus}` : 'none',
           outlineOffset: '2px',
           borderRadius: '4px',
+          display: 'inline-block',
         }}
+        tabIndex={0}
       >
         {children}
       </span>
