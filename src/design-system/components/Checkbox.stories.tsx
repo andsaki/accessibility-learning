@@ -46,6 +46,7 @@ type Story = StoryObj<typeof meta>;
  * デフォルト
  */
 export const Default: Story = {
+  args: {},
   render: () => {
     const [checked, setChecked] = useState(false);
     return (
@@ -62,6 +63,7 @@ export const Default: Story = {
  * ヘルプテキスト付き
  */
 export const WithHelpText: Story = {
+  args: {},
   render: () => {
     const [checked, setChecked] = useState(false);
     return (
@@ -79,6 +81,7 @@ export const WithHelpText: Story = {
  * エラー状態
  */
 export const WithError: Story = {
+  args: {},
   render: () => {
     const [checked, setChecked] = useState(false);
     return (
@@ -96,6 +99,7 @@ export const WithError: Story = {
  * 無効化状態
  */
 export const Disabled: Story = {
+  args: {},
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
       <Checkbox label="無効化（未チェック）" disabled={true} checked={false} />
@@ -110,6 +114,7 @@ export const Disabled: Story = {
  * 親チェックボックスで子チェックボックスの一部のみが選択されている状態を表現します。
  */
 export const Indeterminate: Story = {
+  args: {},
   render: () => {
     const [checked, setChecked] = useState(false);
     return (
@@ -130,6 +135,7 @@ export const Indeterminate: Story = {
  * 複数のチェックボックスをグループ化した例です。
  */
 export const CheckboxGroup: Story = {
+  args: {},
   render: () => {
     const [items, setItems] = useState({
       option1: false,
@@ -165,6 +171,7 @@ export const CheckboxGroup: Story = {
  * 親チェックボックスで子チェックボックスを一括選択できる例です。
  */
 export const ParentChild: Story = {
+  args: {},
   render: () => {
     const [parent, setParent] = useState(false);
     const [children, setChildren] = useState({
@@ -230,6 +237,7 @@ export const ParentChild: Story = {
  * Tabキーでフォーカス移動、Spaceキーでチェック切り替えができます。
  */
 export const KeyboardInteraction: Story = {
+  args: {},
   render: () => {
     const [items, setItems] = useState({
       option1: false,

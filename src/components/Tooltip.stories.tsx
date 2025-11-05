@@ -14,6 +14,7 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
+  args: {},
   render: () => (
     <Tooltip content="これはツールチップです">
       <span style={{ textDecoration: 'underline dotted', cursor: 'help' }}>ホバーしてください</span>
@@ -22,6 +23,7 @@ export const Default: Story = {
 };
 
 export const Top: Story = {
+  args: {},
   render: () => (
     <Tooltip content="上に表示されます" position="top">
       <button style={{ padding: '8px 16px', cursor: 'pointer', backgroundColor: '#3b82f6', color: 'white', border: 'none', borderRadius: '6px' }}>上</button>
@@ -30,6 +32,7 @@ export const Top: Story = {
 };
 
 export const Bottom: Story = {
+  args: {},
   render: () => (
     <Tooltip content="下に表示されます" position="bottom">
       <button style={{ padding: '8px 16px', cursor: 'pointer', backgroundColor: '#3b82f6', color: 'white', border: 'none', borderRadius: '6px' }}>下</button>
@@ -38,6 +41,7 @@ export const Bottom: Story = {
 };
 
 export const Left: Story = {
+  args: {},
   render: () => (
     <Tooltip content="左に表示されます" position="left">
       <button style={{ padding: '8px 16px', cursor: 'pointer', backgroundColor: '#3b82f6', color: 'white', border: 'none', borderRadius: '6px' }}>左</button>
@@ -46,6 +50,7 @@ export const Left: Story = {
 };
 
 export const Right: Story = {
+  args: {},
   render: () => (
     <Tooltip content="右に表示されます" position="right">
       <button style={{ padding: '8px 16px', cursor: 'pointer', backgroundColor: '#3b82f6', color: 'white', border: 'none', borderRadius: '6px' }}>右</button>
@@ -54,6 +59,7 @@ export const Right: Story = {
 };
 
 export const WithDelay: Story = {
+  args: {},
   render: () => (
     <Tooltip content="500ms後に表示されます" delay={500}>
       <span style={{ textDecoration: 'underline dotted', cursor: 'help' }}>遅延表示</span>
@@ -62,6 +68,7 @@ export const WithDelay: Story = {
 };
 
 export const NoDelay: Story = {
+  args: {},
   render: () => (
     <Tooltip content="すぐに表示されます" delay={0}>
       <span style={{ textDecoration: 'underline dotted', cursor: 'help' }}>即座に表示</span>
@@ -70,6 +77,7 @@ export const NoDelay: Story = {
 };
 
 export const LongText: Story = {
+  args: {},
   render: () => (
     <Tooltip content="これは長いツールチップのテキストです。複数の情報を含めることができます。">
       <span style={{ textDecoration: 'underline dotted', cursor: 'help' }}>長いテキスト</span>
@@ -78,6 +86,7 @@ export const LongText: Story = {
 };
 
 export const AllPositions: Story = {
+  args: {},
   render: () => (
     <div style={{ display: 'flex', gap: '32px', padding: '100px', flexWrap: 'wrap' }}>
       <Tooltip content="上に表示" position="top">
