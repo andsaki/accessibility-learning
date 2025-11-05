@@ -2,6 +2,7 @@ import { Button, Input, Accordion, AccordionSummary, AccordionContent, Breadcrum
 import { colors, radii, spacing, typography, icons } from "../design-system/tokens";
 import { primitive } from "../design-system/tokens/colors";
 import { SectionHeading } from "../components/SectionHeading";
+import { Tooltip } from "../components/Tooltip";
 
 export const ARIAGuide = () => {
   return (
@@ -333,6 +334,118 @@ export const ARIAGuide = () => {
 <span>アイコンの意味を説明するテキスト</span>`}</code>
               </pre>
             </div>
+          </div>
+        </div>
+      </div>
+
+      <div style={{ marginTop: spacing.scale[8] }}>
+        <SectionHeading>ツールチップ（role="tooltip"）</SectionHeading>
+
+        <div style={{
+          padding: spacing.scale[4],
+          backgroundColor: primitive.pink[50],
+          borderRadius: radii.borderRadius.md,
+          border: `1px solid ${primitive.pink[200]}`,
+        }}>
+          <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.pink[900] }}>
+            <code style={{ backgroundColor: primitive.pink[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>role="tooltip"</code>
+          </h4>
+          <p style={{ color: primitive.gray[700], marginTop: 0 }}>
+            ツールチップは、要素に関する補足情報を提供するポップアップです。aria-describedby と組み合わせて使用します。
+          </p>
+
+          <div style={{
+            backgroundColor: primitive.white,
+            padding: spacing.scale[3],
+            borderRadius: radii.borderRadius.base,
+            marginTop: spacing.scale[3],
+            border: `1px solid ${primitive.pink[200]}`,
+          }}>
+            <h5 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.pink[900], fontSize: typography.fontSize.base }}>
+              💡 ツールチップのアクセシビリティ要件
+            </h5>
+            <ul style={{ color: primitive.gray[700], lineHeight: typography.lineHeight.relaxed, margin: 0, paddingLeft: spacing.scale[5] }}>
+              <li>role="tooltip" を使用する</li>
+              <li>一意のIDを持つ</li>
+              <li>トリガー要素から aria-describedby で参照される</li>
+              <li>キーボードフォーカスとマウスホバーの両方に対応</li>
+              <li>適切な遅延時間を設定（推奨：300ms）</li>
+              <li>視覚的に明確なポジショニング</li>
+            </ul>
+          </div>
+
+          <div style={{
+            backgroundColor: primitive.white,
+            padding: spacing.scale[3],
+            borderRadius: radii.borderRadius.base,
+            marginTop: spacing.scale[3],
+            border: `1px solid ${primitive.pink[200]}`,
+          }}>
+            <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
+              <code>{`<Tooltip content="追加の説明テキスト" position="top">
+  <button>ホバーまたはフォーカス</button>
+</Tooltip>`}</code>
+            </pre>
+          </div>
+
+          <div style={{
+            marginTop: spacing.scale[4],
+            padding: spacing.scale[3],
+            backgroundColor: primitive.white,
+            borderRadius: radii.borderRadius.base,
+            border: `1px solid ${primitive.pink[200]}`,
+          }}>
+            <h5 style={{ marginTop: 0, marginBottom: spacing.scale[3], color: primitive.pink[900], fontSize: typography.fontSize.base }}>
+              🎨 実例
+            </h5>
+            <div style={{ display: 'flex', gap: spacing.scale[4], flexWrap: 'wrap', alignItems: 'center' }}>
+              <Tooltip content="これは上に表示されるツールチップです" position="top">
+                <Button variant="outline" size="sm">上</Button>
+              </Tooltip>
+              <Tooltip content="これは下に表示されるツールチップです" position="bottom">
+                <Button variant="outline" size="sm">下</Button>
+              </Tooltip>
+              <Tooltip content="これは左に表示されるツールチップです" position="left">
+                <Button variant="outline" size="sm">左</Button>
+              </Tooltip>
+              <Tooltip content="これは右に表示されるツールチップです" position="right">
+                <Button variant="outline" size="sm">右</Button>
+              </Tooltip>
+              <Tooltip content="このアイコンについての詳細情報" position="top">
+                <span style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '24px',
+                  height: '24px',
+                  borderRadius: '50%',
+                  backgroundColor: primitive.pink[100],
+                  color: primitive.pink[700],
+                  fontSize: typography.fontSize.sm,
+                  fontWeight: 'bold',
+                  cursor: 'help',
+                  textDecoration: 'none',
+                }}>
+                  ?
+                </span>
+              </Tooltip>
+            </div>
+          </div>
+
+          <div style={{
+            marginTop: spacing.scale[3],
+            padding: spacing.scale[3],
+            backgroundColor: primitive.yellow,
+            borderRadius: radii.borderRadius.base,
+            border: `2px solid ${primitive.black}`,
+          }}>
+            <h5 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.black, fontSize: typography.fontSize.base }}>
+              ⚠️ ツールチップ vs タイトル属性
+            </h5>
+            <p style={{ color: primitive.black, margin: 0, lineHeight: typography.lineHeight.relaxed }}>
+              HTML の title 属性はアクセシビリティの観点から推奨されません。キーボードユーザーには利用できず、タッチデバイスでは表示されないためです。
+              代わりに、適切に実装された aria-describedby と role="tooltip" を使用してください。
+            </p>
           </div>
         </div>
       </div>
