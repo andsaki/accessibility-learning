@@ -66,7 +66,7 @@ export const Radio: React.FC<RadioProps> = ({
     <div
       style={{
         display: "flex",
-        alignItems: "flex-start",
+        alignItems: "center",
         gap: spacing.scale[2],
       }}
     >

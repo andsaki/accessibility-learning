@@ -78,7 +78,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
     <div
       style={{
         display: "flex",
-        alignItems: "flex-start",
+        alignItems: "center",
         gap: spacing.scale[2],
       }}
     >
