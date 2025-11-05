@@ -1,5 +1,6 @@
 import { Button, Input, Select, Form, Accordion, AccordionSummary, AccordionContent, Modal, Breadcrumbs, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, formSchemas } from "../design-system/components";
 import { Text } from "../design-system/components/Text";
+import { TextArea } from "../design-system/components/TextArea";
 import { Checkbox } from "../design-system/components/Checkbox";
 import { Radio, RadioGroup } from "../design-system/components/Radio";
 import { colors, radii, spacing, typography, icons } from "../design-system/tokens";
@@ -395,6 +396,59 @@ export function ComponentDemos({
             <li><strong>WCAGレベル対応</strong>: A/AA/AAAの3段階</li>
             <li><strong>キーボードフォーカス</strong>: Tabキー操作時のみフォーカススタイル表示</li>
             <li><strong>ネイティブselect要素</strong>: アクセシビリティとユーザビリティを両立</li>
+          </ul>
+        </div>
+      </section>
+
+      <section
+        id="textarea-component"
+        style={{
+          marginBottom: spacing.scale[12],
+          padding: spacing.scale[6],
+          backgroundColor: colors.background.default,
+          borderRadius: radii.borderRadius.lg,
+          border: `1px solid ${colors.border.default}`,
+        }}
+      >
+        <h2 style={{
+          marginTop: 0,
+          color: primitive.gray[900],
+          fontSize: typography.fontSize['2xl'],
+          fontWeight: 'bold',
+          borderBottom: `3px solid ${primitive.blue[500]}`,
+          paddingBottom: spacing.scale[2],
+          marginBottom: spacing.scale[4],
+          display: 'flex',
+          alignItems: 'center',
+          gap: spacing.scale[2]
+        }}>
+          <icons.component.input size={28} color={primitive.blue[600]} strokeWidth={2} />
+          TextArea コンポーネント
+        </h2>
+        <p style={{ color: primitive.gray[700] }}>
+          テキストエリアコンポーネントです。
+          複数行のテキスト入力が必要な場面で使用します。
+        </p>
+
+        <TextAreaSection />
+
+        <div style={{
+          marginTop: spacing.scale[8],
+          padding: spacing.scale[4],
+          backgroundColor: primitive.blue[50],
+          borderRadius: radii.borderRadius.md,
+          border: `1px solid ${primitive.blue[200]}`,
+        }}>
+          <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
+            💡 TextAreaの特徴
+          </h4>
+          <ul style={{ color: primitive.blue[900], lineHeight: typography.lineHeight.relaxed }}>
+            <li><strong>ラベル関連付け</strong>: for/id属性で自動関連付け</li>
+            <li><strong>エラー表示</strong>: aria-invalid, aria-describedby, role="alert"</li>
+            <li><strong>文字数カウント</strong>: maxLengthとshowCountで制限と表示</li>
+            <li><strong>リサイズ可能</strong>: 縦方向にユーザーがサイズ変更可能</li>
+            <li><strong>キーボードフォーカス</strong>: Tabキー操作時のみフォーカススタイル表示</li>
+            <li><strong>WCAGレベル対応</strong>: A/AA/AAAの3段階</li>
           </ul>
         </div>
       </section>
@@ -1470,6 +1524,56 @@ function RadioSection() {
             onChange={(e) => setShipping(e.target.value)}
           />
         </RadioGroup>
+      </div>
+    </>
+  );
+}
+
+// TextArea Section Component
+function TextAreaSection() {
+  const [comment, setComment] = useState("");
+  const [review, setReview] = useState("");
+  const [tweet, setTweet] = useState("");
+
+  return (
+    <>
+      <div style={{ marginTop: spacing.scale[6] }}>
+        <SectionHeading>基本的な使い方</SectionHeading>
+        <div style={{ maxWidth: '600px' }}>
+          <TextArea
+            label="コメント"
+            placeholder="コメントを入力してください"
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+          />
+        </div>
+      </div>
+
+      <div style={{ marginTop: spacing.scale[8] }}>
+        <SectionHeading>ヘルプテキスト付き</SectionHeading>
+        <div style={{ maxWidth: '600px' }}>
+          <TextArea
+            label="レビュー"
+            helpText="商品の感想をお聞かせください"
+            placeholder="レビューを入力してください"
+            value={review}
+            onChange={(e) => setReview(e.target.value)}
+          />
+        </div>
+      </div>
+
+      <div style={{ marginTop: spacing.scale[8] }}>
+        <SectionHeading>文字数カウント付き</SectionHeading>
+        <div style={{ maxWidth: '600px' }}>
+          <TextArea
+            label="ツイート"
+            showCount
+            maxLength={280}
+            placeholder="いまどうしてる？"
+            value={tweet}
+            onChange={(e) => setTweet(e.target.value)}
+          />
+        </div>
       </div>
     </>
   );
