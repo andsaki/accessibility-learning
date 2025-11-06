@@ -234,6 +234,19 @@ export function ComponentDemos({
             helperText="この項目は編集できません"
           />
         </div>
+
+        <div style={{ marginTop: spacing.scale[8] }}>
+          <SectionHeading>数値入力（スピンボタン付き）</SectionHeading>
+          <Input
+            label="数量"
+            type="number"
+            placeholder="0"
+            min={0}
+            max={100}
+            step={1}
+            helperText="0〜100の範囲で入力してください"
+          />
+        </div>
       </section>
 
       <section
