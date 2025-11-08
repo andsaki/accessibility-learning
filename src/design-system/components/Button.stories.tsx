@@ -34,7 +34,7 @@ const meta = {
   argTypes: {
     variant: {
       control: 'select',
-      options: ['primary', 'secondary', 'outline'],
+      options: ['primary', 'secondary', 'outline', 'danger'],
       description: 'ボタンのバリエーション',
     },
     size: {
@@ -95,6 +95,18 @@ export const Outline: Story = {
   args: {
     variant: 'outline',
     children: '詳細を見る',
+  },
+};
+
+/**
+ * デンジャーボタン
+ *
+ * 削除や破壊的なアクションに使用します。
+ */
+export const Danger: Story = {
+  args: {
+    variant: 'danger',
+    children: '削除',
   },
 };
 
@@ -178,6 +190,7 @@ export const AllVariants: Story = {
       <Button variant="primary">Primary</Button>
       <Button variant="secondary">Secondary</Button>
       <Button variant="outline">Outline</Button>
+      <Button variant="danger">Danger</Button>
     </div>
   ),
 };
@@ -237,6 +250,7 @@ export const WCAGLevels: Story = {
           <Button wcagLevel="A" variant="primary">Primary</Button>
           <Button wcagLevel="A" variant="secondary">Secondary</Button>
           <Button wcagLevel="A" variant="outline">Outline</Button>
+          <Button wcagLevel="A" variant="danger">Danger</Button>
         </div>
       </div>
 
@@ -251,6 +265,7 @@ export const WCAGLevels: Story = {
           <Button wcagLevel="AA" variant="primary">Primary</Button>
           <Button wcagLevel="AA" variant="secondary">Secondary</Button>
           <Button wcagLevel="AA" variant="outline">Outline</Button>
+          <Button wcagLevel="AA" variant="danger">Danger</Button>
         </div>
       </div>
 
@@ -265,6 +280,7 @@ export const WCAGLevels: Story = {
           <Button wcagLevel="AAA" variant="primary">Primary</Button>
           <Button wcagLevel="AAA" variant="secondary">Secondary</Button>
           <Button wcagLevel="AAA" variant="outline">Outline</Button>
+          <Button wcagLevel="AAA" variant="danger">Danger</Button>
         </div>
       </div>
     </div>
@@ -373,6 +389,7 @@ export const KeyboardInteraction: Story = {
           <Button wcagLevel="A" variant="primary">Primary</Button>
           <Button wcagLevel="A" variant="secondary">Secondary</Button>
           <Button wcagLevel="A" variant="outline">Outline</Button>
+          <Button wcagLevel="A" variant="danger">Danger</Button>
         </div>
       </div>
 
@@ -387,6 +404,7 @@ export const KeyboardInteraction: Story = {
           <Button wcagLevel="AA" variant="primary">Primary</Button>
           <Button wcagLevel="AA" variant="secondary">Secondary</Button>
           <Button wcagLevel="AA" variant="outline">Outline</Button>
+          <Button wcagLevel="AA" variant="danger">Danger</Button>
         </div>
       </div>
 
@@ -401,6 +419,7 @@ export const KeyboardInteraction: Story = {
           <Button wcagLevel="AAA" variant="primary">Primary</Button>
           <Button wcagLevel="AAA" variant="secondary">Secondary</Button>
           <Button wcagLevel="AAA" variant="outline">Outline</Button>
+          <Button wcagLevel="AAA" variant="danger">Danger</Button>
         </div>
       </div>
 
