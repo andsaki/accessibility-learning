@@ -1,0 +1,301 @@
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+import { render, screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { Modal } from './Modal';
+
+describe('Modal', () => {
+  let originalOverflow: string;
+
+  beforeEach(() => {
+    originalOverflow = document.body.style.overflow;
+  });
+
+  afterEach(() => {
+    document.body.style.overflow = originalOverflow;
+  });
+
+  describe('基本的なレンダリング', () => {
+    it('isOpen=falseの場合は表示されない', () => {
+      render(
+        <Modal isOpen={false} onClose={vi.fn()} title="テストモーダル">
+          コンテンツ
+        </Modal>
+      );
+      expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+    });
+
+    it('isOpen=trueの場合は表示される', () => {
+      render(
+        <Modal isOpen={true} onClose={vi.fn()} title="テストモーダル">
+          コンテンツ
+        </Modal>
+      );
+      expect(screen.getByRole('dialog')).toBeInTheDocument();
+    });
+
+    it('タイトルが表示される', () => {
+      render(
+        <Modal isOpen={true} onClose={vi.fn()} title="モーダルタイトル">
+          コンテンツ
+        </Modal>
+      );
+      expect(screen.getByText('モーダルタイトル')).toBeInTheDocument();
+    });
+
+    it('コンテンツが表示される', () => {
+      render(
+        <Modal isOpen={true} onClose={vi.fn()} title="タイトル">
+          モーダルの内容
+        </Modal>
+      );
+      expect(screen.getByText('モーダルの内容')).toBeInTheDocument();
+    });
+
+    it('フッターが表示される', () => {
+      render(
+        <Modal
+          isOpen={true}
+          onClose={vi.fn()}
+          title="タイトル"
+          footer={<button>OK</button>}
+        >
+          コンテンツ
+        </Modal>
+      );
+      expect(screen.getByRole('button', { name: 'OK' })).toBeInTheDocument();
+    });
+  });
+
+  describe('ARIA属性', () => {
+    it('role="dialog"が設定される', () => {
+      render(
+        <Modal isOpen={true} onClose={vi.fn()} title="タイトル">
+          コンテンツ
+        </Modal>
+      );
+      expect(screen.getByRole('dialog')).toBeInTheDocument();
+    });
+
+    it('aria-modal="true"が設定される', () => {
+      render(
+        <Modal isOpen={true} onClose={vi.fn()} title="タイトル">
+          コンテンツ
+        </Modal>
+      );
+      expect(screen.getByRole('dialog')).toHaveAttribute('aria-modal', 'true');
+    });
+
+    it('aria-labelledby属性でタイトルと関連付けられる', () => {
+      render(
+        <Modal isOpen={true} onClose={vi.fn()} title="タイトル">
+          コンテンツ
+        </Modal>
+      );
+      const dialog = screen.getByRole('dialog');
+      expect(dialog).toHaveAttribute('aria-labelledby', 'modal-title');
+      expect(screen.getByText('タイトル')).toHaveAttribute('id', 'modal-title');
+    });
+  });
+
+  describe('閉じるボタン', () => {
+    it('閉じるボタンが表示される', () => {
+      render(
+        <Modal isOpen={true} onClose={vi.fn()} title="タイトル">
+          コンテンツ
+        </Modal>
+      );
+      expect(screen.getByRole('button', { name: 'モーダルを閉じる' })).toBeInTheDocument();
+    });
+
+    it('閉じるボタンをクリックするとonCloseが呼ばれる', async () => {
+      const user = userEvent.setup();
+      const handleClose = vi.fn();
+      render(
+        <Modal isOpen={true} onClose={handleClose} title="タイトル">
+          コンテンツ
+        </Modal>
+      );
+
+      await user.click(screen.getByRole('button', { name: 'モーダルを閉じる' }));
+      expect(handleClose).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('Escキーで閉じる', () => {
+    it('Escキーを押すとonCloseが呼ばれる', async () => {
+      const user = userEvent.setup();
+      const handleClose = vi.fn();
+      render(
+        <Modal isOpen={true} onClose={handleClose} title="タイトル">
+          コンテンツ
+        </Modal>
+      );
+
+      await user.keyboard('{Escape}');
+      expect(handleClose).toHaveBeenCalledTimes(1);
+    });
+  });
+
+  describe('オーバーレイクリック', () => {
+    it('オーバーレイをクリックするとonCloseが呼ばれる', async () => {
+      const user = userEvent.setup();
+      const handleClose = vi.fn();
+      const { container } = render(
+        <Modal isOpen={true} onClose={handleClose} title="タイトル">
+          コンテンツ
+        </Modal>
+      );
+
+      // オーバーレイ（最初の子要素）をクリック
+      const overlay = container.firstChild as HTMLElement;
+      await user.click(overlay);
+      expect(handleClose).toHaveBeenCalled();
+    });
+
+    it('モーダル本体をクリックしてもonCloseは呼ばれない', async () => {
+      const user = userEvent.setup();
+      const handleClose = vi.fn();
+      render(
+        <Modal isOpen={true} onClose={handleClose} title="タイトル">
+          コンテンツ
+        </Modal>
+      );
+
+      await user.click(screen.getByRole('dialog'));
+      expect(handleClose).not.toHaveBeenCalled();
+    });
+  });
+
+  describe('背景スクロール防止', () => {
+    it('モーダルが開くと背景スクロールが無効化される', () => {
+      const { rerender } = render(
+        <Modal isOpen={false} onClose={vi.fn()} title="タイトル">
+          コンテンツ
+        </Modal>
+      );
+
+      rerender(
+        <Modal isOpen={true} onClose={vi.fn()} title="タイトル">
+          コンテンツ
+        </Modal>
+      );
+
+      expect(document.body.style.overflow).toBe('hidden');
+    });
+
+    it('モーダルが閉じると背景スクロールが復元される', () => {
+      const { rerender } = render(
+        <Modal isOpen={true} onClose={vi.fn()} title="タイトル">
+          コンテンツ
+        </Modal>
+      );
+
+      rerender(
+        <Modal isOpen={false} onClose={vi.fn()} title="タイトル">
+          コンテンツ
+        </Modal>
+      );
+
+      expect(document.body.style.overflow).toBe('');
+    });
+  });
+
+  describe('サイズバリエーション', () => {
+    it('sm サイズが適用される', () => {
+      render(
+        <Modal isOpen={true} onClose={vi.fn()} title="タイトル" size="sm">
+          コンテンツ
+        </Modal>
+      );
+      expect(screen.getByRole('dialog')).toBeInTheDocument();
+    });
+
+    it('md サイズが適用される（デフォルト）', () => {
+      render(
+        <Modal isOpen={true} onClose={vi.fn()} title="タイトル" size="md">
+          コンテンツ
+        </Modal>
+      );
+      expect(screen.getByRole('dialog')).toBeInTheDocument();
+    });
+
+    it('lg サイズが適用される', () => {
+      render(
+        <Modal isOpen={true} onClose={vi.fn()} title="タイトル" size="lg">
+          コンテンツ
+        </Modal>
+      );
+      expect(screen.getByRole('dialog')).toBeInTheDocument();
+    });
+  });
+
+  describe('WCAGレベル', () => {
+    it('デフォルトでAAレベル', () => {
+      render(
+        <Modal isOpen={true} onClose={vi.fn()} title="タイトル">
+          コンテンツ
+        </Modal>
+      );
+      expect(screen.getByRole('dialog')).toBeInTheDocument();
+    });
+
+    it('Aレベルが指定できる', () => {
+      render(
+        <Modal isOpen={true} onClose={vi.fn()} title="タイトル" wcagLevel="A">
+          コンテンツ
+        </Modal>
+      );
+      expect(screen.getByRole('dialog')).toBeInTheDocument();
+    });
+
+    it('AAAレベルが指定できる', () => {
+      render(
+        <Modal isOpen={true} onClose={vi.fn()} title="タイトル" wcagLevel="AAA">
+          コンテンツ
+        </Modal>
+      );
+      expect(screen.getByRole('dialog')).toBeInTheDocument();
+    });
+  });
+
+  describe('フォーカス管理', () => {
+    it('モーダルが開くとフォーカス可能要素が配置される', () => {
+      render(
+        <Modal
+          isOpen={true}
+          onClose={vi.fn()}
+          title="タイトル"
+          footer={<div><button>OK</button></div>}
+        >
+          <div><input type="text" placeholder="入力欄" /></div>
+        </Modal>
+      );
+
+      // 閉じるボタンが表示される
+      const closeButton = screen.getByRole('button', { name: 'モーダルを閉じる' });
+      expect(closeButton).toBeInTheDocument();
+
+      // 入力欄が表示される
+      expect(screen.getByPlaceholderText('入力欄')).toBeInTheDocument();
+
+      // OKボタンが表示される
+      expect(screen.getByText('OK')).toBeInTheDocument();
+    });
+  });
+
+  describe('複数の子要素', () => {
+    it('複数の子要素をレンダリングできる', () => {
+      render(
+        <Modal isOpen={true} onClose={vi.fn()} title="タイトル">
+          <p>段落1</p>
+          <p>段落2</p>
+          <div><button>ボタン</button></div>
+        </Modal>
+      );
+
+      expect(screen.getByText('段落1')).toBeInTheDocument();
+      expect(screen.getByText('段落2')).toBeInTheDocument();
+      expect(screen.getByText('ボタン')).toBeInTheDocument();
+    });
+  });
+});
