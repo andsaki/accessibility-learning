@@ -106,6 +106,10 @@ export function ComponentDemos({
           <Button variant="outline" onClick={() => alert("アウトライン")}>
             アウトライン
           </Button>
+
+          <Button variant="danger" onClick={() => alert("削除しますか？")}>
+            削除
+          </Button>
         </div>
 
         <div
