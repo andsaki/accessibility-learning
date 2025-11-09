@@ -45,7 +45,7 @@ export const LandingPage = () => {
 
           <div style={{ display: "grid", gap: spacing.scale[3] }}>
             <a
-              href="/app"
+              href="/accessibility-learning/app"
               style={{
                 display: "flex",
                 alignItems: "center",
@@ -73,7 +73,7 @@ export const LandingPage = () => {
             </a>
 
             <a
-              href="/storybook"
+              href="/accessibility-learning/storybook"
               style={{
                 display: "flex",
                 alignItems: "center",
