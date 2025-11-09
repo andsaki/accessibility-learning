@@ -1,7 +1,16 @@
+import { useEffect } from "react";
 import { spacing, typography, radii } from "../design-system/tokens";
 import { primitive } from "../design-system/tokens/colors";
 
 export const LandingPage = () => {
+  useEffect(() => {
+    // ルートパスの場合は /app にリダイレクト
+    const pathname = window.location.pathname;
+    if (pathname === '/' || pathname === '/accessibility-learning/' || pathname === '/accessibility-learning') {
+      window.location.href = '/accessibility-learning/app';
+    }
+  }, []);
+
   return (
     <div
       style={{
