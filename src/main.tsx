@@ -6,7 +6,8 @@ import { LandingPage } from './pages/LandingPage.tsx'
 import { ThemeProvider } from './design-system/theme'
 import { ToastProvider } from './design-system/components'
 
-const isLandingPage = window.location.pathname === '/' || window.location.pathname === '/accessibility-learning/' || window.location.pathname === '/accessibility-learning';
+const pathname = window.location.pathname;
+const isLandingPage = pathname === '/' || pathname === '/accessibility-learning/' || pathname === '/accessibility-learning';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
