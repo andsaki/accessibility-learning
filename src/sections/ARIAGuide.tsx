@@ -662,6 +662,35 @@ export const ARIAGuide = () => {
         </ul>
       </div>
 
+      {/* 試してみようセクション */}
+      <div style={{ marginTop: spacing.scale[8] }}>
+        <h3
+          style={{
+            fontSize: typography.fontSize.xl,
+            fontWeight: typography.fontWeight.semibold,
+            color: primitive.pink[700],
+            marginBottom: spacing.scale[4],
+            display: "flex",
+            alignItems: "center",
+            gap: spacing.scale[2],
+          }}
+        >
+          <icons.component.button size={24} color={primitive.pink[600]} strokeWidth={2} />
+          4. インタラクティブデモ：試してみよう
+        </h3>
+
+        <div style={{ display: "grid", gap: spacing.scale[6] }}>
+          {/* ARIA属性の有無を比較 */}
+          <ARIAComparisonDemo />
+
+          {/* スクリーンリーダーシミュレーター */}
+          <ScreenReaderSimulator />
+
+          {/* 動的なaria-live */}
+          <LiveRegionDemo />
+        </div>
+      </div>
+
       <div style={{
         marginTop: spacing.scale[6],
         padding: spacing.scale[4],
@@ -684,3 +713,564 @@ export const ARIAGuide = () => {
     </section>
   );
 };
+
+// ARIA属性の有無を比較するデモ
+function ARIAComparisonDemo() {
+  const [selectedExample, setSelectedExample] = useState<'button' | 'input' | 'link'>('button');
+
+  const examples = {
+    button: {
+      title: "アイコンのみのボタン",
+      bad: {
+        code: '<button>\n  <XIcon />\n</button>',
+        element: (
+          <button
+            style={{
+              padding: spacing.scale[2],
+              border: `1px solid ${primitive.gray[300]}`,
+              borderRadius: radii.borderRadius.md,
+              backgroundColor: primitive.white,
+              cursor: "pointer",
+            }}
+          >
+            ✕
+          </button>
+        ),
+        screenReader: "ボタン",
+        issue: "何のボタンか分からない",
+      },
+      good: {
+        code: '<button aria-label="閉じる">\n  <XIcon />\n</button>',
+        element: (
+          <button
+            aria-label="閉じる"
+            style={{
+              padding: spacing.scale[2],
+              border: `1px solid ${primitive.gray[300]}`,
+              borderRadius: radii.borderRadius.md,
+              backgroundColor: primitive.white,
+              cursor: "pointer",
+            }}
+          >
+            ✕
+          </button>
+        ),
+        screenReader: "閉じる ボタン",
+        benefit: "明確な目的を伝える",
+      },
+    },
+    input: {
+      title: "エラーのあるフォーム",
+      bad: {
+        code: '<input type="email" />\n<span style="color: red">\n  無効なメールアドレス\n</span>',
+        element: (
+          <div>
+            <input
+              type="email"
+              style={{
+                padding: spacing.scale[2],
+                border: `2px solid ${primitive.red[500]}`,
+                borderRadius: radii.borderRadius.md,
+                width: "100%",
+              }}
+            />
+            <span style={{ color: primitive.red[700], fontSize: typography.fontSize.sm }}>
+              無効なメールアドレス
+            </span>
+          </div>
+        ),
+        screenReader: "メールアドレス 編集可能",
+        issue: "エラーメッセージが読まれない",
+      },
+      good: {
+        code: '<input\n  type="email"\n  aria-invalid="true"\n  aria-describedby="error-msg"\n/>\n<span id="error-msg" role="alert">\n  無効なメールアドレス\n</span>',
+        element: (
+          <div>
+            <input
+              type="email"
+              aria-invalid="true"
+              aria-describedby="good-error-msg"
+              style={{
+                padding: spacing.scale[2],
+                border: `2px solid ${primitive.red[500]}`,
+                borderRadius: radii.borderRadius.md,
+                width: "100%",
+              }}
+            />
+            <span
+              id="good-error-msg"
+              role="alert"
+              style={{ color: primitive.red[700], fontSize: typography.fontSize.sm }}
+            >
+              無効なメールアドレス
+            </span>
+          </div>
+        ),
+        screenReader: "メールアドレス 無効 編集可能 無効なメールアドレス",
+        benefit: "エラー内容を即座に伝える",
+      },
+    },
+    link: {
+      title: "「詳しくはこちら」リンク",
+      bad: {
+        code: '<a href="/about">詳しくはこちら</a>',
+        element: (
+          <a
+            href="#"
+            onClick={(e) => e.preventDefault()}
+            style={{
+              color: primitive.blue[700],
+              textDecoration: "underline",
+            }}
+          >
+            詳しくはこちら
+          </a>
+        ),
+        screenReader: "詳しくはこちら リンク",
+        issue: "何について詳しいのか不明",
+      },
+      good: {
+        code: '<a\n  href="/about"\n  aria-label="会社概要について詳しく見る"\n>\n  詳しくはこちら\n</a>',
+        element: (
+          <a
+            href="#"
+            onClick={(e) => e.preventDefault()}
+            aria-label="会社概要について詳しく見る"
+            style={{
+              color: primitive.blue[700],
+              textDecoration: "underline",
+            }}
+          >
+            詳しくはこちら
+          </a>
+        ),
+        screenReader: "会社概要について詳しく見る リンク",
+        benefit: "リンク先の内容が明確",
+      },
+    },
+  };
+
+  const current = examples[selectedExample];
+
+  return (
+    <div
+      style={{
+        padding: spacing.scale[4],
+        backgroundColor: primitive.pink[50],
+        borderRadius: radii.borderRadius.md,
+        border: `1px solid ${primitive.pink[200]}`,
+      }}
+    >
+      <h4
+        style={{
+          marginTop: 0,
+          fontSize: typography.fontSize.lg,
+          fontWeight: typography.fontWeight.semibold,
+          color: primitive.pink[900],
+        }}
+      >
+        🔍 ARIA属性の効果を比較
+      </h4>
+
+      <div style={{ display: "flex", gap: spacing.scale[2], marginTop: spacing.scale[3], flexWrap: "wrap" }}>
+        {(Object.keys(examples) as Array<keyof typeof examples>).map((key) => (
+          <button
+            key={key}
+            onClick={() => setSelectedExample(key)}
+            style={{
+              padding: `${spacing.scale[2]} ${spacing.scale[3]}`,
+              border: `2px solid ${selectedExample === key ? primitive.pink[500] : primitive.gray[300]}`,
+              borderRadius: radii.borderRadius.md,
+              backgroundColor: selectedExample === key ? primitive.pink[100] : primitive.white,
+              color: selectedExample === key ? primitive.pink[900] : primitive.gray[700],
+              cursor: "pointer",
+              fontWeight: selectedExample === key ? typography.fontWeight.semibold : typography.fontWeight.normal,
+            }}
+          >
+            {examples[key].title}
+          </button>
+        ))}
+      </div>
+
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "1fr 1fr",
+          gap: spacing.scale[4],
+          marginTop: spacing.scale[4],
+        }}
+      >
+        {/* 悪い例 */}
+        <div
+          style={{
+            padding: spacing.scale[3],
+            backgroundColor: primitive.white,
+            borderRadius: radii.borderRadius.md,
+            border: `2px solid ${primitive.red[300]}`,
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: spacing.scale[2],
+              marginBottom: spacing.scale[2],
+            }}
+          >
+            <span style={{ fontSize: typography.fontSize.lg }}>❌</span>
+            <strong style={{ color: primitive.red[700] }}>ARIA属性なし</strong>
+          </div>
+
+          <div
+            style={{
+              padding: spacing.scale[3],
+              backgroundColor: primitive.gray[50],
+              borderRadius: radii.borderRadius.sm,
+              marginBottom: spacing.scale[2],
+            }}
+          >
+            {current.bad.element}
+          </div>
+
+          <pre
+            style={{
+              margin: 0,
+              marginBottom: spacing.scale[2],
+              padding: spacing.scale[2],
+              backgroundColor: primitive.gray[900],
+              color: primitive.green[400],
+              borderRadius: radii.borderRadius.sm,
+              fontSize: typography.fontSize.xs,
+              overflow: "auto",
+            }}
+          >
+            {current.bad.code}
+          </pre>
+
+          <div
+            style={{
+              padding: spacing.scale[2],
+              backgroundColor: primitive.blue[50],
+              borderRadius: radii.borderRadius.sm,
+              fontSize: typography.fontSize.sm,
+            }}
+          >
+            <strong style={{ color: primitive.blue[900] }}>スクリーンリーダー:</strong>
+            <div style={{ marginTop: spacing.scale[1], color: primitive.gray[700], fontStyle: "italic" }}>
+              "{current.bad.screenReader}"
+            </div>
+          </div>
+
+          <div
+            style={{
+              marginTop: spacing.scale[2],
+              padding: spacing.scale[2],
+              backgroundColor: primitive.red[50],
+              borderRadius: radii.borderRadius.sm,
+              fontSize: typography.fontSize.sm,
+              color: primitive.red[900],
+            }}
+          >
+            ⚠️ 問題: {current.bad.issue}
+          </div>
+        </div>
+
+        {/* 良い例 */}
+        <div
+          style={{
+            padding: spacing.scale[3],
+            backgroundColor: primitive.white,
+            borderRadius: radii.borderRadius.md,
+            border: `2px solid ${primitive.green[300]}`,
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: spacing.scale[2],
+              marginBottom: spacing.scale[2],
+            }}
+          >
+            <span style={{ fontSize: typography.fontSize.lg }}>✅</span>
+            <strong style={{ color: primitive.green[700] }}>ARIA属性あり</strong>
+          </div>
+
+          <div
+            style={{
+              padding: spacing.scale[3],
+              backgroundColor: primitive.gray[50],
+              borderRadius: radii.borderRadius.sm,
+              marginBottom: spacing.scale[2],
+            }}
+          >
+            {current.good.element}
+          </div>
+
+          <pre
+            style={{
+              margin: 0,
+              marginBottom: spacing.scale[2],
+              padding: spacing.scale[2],
+              backgroundColor: primitive.gray[900],
+              color: primitive.green[400],
+              borderRadius: radii.borderRadius.sm,
+              fontSize: typography.fontSize.xs,
+              overflow: "auto",
+            }}
+          >
+            {current.good.code}
+          </pre>
+
+          <div
+            style={{
+              padding: spacing.scale[2],
+              backgroundColor: primitive.blue[50],
+              borderRadius: radii.borderRadius.sm,
+              fontSize: typography.fontSize.sm,
+            }}
+          >
+            <strong style={{ color: primitive.blue[900] }}>スクリーンリーダー:</strong>
+            <div style={{ marginTop: spacing.scale[1], color: primitive.gray[700], fontStyle: "italic" }}>
+              "{current.good.screenReader}"
+            </div>
+          </div>
+
+          <div
+            style={{
+              marginTop: spacing.scale[2],
+              padding: spacing.scale[2],
+              backgroundColor: primitive.green[50],
+              borderRadius: radii.borderRadius.sm,
+              fontSize: typography.fontSize.sm,
+              color: primitive.green[900],
+            }}
+          >
+            ✓ 改善: {current.good.benefit}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+// スクリーンリーダーシミュレーター
+function ScreenReaderSimulator() {
+  const [isReading, setIsReading] = useState(false);
+  const [currentText, setCurrentText] = useState("");
+
+  const simulateReading = () => {
+    setIsReading(true);
+    const texts = [
+      "ボタン",
+      "閉じる",
+      "クリック可能",
+    ];
+
+    let index = 0;
+    const interval = setInterval(() => {
+      if (index < texts.length) {
+        setCurrentText(texts[index]);
+        index++;
+      } else {
+        clearInterval(interval);
+        setIsReading(false);
+        setCurrentText("");
+      }
+    }, 800);
+  };
+
+  return (
+    <div
+      style={{
+        padding: spacing.scale[4],
+        backgroundColor: primitive.blue[50],
+        borderRadius: radii.borderRadius.md,
+        border: `1px solid ${primitive.blue[200]}`,
+      }}
+    >
+      <h4
+        style={{
+          marginTop: 0,
+          fontSize: typography.fontSize.lg,
+          fontWeight: typography.fontWeight.semibold,
+          color: primitive.blue[900],
+        }}
+      >
+        🔊 スクリーンリーダーシミュレーター
+      </h4>
+
+      <p style={{ color: primitive.gray[700], fontSize: typography.fontSize.sm }}>
+        ボタンをクリックして、スクリーンリーダーがどのように読み上げるかを確認できます
+      </p>
+
+      <div style={{ marginTop: spacing.scale[4], display: "flex", gap: spacing.scale[4], alignItems: "center" }}>
+        <button
+          onClick={simulateReading}
+          disabled={isReading}
+          aria-label="閉じる"
+          style={{
+            padding: spacing.scale[3],
+            border: `2px solid ${primitive.blue[500]}`,
+            borderRadius: radii.borderRadius.md,
+            backgroundColor: primitive.white,
+            cursor: isReading ? "not-allowed" : "pointer",
+            fontSize: typography.fontSize.lg,
+            opacity: isReading ? 0.6 : 1,
+          }}
+        >
+          ✕
+        </button>
+
+        <div
+          style={{
+            flex: 1,
+            padding: spacing.scale[3],
+            backgroundColor: primitive.gray[900],
+            color: primitive.green[400],
+            borderRadius: radii.borderRadius.md,
+            minHeight: "60px",
+            display: "flex",
+            alignItems: "center",
+            fontSize: typography.fontSize.lg,
+            fontWeight: typography.fontWeight.semibold,
+          }}
+        >
+          {isReading ? (
+            <span style={{ animation: "pulse 1s infinite" }}>🔊 {currentText}</span>
+          ) : (
+            <span style={{ color: primitive.gray[600] }}>クリックして読み上げを開始...</span>
+          )}
+        </div>
+      </div>
+
+      <pre
+        style={{
+          marginTop: spacing.scale[3],
+          padding: spacing.scale[3],
+          backgroundColor: primitive.gray[900],
+          color: primitive.green[400],
+          borderRadius: radii.borderRadius.md,
+          fontSize: typography.fontSize.sm,
+          overflow: "auto",
+        }}
+      >
+        {`<button aria-label="閉じる">
+  ✕
+</button>
+
+// スクリーンリーダーが読み上げる内容:
+// "ボタン" → "閉じる" → "クリック可能"`}
+      </pre>
+    </div>
+  );
+}
+
+// aria-live デモ
+function LiveRegionDemo() {
+  const [message, setMessage] = useState("");
+  const [messageCount, setMessageCount] = useState(0);
+
+  const addMessage = (type: 'success' | 'error' | 'info') => {
+    const messages = {
+      success: "✓ 保存に成功しました",
+      error: "✕ エラーが発生しました",
+      info: "ℹ 処理中です...",
+    };
+    setMessage(messages[type]);
+    setMessageCount(messageCount + 1);
+  };
+
+  return (
+    <div
+      style={{
+        padding: spacing.scale[4],
+        backgroundColor: primitive.green[50],
+        borderRadius: radii.borderRadius.md,
+        border: `1px solid ${primitive.green[200]}`,
+      }}
+    >
+      <h4
+        style={{
+          marginTop: 0,
+          fontSize: typography.fontSize.lg,
+          fontWeight: typography.fontWeight.semibold,
+          color: primitive.green[900],
+        }}
+      >
+        📢 aria-live デモ（動的な通知）
+      </h4>
+
+      <p style={{ color: primitive.gray[700], fontSize: typography.fontSize.sm }}>
+        aria-live を使うと、画面の変更をスクリーンリーダーに自動で通知できます
+      </p>
+
+      <div style={{ display: "flex", gap: spacing.scale[2], marginTop: spacing.scale[3], flexWrap: "wrap" }}>
+        <Button variant="primary" size="sm" onClick={() => addMessage('success')}>
+          成功メッセージ
+        </Button>
+        <Button variant="danger" size="sm" onClick={() => addMessage('error')}>
+          エラーメッセージ
+        </Button>
+        <Button variant="secondary" size="sm" onClick={() => addMessage('info')}>
+          情報メッセージ
+        </Button>
+      </div>
+
+      <div
+        aria-live="polite"
+        aria-atomic="true"
+        style={{
+          marginTop: spacing.scale[3],
+          padding: spacing.scale[3],
+          backgroundColor: primitive.white,
+          border: `2px solid ${primitive.green[300]}`,
+          borderRadius: radii.borderRadius.md,
+          minHeight: "60px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          fontSize: typography.fontSize.base,
+        }}
+      >
+        {message || <span style={{ color: primitive.gray[500] }}>ボタンをクリックしてメッセージを表示</span>}
+      </div>
+
+      <pre
+        style={{
+          marginTop: spacing.scale[3],
+          padding: spacing.scale[3],
+          backgroundColor: primitive.gray[900],
+          color: primitive.green[400],
+          borderRadius: radii.borderRadius.md,
+          fontSize: typography.fontSize.sm,
+          overflow: "auto",
+        }}
+      >
+        {`<div
+  aria-live="polite"
+  aria-atomic="true"
+>
+  {message}
+</div>
+
+// aria-live="polite": 適切なタイミングで読み上げ
+// aria-live="assertive": すぐに読み上げ（緊急時）
+// aria-atomic="true": 領域全体を読み上げ`}
+      </pre>
+
+      <div
+        style={{
+          marginTop: spacing.scale[3],
+          padding: spacing.scale[2],
+          backgroundColor: primitive.yellow,
+          border: `2px solid ${primitive.black}`,
+          borderRadius: radii.borderRadius.sm,
+          fontSize: typography.fontSize.sm,
+        }}
+      >
+        <strong>💡 ヒント:</strong> メッセージが変更されると、スクリーンリーダーが自動的に読み上げます（通知回数: {messageCount}回）
+      </div>
+    </div>
+  );
+}
