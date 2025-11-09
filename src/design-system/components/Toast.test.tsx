@@ -141,7 +141,7 @@ describe('Toast', () => {
     });
 
     it('複数のトーストを積み重ねられる', () => {
-      const { rerender } = render(
+      render(
         <>
           <Toast id="1" message="メッセージ1" index={0} onClose={vi.fn()} />
           <Toast id="2" message="メッセージ2" index={1} onClose={vi.fn()} />

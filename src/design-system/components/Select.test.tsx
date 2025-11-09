@@ -201,7 +201,7 @@ describe('Select', () => {
 
   describe('制御コンポーネント', () => {
     it('value属性で値を制御できる', () => {
-      render(<Select label="選択" options={mockOptions} value="option2" readOnly />);
+      render(<Select label="選択" options={mockOptions} value="option2" onChange={() => {}} />);
       const select = screen.getByRole('combobox') as HTMLSelectElement;
       expect(select.value).toBe('option2');
     });
