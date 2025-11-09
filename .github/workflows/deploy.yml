@@ -139,12 +139,11 @@ jobs:
           </html>
           EOF
 
-      - name: Copy app and storybook
+      - name: Copy storybook and app
         run: |
-          mkdir -p dist-combined/app
           mkdir -p dist-combined/storybook
-          cp -r dist/* dist-combined/app/
           cp -r storybook-static/* dist-combined/storybook/
+          cp -r dist/* dist-combined/
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
