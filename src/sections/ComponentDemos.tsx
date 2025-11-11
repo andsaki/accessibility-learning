@@ -1331,7 +1331,7 @@ export function ComponentDemos({
             <Text variant="body-small" bold color={primitive.gray[900]}>
               💡 実用的な選び方
             </Text>
-            <ul style={{ margin: `${spacing.scale[2]} 0 0 0`, paddingLeft: spacing.scale[5], fontSize: typography.fontSize.sm, lineHeight: typography.lineHeight.relaxed }}>
+            <ul style={{ margin: `${spacing.scale[2]} 0 0 0`, paddingLeft: spacing.scale[5], fontSize: typography.fontSize.sm, lineHeight: typography.lineHeight.relaxed, color: primitive.gray[900] }}>
               <li><strong>一般的なWebサイト</strong>: AA を目指す</li>
               <li><strong>公共サービス、医療、金融</strong>: AAA を検討</li>
               <li><strong>最低限</strong>: A は避け、少なくとも AA を満たす</li>
