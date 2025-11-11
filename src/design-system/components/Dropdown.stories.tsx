@@ -78,7 +78,7 @@ export const WithDisabledOptions: Story = {
   },
 };
 
-export const WCAGLevels: Story = {
+export const WCAGLevels = {
   render: () => {
     const [value1, setValue1] = useState('');
     const [value2, setValue2] = useState('');
@@ -112,7 +112,7 @@ export const WCAGLevels: Story = {
   },
 };
 
-export const Interactive: Story = {
+export const Interactive = {
   render: () => {
     const [selectedFruit, setSelectedFruit] = useState('');
     const [selectedCity, setSelectedCity] = useState('');
