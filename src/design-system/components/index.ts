@@ -24,3 +24,6 @@ export type { ModalProps } from './Modal';
 
 export { Breadcrumbs, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, BreadcrumbSeparator } from './Breadcrumbs';
 export type { BreadcrumbsProps, BreadcrumbListProps, BreadcrumbItemProps, BreadcrumbLinkProps, BreadcrumbSeparatorProps } from './Breadcrumbs';
+
+export { Dropdown } from './Dropdown';
+export type { DropdownProps, DropdownOption } from './Dropdown';
