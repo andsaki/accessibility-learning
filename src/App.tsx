@@ -140,8 +140,8 @@ function App() {
           </BreadcrumbList>
         </Breadcrumbs>
 
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: spacing.scale[4] }}>
-          <div>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: spacing.scale[4], flexWrap: 'wrap', gap: spacing.scale[3] }}>
+          <div style={{ flex: 1, minWidth: '300px' }}>
             <h1 style={{
               marginBottom: spacing.scale[2],
               fontSize: isMobile ? "1.75rem" : "2.5rem",
@@ -158,18 +158,29 @@ function App() {
               すべてのユーザーに寄り添う、アクセシブルで心地よいUIコンポーネント集
             </p>
           </div>
-          <Button
-            onClick={toggleTheme}
-            variant="outline"
-            size="sm"
-            aria-label={mode === 'light' ? 'ダークモードに切り替え' : 'ライトモードに切り替え'}
-          >
-            {mode === 'light' ? (
-              <icons.concept.theme.dark size={20} strokeWidth={2} />
-            ) : (
-              <icons.concept.theme.light size={20} strokeWidth={2} />
-            )}
-          </Button>
+          <div style={{ display: 'flex', gap: spacing.scale[2], alignItems: 'flex-start' }}>
+            <Button
+              onClick={() => window.open('/accessibility-learning/storybook/', '_blank')}
+              variant="secondary"
+              size="sm"
+              aria-label="Storybookを開く"
+            >
+              <icons.component.button size={20} strokeWidth={2} />
+              <span style={{ marginLeft: spacing.scale[1] }}>Storybook</span>
+            </Button>
+            <Button
+              onClick={toggleTheme}
+              variant="outline"
+              size="sm"
+              aria-label={mode === 'light' ? 'ダークモードに切り替え' : 'ライトモードに切り替え'}
+            >
+              {mode === 'light' ? (
+                <icons.concept.theme.dark size={20} strokeWidth={2} />
+              ) : (
+                <icons.concept.theme.light size={20} strokeWidth={2} />
+              )}
+            </Button>
+          </div>
         </div>
 
         <div style={{
