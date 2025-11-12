@@ -26,6 +26,19 @@
   background-color: #212121;
 }
 
+/* チェックボックスとラジオボタンのスタイル */
+input[type="checkbox"],
+input[type="radio"] {
+  accent-color: #3b82f6;
+}
+
+/* ダークモード時のフォームコントロール調整 */
+:root[data-theme="dark"] input[type="checkbox"],
+:root[data-theme="dark"] input[type="radio"] {
+  /* ダークモードでもライトテーマのフォームコントロールを使用 */
+  color-scheme: light;
+}
+
 a {
   font-weight: 500;
   color: #646cff;

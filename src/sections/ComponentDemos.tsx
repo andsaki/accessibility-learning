@@ -483,7 +483,7 @@ export function ComponentDemos({
       >
         <h2 style={{
           marginTop: 0,
-          color: primitive.gray[900],
+          color: colors.text.primary,
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
           borderBottom: `3px solid ${primitive.blue[500]}`,
@@ -496,7 +496,7 @@ export function ComponentDemos({
           <icons.component.input size={28} color={primitive.blue[600]} strokeWidth={2} />
           Checkbox コンポーネント
         </h2>
-        <p style={{ color: primitive.gray[700] }}>
+        <p style={{ color: colors.text.primary }}>
           チェックボックスコンポーネントです。
           複数の選択肢から複数を選択できるインターフェースを提供します。
         </p>
@@ -535,7 +535,7 @@ export function ComponentDemos({
       >
         <h2 style={{
           marginTop: 0,
-          color: primitive.gray[900],
+          color: colors.text.primary,
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
           borderBottom: `3px solid ${primitive.blue[500]}`,
@@ -548,7 +548,7 @@ export function ComponentDemos({
           <icons.component.input size={28} color={primitive.blue[600]} strokeWidth={2} />
           Radio コンポーネント
         </h2>
-        <p style={{ color: primitive.gray[700] }}>
+        <p style={{ color: colors.text.primary }}>
           ラジオボタンコンポーネントです。
           複数の選択肢から1つだけを選択できるインターフェースを提供します。
         </p>

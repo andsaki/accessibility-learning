@@ -120,6 +120,9 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           }}
         />
         <style>{`
+          input[type="checkbox"] {
+            accent-color: ${primitive.blue[500]};
+          }
           [data-focused="true"] {
             outline: ${levelFocus.outlineWidth} solid ${levelFocus.outline};
             outline-offset: ${levelFocus.outlineOffset};
@@ -134,7 +137,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           style={{
             fontSize: typography.fontSize.base,
             fontWeight: typography.fontWeight.medium,
-            color: disabled ? colors.text.disabled : colors.text.primary,
+            color: disabled ? colors.text.disabled : primitive.gray[900],
             cursor: disabled ? "not-allowed" : "pointer",
             userSelect: "none",
           }}
@@ -147,7 +150,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
             style={{
               margin: `${spacing.scale[1]} 0 0 0`,
               fontSize: typography.fontSize.sm,
-              color: colors.text.secondary,
+              color: primitive.gray[600],
               lineHeight: typography.lineHeight.normal,
             }}
           >
