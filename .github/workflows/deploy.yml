@@ -46,6 +46,10 @@ jobs:
           mkdir -p dist-combined/storybook
           cp -r storybook-static/* dist-combined/storybook/
           cp -r dist/* dist-combined/
+          echo "=== Checking dist-combined contents ==="
+          ls -la dist-combined/
+          echo "=== Checking dist-combined/index.html ==="
+          head -5 dist-combined/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
