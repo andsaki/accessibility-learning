@@ -1,10 +1,18 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Dropdown } from './Dropdown';
+import { ThemeProvider } from '../theme';
 import { useState } from 'react';
 
 const meta = {
   title: 'Components/Dropdown',
   component: Dropdown,
+  decorators: [
+    (Story) => (
+      <ThemeProvider defaultTheme="light">
+        <Story />
+      </ThemeProvider>
+    ),
+  ],
   parameters: {
     layout: 'padded',
   },
