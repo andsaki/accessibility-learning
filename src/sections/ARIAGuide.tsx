@@ -161,6 +161,7 @@ export const ARIAGuide = () => {
           border: `2px solid ${primitive.black}`,
           borderRadius: radii.borderRadius.md,
           fontSize: typography.fontSize.sm,
+          color: primitive.gray[900],
         }}>
           <strong>💡 重要な原則:</strong> まずは<strong>セマンティックHTML</strong>（<code>&lt;button&gt;</code>、<code>&lt;nav&gt;</code>、<code>&lt;main&gt;</code>など）を使いましょう。
           ARIAは、HTMLの機能では実現できない場合の「補完」として使用します。
@@ -570,10 +571,10 @@ export const ARIAGuide = () => {
             borderRadius: radii.borderRadius.base,
             border: `2px solid ${primitive.black}`,
           }}>
-            <h5 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.black, fontSize: typography.fontSize.base }}>
+            <h5 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.gray[900], fontSize: typography.fontSize.base }}>
               ⚠️ ツールチップ vs タイトル属性
             </h5>
-            <p style={{ color: primitive.black, margin: 0, lineHeight: typography.lineHeight.relaxed }}>
+            <p style={{ color: primitive.gray[900], margin: 0, lineHeight: typography.lineHeight.relaxed }}>
               HTML の title 属性はアクセシビリティの観点から推奨されません。キーボードユーザーには利用できず、タッチデバイスでは表示されないためです。
               代わりに、適切に実装された aria-describedby と role="tooltip" を使用してください。
             </p>
@@ -779,10 +780,10 @@ export const ARIAGuide = () => {
         borderRadius: radii.borderRadius.md,
         border: `2px solid ${primitive.black}`,
       }}>
-        <h4 style={{ color: primitive.black, marginTop: 0 }}>
+        <h4 style={{ color: primitive.gray[900], marginTop: 0 }}>
           💡 ARIAの第一原則
         </h4>
-        <ul style={{ color: primitive.black, lineHeight: typography.lineHeight.relaxed }}>
+        <ul style={{ color: primitive.gray[900], lineHeight: typography.lineHeight.relaxed }}>
           <li><strong>セマンティックHTMLを優先する</strong>: 可能な限り、適切なHTML要素を使用してください</li>
           <li><strong>ARIAは最後の手段</strong>: ネイティブHTML要素で実現できない場合のみARIAを使用</li>
           <li><strong>不要なARIAは追加しない</strong>: &lt;button&gt; に role="button" は不要です</li>
@@ -1395,6 +1396,7 @@ function LiveRegionDemo() {
           border: `2px solid ${primitive.black}`,
           borderRadius: radii.borderRadius.sm,
           fontSize: typography.fontSize.sm,
+          color: primitive.gray[900],
         }}
       >
         <strong>💡 ヒント:</strong> メッセージが変更されると、スクリーンリーダーが自動的に読み上げます（通知回数: {messageCount}回）
