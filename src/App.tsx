@@ -32,6 +32,20 @@ function App() {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
+  // URLハッシュからセクションにスクロール
+  useEffect(() => {
+    const hash = window.location.hash.slice(1); // "#" を除去
+    if (hash) {
+      // DOMが完全にレンダリングされるまで少し待つ
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 100);
+    }
+  }, []);
+
   // Input用のstate
   const [formData, setFormData] = useState({
     name: "",

@@ -46,6 +46,8 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
   const handleClick = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
+      // URLハッシュを更新
+      window.history.pushState(null, '', `#${id}`);
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
       onClose();
     }
