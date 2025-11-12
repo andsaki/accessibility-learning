@@ -46,6 +46,7 @@ jobs:
           mkdir -p dist-combined/storybook
           cp -r storybook-static/* dist-combined/storybook/
           cp -rf dist/* dist-combined/
+          touch dist-combined/.nojekyll
           echo "=== Checking dist-combined contents ==="
           ls -la dist-combined/
           echo "=== Checking dist-combined/index.html ==="
