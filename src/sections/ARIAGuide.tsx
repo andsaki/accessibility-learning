@@ -39,6 +39,134 @@ export const ARIAGuide = () => {
         適切なARIA属性を使用することで、視覚障害者やキーボードユーザーに対して、より良いユーザー体験を提供できます。
       </p>
 
+      {/* ARIAの基本概要 */}
+      <div style={{
+        marginTop: spacing.scale[6],
+        marginBottom: spacing.scale[8],
+        padding: spacing.scale[6],
+        backgroundColor: primitive.blue[50],
+        borderRadius: radii.borderRadius.lg,
+        border: `2px solid ${primitive.blue[200]}`,
+      }}>
+        <h3 style={{
+          marginTop: 0,
+          marginBottom: spacing.scale[4],
+          color: primitive.blue[900],
+          fontSize: typography.fontSize.xl,
+          fontWeight: typography.fontWeight.semibold,
+          display: 'flex',
+          alignItems: 'center',
+          gap: spacing.scale[2]
+        }}>
+          <icons.concept.hierarchy size={24} color={primitive.blue[600]} strokeWidth={2} />
+          ARIAの基本的な役割
+        </h3>
+
+        <div style={{ display: 'grid', gap: spacing.scale[4] }}>
+          <div style={{
+            padding: spacing.scale[4],
+            backgroundColor: primitive.white,
+            borderRadius: radii.borderRadius.md,
+            border: `1px solid ${primitive.blue[200]}`,
+          }}>
+            <h4 style={{
+              marginTop: 0,
+              marginBottom: spacing.scale[2],
+              color: primitive.blue[900],
+              fontSize: typography.fontSize.base,
+              fontWeight: typography.fontWeight.semibold,
+            }}>
+              🎭 役割（Role）を伝える
+            </h4>
+            <p style={{ margin: 0, color: primitive.gray[700], fontSize: typography.fontSize.sm, lineHeight: typography.lineHeight.relaxed }}>
+              要素が何であるかを支援技術に伝えます。例：<code style={{ backgroundColor: primitive.blue[100], padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>role="button"</code>、
+              <code style={{ backgroundColor: primitive.blue[100], padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>role="navigation"</code>など。
+              HTMLのセマンティック要素（<code>&lt;button&gt;</code>、<code>&lt;nav&gt;</code>）を使えば、roleは自動的に付与されます。
+            </p>
+          </div>
+
+          <div style={{
+            padding: spacing.scale[4],
+            backgroundColor: primitive.white,
+            borderRadius: radii.borderRadius.md,
+            border: `1px solid ${primitive.blue[200]}`,
+          }}>
+            <h4 style={{
+              marginTop: 0,
+              marginBottom: spacing.scale[2],
+              color: primitive.blue[900],
+              fontSize: typography.fontSize.base,
+              fontWeight: typography.fontWeight.semibold,
+            }}>
+              🏷️ 名前（Name）をつける
+            </h4>
+            <p style={{ margin: 0, color: primitive.gray[700], fontSize: typography.fontSize.sm, lineHeight: typography.lineHeight.relaxed }}>
+              要素に読み上げられる名前を与えます。<code style={{ backgroundColor: primitive.blue[100], padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>aria-label</code>、
+              <code style={{ backgroundColor: primitive.blue[100], padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>aria-labelledby</code>などで指定します。
+              「閉じるボタン」「メニューを開く」など、要素の目的を明確に伝えます。
+            </p>
+          </div>
+
+          <div style={{
+            padding: spacing.scale[4],
+            backgroundColor: primitive.white,
+            borderRadius: radii.borderRadius.md,
+            border: `1px solid ${primitive.blue[200]}`,
+          }}>
+            <h4 style={{
+              marginTop: 0,
+              marginBottom: spacing.scale[2],
+              color: primitive.blue[900],
+              fontSize: typography.fontSize.base,
+              fontWeight: typography.fontWeight.semibold,
+            }}>
+              📊 状態（State）を伝える
+            </h4>
+            <p style={{ margin: 0, color: primitive.gray[700], fontSize: typography.fontSize.sm, lineHeight: typography.lineHeight.relaxed }}>
+              要素の現在の状態を伝えます。<code style={{ backgroundColor: primitive.blue[100], padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>aria-expanded="true"</code>（展開中）、
+              <code style={{ backgroundColor: primitive.blue[100], padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>aria-checked="false"</code>（未チェック）、
+              <code style={{ backgroundColor: primitive.blue[100], padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>aria-disabled="true"</code>（無効）など、
+              動的に変化する状態を支援技術に伝えます。
+            </p>
+          </div>
+
+          <div style={{
+            padding: spacing.scale[4],
+            backgroundColor: primitive.white,
+            borderRadius: radii.borderRadius.md,
+            border: `1px solid ${primitive.blue[200]}`,
+          }}>
+            <h4 style={{
+              marginTop: 0,
+              marginBottom: spacing.scale[2],
+              color: primitive.blue[900],
+              fontSize: typography.fontSize.base,
+              fontWeight: typography.fontWeight.semibold,
+            }}>
+              🔗 関係性（Relationship）を示す
+            </h4>
+            <p style={{ margin: 0, color: primitive.gray[700], fontSize: typography.fontSize.sm, lineHeight: typography.lineHeight.relaxed }}>
+              要素間の関係を伝えます。<code style={{ backgroundColor: primitive.blue[100], padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>aria-describedby</code>（説明要素）、
+              <code style={{ backgroundColor: primitive.blue[100], padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>aria-controls</code>（制御する要素）、
+              <code style={{ backgroundColor: primitive.blue[100], padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>aria-owns</code>（所有する要素）など、
+              要素同士のつながりを明確にします。
+            </p>
+          </div>
+        </div>
+
+        <div style={{
+          marginTop: spacing.scale[4],
+          padding: spacing.scale[3],
+          backgroundColor: primitive.yellow,
+          border: `2px solid ${primitive.black}`,
+          borderRadius: radii.borderRadius.md,
+          fontSize: typography.fontSize.sm,
+        }}>
+          <strong>💡 重要な原則:</strong> まずは<strong>セマンティックHTML</strong>（<code>&lt;button&gt;</code>、<code>&lt;nav&gt;</code>、<code>&lt;main&gt;</code>など）を使いましょう。
+          ARIAは、HTMLの機能では実現できない場合の「補完」として使用します。
+        </div>
+      </div>
+
       <div style={{ marginTop: spacing.scale[8] }}>
         <SectionHeading>主要なARIA属性</SectionHeading>
 
