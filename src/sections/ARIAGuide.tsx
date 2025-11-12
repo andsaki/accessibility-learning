@@ -860,6 +860,8 @@ function ARIAComparisonDemo() {
               borderRadius: radii.borderRadius.md,
               backgroundColor: primitive.white,
               cursor: "pointer",
+              color: primitive.gray[900],
+              fontSize: typography.fontSize.lg,
             }}
           >
             ✕
@@ -879,6 +881,8 @@ function ARIAComparisonDemo() {
               borderRadius: radii.borderRadius.md,
               backgroundColor: primitive.white,
               cursor: "pointer",
+              color: primitive.gray[900],
+              fontSize: typography.fontSize.lg,
             }}
           >
             ✕
@@ -1246,6 +1250,7 @@ function ScreenReaderSimulator() {
             cursor: isReading ? "not-allowed" : "pointer",
             fontSize: typography.fontSize.lg,
             opacity: isReading ? 0.6 : 1,
+            color: primitive.gray[900],
           }}
         >
           ✕
