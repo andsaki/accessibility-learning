@@ -43,14 +43,23 @@ jobs:
 
       - name: Copy app and storybook
         run: |
+          # Storybookを先にコピー
           mkdir -p dist-combined/storybook
           cp -r storybook-static/* dist-combined/storybook/
-          cp -rf dist/* dist-combined/
+
+          # メインアプリを後からコピー（index.htmlを上書き）
+          cp -r dist/* dist-combined/
+
+          # .nojekyllファイルを作成
           touch dist-combined/.nojekyll
+
+          # デバッグ: ディレクトリ構造を確認
           echo "=== Checking dist-combined contents ==="
           ls -la dist-combined/
           echo "=== Checking dist-combined/index.html ==="
-          head -10 dist-combined/index.html
+          head -20 dist-combined/index.html
+          echo "=== Checking dist-combined/storybook/index.html ==="
+          head -20 dist-combined/storybook/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v4
