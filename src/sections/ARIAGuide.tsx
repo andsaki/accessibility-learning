@@ -58,7 +58,7 @@ export const ARIAGuide = () => {
           alignItems: 'center',
           gap: spacing.scale[2]
         }}>
-          <icons.concept.hierarchy size={24} color={primitive.blue[600]} strokeWidth={2} />
+          <icons.concept.designTokens size={24} color={primitive.blue[600]} strokeWidth={2} />
           ARIAの基本的な役割
         </h3>
 
