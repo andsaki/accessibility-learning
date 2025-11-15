@@ -133,13 +133,13 @@ export function Form<T extends z.ZodType<FieldValues>>({
 /**
  * フォームフック付きバージョン - より高度なカスタマイズ用
  */
-export interface FormWithHookProps<T extends z.ZodType<FieldValues>> {
+export interface FormWithHookProps<T extends FieldValues> {
   /** react-hook-formのフォームインスタンス */
-  form: UseFormReturn<z.infer<T>>;
+  form: UseFormReturn<T>;
   /** 送信時のコールバック */
-  onSubmit: SubmitHandler<z.infer<T>>;
+  onSubmit: SubmitHandler<T>;
   /** フォームコンテンツ */
-  children: (form: UseFormReturn<z.infer<T>>) => React.ReactNode;
+  children: (form: UseFormReturn<T>) => React.ReactNode;
   /** フォームのカスタムスタイル */
   style?: React.CSSProperties;
 }
@@ -148,7 +148,7 @@ export interface FormWithHookProps<T extends z.ZodType<FieldValues>> {
  * フォームフックを外部から渡すバージョン
  * より複雑なフォームやカスタムロジックが必要な場合に使用
  */
-export function FormWithHook<T extends z.ZodType<FieldValues>>({
+export function FormWithHook<T extends FieldValues>({
   form,
   onSubmit,
   children,
