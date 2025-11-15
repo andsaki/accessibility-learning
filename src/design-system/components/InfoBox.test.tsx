@@ -72,4 +72,24 @@ describe('InfoBox', () => {
       expect(box).toHaveStyle({ marginTop: '20px' });
     });
   });
+
+  describe('左ボーダー', () => {
+    it('leftBorder=trueで太いボーダーが表示される', () => {
+      const { container } = render(<InfoBox leftBorder>内容</InfoBox>);
+      const box = container.firstChild as HTMLElement;
+      expect(box).toHaveStyle({ borderLeft: '4px solid #bfdbfe' });
+    });
+
+    it('leftBorder=falseで通常のボーダーが表示される', () => {
+      const { container } = render(<InfoBox leftBorder={false}>内容</InfoBox>);
+      const box = container.firstChild as HTMLElement;
+      expect(box).toHaveStyle({ borderLeft: '1px solid #bfdbfe' });
+    });
+
+    it('デフォルトで通常のボーダーが表示される', () => {
+      const { container } = render(<InfoBox>内容</InfoBox>);
+      const box = container.firstChild as HTMLElement;
+      expect(box).toHaveStyle({ borderLeft: '1px solid #bfdbfe' });
+    });
+  });
 });

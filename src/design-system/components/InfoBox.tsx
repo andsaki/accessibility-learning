@@ -1,5 +1,6 @@
 import React from 'react';
 import { spacing } from '../tokens';
+import { primitive } from '../tokens/colors';
 
 export type InfoBoxVariant = 'info' | 'warning' | 'success' | 'tip';
 
@@ -12,6 +13,8 @@ export interface InfoBoxProps {
   icon?: string;
   /** 子要素 */
   children: React.ReactNode;
+  /** 左ボーダーを表示 */
+  leftBorder?: boolean;
   /** カスタムスタイル */
   style?: React.CSSProperties;
 }
@@ -21,24 +24,24 @@ const variantStyles: Record<
   { bg: string; border: string; color: string }
 > = {
   info: {
-    bg: '#f0f9ff',
-    border: '#bfdbfe',
-    color: '#1e40af',
+    bg: primitive.blue[50],
+    border: primitive.blue[300],
+    color: primitive.blue[800],
   },
   warning: {
-    bg: '#fef3c7',
-    border: '#fbbf24',
-    color: '#92400e',
+    bg: primitive.orange[50],
+    border: primitive.orange[300],
+    color: primitive.orange[900],
   },
   success: {
-    bg: '#d1fae5',
-    border: '#6ee7b7',
-    color: '#065f46',
+    bg: primitive.green[50],
+    border: primitive.green[300],
+    color: primitive.green[800],
   },
   tip: {
-    bg: '#f0f9ff',
-    border: '#bfdbfe',
-    color: '#1e40af',
+    bg: primitive.blue[50],
+    border: primitive.blue[300],
+    color: primitive.blue[800],
   },
 };
 
@@ -52,6 +55,7 @@ export const InfoBox: React.FC<InfoBoxProps> = ({
   title,
   icon,
   children,
+  leftBorder = false,
   style,
 }) => {
   const styles = variantStyles[variant];
@@ -63,6 +67,7 @@ export const InfoBox: React.FC<InfoBoxProps> = ({
         backgroundColor: styles.bg,
         borderRadius: '8px',
         border: `1px solid ${styles.border}`,
+        borderLeft: leftBorder ? `4px solid ${styles.border}` : `1px solid ${styles.border}`,
         color: styles.color,
         ...style,
       }}
