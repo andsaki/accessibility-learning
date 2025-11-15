@@ -37,6 +37,11 @@ const meta = {
       control: 'boolean',
       description: '左側に太いボーダーを表示',
     },
+    wcagLevel: {
+      control: 'select',
+      options: ['A', 'AA', 'AAA'],
+      description: 'WCAGアクセシビリティレベル',
+    },
   },
 } satisfies Meta<typeof InfoBox>;
 
@@ -193,6 +198,82 @@ export const Accessibility: Story = {
           情報の重要度や種類に応じて適切なバリアントを選択してください。
           色だけでなく、アイコンやタイトルで情報を伝えることで、色覚特性のあるユーザーにも配慮できます。
         </p>
+      </InfoBox>
+    </div>
+  ),
+};
+
+/**
+ * WCAGレベル別の表示
+ *
+ * A（最低限）/ AA（推奨）/ AAA（最高）の3段階でコントラストを調整できます。
+ */
+export const WCAGLevels: Story = {
+  render: () => (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      <div>
+        <h3 style={{ marginBottom: '1rem', fontSize: '18px', fontWeight: 'bold' }}>
+          Level A（最低限）
+        </h3>
+        <div style={{ display: 'grid', gap: '1rem' }}>
+          <InfoBox variant="info" wcagLevel="A" title="Info - Level A">
+            <p style={{ margin: 0 }}>最低限のコントラスト比を提供します。</p>
+          </InfoBox>
+          <InfoBox variant="warning" wcagLevel="A" title="Warning - Level A">
+            <p style={{ margin: 0 }}>プロトタイプやMVPに適しています。</p>
+          </InfoBox>
+          <InfoBox variant="success" wcagLevel="A" title="Success - Level A">
+            <p style={{ margin: 0 }}>大きなテキストでの使用が推奨されます。</p>
+          </InfoBox>
+        </div>
+      </div>
+
+      <div>
+        <h3 style={{ marginBottom: '1rem', fontSize: '18px', fontWeight: 'bold' }}>
+          Level AA（推奨）★
+        </h3>
+        <div style={{ display: 'grid', gap: '1rem' }}>
+          <InfoBox variant="info" wcagLevel="AA" title="Info - Level AA">
+            <p style={{ margin: 0 }}>ほとんどのWebサイトで推奨される標準レベルです。</p>
+          </InfoBox>
+          <InfoBox variant="warning" wcagLevel="AA" title="Warning - Level AA">
+            <p style={{ margin: 0 }}>バランスの取れたコントラストを提供します。</p>
+          </InfoBox>
+          <InfoBox variant="success" wcagLevel="AA" title="Success - Level AA">
+            <p style={{ margin: 0 }}>コントラスト比4.5:1以上を確保しています。</p>
+          </InfoBox>
+        </div>
+      </div>
+
+      <div>
+        <h3 style={{ marginBottom: '1rem', fontSize: '18px', fontWeight: 'bold' }}>
+          Level AAA（最高）
+        </h3>
+        <div style={{ display: 'grid', gap: '1rem' }}>
+          <InfoBox variant="info" wcagLevel="AAA" title="Info - Level AAA">
+            <p style={{ margin: 0 }}>最高レベルのコントラストで視認性が向上します。</p>
+          </InfoBox>
+          <InfoBox variant="warning" wcagLevel="AAA" title="Warning - Level AAA">
+            <p style={{ margin: 0 }}>公共機関、医療、金融サービスに最適です。</p>
+          </InfoBox>
+          <InfoBox variant="success" wcagLevel="AAA" title="Success - Level AAA">
+            <p style={{ margin: 0 }}>コントラスト比7:1以上を確保しています。</p>
+          </InfoBox>
+        </div>
+      </div>
+
+      <InfoBox variant="tip" icon="💡" title="使い分けのヒント" wcagLevel="AA">
+        <ul style={{ margin: 0, paddingLeft: spacing.scale[6], lineHeight: 1.8 }}>
+          <li>
+            <strong>Level A</strong>: プロトタイプ、一時的なページ
+          </li>
+          <li>
+            <strong>Level AA</strong>: 一般的なWebサイト、アプリケーション（推奨）
+          </li>
+          <li>
+            <strong>Level AAA</strong>: 公共サービス、高齢者向けサービス
+          </li>
+        </ul>
       </InfoBox>
     </div>
   ),
