@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { Modal } from './Modal';
 import { Button } from './Button';
 import { Input } from './Input';
+import { InfoBox } from './InfoBox';
 import { spacing } from '../tokens';
 
 /**
@@ -75,36 +76,20 @@ export const Default: Story = {
               プッシュ通知を有効にすると、重要なお知らせをリアルタイムで受け取ることができます。
             </p>
 
-            <div style={{
-              padding: spacing.scale[4],
-              backgroundColor: '#f0f9ff',
-              borderRadius: '8px',
-              border: '1px solid #bfdbfe'
-            }}>
-              <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: '#1e40af' }}>
-                💡 キーボード操作
-              </h4>
-              <ul style={{ margin: 0, paddingLeft: spacing.scale[6], lineHeight: 1.8, color: '#1e40af' }}>
+            <InfoBox variant="info" icon="💡" title="キーボード操作">
+              <ul style={{ margin: 0, paddingLeft: spacing.scale[6], lineHeight: 1.8 }}>
                 <li><strong>Tab</strong>: フォーカスを移動（モーダル内を循環）</li>
                 <li><strong>Esc</strong>: モーダルを閉じる</li>
                 <li><strong>Enter/Space</strong>: ボタンを実行</li>
               </ul>
-            </div>
+            </InfoBox>
 
-            <div style={{
-              padding: spacing.scale[4],
-              backgroundColor: '#fef3c7',
-              borderRadius: '8px',
-              border: '1px solid #fbbf24'
-            }}>
-              <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: '#92400e' }}>
-                ⚠️ 注意事項
-              </h4>
-              <p style={{ margin: 0, lineHeight: 1.6, color: '#92400e' }}>
+            <InfoBox variant="warning" icon="⚠️" title="注意事項">
+              <p style={{ margin: 0 }}>
                 モーダル表示中は背景がスクロールできなくなります。
                 また、フォーカスはモーダル内に閉じ込められ、背景の要素にはアクセスできません。
               </p>
-            </div>
+            </InfoBox>
           </div>
         </Modal>
       </>

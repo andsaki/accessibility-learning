@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from "@storybook/react";
 import { Loading, InlineLoading } from "./Loading";
 import { useState } from "react";
 import { Button } from "./Button";
+import { InfoBox } from "./InfoBox";
 
 /**
  * アクセシブルなローディングスピナーコンポーネント
@@ -300,25 +301,14 @@ export const Accessibility: Story = {
   args: { label: "" } as any,
   render: () => (
     <div>
-      <div
-        style={{
-          padding: "1rem",
-          backgroundColor: "#eff6ff",
-          borderRadius: "8px",
-          marginBottom: "1.5rem",
-          border: "2px solid #3b82f6",
-        }}
-      >
-        <h3 style={{ marginTop: 0, fontSize: "16px", fontWeight: "bold" }}>
-          💡 アクセシビリティ機能
-        </h3>
+      <InfoBox variant="info" icon="💡" title="アクセシビリティ機能" style={{ marginBottom: "1.5rem" }}>
         <ul style={{ margin: 0, paddingLeft: "1.5rem", fontSize: "14px", lineHeight: "1.8" }}>
           <li><strong>role="status"</strong>: ローディング状態をスクリーンリーダーに通知</li>
           <li><strong>aria-label</strong>: ローディングの説明を提供</li>
           <li><strong>aria-live="polite"</strong>: 状態変化を穏やかに通知</li>
           <li><strong>視覚的フィードバック</strong>: アニメーションで処理中を明確に表示</li>
         </ul>
-      </div>
+      </InfoBox>
 
       <div style={{ display: "flex", flexDirection: "column", gap: "2rem" }}>
         <div>

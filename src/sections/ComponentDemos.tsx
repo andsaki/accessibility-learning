@@ -4,6 +4,7 @@ import { TextArea } from "../design-system/components/TextArea";
 import { Checkbox } from "../design-system/components/Checkbox";
 import { Radio, RadioGroup } from "../design-system/components/Radio";
 import { Loading, InlineLoading } from "../design-system/components/Loading";
+import { InfoBox } from "../design-system/components/InfoBox";
 import { colors, radii, spacing, typography, icons } from "../design-system/tokens";
 import { primitive } from "../design-system/tokens/colors";
 import { SectionHeading } from "../components/SectionHeading";
@@ -397,17 +398,8 @@ export function ComponentDemos({
           </div>
         </div>
 
-        <div style={{
-          marginTop: spacing.scale[8],
-          padding: spacing.scale[4],
-          backgroundColor: primitive.blue[50],
-          borderRadius: radii.borderRadius.md,
-          border: `1px solid ${primitive.blue[200]}`,
-        }}>
-          <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
-            💡 Selectの特徴
-          </h4>
-          <ul style={{ color: primitive.blue[900], lineHeight: typography.lineHeight.relaxed }}>
+        <InfoBox variant="info" icon="💡" title="Selectの特徴" style={{ marginTop: spacing.scale[8] }}>
+          <ul style={{ lineHeight: typography.lineHeight.relaxed, margin: 0, paddingLeft: spacing.scale[6] }}>
             <li><strong>ラベル関連付け</strong>: for/id属性で自動関連付け</li>
             <li><strong>エラー表示</strong>: aria-invalid, aria-describedby, role="alert"</li>
             <li><strong>必須項目</strong>: aria-required属性でスクリーンリーダーに通知</li>
@@ -415,7 +407,7 @@ export function ComponentDemos({
             <li><strong>キーボードフォーカス</strong>: Tabキー操作時のみフォーカススタイル表示</li>
             <li><strong>ネイティブselect要素</strong>: アクセシビリティとユーザビリティを両立</li>
           </ul>
-        </div>
+        </InfoBox>
       </section>
 
       <section
@@ -450,17 +442,8 @@ export function ComponentDemos({
 
         <TextAreaSection />
 
-        <div style={{
-          marginTop: spacing.scale[8],
-          padding: spacing.scale[4],
-          backgroundColor: primitive.blue[50],
-          borderRadius: radii.borderRadius.md,
-          border: `1px solid ${primitive.blue[200]}`,
-        }}>
-          <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
-            💡 TextAreaの特徴
-          </h4>
-          <ul style={{ color: primitive.blue[900], lineHeight: typography.lineHeight.relaxed }}>
+        <InfoBox variant="info" icon="💡" title="TextAreaの特徴" style={{ marginTop: spacing.scale[8] }}>
+          <ul style={{ lineHeight: typography.lineHeight.relaxed, margin: 0, paddingLeft: spacing.scale[6] }}>
             <li><strong>ラベル関連付け</strong>: for/id属性で自動関連付け</li>
             <li><strong>エラー表示</strong>: aria-invalid, aria-describedby, role="alert"</li>
             <li><strong>文字数カウント</strong>: maxLengthとshowCountで制限と表示</li>
@@ -468,7 +451,7 @@ export function ComponentDemos({
             <li><strong>キーボードフォーカス</strong>: Tabキー操作時のみフォーカススタイル表示</li>
             <li><strong>WCAGレベル対応</strong>: A/AA/AAAの3段階</li>
           </ul>
-        </div>
+        </InfoBox>
       </section>
 
       <section
@@ -503,24 +486,15 @@ export function ComponentDemos({
 
         <CheckboxSection />
 
-        <div style={{
-          marginTop: spacing.scale[8],
-          padding: spacing.scale[4],
-          backgroundColor: primitive.blue[50],
-          borderRadius: radii.borderRadius.md,
-          border: `1px solid ${primitive.blue[200]}`,
-        }}>
-          <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
-            💡 Checkboxの特徴
-          </h4>
-          <ul style={{ color: primitive.blue[900], lineHeight: typography.lineHeight.relaxed }}>
+        <InfoBox variant="info" icon="💡" title="Checkboxの特徴" style={{ marginTop: spacing.scale[8] }}>
+          <ul style={{ lineHeight: typography.lineHeight.relaxed, margin: 0, paddingLeft: spacing.scale[6] }}>
             <li><strong>ラベル関連付け</strong>: for/id属性で自動関連付け</li>
             <li><strong>エラー表示</strong>: aria-invalid, aria-describedby, role="alert"</li>
             <li><strong>不確定状態</strong>: indeterminate属性で一部選択状態を表現</li>
             <li><strong>キーボード操作</strong>: Spaceキーでチェック切り替え</li>
             <li><strong>フォーカス表示</strong>: Tabキー操作時のみフォーカススタイル表示</li>
           </ul>
-        </div>
+        </InfoBox>
       </section>
 
       <section
@@ -555,24 +529,15 @@ export function ComponentDemos({
 
         <RadioSection />
 
-        <div style={{
-          marginTop: spacing.scale[8],
-          padding: spacing.scale[4],
-          backgroundColor: primitive.blue[50],
-          borderRadius: radii.borderRadius.md,
-          border: `1px solid ${primitive.blue[200]}`,
-        }}>
-          <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
-            💡 Radioの特徴
-          </h4>
-          <ul style={{ color: primitive.blue[900], lineHeight: typography.lineHeight.relaxed }}>
+        <InfoBox variant="info" icon="💡" title="Radioの特徴" style={{ marginTop: spacing.scale[8] }}>
+          <ul style={{ lineHeight: typography.lineHeight.relaxed, margin: 0, paddingLeft: spacing.scale[6] }}>
             <li><strong>RadioGroup</strong>: fieldset/legendで グループ化</li>
             <li><strong>エラー表示</strong>: aria-invalid, aria-describedby, role="alert"</li>
             <li><strong>キーボード操作</strong>: 矢印キーで選択変更、Spaceキーで選択</li>
             <li><strong>排他的選択</strong>: name属性で同じグループ内は1つのみ選択可能</li>
             <li><strong>フォーカス表示</strong>: Tabキー操作時のみフォーカススタイル表示</li>
           </ul>
-        </div>
+        </InfoBox>
       </section>
 
       <section
@@ -607,17 +572,8 @@ export function ComponentDemos({
 
         <LoadingSection />
 
-        <div style={{
-          marginTop: spacing.scale[8],
-          padding: spacing.scale[4],
-          backgroundColor: primitive.blue[50],
-          borderRadius: radii.borderRadius.md,
-          border: `1px solid ${primitive.blue[200]}`,
-        }}>
-          <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
-            💡 Loadingの特徴
-          </h4>
-          <ul style={{ color: primitive.blue[900], lineHeight: typography.lineHeight.relaxed }}>
+        <InfoBox variant="info" icon="💡" title="Loadingの特徴" style={{ marginTop: spacing.scale[8] }}>
+          <ul style={{ lineHeight: typography.lineHeight.relaxed, margin: 0, paddingLeft: spacing.scale[6] }}>
             <li><strong>スクリーンリーダー対応</strong>: role="status", aria-label, aria-live</li>
             <li><strong>サイズバリエーション</strong>: sm/md/lg/xlの4サイズ</li>
             <li><strong>カラーバリエーション</strong>: primary/secondary/whiteの3色</li>
@@ -625,7 +581,7 @@ export function ComponentDemos({
             <li><strong>インラインローディング</strong>: ボタン内やテキスト内での使用に最適</li>
             <li><strong>SVGアニメーション</strong>: 滑らかな回転アニメーション</li>
           </ul>
-        </div>
+        </InfoBox>
       </section>
 
       <section

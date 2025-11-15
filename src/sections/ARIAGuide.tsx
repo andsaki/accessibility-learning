@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Button, Input, Accordion, AccordionSummary, AccordionContent, Breadcrumbs, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, Modal } from "../design-system/components";
+import { InfoBox } from "../design-system/components/InfoBox";
 import { colors, radii, spacing, typography, icons } from "../design-system/tokens";
 import { primitive } from "../design-system/tokens/colors";
 import { SectionHeading } from "../components/SectionHeading";
@@ -486,17 +487,8 @@ export const ARIAGuide = () => {
             ツールチップは、要素に関する補足情報を提供するポップアップです。aria-describedby と組み合わせて使用します。
           </p>
 
-          <div style={{
-            backgroundColor: primitive.white,
-            padding: spacing.scale[3],
-            borderRadius: radii.borderRadius.base,
-            marginTop: spacing.scale[3],
-            border: `1px solid ${primitive.pink[200]}`,
-          }}>
-            <h5 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.pink[900], fontSize: typography.fontSize.base }}>
-              💡 ツールチップのアクセシビリティ要件
-            </h5>
-            <ul style={{ color: primitive.gray[700], lineHeight: typography.lineHeight.relaxed, margin: 0, paddingLeft: spacing.scale[5] }}>
+          <InfoBox variant="tip" icon="💡" title="ツールチップのアクセシビリティ要件" style={{ marginTop: spacing.scale[3] }}>
+            <ul style={{ lineHeight: typography.lineHeight.relaxed, margin: 0, paddingLeft: spacing.scale[5] }}>
               <li>role="tooltip" を使用する</li>
               <li>一意のIDを持つ</li>
               <li>トリガー要素から aria-describedby で参照される</li>
@@ -504,7 +496,7 @@ export const ARIAGuide = () => {
               <li>適切な遅延時間を設定（推奨：300ms）</li>
               <li>視覚的に明確なポジショニング</li>
             </ul>
-          </div>
+          </InfoBox>
 
           <div style={{
             backgroundColor: primitive.white,
@@ -635,17 +627,8 @@ export const ARIAGuide = () => {
               モーダルダイアログを示します。aria-labelledby または aria-label と組み合わせて使用します。
             </p>
 
-            <div style={{
-              backgroundColor: primitive.white,
-              padding: spacing.scale[3],
-              borderRadius: radii.borderRadius.base,
-              marginTop: spacing.scale[3],
-              border: `1px solid ${primitive.pink[200]}`,
-            }}>
-              <h5 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.pink[900], fontSize: typography.fontSize.base }}>
-                💡 モーダルのアクセシビリティ要件
-              </h5>
-              <ul style={{ color: primitive.gray[700], lineHeight: typography.lineHeight.relaxed, margin: 0, paddingLeft: spacing.scale[5] }}>
+            <InfoBox variant="tip" icon="💡" title="モーダルのアクセシビリティ要件" style={{ marginTop: spacing.scale[3] }}>
+              <ul style={{ lineHeight: typography.lineHeight.relaxed, margin: 0, paddingLeft: spacing.scale[5] }}>
                 <li>role="dialog" と aria-modal="true" を使用</li>
                 <li>aria-labelledby でタイトルを参照</li>
                 <li>フォーカストラップ（Tab キーでモーダル内を循環）</li>
@@ -654,7 +637,7 @@ export const ARIAGuide = () => {
                 <li>開いた時に最初のフォーカス可能要素にフォーカス</li>
                 <li>閉じた時に元の場所にフォーカスを戻す</li>
               </ul>
-            </div>
+            </InfoBox>
 
             <div style={{
               backgroundColor: primitive.white,
