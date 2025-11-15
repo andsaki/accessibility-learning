@@ -168,12 +168,16 @@ if (isKeyboardFocus) {
 - ✅ Input（実装済み）
 - ✅ Accordion（実装済み）
 - ✅ Toast（実装済み）
-- ⏳ InfoBox（TODO）
+- ✅ InfoBox（実装済み）
+- ⏳ Breadcrumbs（一部実装済み - wcagLevel未実装）
 - ⏳ Checkbox（将来）
 - ⏳ Radio（将来）
 - ⏳ Select（将来）
 - ⏳ Modal（将来）
-- ⏳ Breadcrumbs（将来）
+- ⏳ Tabs（将来）
+- ⏳ Tooltip（将来）
+- ⏳ Alert（将来）
+- ⏳ Dialog（将来）
 
 **重要:** 新しいインタラクティブコンポーネントやフィードバックコンポーネント（Toast, InfoBox, Alert, Notification等）を作成する際は、**必ず`wcagLevel`プロパティを実装すること**。これを忘れた場合は、後から追加が必要になります。
 
