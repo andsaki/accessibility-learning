@@ -42,6 +42,10 @@ const meta = {
       options: ['A', 'AA', 'AAA'],
       description: 'WCAGアクセシビリティレベル',
     },
+    children: {
+      control: false,
+      description: '子要素（コンテンツ）',
+    },
   },
 } satisfies Meta<typeof InfoBox>;
 
