@@ -165,7 +165,7 @@ function App() {
               alignItems: 'center',
               gap: spacing.scale[2]
             }}>
-              <icons.philosophy.kind size={isMobile ? 28 : 40} color={primitive.pink?.[400] || primitive.blue[400]} strokeWidth={1.5} />
+              <icons.philosophy.kind size={isMobile ? 28 : 40} color={primitive.pink?.[400] || primitive.blue[400]} strokeWidth={1.5} aria-hidden="true" />
               優しい体験を学ぶデザインシステム
             </h1>
             <p style={{ color: themeColors.text.secondary, fontSize: typography.fontSize.lg, lineHeight: typography.lineHeight.normal }}>
@@ -179,7 +179,7 @@ function App() {
               size="sm"
               aria-label="Storybookを開く"
             >
-              <icons.component.button size={20} strokeWidth={2} />
+              <icons.component.button size={20} strokeWidth={2} aria-hidden="true" />
               <span style={{ marginLeft: spacing.scale[1] }}>Storybook</span>
             </Button>
             <Button
@@ -189,9 +189,9 @@ function App() {
               aria-label={mode === 'light' ? 'ダークモードに切り替え' : 'ライトモードに切り替え'}
             >
               {mode === 'light' ? (
-                <icons.concept.theme.dark size={20} strokeWidth={2} />
+                <icons.concept.theme.dark size={20} strokeWidth={2} aria-hidden="true" />
               ) : (
-                <icons.concept.theme.light size={20} strokeWidth={2} />
+                <icons.concept.theme.light size={20} strokeWidth={2} aria-hidden="true" />
               )}
             </Button>
           </div>
@@ -213,7 +213,7 @@ function App() {
             alignItems: 'center',
             gap: spacing.scale[2]
           }}>
-            <icons.philosophy.overview size={24} color={primitive.blue[600]} strokeWidth={2} />
+            <icons.philosophy.overview size={24} color={primitive.blue[600]} strokeWidth={2} aria-hidden="true" />
             デザイン哲学：優しさの3原則
           </h2>
 
@@ -229,7 +229,7 @@ function App() {
               borderRadius: radii.borderRadius.lg,
               border: `1px solid ${primitive.blue[200]}`,
             }}>
-              <icons.philosophy.inclusive size={32} color={primitive.blue[500]} strokeWidth={1.5} style={{ marginBottom: spacing.scale[2] }} />
+              <icons.philosophy.inclusive size={32} color={primitive.blue[500]} strokeWidth={1.5} style={{ marginBottom: spacing.scale[2] }} aria-hidden="true" />
               <h3 style={{
                 marginTop: 0,
                 marginBottom: spacing.scale[2],
@@ -255,7 +255,7 @@ function App() {
               borderRadius: radii.borderRadius.lg,
               border: `1px solid ${primitive.blue[200]}`,
             }}>
-              <icons.philosophy.pleasant size={32} color={primitive.blue[500]} strokeWidth={1.5} style={{ marginBottom: spacing.scale[2] }} />
+              <icons.philosophy.pleasant size={32} color={primitive.blue[500]} strokeWidth={1.5} style={{ marginBottom: spacing.scale[2] }} aria-hidden="true" />
               <h3 style={{
                 marginTop: 0,
                 marginBottom: spacing.scale[2],
@@ -281,7 +281,7 @@ function App() {
               borderRadius: radii.borderRadius.lg,
               border: `1px solid ${primitive.blue[200]}`,
             }}>
-              <icons.philosophy.scalable size={32} color={primitive.blue[500]} strokeWidth={1.5} style={{ marginBottom: spacing.scale[2] }} />
+              <icons.philosophy.scalable size={32} color={primitive.blue[500]} strokeWidth={1.5} style={{ marginBottom: spacing.scale[2] }} aria-hidden="true" />
               <h3 style={{
                 marginTop: 0,
                 marginBottom: spacing.scale[2],

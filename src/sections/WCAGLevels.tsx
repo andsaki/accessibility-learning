@@ -26,7 +26,7 @@ export function WCAGLevels() {
         alignItems: 'center',
         gap: spacing.scale[2]
       }}>
-        <icons.concept.wcag size={28} color={primitive.blue[600]} strokeWidth={2} />
+        <icons.concept.wcag size={28} color={primitive.blue[600]} strokeWidth={2} aria-hidden="true" />
         WCAGレベルとコントラスト比について
       </h2>
 
