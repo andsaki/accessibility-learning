@@ -318,7 +318,8 @@ export const ARIAGuide = () => {
               <h5 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.orange[900], fontSize: typography.fontSize.base }}>
                 📋 aria-current の値の種類
               </h5>
-              <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: typography.fontSize.sm }}>
+              <div style={{ overflowX: 'auto' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: typography.fontSize.sm }}>
                 <thead>
                   <tr style={{ borderBottom: `2px solid ${primitive.orange[200]}` }}>
                     <th style={{ textAlign: 'left', padding: spacing.scale[2], color: primitive.orange[900] }}>値</th>
@@ -364,6 +365,7 @@ export const ARIAGuide = () => {
                   </tr>
                 </tbody>
               </table>
+              </div>
             </div>
 
             <div style={{
@@ -1011,7 +1013,7 @@ function ARIAComparisonDemo() {
       <div
         style={{
           display: "grid",
-          gridTemplateColumns: "1fr 1fr",
+          gridTemplateColumns: "repeat(auto-fit, minmax(min(100%, 300px), 1fr))",
           gap: spacing.scale[4],
           marginTop: spacing.scale[4],
         }}
@@ -1220,7 +1222,7 @@ function ScreenReaderSimulator() {
         ボタンをクリックして、スクリーンリーダーがどのように読み上げるかを確認できます
       </p>
 
-      <div style={{ marginTop: spacing.scale[4], display: "flex", gap: spacing.scale[4], alignItems: "center" }}>
+      <div style={{ marginTop: spacing.scale[4], display: "flex", gap: spacing.scale[4], alignItems: "center", flexWrap: "wrap" }}>
         <button
           onClick={simulateReading}
           disabled={isReading}

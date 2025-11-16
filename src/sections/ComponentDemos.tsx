@@ -206,7 +206,7 @@ export function ComponentDemos({
             required
           />
 
-          <div style={{ display: "flex", gap: spacing.scale[4], marginTop: spacing.scale[4] }}>
+          <div style={{ display: "flex", gap: spacing.scale[4], marginTop: spacing.scale[4], flexWrap: "wrap" }}>
             <Button type="submit" variant="primary">
               送信
             </Button>
