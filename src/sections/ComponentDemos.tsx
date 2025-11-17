@@ -62,6 +62,9 @@ export function ComponentDemos({
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
           border: `1px solid ${colors.border.default}`,
+        maxWidth: '100%',
+        overflowX: 'hidden',
+        boxSizing: 'border-box'
         }}
       >
         <h2 style={{
@@ -147,6 +150,9 @@ export function ComponentDemos({
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
           border: `1px solid ${colors.border.default}`,
+        maxWidth: '100%',
+        overflowX: 'hidden',
+        boxSizing: 'border-box'
         }}
       >
         <h2 style={{
@@ -262,6 +268,9 @@ export function ComponentDemos({
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
           border: `1px solid ${colors.border.default}`,
+        maxWidth: '100%',
+        overflowX: 'hidden',
+        boxSizing: 'border-box'
         }}
       >
         <h2 style={{
@@ -418,6 +427,9 @@ export function ComponentDemos({
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
           border: `1px solid ${colors.border.default}`,
+        maxWidth: '100%',
+        overflowX: 'hidden',
+        boxSizing: 'border-box'
         }}
       >
         <h2 style={{
@@ -462,6 +474,9 @@ export function ComponentDemos({
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
           border: `1px solid ${colors.border.default}`,
+        maxWidth: '100%',
+        overflowX: 'hidden',
+        boxSizing: 'border-box'
         }}
       >
         <h2 style={{
@@ -505,6 +520,9 @@ export function ComponentDemos({
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
           border: `1px solid ${colors.border.default}`,
+        maxWidth: '100%',
+        overflowX: 'hidden',
+        boxSizing: 'border-box'
         }}
       >
         <h2 style={{
@@ -548,6 +566,9 @@ export function ComponentDemos({
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
           border: `1px solid ${colors.border.default}`,
+        maxWidth: '100%',
+        overflowX: 'hidden',
+        boxSizing: 'border-box'
         }}
       >
         <h2 style={{
@@ -592,6 +613,9 @@ export function ComponentDemos({
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
           border: `1px solid ${colors.border.default}`,
+        maxWidth: '100%',
+        overflowX: 'hidden',
+        boxSizing: 'border-box'
         }}
       >
         <h2 style={{
@@ -729,6 +753,9 @@ export function ComponentDemos({
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
           border: `1px solid ${colors.border.default}`,
+        maxWidth: '100%',
+        overflowX: 'hidden',
+        boxSizing: 'border-box'
         }}
       >
         <h2 style={{
@@ -862,6 +889,9 @@ export function ComponentDemos({
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
           border: `1px solid ${colors.border.default}`,
+        maxWidth: '100%',
+        overflowX: 'hidden',
+        boxSizing: 'border-box'
         }}
       >
         <h2 style={{
@@ -947,6 +977,9 @@ export function ComponentDemos({
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
           border: `1px solid ${colors.border.default}`,
+        maxWidth: '100%',
+        overflowX: 'hidden',
+        boxSizing: 'border-box'
         }}
       >
         <h2 style={{
@@ -1041,6 +1074,9 @@ export function ComponentDemos({
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
           border: `1px solid ${colors.border.default}`,
+        maxWidth: '100%',
+        overflowX: 'hidden',
+        boxSizing: 'border-box'
         }}
       >
         <h2 style={{
@@ -1070,6 +1106,9 @@ export function ComponentDemos({
             backgroundColor: primitive.gray[50],
             borderRadius: radii.borderRadius.base,
             border: `1px solid ${colors.border.default}`,
+        maxWidth: '100%',
+        overflowX: 'hidden',
+        boxSizing: 'border-box'
           }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[3] }}>
               <Text variant="h1">見出し1 - ページタイトル</Text>
@@ -1089,6 +1128,9 @@ export function ComponentDemos({
             backgroundColor: primitive.gray[50],
             borderRadius: radii.borderRadius.base,
             border: `1px solid ${colors.border.default}`,
+        maxWidth: '100%',
+        overflowX: 'hidden',
+        boxSizing: 'border-box'
           }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[3] }}>
               <Text variant="body-large">大きめの本文テキスト - 重要な説明文などに使用</Text>
@@ -1107,6 +1149,9 @@ export function ComponentDemos({
             backgroundColor: primitive.gray[50],
             borderRadius: radii.borderRadius.base,
             border: `1px solid ${colors.border.default}`,
+        maxWidth: '100%',
+        overflowX: 'hidden',
+        boxSizing: 'border-box'
           }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[2] }}>
               <Text>通常のテキスト</Text>
@@ -1125,6 +1170,9 @@ export function ComponentDemos({
             backgroundColor: primitive.gray[50],
             borderRadius: radii.borderRadius.base,
             border: `1px solid ${colors.border.default}`,
+        maxWidth: '100%',
+        overflowX: 'hidden',
+        boxSizing: 'border-box'
           }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[2] }}>
               <Text color={primitive.blue[600]}>青色のテキスト</Text>
@@ -1156,6 +1204,9 @@ export function ComponentDemos({
             backgroundColor: primitive.gray[50],
             borderRadius: radii.borderRadius.base,
             border: `1px solid ${colors.border.default}`,
+        maxWidth: '100%',
+        overflowX: 'hidden',
+        boxSizing: 'border-box'
           }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[5] }}>
               <div style={{
@@ -1323,6 +1374,9 @@ export function ComponentDemos({
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
           border: `1px solid ${colors.border.default}`,
+        maxWidth: '100%',
+        overflowX: 'hidden',
+        boxSizing: 'border-box'
         }}
       >
         <h2 style={{
@@ -1352,6 +1406,9 @@ export function ComponentDemos({
             backgroundColor: primitive.gray[50],
             borderRadius: radii.borderRadius.base,
             border: `1px solid ${colors.border.default}`,
+        maxWidth: '100%',
+        overflowX: 'hidden',
+        boxSizing: 'border-box'
           }}>
             <Breadcrumbs>
               <BreadcrumbList>
@@ -1374,6 +1431,9 @@ export function ComponentDemos({
             backgroundColor: primitive.gray[50],
             borderRadius: radii.borderRadius.base,
             border: `1px solid ${colors.border.default}`,
+        maxWidth: '100%',
+        overflowX: 'hidden',
+        boxSizing: 'border-box'
           }}>
             <Breadcrumbs>
               <BreadcrumbList>

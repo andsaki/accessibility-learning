@@ -18,6 +18,9 @@ export const ARIAGuide = () => {
         backgroundColor: colors.background.default,
         borderRadius: radii.borderRadius.lg,
         border: `1px solid ${colors.border.default}`,
+        maxWidth: '100%',
+        overflowX: 'hidden',
+        boxSizing: 'border-box'
       }}
     >
       <h2 style={{

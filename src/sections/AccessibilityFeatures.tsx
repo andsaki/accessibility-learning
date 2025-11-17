@@ -12,6 +12,9 @@ export function AccessibilityFeatures() {
         backgroundColor: primitive.blue[50],
         border: `2px solid ${primitive.blue[500]}`,
         borderRadius: radii.borderRadius.lg,
+        maxWidth: '100%',
+        overflowX: 'hidden',
+        boxSizing: 'border-box'
       }}
     >
       <h3 style={{ color: primitive.blue[900], marginTop: 0 }}>
