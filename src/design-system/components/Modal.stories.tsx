@@ -1,11 +1,9 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
-import { primitive } from '../tokens/colors';
 import { Modal } from './Modal';
 import { Button } from './Button';
 import { Input } from './Input';
 import { InfoBox } from './InfoBox';
-import { spacing } from '../tokens';
 
 /**
  * アクセシブルなモーダルダイアログコンポーネント
@@ -40,7 +38,7 @@ const meta = {
   },
   decorators: [
     (Story) => (
-      <div style={{ padding: spacing.scale[8], minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+      <div style={{ padding: '2rem', minHeight: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
         <Story />
       </div>
     ),
@@ -72,13 +70,13 @@ export const Default: Story = {
           title="通知設定"
           size="md"
         >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[4] }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <p style={{ margin: 0, lineHeight: 1.6 }}>
               プッシュ通知を有効にすると、重要なお知らせをリアルタイムで受け取ることができます。
             </p>
 
             <InfoBox variant="info" icon="💡" title="キーボード操作">
-              <ul style={{ margin: 0, paddingLeft: spacing.scale[6], lineHeight: 1.8 }}>
+              <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8 }}>
                 <li><strong>Tab</strong>: フォーカスを移動（モーダル内を循環）</li>
                 <li><strong>Esc</strong>: モーダルを閉じる</li>
                 <li><strong>Enter/Space</strong>: ボタンを実行</li>
@@ -133,21 +131,21 @@ export const WithFooter: Story = {
             </>
           }
         >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[4] }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             <p style={{ margin: 0, lineHeight: 1.6 }}>
               本当にアカウントを削除しますか？
             </p>
 
             <div style={{
-              padding: spacing.scale[4],
+              padding: '1rem',
               backgroundColor: 'primitive.red[50]',
-              borderRadius: spacing.scale[2],
+              borderRadius: '0.5rem',
               border: '1px solid primitive.red[300]'
             }}>
-              <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: 'primitive.red[900]' }}>
+              <h4 style={{ marginTop: 0, marginBottom: '0.5rem', color: 'primitive.red[900]' }}>
                 ⚠️ この操作は取り消せません
               </h4>
-              <ul style={{ margin: 0, paddingLeft: spacing.scale[6], lineHeight: 1.8, color: 'primitive.red[900]' }}>
+              <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8, color: 'primitive.red[900]' }}>
                 <li>すべての投稿データが削除されます</li>
                 <li>フォロワー・フォロー情報が失われます</li>
                 <li>購入履歴が消去されます</li>
@@ -202,7 +200,7 @@ export const WithForm: Story = {
           }
         >
           <form id="user-form" onSubmit={handleSubmit}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[4] }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <Input
                 label="お名前"
                 value={name}
@@ -239,7 +237,7 @@ export const WCAGLevels: Story = {
     const [level, setLevel] = useState<'A' | 'AA' | 'AAA' | null>(null);
 
     return (
-      <div style={{ display: 'flex', gap: spacing.scale[3], flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
         <Button onClick={() => setLevel('A')}>Level A</Button>
         <Button onClick={() => setLevel('AA')}>Level AA（推奨）</Button>
         <Button onClick={() => setLevel('AAA')}>Level AAA</Button>
@@ -262,23 +260,23 @@ export const WCAGLevels: Story = {
               </>
             }
           >
-            <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[4] }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
               <p style={{ margin: 0, lineHeight: 1.6 }}>
                 <strong>Tab キー</strong>を押して、フォーカスを移動してみてください。
                 閉じるボタン（×）やフッターのボタンにフォーカスが当たったときのアウトライン（枠線）の太さが変わります。
               </p>
 
               <div style={{
-                padding: spacing.scale[4],
-                backgroundColor: level === 'A' ? primitive.blue[50] : level === 'AA' ? primitive.blue[50] : primitive.yellow[50],
-                borderRadius: spacing.scale[2],
-                border: `2px solid ${level === 'A' ? primitive.blue[100] : level === 'AA' ? primitive.blue[500] : primitive.yellow[400]}`
+                padding: '1rem',
+                backgroundColor: level === 'A' ? '#eff6ff' : level === 'AA' ? '#eff6ff' : '#fefce8',
+                borderRadius: '0.5rem',
+                border: `2px solid ${level === 'A' ? '#dbeafe' : level === 'AA' ? '#3b82f6' : '#facc15'}`
               }}>
-                <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2] }}>
+                <h4 style={{ marginTop: 0, marginBottom: '0.5rem' }}>
                   Level {level} の特徴
                 </h4>
                 {level === 'A' && (
-                  <ul style={{ margin: 0, paddingLeft: spacing.scale[6], lineHeight: 1.8 }}>
+                  <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8 }}>
                     <li><strong>アウトライン幅:</strong> 2px（細め）</li>
                     <li><strong>色:</strong> 青 (primitive.blue[300])</li>
                     <li><strong>オフセット:</strong> なし</li>
@@ -286,7 +284,7 @@ export const WCAGLevels: Story = {
                   </ul>
                 )}
                 {level === 'AA' && (
-                  <ul style={{ margin: 0, paddingLeft: spacing.scale[6], lineHeight: 1.8 }}>
+                  <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8 }}>
                     <li><strong>アウトライン幅:</strong> 3px（中太）</li>
                     <li><strong>色:</strong> 濃い青 (primitive.blue[700])</li>
                     <li><strong>オフセット:</strong> 2px</li>
@@ -295,7 +293,7 @@ export const WCAGLevels: Story = {
                   </ul>
                 )}
                 {level === 'AAA' && (
-                  <ul style={{ margin: 0, paddingLeft: spacing.scale[6], lineHeight: 1.8 }}>
+                  <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8 }}>
                     <li><strong>アウトライン幅:</strong> 4px（太め）</li>
                     <li><strong>色:</strong> 黒 (primitive.black)</li>
                     <li><strong>オフセット:</strong> 2px</li>
@@ -321,7 +319,7 @@ export const Sizes: Story = {
     const [size, setSize] = useState<'sm' | 'md' | 'lg' | null>(null);
 
     return (
-      <div style={{ display: 'flex', gap: spacing.scale[3], flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
         <Button onClick={() => setSize('sm')}>Small</Button>
         <Button onClick={() => setSize('md')}>Medium</Button>
         <Button onClick={() => setSize('lg')}>Large</Button>
@@ -370,7 +368,7 @@ export const LongContent: Story = {
             </>
           }
         >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[4] }}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
             {Array.from({ length: 20 }, (_, i) => (
               <div key={i}>
                 <h3 style={{ marginTop: 0 }}>第{i + 1}条</h3>

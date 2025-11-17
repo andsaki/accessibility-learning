@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from "@storybook/react";
 import { Loading, InlineLoading } from "./Loading";
-import { primitive } from '../tokens/colors';
 import { useState } from "react";
 import { Button } from "./Button";
 import { InfoBox } from "./InfoBox";
@@ -74,7 +73,7 @@ export const Colors: Story = {
     <div style={{ display: "flex", gap: "3rem" }}>
       <Loading color="primary" label="Primary" />
       <Loading color="secondary" label="Secondary" />
-      <div style={{ backgroundColor: primitive.blue[700], padding: "2rem", borderRadius: "8px" }}>
+      <div style={{ backgroundColor: "#1d4ed8", padding: "2rem", borderRadius: "8px" }}>
         <Loading color="white" label="White" />
       </div>
     </div>
@@ -246,7 +245,7 @@ export const MultipleStates: Story = {
         <Loading size="md" label="" />
         <div>
           <h4 style={{ margin: 0, marginBottom: "0.5rem" }}>プロフィールを読み込んでいます</h4>
-          <p style={{ margin: 0, fontSize: "14px", color: primitive.gray[500] }}>
+          <p style={{ margin: 0, fontSize: "14px", color: "#6b7280" }}>
             ユーザー情報を取得しています...
           </p>
         </div>
@@ -265,7 +264,7 @@ export const MultipleStates: Story = {
         <Loading size="md" label="" color="secondary" />
         <div>
           <h4 style={{ margin: 0, marginBottom: "0.5rem" }}>画像をアップロード中</h4>
-          <p style={{ margin: 0, fontSize: "14px", color: primitive.gray[500] }}>
+          <p style={{ margin: 0, fontSize: "14px", color: "#6b7280" }}>
             ファイルを処理しています...
           </p>
         </div>
@@ -284,7 +283,7 @@ export const MultipleStates: Story = {
         <Loading size="md" label="" />
         <div>
           <h4 style={{ margin: 0, marginBottom: "0.5rem" }}>設定を保存中</h4>
-          <p style={{ margin: 0, fontSize: "14px", color: primitive.gray[500] }}>
+          <p style={{ margin: 0, fontSize: "14px", color: "#6b7280" }}>
             変更を適用しています...
           </p>
         </div>
@@ -325,7 +324,7 @@ export const Accessibility: Story = {
         <div>
           <h4>ラベルなし（aria-labelのみ）</h4>
           <Loading label="" />
-          <p style={{ fontSize: "12px", color: primitive.gray[500], marginTop: "0.5rem" }}>
+          <p style={{ fontSize: "12px", color: "#6b7280", marginTop: "0.5rem" }}>
             ※ スクリーンリーダーには「読み込み中」と読み上げられます
           </p>
         </div>

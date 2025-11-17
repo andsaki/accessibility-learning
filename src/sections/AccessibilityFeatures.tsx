@@ -10,7 +10,7 @@ export function AccessibilityFeatures() {
         marginBottom: spacing.scale[12],
         padding: spacing.scale[6],
         backgroundColor: primitive.blue[50],
-        border: `${borders.width.base} ${borders.style.solid} ${primitive.blue[500]}`,
+        border: `${borders.width.base} solid ${primitive.blue[500]}`,
         borderRadius: radii.borderRadius.lg,
         maxWidth: '100%',
         overflowX: 'hidden',

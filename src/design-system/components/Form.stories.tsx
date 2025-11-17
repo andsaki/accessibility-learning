@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Form, formSchemas } from './Form';
-import { primitive } from '../tokens/colors';
-import { spacing } from '../tokens';
 import { z } from 'zod';
 
 /**
@@ -441,7 +439,7 @@ export const UsageExample: Story = {
           submitText="送信"
         />
 
-        <div style={{ marginTop: '32px', padding: '16px', backgroundColor: primitive.gray[100], borderRadius: spacing.scale[2] }}>
+        <div style={{ marginTop: '32px', padding: '16px', backgroundColor: '#f3f4f6', borderRadius: '0.5rem' }}>
           <h4 style={{ marginBottom: '12px' }}>コード例</h4>
           <pre style={{ overflow: 'auto', fontSize: '14px' }}>
             {`import { Form, formSchemas } from './Form';
@@ -470,7 +468,7 @@ type FormData = z.infer<typeof schema>;
           </pre>
         </div>
 
-        <div style={{ marginTop: '24px', padding: '16px', backgroundColor: primitive.blue[50], borderRadius: spacing.scale[2] }}>
+        <div style={{ marginTop: '24px', padding: '16px', backgroundColor: '#eff6ff', borderRadius: '0.5rem' }}>
           <h4 style={{ marginBottom: '12px' }}>機能</h4>
           <ul style={{ marginLeft: '20px', lineHeight: '1.8' }}>
             <li><strong>Zodスキーマ統合</strong>: 型安全なバリデーション</li>
@@ -481,7 +479,7 @@ type FormData = z.infer<typeof schema>;
           </ul>
         </div>
 
-        <div style={{ marginTop: '24px', padding: '16px', backgroundColor: primitive.yellow[50], borderRadius: spacing.scale[2] }}>
+        <div style={{ marginTop: '24px', padding: '16px', backgroundColor: '#fefce8', borderRadius: '0.5rem' }}>
           <h4 style={{ marginBottom: '12px' }}>ヘルパースキーマ</h4>
           <pre style={{ overflow: 'auto', fontSize: '14px' }}>
             {`formSchemas.email              // メールアドレス

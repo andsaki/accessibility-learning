@@ -464,6 +464,32 @@ src/design-system/components/Button.tsx
 src/design-system/components/Button.stories.tsx  // ← 必ず作成
 ```
 
+### デザイントークンの使用禁止
+
+**❌ Storybookストーリーファイル（*.stories.tsx）ではデザイントークンをインポートしない**
+
+```tsx
+// ❌ 禁止: ストーリーファイルでトークンをインポートしない
+import { spacing, colors, primitive, borders } from '../tokens';
+
+// ✅ 正しい: コンポーネント自体がトークンを使っていれば、
+//           ストーリーではpropsを渡すだけで十分
+import type { Meta, StoryObj } from '@storybook/react';
+import { Button } from './Button';
+
+export const Primary: Story = {
+  args: {
+    variant: 'primary',
+    children: '保存',
+  },
+};
+```
+
+**理由:**
+- コンポーネント本体（Button.tsx等）でデザイントークンを使用していれば、Storybookはそのコンポーネントをレンダリングするだけ
+- ストーリーファイルでトークンを使うと、デザインシステムとストーリーが密結合してしまう
+- インラインスタイルが必要な場合は、通常のCSS値（'1rem', '#e5e7eb'）を使用
+
 ### Storybookストーリーの構成
 
 ```tsx

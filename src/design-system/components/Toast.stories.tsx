@@ -1,10 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { borders } from '../tokens';
-import { primitive } from '../tokens/colors';
 import { useState } from 'react';
 import { ToastProvider, useToast } from './ToastProvider';
 import { Button } from './Button';
-import { spacing } from '../tokens';
 
 /**
  * アクセシブルなトースト通知コンポーネント
@@ -35,13 +32,13 @@ const ToastDemo = () => {
   const { success, error, warning, info, showToast } = useToast();
 
   return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[4], padding: spacing.scale[8] }}>
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', padding: '2rem' }}>
       <h2 style={{ margin: 0 }}>Toast デモ</h2>
       <p style={{ margin: 0, color: '#666' }}>
         ボタンをクリックすると、画面右上にトーストが表示されます
       </p>
 
-      <div style={{ display: 'flex', gap: spacing.scale[3], flexWrap: 'wrap' }}>
+      <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
         <Button
           variant="primary"
           onClick={() => success('操作が成功しました', '成功')}
@@ -71,9 +68,9 @@ const ToastDemo = () => {
         </Button>
       </div>
 
-      <div style={{ marginTop: spacing.scale[4] }}>
-        <h3 style={{ margin: 0, marginBottom: spacing.scale[2] }}>カスタム設定</h3>
-        <div style={{ display: 'flex', gap: spacing.scale[3], flexWrap: 'wrap' }}>
+      <div style={{ marginTop: '1rem' }}>
+        <h3 style={{ margin: 0, marginBottom: '0.5rem' }}>カスタム設定</h3>
+        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
           <Button
             variant="secondary"
             onClick={() => showToast('タイトルなしのメッセージ', { type: 'success' })}
@@ -97,8 +94,8 @@ const ToastDemo = () => {
         </div>
       </div>
 
-      <div style={{ marginTop: spacing.scale[4] }}>
-        <h3 style={{ margin: 0, marginBottom: spacing.scale[2] }}>複数表示</h3>
+      <div style={{ marginTop: '1rem' }}>
+        <h3 style={{ margin: 0, marginBottom: '0.5rem' }}>複数表示</h3>
         <Button
           variant="outline"
           onClick={() => {
@@ -160,14 +157,14 @@ export const WCAGLevels: Story = {
       const { success, error, warning, info } = useToast();
 
       return (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[4], padding: spacing.scale[8] }}>
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', padding: '2rem' }}>
           <h2 style={{ margin: 0 }}>WCAG Level {level} のフォーカススタイル</h2>
           <p style={{ margin: 0, color: '#666' }}>
             レベルを変更してから、トーストを表示してください。<br />
             <strong>Tab キー</strong>を押して閉じるボタン（×）にフォーカスを当てると、アウトラインの太さが確認できます。
           </p>
 
-          <div style={{ display: 'flex', gap: spacing.scale[3], flexWrap: 'wrap', marginBottom: spacing.scale[4] }}>
+          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
             <Button variant={level === 'A' ? 'primary' : 'outline'} onClick={() => setLevel('A')}>
               Level A
             </Button>
@@ -179,7 +176,7 @@ export const WCAGLevels: Story = {
             </Button>
           </div>
 
-          <div style={{ display: 'flex', gap: spacing.scale[3], flexWrap: 'wrap' }}>
+          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
             <Button variant="secondary" onClick={() => success('操作が成功しました', '成功')}>
               Success Toast
             </Button>
@@ -195,17 +192,17 @@ export const WCAGLevels: Story = {
           </div>
 
           <div style={{
-            marginTop: spacing.scale[4],
-            padding: spacing.scale[4],
-            backgroundColor: level === 'A' ? primitive.blue[50] : level === 'AA' ? primitive.blue[50] : primitive.yellow[50],
-            borderRadius: spacing.scale[2],
-            border: `${borders.width.base} ${borders.style.solid} ${level === 'A' ? primitive.blue[100] : level === 'AA' ? primitive.blue[500] : primitive.yellow[400]}`
+            marginTop: '1rem',
+            padding: '1rem',
+            backgroundColor: level === 'A' ? '#eff6ff' : level === 'AA' ? '#eff6ff' : '#fefce8',
+            borderRadius: '0.5rem',
+            border: `1px solid ${level === 'A' ? '#dbeafe' : level === 'AA' ? '#3b82f6' : '#facc15'}`
           }}>
-            <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2] }}>
+            <h4 style={{ marginTop: 0, marginBottom: '0.5rem' }}>
               Level {level} の特徴
             </h4>
             {level === 'A' && (
-              <ul style={{ margin: 0, paddingLeft: spacing.scale[6], lineHeight: 1.8 }}>
+              <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8 }}>
                 <li><strong>アウトライン幅:</strong> 2px（細め）</li>
                 <li><strong>色:</strong> 青 (primitive.blue[300])</li>
                 <li><strong>オフセット:</strong> なし</li>
@@ -213,7 +210,7 @@ export const WCAGLevels: Story = {
               </ul>
             )}
             {level === 'AA' && (
-              <ul style={{ margin: 0, paddingLeft: spacing.scale[6], lineHeight: 1.8 }}>
+              <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8 }}>
                 <li><strong>アウトライン幅:</strong> 3px（中太）</li>
                 <li><strong>色:</strong> 濃い青 (primitive.blue[700])</li>
                 <li><strong>オフセット:</strong> 2px</li>
@@ -222,7 +219,7 @@ export const WCAGLevels: Story = {
               </ul>
             )}
             {level === 'AAA' && (
-              <ul style={{ margin: 0, paddingLeft: spacing.scale[6], lineHeight: 1.8 }}>
+              <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8 }}>
                 <li><strong>アウトライン幅:</strong> 4px（太め）</li>
                 <li><strong>色:</strong> 黒 (primitive.black)</li>
                 <li><strong>オフセット:</strong> 2px</li>

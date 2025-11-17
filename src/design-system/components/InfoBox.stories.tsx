@@ -1,6 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { InfoBox } from './InfoBox';
-import { spacing } from '../tokens';
 
 /**
  * 情報ボックスコンポーネント
@@ -58,7 +57,7 @@ export const Info: Story = {
     icon: '💡',
     title: 'キーボード操作',
     children: (
-      <ul style={{ margin: 0, paddingLeft: spacing.scale[6], lineHeight: 1.8 }}>
+      <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8 }}>
         <li>
           <strong>Tab</strong>: フォーカスを移動
         </li>
@@ -161,7 +160,7 @@ export const Accessibility: Story = {
   render: () => (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
       <InfoBox variant="info" icon="📊" title="WCAG 2.1 AA準拠">
-        <ul style={{ margin: 0, paddingLeft: spacing.scale[6], lineHeight: 1.8 }}>
+        <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8 }}>
           <li>
             <strong>カラーコントラスト</strong>: すべてのバリアントで4.5:1以上のコントラスト比を確保
           </li>
@@ -267,7 +266,7 @@ export const WCAGLevels: Story = {
       </div>
 
       <InfoBox variant="tip" icon="💡" title="使い分けのヒント" wcagLevel="AA">
-        <ul style={{ margin: 0, paddingLeft: spacing.scale[6], lineHeight: 1.8 }}>
+        <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8 }}>
           <li>
             <strong>Level A</strong>: プロトタイプ、一時的なページ
           </li>

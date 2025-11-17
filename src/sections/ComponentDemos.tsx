@@ -61,7 +61,7 @@ export function ComponentDemos({
           padding: spacing.scale[6],
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
-          border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
+          border: borders.default,
         maxWidth: '100%',
         overflowX: 'hidden',
         boxSizing: 'border-box'
@@ -72,7 +72,7 @@ export function ComponentDemos({
           color: primitive.gray[900],
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} ${borders.style.solid} ${primitive.blue[500]}`,
+          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
           paddingBottom: spacing.scale[2],
           marginBottom: spacing.scale[4],
           display: 'flex',
@@ -149,7 +149,7 @@ export function ComponentDemos({
           padding: spacing.scale[6],
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
-          border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
+          border: borders.default,
         maxWidth: '100%',
         overflowX: 'hidden',
         boxSizing: 'border-box'
@@ -160,7 +160,7 @@ export function ComponentDemos({
           color: primitive.gray[900],
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} ${borders.style.solid} ${primitive.blue[500]}`,
+          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
           paddingBottom: spacing.scale[2],
           marginBottom: spacing.scale[4],
           display: 'flex',
@@ -267,7 +267,7 @@ export function ComponentDemos({
           padding: spacing.scale[6],
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
-          border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
+          border: borders.default,
         maxWidth: '100%',
         overflowX: 'hidden',
         boxSizing: 'border-box'
@@ -278,7 +278,7 @@ export function ComponentDemos({
           color: primitive.gray[900],
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} ${borders.style.solid} ${primitive.blue[500]}`,
+          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
           paddingBottom: spacing.scale[2],
           marginBottom: spacing.scale[4],
           display: 'flex',
@@ -426,7 +426,7 @@ export function ComponentDemos({
           padding: spacing.scale[6],
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
-          border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
+          border: borders.default,
         maxWidth: '100%',
         overflowX: 'hidden',
         boxSizing: 'border-box'
@@ -437,7 +437,7 @@ export function ComponentDemos({
           color: primitive.gray[900],
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} ${borders.style.solid} ${primitive.blue[500]}`,
+          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
           paddingBottom: spacing.scale[2],
           marginBottom: spacing.scale[4],
           display: 'flex',
@@ -473,7 +473,7 @@ export function ComponentDemos({
           padding: spacing.scale[6],
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
-          border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
+          border: borders.default,
         maxWidth: '100%',
         overflowX: 'hidden',
         boxSizing: 'border-box'
@@ -484,7 +484,7 @@ export function ComponentDemos({
           color: colors.text.primary,
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} ${borders.style.solid} ${primitive.blue[500]}`,
+          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
           paddingBottom: spacing.scale[2],
           marginBottom: spacing.scale[4],
           display: 'flex',
@@ -519,7 +519,7 @@ export function ComponentDemos({
           padding: spacing.scale[6],
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
-          border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
+          border: borders.default,
         maxWidth: '100%',
         overflowX: 'hidden',
         boxSizing: 'border-box'
@@ -530,7 +530,7 @@ export function ComponentDemos({
           color: colors.text.primary,
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} ${borders.style.solid} ${primitive.blue[500]}`,
+          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
           paddingBottom: spacing.scale[2],
           marginBottom: spacing.scale[4],
           display: 'flex',
@@ -565,7 +565,7 @@ export function ComponentDemos({
           padding: spacing.scale[6],
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
-          border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
+          border: borders.default,
         maxWidth: '100%',
         overflowX: 'hidden',
         boxSizing: 'border-box'
@@ -576,7 +576,7 @@ export function ComponentDemos({
           color: primitive.gray[900],
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} ${borders.style.solid} ${primitive.blue[500]}`,
+          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
           paddingBottom: spacing.scale[2],
           marginBottom: spacing.scale[4],
           display: 'flex',
@@ -612,7 +612,7 @@ export function ComponentDemos({
           padding: spacing.scale[6],
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
-          border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
+          border: borders.default,
         maxWidth: '100%',
         overflowX: 'hidden',
         boxSizing: 'border-box'
@@ -623,7 +623,7 @@ export function ComponentDemos({
           color: primitive.gray[900],
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} ${borders.style.solid} ${primitive.blue[500]}`,
+          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
           paddingBottom: spacing.scale[2],
           marginBottom: spacing.scale[4],
           display: 'flex',
@@ -729,7 +729,7 @@ export function ComponentDemos({
           padding: spacing.scale[4],
           backgroundColor: primitive.blue[50],
           borderRadius: radii.borderRadius.md,
-          border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[200]}`,
+          border: `${borders.width.thin} solid ${primitive.blue[200]}`,
         }}>
           <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
             💡 Formコンポーネントの特徴
@@ -752,7 +752,7 @@ export function ComponentDemos({
           padding: spacing.scale[6],
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
-          border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
+          border: borders.default,
         maxWidth: '100%',
         overflowX: 'hidden',
         boxSizing: 'border-box'
@@ -763,7 +763,7 @@ export function ComponentDemos({
           color: primitive.gray[900],
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} ${borders.style.solid} ${primitive.blue[500]}`,
+          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
           paddingBottom: spacing.scale[2],
           marginBottom: spacing.scale[4],
           display: 'flex',
@@ -865,7 +865,7 @@ export function ComponentDemos({
           padding: spacing.scale[4],
           backgroundColor: primitive.blue[50],
           borderRadius: radii.borderRadius.md,
-          border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[200]}`,
+          border: `${borders.width.thin} solid ${primitive.blue[200]}`,
         }}>
           <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
             💡 アコーディオンの特徴
@@ -888,7 +888,7 @@ export function ComponentDemos({
           padding: spacing.scale[6],
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
-          border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
+          border: borders.default,
         maxWidth: '100%',
         overflowX: 'hidden',
         boxSizing: 'border-box'
@@ -899,7 +899,7 @@ export function ComponentDemos({
           color: primitive.gray[900],
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} ${borders.style.solid} ${primitive.blue[500]}`,
+          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
           paddingBottom: spacing.scale[2],
           marginBottom: spacing.scale[4],
           display: 'flex',
@@ -953,7 +953,7 @@ export function ComponentDemos({
           padding: spacing.scale[4],
           backgroundColor: primitive.blue[50],
           borderRadius: radii.borderRadius.md,
-          border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[200]}`,
+          border: `${borders.width.thin} solid ${primitive.blue[200]}`,
         }}>
           <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
             💡 Toastの特徴
@@ -976,7 +976,7 @@ export function ComponentDemos({
           padding: spacing.scale[6],
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
-          border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
+          border: borders.default,
         maxWidth: '100%',
         overflowX: 'hidden',
         boxSizing: 'border-box'
@@ -987,7 +987,7 @@ export function ComponentDemos({
           color: primitive.gray[900],
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} ${borders.style.solid} ${primitive.blue[500]}`,
+          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
           paddingBottom: spacing.scale[2],
           marginBottom: spacing.scale[4],
           display: 'flex',
@@ -1049,7 +1049,7 @@ export function ComponentDemos({
           padding: spacing.scale[4],
           backgroundColor: primitive.blue[50],
           borderRadius: radii.borderRadius.md,
-          border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[200]}`,
+          border: `${borders.width.thin} solid ${primitive.blue[200]}`,
         }}>
           <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
             💡 Modalの特徴
@@ -1073,7 +1073,7 @@ export function ComponentDemos({
           padding: spacing.scale[6],
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
-          border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
+          border: borders.default,
         maxWidth: '100%',
         overflowX: 'hidden',
         boxSizing: 'border-box'
@@ -1084,7 +1084,7 @@ export function ComponentDemos({
           color: primitive.gray[900],
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} ${borders.style.solid} ${primitive.blue[500]}`,
+          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
           paddingBottom: spacing.scale[2],
           marginBottom: spacing.scale[4],
           display: 'flex',
@@ -1105,7 +1105,7 @@ export function ComponentDemos({
             padding: spacing.scale[4],
             backgroundColor: primitive.gray[50],
             borderRadius: radii.borderRadius.base,
-            border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
+            border: borders.default,
         maxWidth: '100%',
         overflowX: 'hidden',
         boxSizing: 'border-box'
@@ -1127,7 +1127,7 @@ export function ComponentDemos({
             padding: spacing.scale[4],
             backgroundColor: primitive.gray[50],
             borderRadius: radii.borderRadius.base,
-            border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
+            border: borders.default,
         maxWidth: '100%',
         overflowX: 'hidden',
         boxSizing: 'border-box'
@@ -1148,7 +1148,7 @@ export function ComponentDemos({
             padding: spacing.scale[4],
             backgroundColor: primitive.gray[50],
             borderRadius: radii.borderRadius.base,
-            border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
+            border: borders.default,
         maxWidth: '100%',
         overflowX: 'hidden',
         boxSizing: 'border-box'
@@ -1169,7 +1169,7 @@ export function ComponentDemos({
             padding: spacing.scale[4],
             backgroundColor: primitive.gray[50],
             borderRadius: radii.borderRadius.base,
-            border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
+            border: borders.default,
         maxWidth: '100%',
         overflowX: 'hidden',
         boxSizing: 'border-box'
@@ -1190,7 +1190,7 @@ export function ComponentDemos({
             padding: spacing.scale[4],
             backgroundColor: primitive.blue[50],
             borderRadius: radii.borderRadius.md,
-            border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[200]}`,
+            border: `${borders.width.thin} solid ${primitive.blue[200]}`,
             marginBottom: spacing.scale[4],
           }}>
             <Text variant="body" color={primitive.blue[900]}>
@@ -1203,7 +1203,7 @@ export function ComponentDemos({
             padding: spacing.scale[4],
             backgroundColor: primitive.gray[50],
             borderRadius: radii.borderRadius.base,
-            border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
+            border: borders.default,
         maxWidth: '100%',
         overflowX: 'hidden',
         boxSizing: 'border-box'
@@ -1213,7 +1213,7 @@ export function ComponentDemos({
                 padding: spacing.scale[4],
                 backgroundColor: primitive.white,
                 borderRadius: radii.borderRadius.md,
-                border: `${borders.width.base} ${borders.style.solid} ${primitive.gray[300]}`,
+                border: `${borders.width.base} solid ${primitive.gray[300]}`,
               }}>
                 <Text variant="h6" color={primitive.gray[900]} style={{ marginBottom: spacing.scale[2] }}>
                   レベルA（最低限）
@@ -1227,7 +1227,7 @@ export function ComponentDemos({
                 <div style={{
                   marginTop: spacing.scale[3],
                   paddingTop: spacing.scale[3],
-                  borderTop: `${borders.width.thin} ${borders.style.solid} ${primitive.gray[200]}`,
+                  borderTop: `${borders.width.thin} solid ${primitive.gray[200]}`,
                 }}>
                   <Text variant="body-small" bold color={primitive.gray[800]} style={{ marginBottom: spacing.scale[1] }}>
                     主な要件例：
@@ -1251,7 +1251,7 @@ export function ComponentDemos({
                 padding: spacing.scale[4],
                 backgroundColor: primitive.white,
                 borderRadius: radii.borderRadius.md,
-                border: `${borders.width.base} ${borders.style.solid} ${primitive.blue[400]}`,
+                border: `${borders.width.base} solid ${primitive.blue[400]}`,
               }}>
                 <Text variant="h6" color={primitive.blue[700]} style={{ marginBottom: spacing.scale[2] }}>
                   レベルAA（推奨）⭐
@@ -1265,7 +1265,7 @@ export function ComponentDemos({
                 <div style={{
                   marginTop: spacing.scale[3],
                   paddingTop: spacing.scale[3],
-                  borderTop: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[200]}`,
+                  borderTop: `${borders.width.thin} solid ${primitive.blue[200]}`,
                 }}>
                   <Text variant="body-small" bold color={primitive.blue[800]} style={{ marginBottom: spacing.scale[1] }}>
                     レベルAに加えて：
@@ -1351,7 +1351,7 @@ export function ComponentDemos({
           padding: spacing.scale[4],
           backgroundColor: primitive.blue[50],
           borderRadius: radii.borderRadius.md,
-          border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[200]}`,
+          border: `${borders.width.thin} solid ${primitive.blue[200]}`,
         }}>
           <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
             💡 Textコンポーネントの特徴
@@ -1373,7 +1373,7 @@ export function ComponentDemos({
           padding: spacing.scale[6],
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.lg,
-          border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
+          border: borders.default,
         maxWidth: '100%',
         overflowX: 'hidden',
         boxSizing: 'border-box'
@@ -1384,7 +1384,7 @@ export function ComponentDemos({
           color: primitive.gray[900],
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} ${borders.style.solid} ${primitive.blue[500]}`,
+          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
           paddingBottom: spacing.scale[2],
           marginBottom: spacing.scale[4],
           display: 'flex',
@@ -1405,7 +1405,7 @@ export function ComponentDemos({
             padding: spacing.scale[4],
             backgroundColor: primitive.gray[50],
             borderRadius: radii.borderRadius.base,
-            border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
+            border: borders.default,
         maxWidth: '100%',
         overflowX: 'hidden',
         boxSizing: 'border-box'
@@ -1430,7 +1430,7 @@ export function ComponentDemos({
             padding: spacing.scale[4],
             backgroundColor: primitive.gray[50],
             borderRadius: radii.borderRadius.base,
-            border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
+            border: borders.default,
         maxWidth: '100%',
         overflowX: 'hidden',
         boxSizing: 'border-box'
@@ -1460,7 +1460,7 @@ export function ComponentDemos({
           padding: spacing.scale[4],
           backgroundColor: primitive.blue[50],
           borderRadius: radii.borderRadius.md,
-          border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[200]}`,
+          border: `${borders.width.thin} solid ${primitive.blue[200]}`,
         }}>
           <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
             💡 Breadcrumbsの特徴

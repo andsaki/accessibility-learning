@@ -1,7 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { borders } from '../tokens';
-import { primitive } from '../tokens/colors';
-import { spacing } from '../tokens';
 import { Select } from './Select';
 
 const meta = {
@@ -172,14 +169,14 @@ export const WCAGLevels: Story = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       <div style={{
         padding: '1.5rem',
-        backgroundColor: primitive.gray[50],
-        borderRadius: spacing.scale[4],
-        border: `${borders.width.base} ${borders.style.solid} ${primitive.gray[300]}`
+        backgroundColor: '#f9fafb',
+        borderRadius: '1rem',
+        border: '1px solid #d1d5db'
       }}>
-        <h3 style={{ marginBottom: '0.5rem', fontSize: '1.125rem', fontWeight: 'bold', color: primitive.gray[800] }}>
+        <h3 style={{ marginBottom: '0.5rem', fontSize: '1.125rem', fontWeight: 'bold', color: '#1f2937' }}>
           WCAG Level A
         </h3>
-        <p style={{ marginBottom: '1rem', color: primitive.gray[500], fontSize: '0.875rem' }}>
+        <p style={{ marginBottom: '1rem', color: '#6b7280', fontSize: '0.875rem' }}>
           基本的なアクセシビリティ要件を満たします<br />
           フォーカススタイル: 薄い青のアウトライン
         </p>
@@ -193,14 +190,14 @@ export const WCAGLevels: Story = {
 
       <div style={{
         padding: '1.5rem',
-        backgroundColor: primitive.gray[50],
-        borderRadius: spacing.scale[4],
-        border: `${borders.width.base} ${borders.style.solid} ${primitive.blue[700]}`
+        backgroundColor: '#f9fafb',
+        borderRadius: '1rem',
+        border: '1px solid #1d4ed8'
       }}>
-        <h3 style={{ marginBottom: '0.5rem', fontSize: '1.125rem', fontWeight: 'bold', color: primitive.gray[800] }}>
+        <h3 style={{ marginBottom: '0.5rem', fontSize: '1.125rem', fontWeight: 'bold', color: '#1f2937' }}>
           WCAG Level AA (デフォルト)
         </h3>
-        <p style={{ marginBottom: '1rem', color: primitive.gray[500], fontSize: '0.875rem' }}>
+        <p style={{ marginBottom: '1rem', color: '#6b7280', fontSize: '0.875rem' }}>
           推奨されるアクセシビリティレベル（Web標準）<br />
           フォーカススタイル: 濃い青のアウトライン + 背景色
         </p>
@@ -214,14 +211,14 @@ export const WCAGLevels: Story = {
 
       <div style={{
         padding: '1.5rem',
-        backgroundColor: primitive.gray[50],
-        borderRadius: spacing.scale[4],
-        border: `${borders.width.base} ${borders.style.solid} ${primitive.blue[900]}`
+        backgroundColor: '#f9fafb',
+        borderRadius: '1rem',
+        border: '1px solid #1e3a8a'
       }}>
-        <h3 style={{ marginBottom: '0.5rem', fontSize: '1.125rem', fontWeight: 'bold', color: primitive.gray[800] }}>
+        <h3 style={{ marginBottom: '0.5rem', fontSize: '1.125rem', fontWeight: 'bold', color: '#1f2937' }}>
           WCAG Level AAA
         </h3>
-        <p style={{ marginBottom: '1rem', color: primitive.gray[500], fontSize: '0.875rem' }}>
+        <p style={{ marginBottom: '1rem', color: '#6b7280', fontSize: '0.875rem' }}>
           最高レベルのアクセシビリティ（視覚障害への最大配慮）<br />
           フォーカススタイル: 黄色背景 + 黒のアウトライン
         </p>

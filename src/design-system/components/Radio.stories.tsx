@@ -1,6 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { borders } from '../tokens';
-import { primitive } from '../tokens/colors';
 import { Radio, RadioGroup } from "./Radio";
 import { useState } from "react";
 
@@ -203,7 +201,7 @@ export const HorizontalLayout: Story = {
   render: () => {
     const [selected, setSelected] = useState("yes");
     return (
-      <fieldset style={{ border: `${borders.width.thin} ${borders.style.solid} ${primitive.gray[200]}`, borderRadius: "8px", padding: "1rem" }}>
+      <fieldset style={{ border: "1px solid #e5e7eb", borderRadius: "8px", padding: "1rem" }}>
         <legend style={{ fontSize: "1rem", fontWeight: 600, padding: "0 0.5rem" }}>
           ニュースレターを購読しますか？
         </legend>
@@ -244,10 +242,10 @@ export const KeyboardInteraction: Story = {
         <div
           style={{
             padding: "1rem",
-            backgroundColor: primitive.blue[50],
+            backgroundColor: "#eff6ff",
             borderRadius: "8px",
             marginBottom: "1.5rem",
-            border: "2px solid primitive.blue[500]",
+            border: "2px solid #3b82f6",
           }}
         >
           <h3 style={{ marginTop: 0, fontSize: "16px", fontWeight: "bold" }}>
@@ -374,10 +372,10 @@ export const WCAGLevels: Story = {
         <div
           style={{
             padding: "1rem",
-            backgroundColor: primitive.yellow[50],
+            backgroundColor: "#fefce8",
             borderRadius: "8px",
             marginBottom: "1rem",
-            border: `${borders.width.base} ${borders.style.solid} ${primitive.yellow[400]}`,
+            border: "1px solid #facc15",
           }}
         >
           <h3 style={{ marginTop: 0, fontSize: "16px", fontWeight: "bold" }}>
@@ -393,7 +391,7 @@ export const WCAGLevels: Story = {
           <h3 style={{ marginBottom: "0.5rem", fontSize: "14px", fontWeight: "bold" }}>
             レベルA（最低限）
           </h3>
-          <p style={{ marginBottom: "1rem", fontSize: "12px", color: primitive.gray[500] }}>
+          <p style={{ marginBottom: "1rem", fontSize: "12px", color: "#6b7280" }}>
             薄いアウトラインのみ
           </p>
           <RadioGroup label="お好きなフルーツは？">
@@ -420,7 +418,7 @@ export const WCAGLevels: Story = {
           <h3 style={{ marginBottom: "0.5rem", fontSize: "14px", fontWeight: "bold" }}>
             レベルAA（推奨）⭐
           </h3>
-          <p style={{ marginBottom: "1rem", fontSize: "12px", color: primitive.gray[500] }}>
+          <p style={{ marginBottom: "1rem", fontSize: "12px", color: "#6b7280" }}>
             背景色 + 太めのアウトライン
           </p>
           <RadioGroup label="お好きなフルーツは？">
@@ -447,7 +445,7 @@ export const WCAGLevels: Story = {
           <h3 style={{ marginBottom: "0.5rem", fontSize: "14px", fontWeight: "bold" }}>
             レベルAAA（最高）
           </h3>
-          <p style={{ marginBottom: "1rem", fontSize: "12px", color: primitive.gray[500] }}>
+          <p style={{ marginBottom: "1rem", fontSize: "12px", color: "#6b7280" }}>
             黄色背景 + 黒の太いアウトライン（最も目立つ）
           </p>
           <RadioGroup label="お好きなフルーツは？">

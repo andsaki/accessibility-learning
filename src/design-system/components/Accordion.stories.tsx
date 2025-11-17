@@ -1,7 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Accordion, AccordionSummary, AccordionContent } from './Accordion';
-import { primitive } from '../tokens/colors';
-import { spacing } from '../tokens';
 
 const meta = {
   title: 'Design System/Accordion',
@@ -137,8 +135,8 @@ export const RichContent: Story = {
           <code style={{
             display: 'block',
             padding: '8px 12px',
-            backgroundColor: primitive.gray[100],
-            borderRadius: spacing.scale[1],
+            backgroundColor: '#f3f4f6',
+            borderRadius: '0.25rem',
             fontFamily: 'monospace',
             fontSize: '14px'
           }}>
@@ -154,8 +152,8 @@ export const RichContent: Story = {
           <code style={{
             display: 'block',
             padding: '8px 12px',
-            backgroundColor: primitive.gray[100],
-            borderRadius: spacing.scale[1],
+            backgroundColor: '#f3f4f6',
+            borderRadius: '0.25rem',
             fontFamily: 'monospace',
             fontSize: '14px'
           }}>
@@ -171,8 +169,8 @@ export const RichContent: Story = {
           <code style={{
             display: 'block',
             padding: '8px 12px',
-            backgroundColor: primitive.gray[100],
-            borderRadius: spacing.scale[1],
+            backgroundColor: '#f3f4f6',
+            borderRadius: '0.25rem',
             fontFamily: 'monospace',
             fontSize: '14px'
           }}>
@@ -310,7 +308,7 @@ export const WCAGLevels: Story = {
               レベルAAAは最高レベルのアクセシビリティです。黄色背景＋黒アウトライン（4px＋オフセット）で非常に目立つフォーカスを示します。
             </p>
             <ul style={{ marginTop: '8px', paddingLeft: '20px' }}>
-              <li>アウトライン: 黒（primitive.black）</li>
+              <li>アウトライン: 黒（'#000000'）</li>
               <li>太さ: 4px</li>
               <li>オフセット: 2px</li>
               <li>背景: 黄色（primitive.yellow[400]）</li>
@@ -323,8 +321,8 @@ export const WCAGLevels: Story = {
       <div style={{
         marginTop: '16px',
         padding: '16px',
-        backgroundColor: primitive.gray[100],
-        borderRadius: spacing.scale[2],
+        backgroundColor: '#f3f4f6',
+        borderRadius: '0.5rem',
         fontSize: '14px',
         lineHeight: 1.6
       }}>

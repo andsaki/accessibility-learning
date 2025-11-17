@@ -17,7 +17,7 @@ export const ARIAGuide = () => {
         padding: spacing.scale[6],
         backgroundColor: colors.background.default,
         borderRadius: radii.borderRadius.lg,
-        border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
+        border: borders.default,
         maxWidth: '100%',
         overflowX: 'hidden',
         boxSizing: 'border-box'
@@ -28,7 +28,7 @@ export const ARIAGuide = () => {
         color: primitive.gray[900],
         fontSize: typography.fontSize['2xl'],
         fontWeight: 'bold',
-        borderBottom: `${borders.width.thick} ${borders.style.solid} ${primitive.pink[500]}`,
+        borderBottom: `${borders.width.thick} solid ${primitive.pink[500]}`,
         paddingBottom: spacing.scale[2],
         marginBottom: spacing.scale[4],
         display: 'flex',
@@ -50,7 +50,7 @@ export const ARIAGuide = () => {
         padding: spacing.scale[6],
         backgroundColor: primitive.blue[50],
         borderRadius: radii.borderRadius.lg,
-        border: `${borders.width.base} ${borders.style.solid} ${primitive.blue[200]}`,
+        border: `${borders.width.base} solid ${primitive.blue[200]}`,
       }}>
         <h3 style={{
           marginTop: 0,
@@ -71,7 +71,7 @@ export const ARIAGuide = () => {
             padding: spacing.scale[4],
             backgroundColor: primitive.white,
             borderRadius: radii.borderRadius.md,
-            border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[200]}`,
+            border: `${borders.width.thin} solid ${primitive.blue[200]}`,
           }}>
             <h4 style={{
               marginTop: 0,
@@ -93,7 +93,7 @@ export const ARIAGuide = () => {
             padding: spacing.scale[4],
             backgroundColor: primitive.white,
             borderRadius: radii.borderRadius.md,
-            border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[200]}`,
+            border: `${borders.width.thin} solid ${primitive.blue[200]}`,
           }}>
             <h4 style={{
               marginTop: 0,
@@ -115,7 +115,7 @@ export const ARIAGuide = () => {
             padding: spacing.scale[4],
             backgroundColor: primitive.white,
             borderRadius: radii.borderRadius.md,
-            border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[200]}`,
+            border: `${borders.width.thin} solid ${primitive.blue[200]}`,
           }}>
             <h4 style={{
               marginTop: 0,
@@ -138,7 +138,7 @@ export const ARIAGuide = () => {
             padding: spacing.scale[4],
             backgroundColor: primitive.white,
             borderRadius: radii.borderRadius.md,
-            border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[200]}`,
+            border: `${borders.width.thin} solid ${primitive.blue[200]}`,
           }}>
             <h4 style={{
               marginTop: 0,
@@ -162,7 +162,7 @@ export const ARIAGuide = () => {
           marginTop: spacing.scale[4],
           padding: spacing.scale[3],
           backgroundColor: primitive.yellow,
-          border: `${borders.width.base} ${borders.style.solid} ${primitive.black}`,
+          border: `${borders.width.base} solid ${primitive.black}`,
           borderRadius: radii.borderRadius.md,
           fontSize: typography.fontSize.sm,
           color: primitive.gray[900],
@@ -187,7 +187,7 @@ export const ARIAGuide = () => {
             padding: spacing.scale[4],
             backgroundColor: primitive.pink[50],
             borderRadius: radii.borderRadius.md,
-            border: `${borders.width.thin} ${borders.style.solid} ${primitive.pink[200]}`,
+            border: `${borders.width.thin} solid ${primitive.pink[200]}`,
             minWidth: 0
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.pink[900] }}>
@@ -201,7 +201,7 @@ export const ARIAGuide = () => {
               padding: spacing.scale[3],
               borderRadius: radii.borderRadius.base,
               marginTop: spacing.scale[2],
-              border: `${borders.width.thin} ${borders.style.solid} ${primitive.pink[200]}`,
+              border: `${borders.width.thin} solid ${primitive.pink[200]}`,
             }}>
               <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
                 <code>{`<button aria-label="メニューを開く">
@@ -228,7 +228,7 @@ export const ARIAGuide = () => {
             padding: spacing.scale[4],
             backgroundColor: primitive.blue[50],
             borderRadius: radii.borderRadius.md,
-            border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[200]}`,
+            border: `${borders.width.thin} solid ${primitive.blue[200]}`,
             minWidth: 0
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.blue[900] }}>
@@ -242,7 +242,7 @@ export const ARIAGuide = () => {
               padding: spacing.scale[3],
               borderRadius: radii.borderRadius.base,
               marginTop: spacing.scale[2],
-              border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[200]}`,
+              border: `${borders.width.thin} solid ${primitive.blue[200]}`,
             }}>
               <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
                 <code>{`<h2 id="section-title">ユーザー設定</h2>
@@ -258,7 +258,7 @@ export const ARIAGuide = () => {
             padding: spacing.scale[4],
             backgroundColor: primitive.green[50],
             borderRadius: radii.borderRadius.md,
-            border: `${borders.width.thin} ${borders.style.solid} ${primitive.green[200]}`,
+            border: `${borders.width.thin} solid ${primitive.green[200]}`,
             minWidth: 0
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.green[900] }}>
@@ -272,7 +272,7 @@ export const ARIAGuide = () => {
               padding: spacing.scale[3],
               borderRadius: radii.borderRadius.base,
               marginTop: spacing.scale[2],
-              border: `${borders.width.thin} ${borders.style.solid} ${primitive.green[200]}`,
+              border: `${borders.width.thin} solid ${primitive.green[200]}`,
             }}>
               <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
                 <code>{`<input
@@ -307,7 +307,7 @@ export const ARIAGuide = () => {
             padding: spacing.scale[4],
             backgroundColor: primitive.orange[50],
             borderRadius: radii.borderRadius.md,
-            border: `${borders.width.thin} ${borders.style.solid} ${primitive.orange[200]}`,
+            border: `${borders.width.thin} solid ${primitive.orange[200]}`,
             minWidth: 0
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.orange[900] }}>
@@ -322,7 +322,7 @@ export const ARIAGuide = () => {
               padding: spacing.scale[3],
               backgroundColor: primitive.white,
               borderRadius: radii.borderRadius.base,
-              border: `${borders.width.thin} ${borders.style.solid} ${primitive.orange[200]}`,
+              border: `${borders.width.thin} solid ${primitive.orange[200]}`,
             }}>
               <h5 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.orange[900], fontSize: typography.fontSize.base }}>
                 📋 aria-current の値の種類
@@ -330,39 +330,39 @@ export const ARIAGuide = () => {
               <div style={{ overflowX: 'auto' }}>
                 <table style={{ width: '100%', borderCollapse: 'collapse', fontSize: typography.fontSize.sm }}>
                 <thead>
-                  <tr style={{ borderBottom: `${borders.width.base} ${borders.style.solid} ${primitive.orange[200]}` }}>
+                  <tr style={{ borderBottom: `${borders.width.base} solid ${primitive.orange[200]}` }}>
                     <th style={{ textAlign: 'left', padding: spacing.scale[2], color: primitive.orange[900] }}>値</th>
                     <th style={{ textAlign: 'left', padding: spacing.scale[2], color: primitive.orange[900] }}>使用場面</th>
                     <th style={{ textAlign: 'left', padding: spacing.scale[2], color: primitive.orange[900] }}>例</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr style={{ borderBottom: `${borders.width.thin} ${borders.style.solid} ${primitive.orange[100]}` }}>
+                  <tr style={{ borderBottom: `${borders.width.thin} solid ${primitive.orange[100]}` }}>
                     <td style={{ padding: spacing.scale[2], fontFamily: 'monospace', color: primitive.orange[800] }}>page</td>
                     <td style={{ padding: spacing.scale[2], color: primitive.gray[700] }}>現在表示中のページ</td>
                     <td style={{ padding: spacing.scale[2], color: primitive.gray[600], fontSize: typography.fontSize.xs }}>パンくずリスト、ページネーション</td>
                   </tr>
-                  <tr style={{ borderBottom: `${borders.width.thin} ${borders.style.solid} ${primitive.orange[100]}` }}>
+                  <tr style={{ borderBottom: `${borders.width.thin} solid ${primitive.orange[100]}` }}>
                     <td style={{ padding: spacing.scale[2], fontFamily: 'monospace', color: primitive.orange[800] }}>step</td>
                     <td style={{ padding: spacing.scale[2], color: primitive.gray[700] }}>ステップ形式の現在位置</td>
                     <td style={{ padding: spacing.scale[2], color: primitive.gray[600], fontSize: typography.fontSize.xs }}>フォームウィザード、チュートリアル</td>
                   </tr>
-                  <tr style={{ borderBottom: `${borders.width.thin} ${borders.style.solid} ${primitive.orange[100]}` }}>
+                  <tr style={{ borderBottom: `${borders.width.thin} solid ${primitive.orange[100]}` }}>
                     <td style={{ padding: spacing.scale[2], fontFamily: 'monospace', color: primitive.orange[800] }}>location</td>
                     <td style={{ padding: spacing.scale[2], color: primitive.gray[700] }}>視覚的にハイライトされた場所</td>
                     <td style={{ padding: spacing.scale[2], color: primitive.gray[600], fontSize: typography.fontSize.xs }}>フローチャート、サイトマップ</td>
                   </tr>
-                  <tr style={{ borderBottom: `${borders.width.thin} ${borders.style.solid} ${primitive.orange[100]}` }}>
+                  <tr style={{ borderBottom: `${borders.width.thin} solid ${primitive.orange[100]}` }}>
                     <td style={{ padding: spacing.scale[2], fontFamily: 'monospace', color: primitive.orange[800] }}>date</td>
                     <td style={{ padding: spacing.scale[2], color: primitive.gray[700] }}>現在選択中の日付</td>
                     <td style={{ padding: spacing.scale[2], color: primitive.gray[600], fontSize: typography.fontSize.xs }}>カレンダー、日付ピッカー</td>
                   </tr>
-                  <tr style={{ borderBottom: `${borders.width.thin} ${borders.style.solid} ${primitive.orange[100]}` }}>
+                  <tr style={{ borderBottom: `${borders.width.thin} solid ${primitive.orange[100]}` }}>
                     <td style={{ padding: spacing.scale[2], fontFamily: 'monospace', color: primitive.orange[800] }}>time</td>
                     <td style={{ padding: spacing.scale[2], color: primitive.gray[700] }}>現在選択中の時刻</td>
                     <td style={{ padding: spacing.scale[2], color: primitive.gray[600], fontSize: typography.fontSize.xs }}>タイムピッカー、スケジュール</td>
                   </tr>
-                  <tr style={{ borderBottom: `${borders.width.thin} ${borders.style.solid} ${primitive.orange[100]}` }}>
+                  <tr style={{ borderBottom: `${borders.width.thin} solid ${primitive.orange[100]}` }}>
                     <td style={{ padding: spacing.scale[2], fontFamily: 'monospace', color: primitive.orange[800] }}>true</td>
                     <td style={{ padding: spacing.scale[2], color: primitive.gray[700] }}>上記に当てはまらない現在項目</td>
                     <td style={{ padding: spacing.scale[2], color: primitive.gray[600], fontSize: typography.fontSize.xs }}>汎用的な「現在」の表示</td>
@@ -382,7 +382,7 @@ export const ARIAGuide = () => {
               padding: spacing.scale[3],
               borderRadius: radii.borderRadius.base,
               marginTop: spacing.scale[3],
-              border: `${borders.width.thin} ${borders.style.solid} ${primitive.orange[200]}`,
+              border: `${borders.width.thin} solid ${primitive.orange[200]}`,
             }}>
               <h5 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.orange[900], fontSize: typography.fontSize.base }}>
                 💡 使用例：パンくずリスト
@@ -416,7 +416,7 @@ export const ARIAGuide = () => {
             padding: spacing.scale[4],
             backgroundColor: primitive.pink[50],
             borderRadius: radii.borderRadius.md,
-            border: `${borders.width.thin} ${borders.style.solid} ${primitive.pink[200]}`,
+            border: `${borders.width.thin} solid ${primitive.pink[200]}`,
             minWidth: 0
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.pink[900] }}>
@@ -430,7 +430,7 @@ export const ARIAGuide = () => {
               padding: spacing.scale[3],
               borderRadius: radii.borderRadius.base,
               marginTop: spacing.scale[2],
-              border: `${borders.width.thin} ${borders.style.solid} ${primitive.pink[200]}`,
+              border: `${borders.width.thin} solid ${primitive.pink[200]}`,
             }}>
               <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
                 <code>{`<AccordionSummary
@@ -457,7 +457,7 @@ export const ARIAGuide = () => {
             padding: spacing.scale[4],
             backgroundColor: primitive.gray[100],
             borderRadius: radii.borderRadius.md,
-            border: `${borders.width.thin} ${borders.style.solid} ${primitive.gray[300]}`,
+            border: `${borders.width.thin} solid ${primitive.gray[300]}`,
             minWidth: 0
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.gray[900] }}>
@@ -471,7 +471,7 @@ export const ARIAGuide = () => {
               padding: spacing.scale[3],
               borderRadius: radii.borderRadius.base,
               marginTop: spacing.scale[2],
-              border: `${borders.width.thin} ${borders.style.solid} ${primitive.gray[300]}`,
+              border: `${borders.width.thin} solid ${primitive.gray[300]}`,
             }}>
               <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
                 <code>{`<svg aria-hidden="true">
@@ -491,7 +491,7 @@ export const ARIAGuide = () => {
           padding: spacing.scale[4],
           backgroundColor: primitive.pink[50],
           borderRadius: radii.borderRadius.md,
-          border: `${borders.width.thin} ${borders.style.solid} ${primitive.pink[200]}`,
+          border: `${borders.width.thin} solid ${primitive.pink[200]}`,
         }}>
           <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.pink[900] }}>
             <code style={{ backgroundColor: primitive.pink[100], padding: `${spacing.scale[2]} ${spacing.scale[4]}`, borderRadius: spacing.scale[2] }}>role="tooltip"</code>
@@ -516,7 +516,7 @@ export const ARIAGuide = () => {
             padding: spacing.scale[3],
             borderRadius: radii.borderRadius.base,
             marginTop: spacing.scale[3],
-            border: `${borders.width.thin} ${borders.style.solid} ${primitive.pink[200]}`,
+            border: `${borders.width.thin} solid ${primitive.pink[200]}`,
           }}>
             <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
               <code>{`<Tooltip content="追加の説明テキスト" position="top">
@@ -530,7 +530,7 @@ export const ARIAGuide = () => {
             padding: spacing.scale[3],
             backgroundColor: primitive.white,
             borderRadius: radii.borderRadius.base,
-            border: `${borders.width.thin} ${borders.style.solid} ${primitive.pink[200]}`,
+            border: `${borders.width.thin} solid ${primitive.pink[200]}`,
           }}>
             <h5 style={{ marginTop: 0, marginBottom: spacing.scale[3], color: primitive.pink[900], fontSize: typography.fontSize.base }}>
               🎨 実例
@@ -574,7 +574,7 @@ export const ARIAGuide = () => {
             padding: spacing.scale[3],
             backgroundColor: primitive.yellow,
             borderRadius: radii.borderRadius.base,
-            border: `${borders.width.base} ${borders.style.solid} ${primitive.black}`,
+            border: `${borders.width.base} solid ${primitive.black}`,
           }}>
             <h5 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.gray[900], fontSize: typography.fontSize.base }}>
               ⚠️ ツールチップ vs タイトル属性
@@ -599,7 +599,7 @@ export const ARIAGuide = () => {
             padding: spacing.scale[4],
             backgroundColor: primitive.blue[50],
             borderRadius: radii.borderRadius.md,
-            border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[200]}`,
+            border: `${borders.width.thin} solid ${primitive.blue[200]}`,
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.blue[900] }}>
               <code style={{ backgroundColor: primitive.blue[100], padding: `${spacing.scale[2]} ${spacing.scale[4]}`, borderRadius: spacing.scale[2] }}>role="button"</code>
@@ -612,7 +612,7 @@ export const ARIAGuide = () => {
               padding: spacing.scale[3],
               borderRadius: radii.borderRadius.base,
               marginTop: spacing.scale[2],
-              border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[200]}`,
+              border: `${borders.width.thin} solid ${primitive.blue[200]}`,
             }}>
               <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
                 <code>{`<!-- ❌ 避けるべき -->
@@ -631,7 +631,7 @@ export const ARIAGuide = () => {
             padding: spacing.scale[4],
             backgroundColor: primitive.pink[50],
             borderRadius: radii.borderRadius.md,
-            border: `${borders.width.thin} ${borders.style.solid} ${primitive.pink[200]}`,
+            border: `${borders.width.thin} solid ${primitive.pink[200]}`,
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.pink[900] }}>
               <code style={{ backgroundColor: primitive.pink[100], padding: `${spacing.scale[2]} ${spacing.scale[4]}`, borderRadius: spacing.scale[2] }}>role="dialog"</code>
@@ -657,7 +657,7 @@ export const ARIAGuide = () => {
               padding: spacing.scale[3],
               borderRadius: radii.borderRadius.base,
               marginTop: spacing.scale[3],
-              border: `${borders.width.thin} ${borders.style.solid} ${primitive.pink[200]}`,
+              border: `${borders.width.thin} solid ${primitive.pink[200]}`,
             }}>
               <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
                 <code>{`<Modal
@@ -708,7 +708,7 @@ export const ARIAGuide = () => {
             padding: spacing.scale[4],
             backgroundColor: primitive.green[50],
             borderRadius: radii.borderRadius.md,
-            border: `${borders.width.thin} ${borders.style.solid} ${primitive.green[200]}`,
+            border: `${borders.width.thin} solid ${primitive.green[200]}`,
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.green[900] }}>
               <code style={{ backgroundColor: primitive.green[100], padding: `${spacing.scale[2]} ${spacing.scale[4]}`, borderRadius: spacing.scale[2] }}>role="navigation"</code>
@@ -721,7 +721,7 @@ export const ARIAGuide = () => {
               padding: spacing.scale[3],
               borderRadius: radii.borderRadius.base,
               marginTop: spacing.scale[2],
-              border: `${borders.width.thin} ${borders.style.solid} ${primitive.green[200]}`,
+              border: `${borders.width.thin} solid ${primitive.green[200]}`,
             }}>
               <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
                 <code>{`<!-- ✅ 推奨: セマンティックHTML -->
@@ -744,7 +744,7 @@ export const ARIAGuide = () => {
             padding: spacing.scale[4],
             backgroundColor: primitive.red[50],
             borderRadius: radii.borderRadius.md,
-            border: `${borders.width.thin} ${borders.style.solid} ${primitive.red[200]}`,
+            border: `${borders.width.thin} solid ${primitive.red[200]}`,
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.red[900] }}>
               <code style={{ backgroundColor: primitive.red[100], padding: `${spacing.scale[2]} ${spacing.scale[4]}`, borderRadius: spacing.scale[2] }}>role="alert"</code>
@@ -757,7 +757,7 @@ export const ARIAGuide = () => {
               padding: spacing.scale[3],
               borderRadius: radii.borderRadius.base,
               marginTop: spacing.scale[2],
-              border: `${borders.width.thin} ${borders.style.solid} ${primitive.red[200]}`,
+              border: `${borders.width.thin} solid ${primitive.red[200]}`,
             }}>
               <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
                 <code>{`<div role="alert">
@@ -774,7 +774,7 @@ export const ARIAGuide = () => {
         padding: spacing.scale[4],
         backgroundColor: primitive.yellow,
         borderRadius: radii.borderRadius.md,
-        border: `${borders.width.base} ${borders.style.solid} ${primitive.black}`,
+        border: `${borders.width.base} solid ${primitive.black}`,
       }}>
         <h4 style={{ color: primitive.gray[900], marginTop: 0 }}>
           💡 ARIAの第一原則
@@ -821,7 +821,7 @@ export const ARIAGuide = () => {
         padding: spacing.scale[4],
         backgroundColor: primitive.blue[50],
         borderRadius: radii.borderRadius.md,
-        border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[200]}`,
+        border: `${borders.width.thin} solid ${primitive.blue[200]}`,
       }}>
         <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
           📚 このデザインシステムで使用しているARIA属性
@@ -852,7 +852,7 @@ function ARIAComparisonDemo() {
           <button
             style={{
               padding: spacing.scale[2],
-              border: `${borders.width.thin} ${borders.style.solid} ${primitive.gray[300]}`,
+              border: `${borders.width.thin} solid ${primitive.gray[300]}`,
               borderRadius: radii.borderRadius.md,
               backgroundColor: primitive.white,
               cursor: "pointer",
@@ -873,7 +873,7 @@ function ARIAComparisonDemo() {
             aria-label="閉じる"
             style={{
               padding: spacing.scale[2],
-              border: `${borders.width.thin} ${borders.style.solid} ${primitive.gray[300]}`,
+              border: `${borders.width.thin} solid ${primitive.gray[300]}`,
               borderRadius: radii.borderRadius.md,
               backgroundColor: primitive.white,
               cursor: "pointer",
@@ -898,7 +898,7 @@ function ARIAComparisonDemo() {
               type="email"
               style={{
                 padding: spacing.scale[2],
-                border: `${borders.width.base} ${borders.style.solid} ${primitive.red[500]}`,
+                border: `${borders.width.base} solid ${primitive.red[500]}`,
                 borderRadius: radii.borderRadius.md,
                 width: "100%",
               }}
@@ -921,7 +921,7 @@ function ARIAComparisonDemo() {
               aria-describedby="good-error-msg"
               style={{
                 padding: spacing.scale[2],
-                border: `${borders.width.base} ${borders.style.solid} ${primitive.red[500]}`,
+                border: `${borders.width.base} solid ${primitive.red[500]}`,
                 borderRadius: radii.borderRadius.md,
                 width: "100%",
               }}
@@ -987,7 +987,7 @@ function ARIAComparisonDemo() {
         padding: spacing.scale[4],
         backgroundColor: primitive.pink[50],
         borderRadius: radii.borderRadius.md,
-        border: `${borders.width.thin} ${borders.style.solid} ${primitive.pink[200]}`,
+        border: `${borders.width.thin} solid ${primitive.pink[200]}`,
         minWidth: 0,
         maxWidth: '100%'
       }}
@@ -1010,7 +1010,7 @@ function ARIAComparisonDemo() {
             onClick={() => setSelectedExample(key)}
             style={{
               padding: `${spacing.scale[2]} ${spacing.scale[3]}`,
-              border: `${borders.width.base} ${borders.style.solid} ${selectedExample === key ? primitive.pink[500] : primitive.gray[300]}`,
+              border: `${borders.width.base} solid ${selectedExample === key ? primitive.pink[500] : primitive.gray[300]}`,
               borderRadius: radii.borderRadius.md,
               backgroundColor: selectedExample === key ? primitive.pink[100] : primitive.white,
               color: selectedExample === key ? primitive.pink[900] : primitive.gray[700],
@@ -1037,7 +1037,7 @@ function ARIAComparisonDemo() {
             padding: spacing.scale[3],
             backgroundColor: primitive.white,
             borderRadius: radii.borderRadius.md,
-            border: `${borders.width.base} ${borders.style.solid} ${primitive.red[300]}`,
+            border: `${borders.width.base} solid ${primitive.red[300]}`,
             minWidth: 0
           }}
         >
@@ -1113,7 +1113,7 @@ function ARIAComparisonDemo() {
             padding: spacing.scale[3],
             backgroundColor: primitive.white,
             borderRadius: radii.borderRadius.md,
-            border: `${borders.width.base} ${borders.style.solid} ${primitive.green[300]}`,
+            border: `${borders.width.base} solid ${primitive.green[300]}`,
             minWidth: 0
           }}
         >
@@ -1219,7 +1219,7 @@ function ScreenReaderSimulator() {
         padding: spacing.scale[4],
         backgroundColor: primitive.blue[50],
         borderRadius: radii.borderRadius.md,
-        border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[200]}`,
+        border: `${borders.width.thin} solid ${primitive.blue[200]}`,
         minWidth: 0,
         maxWidth: '100%'
       }}
@@ -1246,7 +1246,7 @@ function ScreenReaderSimulator() {
           aria-label="閉じる"
           style={{
             padding: spacing.scale[3],
-            border: `${borders.width.base} ${borders.style.solid} ${primitive.blue[500]}`,
+            border: `${borders.width.base} solid ${primitive.blue[500]}`,
             borderRadius: radii.borderRadius.md,
             backgroundColor: primitive.white,
             cursor: isReading ? "not-allowed" : "pointer",
@@ -1323,7 +1323,7 @@ function LiveRegionDemo() {
         padding: spacing.scale[4],
         backgroundColor: primitive.green[50],
         borderRadius: radii.borderRadius.md,
-        border: `${borders.width.thin} ${borders.style.solid} ${primitive.green[200]}`,
+        border: `${borders.width.thin} solid ${primitive.green[200]}`,
         minWidth: 0,
         maxWidth: '100%'
       }}
@@ -1362,7 +1362,7 @@ function LiveRegionDemo() {
           marginTop: spacing.scale[3],
           padding: spacing.scale[3],
           backgroundColor: primitive.white,
-          border: `${borders.width.base} ${borders.style.solid} ${primitive.green[300]}`,
+          border: `${borders.width.base} solid ${primitive.green[300]}`,
           borderRadius: radii.borderRadius.md,
           minHeight: "60px",
           display: "flex",
@@ -1402,7 +1402,7 @@ function LiveRegionDemo() {
           marginTop: spacing.scale[3],
           padding: spacing.scale[2],
           backgroundColor: primitive.yellow,
-          border: `${borders.width.base} ${borders.style.solid} ${primitive.black}`,
+          border: `${borders.width.base} solid ${primitive.black}`,
           borderRadius: radii.borderRadius.sm,
           fontSize: typography.fontSize.sm,
           color: primitive.gray[900],

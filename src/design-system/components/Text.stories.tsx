@@ -1,6 +1,4 @@
 import type { Meta, StoryObj } from "@storybook/react";
-import { borders } from '../tokens';
-import { primitive } from '../tokens/colors';
 import { Text } from "./Text";
 
 /**
@@ -219,7 +217,7 @@ export const CustomElement: Story = {
         <Text variant="h1">デフォルト（h1要素）</Text>
         <Text
           variant="body-small"
-          color={primitive.gray[500]}
+          color="#6b7280"
           style={{ marginTop: "0.5rem" }}
         >
           HTMLタグ: &lt;h1&gt;
@@ -231,7 +229,7 @@ export const CustomElement: Story = {
         </Text>
         <Text
           variant="body-small"
-          color={primitive.gray[500]}
+          color="#6b7280"
           style={{ marginTop: "0.5rem" }}
         >
           HTMLタグ: &lt;p&gt;
@@ -255,9 +253,9 @@ export const WCAGLevels: Story = {
       <div
         style={{
           padding: "1rem",
-          backgroundColor: primitive.blue[50],
+          backgroundColor: "#eff6ff",
           borderRadius: "8px",
-          border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[100]}`,
+          border: "1px solid #dbeafe",
           marginBottom: "1.5rem",
         }}
       >
@@ -273,9 +271,9 @@ export const WCAGLevels: Story = {
         <div
           style={{
             padding: "1.5rem",
-            backgroundColor: "primitive.white",
+            backgroundColor: "#ffffff",
             borderRadius: "8px",
-            border: `${borders.width.base} ${borders.style.solid} ${primitive.gray[300]}`,
+            border: "1px solid #d1d5db",
           }}
         >
           <Text
@@ -303,7 +301,7 @@ export const WCAGLevels: Story = {
             style={{
               marginTop: "1rem",
               paddingTop: "1rem",
-              borderTop: `${borders.width.thin} ${borders.style.solid} ${primitive.gray[200]}`,
+              borderTop: "1px solid #e5e7eb",
             }}
           >
             <Text
@@ -335,9 +333,9 @@ export const WCAGLevels: Story = {
         <div
           style={{
             padding: "1.5rem",
-            backgroundColor: "primitive.white",
+            backgroundColor: "#ffffff",
             borderRadius: "8px",
-            border: `${borders.width.base} ${borders.style.solid} ${primitive.blue[400]}`,
+            border: "1px solid #60a5fa",
           }}
         >
           <Text
@@ -367,7 +365,7 @@ export const WCAGLevels: Story = {
             style={{
               marginTop: "1rem",
               paddingTop: "1rem",
-              borderTop: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[100]}`,
+              borderTop: "1px solid #dbeafe",
             }}
           >
             <Text
@@ -400,9 +398,9 @@ export const WCAGLevels: Story = {
         <div
           style={{
             padding: "1.5rem",
-            backgroundColor: "primitive.white",
+            backgroundColor: "#ffffff",
             borderRadius: "8px",
-            border: `${borders.width.base} ${borders.style.solid} ${primitive.green[400]}`,
+            border: "1px solid #4ade80",
           }}
         >
           <Text
@@ -435,7 +433,7 @@ export const WCAGLevels: Story = {
             style={{
               marginTop: "1rem",
               paddingTop: "1rem",
-              borderTop: `${borders.width.thin} ${borders.style.solid} ${primitive.green[100]}`,
+              borderTop: "1px solid #dcfce7",
             }}
           >
             <Text
@@ -470,9 +468,9 @@ export const WCAGLevels: Story = {
         style={{
           marginTop: "1.5rem",
           padding: "1rem",
-          backgroundColor: "primitive.yellow[100]",
+          backgroundColor: "#fef3c7",
           borderRadius: "8px",
-          border: `${borders.width.base} ${borders.style.solid} ${primitive.yellow[400]}`,
+          border: "1px solid #facc15",
         }}
       >
         <Text variant="body-small" bold color="primitive.yellow[900]">
@@ -512,7 +510,7 @@ export const RealWorldExample: Story = {
   },
   render: () => (
     <div style={{ maxWidth: "600px" }}>
-      <Text variant="overline" color={primitive.gray[500]}>
+      <Text variant="overline" color="#6b7280">
         ニュース
       </Text>
       <Text variant="h2" style={{ marginTop: "0.5rem", marginBottom: "1rem" }}>
@@ -525,7 +523,7 @@ export const RealWorldExample: Story = {
         WCAG
         2.1では、知覚可能、操作可能、理解可能、堅牢という4つの原則が定義されています。
       </Text>
-      <Text variant="caption" color={primitive.gray[500]}>
+      <Text variant="caption" color="#6b7280">
         公開日: 2025年1月15日
       </Text>
     </div>
