@@ -988,6 +988,8 @@ function ARIAComparisonDemo() {
         backgroundColor: primitive.pink[50],
         borderRadius: radii.borderRadius.md,
         border: `1px solid ${primitive.pink[200]}`,
+        minWidth: 0,
+        maxWidth: '100%'
       }}
     >
       <h4
@@ -1036,6 +1038,7 @@ function ARIAComparisonDemo() {
             backgroundColor: primitive.white,
             borderRadius: radii.borderRadius.md,
             border: `2px solid ${primitive.red[300]}`,
+            minWidth: 0
           }}
         >
           <div
@@ -1111,6 +1114,7 @@ function ARIAComparisonDemo() {
             backgroundColor: primitive.white,
             borderRadius: radii.borderRadius.md,
             border: `2px solid ${primitive.green[300]}`,
+            minWidth: 0
           }}
         >
           <div
@@ -1216,6 +1220,8 @@ function ScreenReaderSimulator() {
         backgroundColor: primitive.blue[50],
         borderRadius: radii.borderRadius.md,
         border: `1px solid ${primitive.blue[200]}`,
+        minWidth: 0,
+        maxWidth: '100%'
       }}
     >
       <h4
@@ -1318,6 +1324,8 @@ function LiveRegionDemo() {
         backgroundColor: primitive.green[50],
         borderRadius: radii.borderRadius.md,
         border: `1px solid ${primitive.green[200]}`,
+        minWidth: 0,
+        maxWidth: '100%'
       }}
     >
       <h4
