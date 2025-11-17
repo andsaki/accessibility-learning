@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Dropdown } from './Dropdown';
+import { primitive } from '../tokens/colors';
 import { ThemeProvider } from '../theme';
 import { useState } from 'react';
 
@@ -155,7 +156,7 @@ export const Interactive = {
 
         <div style={{
           padding: '16px',
-          backgroundColor: '#f5f5f5',
+          backgroundColor: primitive.gray[100],
           borderRadius: '8px',
           fontSize: '14px',
         }}>

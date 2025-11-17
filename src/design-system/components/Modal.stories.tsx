@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { useState } from 'react';
+import { primitive } from '../tokens/colors';
 import { Modal } from './Modal';
 import { Button } from './Button';
 import { Input } from './Input';
@@ -139,14 +140,14 @@ export const WithFooter: Story = {
 
             <div style={{
               padding: spacing.scale[4],
-              backgroundColor: '#fef2f2',
+              backgroundColor: 'primitive.red[50]',
               borderRadius: '8px',
-              border: '1px solid #fca5a5'
+              border: '1px solid primitive.red[300]'
             }}>
-              <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: '#991b1b' }}>
+              <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: 'primitive.red[900]' }}>
                 ⚠️ この操作は取り消せません
               </h4>
-              <ul style={{ margin: 0, paddingLeft: spacing.scale[6], lineHeight: 1.8, color: '#991b1b' }}>
+              <ul style={{ margin: 0, paddingLeft: spacing.scale[6], lineHeight: 1.8, color: 'primitive.red[900]' }}>
                 <li>すべての投稿データが削除されます</li>
                 <li>フォロワー・フォロー情報が失われます</li>
                 <li>購入履歴が消去されます</li>
@@ -154,7 +155,7 @@ export const WithFooter: Story = {
               </ul>
             </div>
 
-            <p style={{ margin: 0, fontSize: '14px', color: '#6b7280', lineHeight: 1.6 }}>
+            <p style={{ margin: 0, fontSize: '14px', color: 'primitive.gray[500]', lineHeight: 1.6 }}>
               アカウントを削除する代わりに、一時的に非公開にすることもできます。
               設定から「アカウントを非公開にする」を選択してください。
             </p>
@@ -269,9 +270,9 @@ export const WCAGLevels: Story = {
 
               <div style={{
                 padding: spacing.scale[4],
-                backgroundColor: level === 'A' ? '#f0f9ff' : level === 'AA' ? '#f0f9ff' : '#fef3c7',
+                backgroundColor: level === 'A' ? primitive.blue[50] : level === 'AA' ? primitive.blue[50] : primitive.yellow[50],
                 borderRadius: '8px',
-                border: `2px solid ${level === 'A' ? '#bfdbfe' : level === 'AA' ? '#2196f3' : '#fbbf24'}`
+                border: `2px solid ${level === 'A' ? primitive.blue[100] : level === 'AA' ? primitive.blue[500] : primitive.yellow[400]}`
               }}>
                 <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2] }}>
                   Level {level} の特徴
@@ -279,7 +280,7 @@ export const WCAGLevels: Story = {
                 {level === 'A' && (
                   <ul style={{ margin: 0, paddingLeft: spacing.scale[6], lineHeight: 1.8 }}>
                     <li><strong>アウトライン幅:</strong> 2px（細め）</li>
-                    <li><strong>色:</strong> 青 (#64b5f6)</li>
+                    <li><strong>色:</strong> 青 (primitive.blue[300])</li>
                     <li><strong>オフセット:</strong> なし</li>
                     <li>最小限のアクセシビリティ基準</li>
                   </ul>
@@ -287,7 +288,7 @@ export const WCAGLevels: Story = {
                 {level === 'AA' && (
                   <ul style={{ margin: 0, paddingLeft: spacing.scale[6], lineHeight: 1.8 }}>
                     <li><strong>アウトライン幅:</strong> 3px（中太）</li>
-                    <li><strong>色:</strong> 濃い青 (#1976d2)</li>
+                    <li><strong>色:</strong> 濃い青 (primitive.blue[700])</li>
                     <li><strong>オフセット:</strong> 2px</li>
                     <li><strong>背景:</strong> 薄い青</li>
                     <li>ほとんどのWebサイトで推奨される基準 ★</li>
@@ -296,7 +297,7 @@ export const WCAGLevels: Story = {
                 {level === 'AAA' && (
                   <ul style={{ margin: 0, paddingLeft: spacing.scale[6], lineHeight: 1.8 }}>
                     <li><strong>アウトライン幅:</strong> 4px（太め）</li>
-                    <li><strong>色:</strong> 黒 (#000000)</li>
+                    <li><strong>色:</strong> 黒 (primitive.black)</li>
                     <li><strong>オフセット:</strong> 2px</li>
                     <li><strong>背景:</strong> 黄色</li>
                     <li>最高レベルのアクセシビリティ基準</li>

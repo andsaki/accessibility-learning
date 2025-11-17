@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Breadcrumbs, BreadcrumbList, BreadcrumbItem, BreadcrumbLink } from './Breadcrumbs';
+import { primitive } from '../tokens/colors';
 
 const meta = {
   title: 'Design System/Breadcrumbs',
@@ -116,16 +117,16 @@ export const WCAGLevels: Story = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       <div style={{
         padding: '1.5rem',
-        backgroundColor: '#FAFAFA',
+        backgroundColor: primitive.gray[50],
         borderRadius: '0.5rem',
-        border: '2px solid #E0E0E0'
+        border: '2px solid primitive.gray[300]'
       }}>
-        <h3 style={{ marginBottom: '0.5rem', fontSize: '1.125rem', fontWeight: 'bold', color: '#1F2937' }}>
+        <h3 style={{ marginBottom: '0.5rem', fontSize: '1.125rem', fontWeight: 'bold', color: primitive.gray[800] }}>
           WCAG Level A
         </h3>
-        <p style={{ marginBottom: '1rem', color: '#6B7280', fontSize: '0.875rem' }}>
+        <p style={{ marginBottom: '1rem', color: primitive.gray[500], fontSize: '0.875rem' }}>
           基本的なアクセシビリティ要件を満たします<br />
-          リンク色: <code style={{ backgroundColor: '#E3F2FD', padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>#2196F3</code> (コントラスト比 3.46:1)
+          リンク色: <code style={{ backgroundColor: primitive.blue[50], padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>primitive.blue[500]</code> (コントラスト比 3.46:1)
         </p>
         <Breadcrumbs wcagLevel="A">
           <BreadcrumbList>
@@ -142,16 +143,16 @@ export const WCAGLevels: Story = {
 
       <div style={{
         padding: '1.5rem',
-        backgroundColor: '#FAFAFA',
+        backgroundColor: primitive.gray[50],
         borderRadius: '0.5rem',
-        border: '2px solid #1976D2'
+        border: '2px solid primitive.blue[700]'
       }}>
-        <h3 style={{ marginBottom: '0.5rem', fontSize: '1.125rem', fontWeight: 'bold', color: '#1F2937' }}>
+        <h3 style={{ marginBottom: '0.5rem', fontSize: '1.125rem', fontWeight: 'bold', color: primitive.gray[800] }}>
           WCAG Level AA (デフォルト)
         </h3>
-        <p style={{ marginBottom: '1rem', color: '#6B7280', fontSize: '0.875rem' }}>
+        <p style={{ marginBottom: '1rem', color: primitive.gray[500], fontSize: '0.875rem' }}>
           推奨されるアクセシビリティレベル（Web標準）<br />
-          リンク色: <code style={{ backgroundColor: '#E3F2FD', padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>#1565C0</code> (コントラスト比 7.67:1)
+          リンク色: <code style={{ backgroundColor: primitive.blue[50], padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>primitive.blue[800]</code> (コントラスト比 7.67:1)
         </p>
         <Breadcrumbs wcagLevel="AA">
           <BreadcrumbList>
@@ -168,16 +169,16 @@ export const WCAGLevels: Story = {
 
       <div style={{
         padding: '1.5rem',
-        backgroundColor: '#FAFAFA',
+        backgroundColor: primitive.gray[50],
         borderRadius: '0.5rem',
-        border: '2px solid #0D47A1'
+        border: '2px solid primitive.blue[900]'
       }}>
-        <h3 style={{ marginBottom: '0.5rem', fontSize: '1.125rem', fontWeight: 'bold', color: '#1F2937' }}>
+        <h3 style={{ marginBottom: '0.5rem', fontSize: '1.125rem', fontWeight: 'bold', color: primitive.gray[800] }}>
           WCAG Level AAA
         </h3>
-        <p style={{ marginBottom: '1rem', color: '#6B7280', fontSize: '0.875rem' }}>
+        <p style={{ marginBottom: '1rem', color: primitive.gray[500], fontSize: '0.875rem' }}>
           最高レベルのアクセシビリティ（視覚障害への最大配慮）<br />
-          リンク色: <code style={{ backgroundColor: '#E3F2FD', padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>#1565C0</code> (コントラスト比 10.07:1)
+          リンク色: <code style={{ backgroundColor: primitive.blue[50], padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>primitive.blue[800]</code> (コントラスト比 10.07:1)
         </p>
         <Breadcrumbs wcagLevel="AAA">
           <BreadcrumbList>

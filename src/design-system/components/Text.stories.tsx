@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { borders } from '../tokens';
+import { primitive } from '../tokens/colors';
 import { Text } from "./Text";
 
 /**
@@ -192,11 +194,11 @@ export const CustomColors: Story = {
   },
   render: () => (
     <div style={{ display: "flex", flexDirection: "column", gap: "1rem" }}>
-      <Text color="#000000">黒色のテキスト</Text>
-      <Text color="#2563eb">青色のテキスト</Text>
-      <Text color="#dc2626">赤色のテキスト</Text>
-      <Text color="#16a34a">緑色のテキスト</Text>
-      <Text color="#9333ea">紫色のテキスト</Text>
+      <Text color="primitive.black">黒色のテキスト</Text>
+      <Text color="primitive.blue[600]">青色のテキスト</Text>
+      <Text color="primitive.red[600]">赤色のテキスト</Text>
+      <Text color="primitive.green[600]">緑色のテキスト</Text>
+      <Text color="primitive.purple[600]">紫色のテキスト</Text>
     </div>
   ),
 };
@@ -217,7 +219,7 @@ export const CustomElement: Story = {
         <Text variant="h1">デフォルト（h1要素）</Text>
         <Text
           variant="body-small"
-          color="#666"
+          color={primitive.gray[500]}
           style={{ marginTop: "0.5rem" }}
         >
           HTMLタグ: &lt;h1&gt;
@@ -229,7 +231,7 @@ export const CustomElement: Story = {
         </Text>
         <Text
           variant="body-small"
-          color="#666"
+          color={primitive.gray[500]}
           style={{ marginTop: "0.5rem" }}
         >
           HTMLタグ: &lt;p&gt;
@@ -253,13 +255,13 @@ export const WCAGLevels: Story = {
       <div
         style={{
           padding: "1rem",
-          backgroundColor: "#eff6ff",
+          backgroundColor: primitive.blue[50],
           borderRadius: "8px",
-          border: "1px solid #bfdbfe",
+          border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[100]}`,
           marginBottom: "1.5rem",
         }}
       >
-        <Text variant="body" color="#1e3a8a">
+        <Text variant="body" color="primitive.blue[900]">
           <strong>WCAG（Web Content Accessibility Guidelines）</strong>
           は、Webコンテンツをアクセシブルにするための国際的なガイドラインです。
           3つの適合レベル（A、AA、AAA）があり、レベルが上がるほど厳格な基準となります。
@@ -271,28 +273,28 @@ export const WCAGLevels: Story = {
         <div
           style={{
             padding: "1.5rem",
-            backgroundColor: "#ffffff",
+            backgroundColor: "primitive.white",
             borderRadius: "8px",
-            border: "2px solid #d1d5db",
+            border: `${borders.width.base} ${borders.style.solid} ${primitive.gray[300]}`,
           }}
         >
           <Text
             variant="h5"
-            color="#111827"
+            color="primitive.gray[900]"
             style={{ marginBottom: "0.5rem" }}
           >
             レベルA（最低限）
           </Text>
           <Text
             variant="body-small"
-            color="#4b5563"
+            color="primitive.gray[600]"
             style={{ marginBottom: "0.5rem" }}
           >
             コントラスト比: <strong>3:1</strong>（大きいテキストのみ）
           </Text>
           <Text
             variant="body-small"
-            color="#4b5563"
+            color="primitive.gray[600]"
             style={{ marginBottom: "1rem" }}
           >
             最も基本的なアクセシビリティ要件。これを満たさないと多くのユーザーがコンテンツにアクセスできない。
@@ -301,13 +303,13 @@ export const WCAGLevels: Story = {
             style={{
               marginTop: "1rem",
               paddingTop: "1rem",
-              borderTop: "1px solid #e5e7eb",
+              borderTop: `${borders.width.thin} ${borders.style.solid} ${primitive.gray[200]}`,
             }}
           >
             <Text
               variant="body-small"
               bold
-              color="#374151"
+              color="primitive.gray[700]"
               style={{ marginBottom: "0.5rem" }}
             >
               主な要件例：
@@ -318,7 +320,7 @@ export const WCAGLevels: Story = {
                 paddingLeft: "1.5rem",
                 fontSize: "0.875rem",
                 lineHeight: "1.625",
-                color: "#4b5563",
+                color: "primitive.gray[600]",
               }}
             >
               <li>キーボードで操作可能</li>
@@ -333,21 +335,21 @@ export const WCAGLevels: Story = {
         <div
           style={{
             padding: "1.5rem",
-            backgroundColor: "#ffffff",
+            backgroundColor: "primitive.white",
             borderRadius: "8px",
-            border: "2px solid #60a5fa",
+            border: `${borders.width.base} ${borders.style.solid} ${primitive.blue[400]}`,
           }}
         >
           <Text
             variant="h5"
-            color="#1d4ed8"
+            color="primitive.blue[700]"
             style={{ marginBottom: "0.5rem" }}
           >
             レベルAA（推奨）⭐
           </Text>
           <Text
             variant="body-small"
-            color="#4b5563"
+            color="primitive.gray[600]"
             style={{ marginBottom: "0.5rem" }}
           >
             コントラスト比: <strong>4.5:1</strong>（通常テキスト）、
@@ -355,7 +357,7 @@ export const WCAGLevels: Story = {
           </Text>
           <Text
             variant="body-small"
-            color="#4b5563"
+            color="primitive.gray[600]"
             style={{ marginBottom: "1rem" }}
           >
             ほとんどのWebサイトが目指すべき標準レベル。法律や規制で要求されることが多い（米国のADA、欧州のEAA、日本のJIS
@@ -365,13 +367,13 @@ export const WCAGLevels: Story = {
             style={{
               marginTop: "1rem",
               paddingTop: "1rem",
-              borderTop: "1px solid #bfdbfe",
+              borderTop: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[100]}`,
             }}
           >
             <Text
               variant="body-small"
               bold
-              color="#1e40af"
+              color="primitive.blue[900]"
               style={{ marginBottom: "0.5rem" }}
             >
               レベルAに加えて：
@@ -382,7 +384,7 @@ export const WCAGLevels: Story = {
                 paddingLeft: "1.5rem",
                 fontSize: "0.875rem",
                 lineHeight: "1.625",
-                color: "#4b5563",
+                color: "primitive.gray[600]",
               }}
             >
               <li>十分なカラーコントラスト（4.5:1以上）</li>
@@ -398,21 +400,21 @@ export const WCAGLevels: Story = {
         <div
           style={{
             padding: "1.5rem",
-            backgroundColor: "#ffffff",
+            backgroundColor: "primitive.white",
             borderRadius: "8px",
-            border: "2px solid #4ade80",
+            border: `${borders.width.base} ${borders.style.solid} ${primitive.green[400]}`,
           }}
         >
           <Text
             variant="h5"
-            color="#15803d"
+            color="primitive.green[700]"
             style={{ marginBottom: "0.5rem" }}
           >
             レベルAAA（最高）
           </Text>
           <Text
             variant="body-small"
-            color="#4b5563"
+            color="primitive.gray[600]"
             style={{ marginBottom: "0.5rem" }}
           >
             コントラスト比: <strong>7:1</strong>（通常テキスト）、
@@ -420,7 +422,7 @@ export const WCAGLevels: Story = {
           </Text>
           <Text
             variant="body-small"
-            color="#4b5563"
+            color="primitive.gray[600]"
             style={{ marginBottom: "1rem" }}
           >
             最も厳格なアクセシビリティ基準。公共機関、医療、金融、教育機関などで推奨。
@@ -433,13 +435,13 @@ export const WCAGLevels: Story = {
             style={{
               marginTop: "1rem",
               paddingTop: "1rem",
-              borderTop: "1px solid #bbf7d0",
+              borderTop: `${borders.width.thin} ${borders.style.solid} ${primitive.green[100]}`,
             }}
           >
             <Text
               variant="body-small"
               bold
-              color="#166534"
+              color="primitive.green[800]"
               style={{ marginBottom: "0.5rem" }}
             >
               レベルAAに加えて：
@@ -450,7 +452,7 @@ export const WCAGLevels: Story = {
                 paddingLeft: "1.5rem",
                 fontSize: "0.875rem",
                 lineHeight: "1.625",
-                color: "#4b5563",
+                color: "primitive.gray[600]",
               }}
             >
               <li>非常に高いコントラスト比（7:1以上）</li>
@@ -468,12 +470,12 @@ export const WCAGLevels: Story = {
         style={{
           marginTop: "1.5rem",
           padding: "1rem",
-          backgroundColor: "#fef9c3",
+          backgroundColor: "primitive.yellow[100]",
           borderRadius: "8px",
-          border: "2px solid #fbbf24",
+          border: `${borders.width.base} ${borders.style.solid} ${primitive.yellow[400]}`,
         }}
       >
-        <Text variant="body-small" bold color="#92400e">
+        <Text variant="body-small" bold color="primitive.yellow[900]">
           💡 実用的な選び方
         </Text>
         <ul
@@ -510,7 +512,7 @@ export const RealWorldExample: Story = {
   },
   render: () => (
     <div style={{ maxWidth: "600px" }}>
-      <Text variant="overline" color="#666">
+      <Text variant="overline" color={primitive.gray[500]}>
         ニュース
       </Text>
       <Text variant="h2" style={{ marginTop: "0.5rem", marginBottom: "1rem" }}>
@@ -523,7 +525,7 @@ export const RealWorldExample: Story = {
         WCAG
         2.1では、知覚可能、操作可能、理解可能、堅牢という4つの原則が定義されています。
       </Text>
-      <Text variant="caption" color="#666">
+      <Text variant="caption" color={primitive.gray[500]}>
         公開日: 2025年1月15日
       </Text>
     </div>

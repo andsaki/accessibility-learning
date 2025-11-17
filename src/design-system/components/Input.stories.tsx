@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { borders } from '../tokens';
+import { primitive } from '../tokens/colors';
 import { useState } from 'react';
 import { Input } from './Input';
 
@@ -354,13 +356,13 @@ export const WCAGLevels: Story = {
       <div
         style={{
           padding: '1rem',
-          backgroundColor: '#fff3cd',
+          backgroundColor: primitive.yellow[50],
           borderRadius: '8px',
-          border: '2px solid #ffc107',
+          border: `${borders.width.base} ${borders.style.solid} ${primitive.yellow[400]}`,
         }}
       >
-        <h3 style={{ marginTop: 0, color: '#856404' }}>⚠️ テスト方法</h3>
-        <p style={{ margin: '0.5rem 0', color: '#856404' }}>
+        <h3 style={{ marginTop: 0, color: primitive.yellow[900] }}>⚠️ テスト方法</h3>
+        <p style={{ margin: '0.5rem 0', color: primitive.yellow[900] }}>
           <strong>Tabキーでフォーカス移動</strong> → WCAGレベルに応じたフォーカススタイルが表示される
           <br />
           マウスクリックではフォーカススタイルは表示されません

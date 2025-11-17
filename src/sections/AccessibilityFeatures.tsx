@@ -1,4 +1,4 @@
-import { spacing, typography } from "../design-system/tokens";
+import { spacing, typography, borders } from "../design-system/tokens";
 import { primitive } from "../design-system/tokens/colors";
 import { radii } from "../design-system/tokens";
 
@@ -10,7 +10,7 @@ export function AccessibilityFeatures() {
         marginBottom: spacing.scale[12],
         padding: spacing.scale[6],
         backgroundColor: primitive.blue[50],
-        border: `2px solid ${primitive.blue[500]}`,
+        border: `${borders.width.base} ${borders.style.solid} ${primitive.blue[500]}`,
         borderRadius: radii.borderRadius.lg,
         maxWidth: '100%',
         overflowX: 'hidden',

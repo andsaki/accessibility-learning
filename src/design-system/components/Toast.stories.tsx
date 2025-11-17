@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { borders } from '../tokens';
+import { primitive } from '../tokens/colors';
 import { useState } from 'react';
 import { ToastProvider, useToast } from './ToastProvider';
 import { Button } from './Button';
@@ -195,9 +197,9 @@ export const WCAGLevels: Story = {
           <div style={{
             marginTop: spacing.scale[4],
             padding: spacing.scale[4],
-            backgroundColor: level === 'A' ? '#f0f9ff' : level === 'AA' ? '#f0f9ff' : '#fef3c7',
+            backgroundColor: level === 'A' ? primitive.blue[50] : level === 'AA' ? primitive.blue[50] : primitive.yellow[50],
             borderRadius: '8px',
-            border: `2px solid ${level === 'A' ? '#bfdbfe' : level === 'AA' ? '#2196f3' : '#fbbf24'}`
+            border: `${borders.width.base} ${borders.style.solid} ${level === 'A' ? primitive.blue[100] : level === 'AA' ? primitive.blue[500] : primitive.yellow[400]}`
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2] }}>
               Level {level} の特徴
@@ -205,7 +207,7 @@ export const WCAGLevels: Story = {
             {level === 'A' && (
               <ul style={{ margin: 0, paddingLeft: spacing.scale[6], lineHeight: 1.8 }}>
                 <li><strong>アウトライン幅:</strong> 2px（細め）</li>
-                <li><strong>色:</strong> 青 (#64b5f6)</li>
+                <li><strong>色:</strong> 青 (primitive.blue[300])</li>
                 <li><strong>オフセット:</strong> なし</li>
                 <li>最小限のアクセシビリティ基準</li>
               </ul>
@@ -213,7 +215,7 @@ export const WCAGLevels: Story = {
             {level === 'AA' && (
               <ul style={{ margin: 0, paddingLeft: spacing.scale[6], lineHeight: 1.8 }}>
                 <li><strong>アウトライン幅:</strong> 3px（中太）</li>
-                <li><strong>色:</strong> 濃い青 (#1976d2)</li>
+                <li><strong>色:</strong> 濃い青 (primitive.blue[700])</li>
                 <li><strong>オフセット:</strong> 2px</li>
                 <li><strong>背景:</strong> 薄い青</li>
                 <li>ほとんどのWebサイトで推奨される基準 ★</li>
@@ -222,7 +224,7 @@ export const WCAGLevels: Story = {
             {level === 'AAA' && (
               <ul style={{ margin: 0, paddingLeft: spacing.scale[6], lineHeight: 1.8 }}>
                 <li><strong>アウトライン幅:</strong> 4px（太め）</li>
-                <li><strong>色:</strong> 黒 (#000000)</li>
+                <li><strong>色:</strong> 黒 (primitive.black)</li>
                 <li><strong>オフセット:</strong> 2px</li>
                 <li><strong>背景:</strong> 黄色</li>
                 <li>最高レベルのアクセシビリティ基準</li>

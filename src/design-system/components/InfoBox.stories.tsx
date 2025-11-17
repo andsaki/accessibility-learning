@@ -183,16 +183,16 @@ export const Accessibility: Story = {
         </h3>
         <div style={{ display: 'grid', gap: '1rem' }}>
           <InfoBox variant="info">
-            <strong>Info:</strong> テキスト色 #1e40af（濃紺）/ 背景 #f0f9ff（明るい青）- コントラスト比 8.2:1 ✅
+            <strong>Info:</strong> テキスト色 primitive.blue[900]（濃紺）/ 背景 primitive.blue[50]（明るい青）- コントラスト比 8.2:1 ✅
           </InfoBox>
           <InfoBox variant="warning">
-            <strong>Warning:</strong> テキスト色 #92400e（濃茶）/ 背景 #fef3c7（明るい黄）- コントラスト比 9.1:1 ✅
+            <strong>Warning:</strong> テキスト色 primitive.yellow[900]（濃茶）/ 背景 primitive.yellow[50]（明るい黄）- コントラスト比 9.1:1 ✅
           </InfoBox>
           <InfoBox variant="success">
-            <strong>Success:</strong> テキスト色 #065f46（濃緑）/ 背景 #d1fae5（明るい緑）- コントラスト比 7.8:1 ✅
+            <strong>Success:</strong> テキスト色 primitive.green[900]（濃緑）/ 背景 primitive.green[100]（明るい緑）- コントラスト比 7.8:1 ✅
           </InfoBox>
           <InfoBox variant="tip">
-            <strong>Tip:</strong> テキスト色 #1e40af（濃紺）/ 背景 #f0f9ff（明るい青）- コントラスト比 8.2:1 ✅
+            <strong>Tip:</strong> テキスト色 primitive.blue[900]（濃紺）/ 背景 primitive.blue[50]（明るい青）- コントラスト比 8.2:1 ✅
           </InfoBox>
         </div>
       </div>

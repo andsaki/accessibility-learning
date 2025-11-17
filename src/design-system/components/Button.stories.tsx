@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { borders } from '../tokens';
+import { primitive } from '../tokens/colors';
 import { Button } from './Button';
 
 /**
@@ -347,15 +349,15 @@ export const KeyboardInteraction: Story = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       <div style={{
         padding: '1rem',
-        backgroundColor: '#fff3cd',
+        backgroundColor: primitive.yellow[50],
         borderRadius: '8px',
         marginBottom: '1rem',
-        border: '2px solid #ffc107'
+        border: `${borders.width.base} ${borders.style.solid} ${primitive.yellow[400]}`
       }}>
-        <h3 style={{ marginTop: 0, fontSize: '16px', fontWeight: 'bold', color: '#856404' }}>
+        <h3 style={{ marginTop: 0, fontSize: '16px', fontWeight: 'bold', color: primitive.yellow[900] }}>
           ⚠️ 動作確認方法
         </h3>
-        <p style={{ margin: '0.5rem 0', fontSize: '14px', lineHeight: '1.6', color: '#856404' }}>
+        <p style={{ margin: '0.5rem 0', fontSize: '14px', lineHeight: '1.6', color: primitive.yellow[900] }}>
           Storybook内ではTabキーが正しく動作しない場合があります。<br />
           <strong>右上の「Open canvas in new tab」ボタンで新しいタブを開いて確認してください。</strong>
         </p>
@@ -363,7 +365,7 @@ export const KeyboardInteraction: Story = {
 
       <div style={{
         padding: '1rem',
-        backgroundColor: '#f5f5f5',
+        backgroundColor: primitive.gray[100],
         borderRadius: '8px',
         marginBottom: '1rem'
       }}>
@@ -426,9 +428,9 @@ export const KeyboardInteraction: Story = {
       <div style={{
         marginTop: '2rem',
         padding: '1rem',
-        backgroundColor: '#e3f2fd',
+        backgroundColor: primitive.blue[50],
         borderRadius: '8px',
-        borderLeft: '4px solid #2196f3'
+        borderLeft: `${borders.width.thicker} ${borders.style.solid} ${primitive.blue[500]}`
       }}>
         <h4 style={{ marginTop: 0, fontSize: '14px', fontWeight: 'bold' }}>
           🎯 実装のポイント

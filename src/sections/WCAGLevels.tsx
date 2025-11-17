@@ -5,6 +5,7 @@ import {
   spacing,
   typography,
   icons,
+  borders,
 } from "../design-system/tokens";
 import { primitive } from "../design-system/tokens/colors";
 import { SectionHeading } from "../components/SectionHeading";
@@ -18,7 +19,7 @@ export function WCAGLevels() {
         padding: spacing.scale[6],
         backgroundColor: colors.background.default,
         borderRadius: radii.borderRadius.lg,
-        border: `1px solid ${colors.border.default}`,
+        border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
         maxWidth: "100%",
         overflowX: "hidden",
         boxSizing: "border-box",
@@ -30,7 +31,7 @@ export function WCAGLevels() {
           color: primitive.gray[900],
           fontSize: typography.fontSize["2xl"],
           fontWeight: "bold",
-          borderBottom: `3px solid ${primitive.blue[500]}`,
+          borderBottom: `${borders.width.thick} ${borders.style.solid} ${primitive.blue[500]}`,
           paddingBottom: spacing.scale[2],
           marginBottom: spacing.scale[4],
           display: "flex",
@@ -51,7 +52,7 @@ export function WCAGLevels() {
         style={{
           backgroundColor: primitive.yellow[50],
           borderRadius: radii.borderRadius.lg,
-          border: `3px solid ${primitive.yellow[400]}`,
+          border: `${borders.width.thick} ${borders.style.solid} ${primitive.yellow[400]}`,
           marginBottom: spacing.scale[8],
         }}
       >
@@ -89,7 +90,7 @@ export function WCAGLevels() {
               padding: spacing.scale[3],
               backgroundColor: primitive.white,
               borderRadius: radii.borderRadius.md,
-              border: `1px solid ${primitive.gray[300]}`,
+              border: `${borders.width.thin} ${borders.style.solid} ${primitive.gray[300]}`,
             }}
           >
             <h4
@@ -120,7 +121,7 @@ export function WCAGLevels() {
               padding: spacing.scale[3],
               backgroundColor: primitive.blue[50],
               borderRadius: radii.borderRadius.md,
-              border: `2px solid ${primitive.blue[400]}`,
+              border: `${borders.width.base} ${borders.style.solid} ${primitive.blue[400]}`,
             }}
           >
             <h4
@@ -152,7 +153,7 @@ export function WCAGLevels() {
               padding: spacing.scale[3],
               backgroundColor: primitive.white,
               borderRadius: radii.borderRadius.md,
-              border: `1px solid ${primitive.orange[400]}`,
+              border: `${borders.width.thin} ${borders.style.solid} ${primitive.orange[400]}`,
             }}
           >
             <h4
@@ -219,7 +220,7 @@ export function WCAGLevels() {
             padding: spacing.scale[4],
             backgroundColor: primitive.blue[50],
             borderRadius: radii.borderRadius.base,
-            border: `1px solid ${primitive.blue[200]}`,
+            border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[200]}`,
           }}
         >
           <h4
@@ -306,7 +307,7 @@ export function WCAGLevels() {
               padding: spacing.scale[4],
               backgroundColor: primitive.gray[100],
               borderRadius: radii.borderRadius.base,
-              border: `2px solid ${colors.border.default}`,
+              border: `${borders.width.base} ${borders.style.solid} ${colors.border.default}`,
             }}
           >
             <h4
@@ -340,7 +341,7 @@ export function WCAGLevels() {
                     padding: spacing.scale[2],
                     marginTop: spacing.scale[2],
                     borderRadius: radii.borderRadius.base,
-                    border: `1px solid ${colors.border.default}`,
+                    border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
                   }}
                 >
                   これが
@@ -361,7 +362,7 @@ export function WCAGLevels() {
               padding: spacing.scale[4],
               backgroundColor: primitive.blue[50],
               borderRadius: radii.borderRadius.base,
-              border: `2px solid ${primitive.blue[500]}`,
+              border: `${borders.width.base} ${borders.style.solid} ${primitive.blue[500]}`,
             }}
           >
             <h4
@@ -394,7 +395,7 @@ export function WCAGLevels() {
                     padding: spacing.scale[2],
                     marginTop: spacing.scale[2],
                     borderRadius: radii.borderRadius.base,
-                    border: `1px solid ${colors.border.default}`,
+                    border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
                   }}
                 >
                   これが
@@ -415,7 +416,7 @@ export function WCAGLevels() {
               padding: spacing.scale[4],
               backgroundColor: primitive.orange[50],
               borderRadius: radii.borderRadius.base,
-              border: `2px solid ${primitive.orange[600]}`,
+              border: `${borders.width.base} ${borders.style.solid} ${primitive.orange[600]}`,
             }}
           >
             <h4
@@ -448,7 +449,7 @@ export function WCAGLevels() {
                     padding: spacing.scale[2],
                     marginTop: spacing.scale[2],
                     borderRadius: radii.borderRadius.base,
-                    border: `1px solid ${colors.border.default}`,
+                    border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
                   }}
                 >
                   これが
@@ -514,7 +515,7 @@ export function WCAGLevels() {
               backgroundColor: accessibilityLevels.focus.AAA.background,
               color: accessibilityLevels.focus.AAA.text,
               borderRadius: radii.borderRadius.base,
-              border: `1px solid ${colors.border.default}`,
+              border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
             }}
           >
             <strong>コントラスト比 19.56:1</strong> - レベルAAA フォーカス
@@ -548,7 +549,7 @@ export function WCAGLevels() {
           padding: spacing.scale[4],
           backgroundColor: colors.background.default,
           borderRadius: radii.borderRadius.base,
-          border: `2px solid ${primitive.green[500]}`,
+          border: `${borders.width.base} ${borders.style.solid} ${primitive.green[500]}`,
         }}
       >
         <h4

@@ -12,7 +12,12 @@ export interface BorderTokens {
     thick: string;
     thicker: string;
   };
-  style: string;
+  style: {
+    solid: string;
+    dashed: string;
+    dotted: string;
+    none: string;
+  };
 }
 
 export const borders: BorderTokens = {
@@ -23,5 +28,10 @@ export const borders: BorderTokens = {
     thick: '3px',
     thicker: '4px',
   },
-  style: 'solid',
+  style: {
+    solid: 'solid',
+    dashed: 'dashed',
+    dotted: 'dotted',
+    none: 'none',
+  },
 } as const;

@@ -1,5 +1,6 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Accordion, AccordionSummary, AccordionContent } from './Accordion';
+import { primitive } from '../tokens/colors';
 
 const meta = {
   title: 'Design System/Accordion',
@@ -135,12 +136,12 @@ export const RichContent: Story = {
           <code style={{
             display: 'block',
             padding: '8px 12px',
-            backgroundColor: '#f5f5f5',
+            backgroundColor: primitive.gray[100],
             borderRadius: '4px',
             fontFamily: 'monospace',
             fontSize: '14px'
           }}>
-            blue-500: '#2196f3'
+            blue-500: primitive.blue[500]
           </code>
         </div>
 
@@ -152,7 +153,7 @@ export const RichContent: Story = {
           <code style={{
             display: 'block',
             padding: '8px 12px',
-            backgroundColor: '#f5f5f5',
+            backgroundColor: primitive.gray[100],
             borderRadius: '4px',
             fontFamily: 'monospace',
             fontSize: '14px'
@@ -169,7 +170,7 @@ export const RichContent: Story = {
           <code style={{
             display: 'block',
             padding: '8px 12px',
-            backgroundColor: '#f5f5f5',
+            backgroundColor: primitive.gray[100],
             borderRadius: '4px',
             fontFamily: 'monospace',
             fontSize: '14px'
@@ -268,7 +269,7 @@ export const WCAGLevels: Story = {
               レベルAは最低限のアクセシビリティです。薄い青色のアウトライン（2px）でフォーカスを示します。
             </p>
             <ul style={{ marginTop: '8px', paddingLeft: '20px' }}>
-              <li>アウトライン: 薄い青（#64b5f6）</li>
+              <li>アウトライン: 薄い青（primitive.blue[300]）</li>
               <li>太さ: 2px</li>
               <li>オフセット: なし</li>
               <li>背景: 透明</li>
@@ -288,10 +289,10 @@ export const WCAGLevels: Story = {
               レベルAAはほとんどのWebサイトで推奨される標準です。薄い青背景＋濃い青アウトライン（3px＋オフセット）でフォーカスを示します。
             </p>
             <ul style={{ marginTop: '8px', paddingLeft: '20px' }}>
-              <li>アウトライン: 濃い青（#1976d2）</li>
+              <li>アウトライン: 濃い青（primitive.blue[700]）</li>
               <li>太さ: 3px</li>
               <li>オフセット: 2px</li>
-              <li>背景: 薄い青（#e3f2fd）</li>
+              <li>背景: 薄い青（primitive.blue[50]）</li>
             </ul>
           </AccordionContent>
         </Accordion>
@@ -308,10 +309,10 @@ export const WCAGLevels: Story = {
               レベルAAAは最高レベルのアクセシビリティです。黄色背景＋黒アウトライン（4px＋オフセット）で非常に目立つフォーカスを示します。
             </p>
             <ul style={{ marginTop: '8px', paddingLeft: '20px' }}>
-              <li>アウトライン: 黒（#000000）</li>
+              <li>アウトライン: 黒（primitive.black）</li>
               <li>太さ: 4px</li>
               <li>オフセット: 2px</li>
-              <li>背景: 黄色（#ffff00）</li>
+              <li>背景: 黄色（primitive.yellow[400]）</li>
               <li>コントラスト比: 19.56:1（最高）</li>
             </ul>
           </AccordionContent>
@@ -321,7 +322,7 @@ export const WCAGLevels: Story = {
       <div style={{
         marginTop: '16px',
         padding: '16px',
-        backgroundColor: '#f5f5f5',
+        backgroundColor: primitive.gray[100],
         borderRadius: '8px',
         fontSize: '14px',
         lineHeight: 1.6

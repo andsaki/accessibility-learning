@@ -1,4 +1,4 @@
-import { colors, radii, spacing, typography, icons } from "../design-system/tokens";
+import { colors, radii, spacing, typography, icons, borders } from "../design-system/tokens";
 import { primitive } from "../design-system/tokens/colors";
 import { SectionHeading } from "../components/SectionHeading";
 
@@ -11,7 +11,7 @@ export function DesignTokens() {
         padding: spacing.scale[6],
         backgroundColor: colors.background.default,
         borderRadius: radii.borderRadius.lg,
-        border: `1px solid ${colors.border.default}`,
+        border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
         maxWidth: '100%',
         overflowX: 'hidden',
         boxSizing: 'border-box'
@@ -45,7 +45,7 @@ export function DesignTokens() {
             padding: spacing.scale[4],
             backgroundColor: colors.background.default,
             borderRadius: radii.borderRadius.base,
-            border: `1px solid ${colors.border.default}`,
+            border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
           }}
         >
           <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.blue[900] }}>
@@ -92,7 +92,7 @@ export function DesignTokens() {
             padding: spacing.scale[4],
             backgroundColor: colors.background.default,
             borderRadius: radii.borderRadius.base,
-            border: `1px solid ${colors.border.default}`,
+            border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
           }}
         >
           <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.blue[900] }}>
@@ -155,7 +155,7 @@ export function DesignTokens() {
               padding: spacing.scale[4],
               backgroundColor: primitive.gray[50],
               borderRadius: radii.borderRadius.base,
-              border: `1px solid ${primitive.gray[300]}`,
+              border: `${borders.width.thin} ${borders.style.solid} ${primitive.gray[300]}`,
             }}
           >
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[3], color: primitive.gray[800], fontSize: typography.fontSize.lg }}>
@@ -181,7 +181,7 @@ export function DesignTokens() {
             具体的な階層の役割
           </h4>
           <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[3], marginTop: spacing.scale[2] }}>
-            <div style={{ padding: spacing.scale[3], backgroundColor: primitive.white, borderRadius: radii.borderRadius.base, border: `1px solid ${primitive.gray[300]}` }}>
+            <div style={{ padding: spacing.scale[3], backgroundColor: primitive.white, borderRadius: radii.borderRadius.base, border: `${borders.width.thin} ${borders.style.solid} ${primitive.gray[300]}` }}>
               <div style={{ fontSize: typography.fontSize.sm, color: primitive.gray[600], marginBottom: spacing.scale[1] }}>
                 レイヤー 1
               </div>
@@ -198,7 +198,7 @@ export function DesignTokens() {
               </div>
             </div>
 
-            <div style={{ padding: spacing.scale[3], backgroundColor: primitive.white, borderRadius: radii.borderRadius.base, border: `1px solid ${primitive.gray[300]}` }}>
+            <div style={{ padding: spacing.scale[3], backgroundColor: primitive.white, borderRadius: radii.borderRadius.base, border: `${borders.width.thin} ${borders.style.solid} ${primitive.gray[300]}` }}>
               <div style={{ fontSize: typography.fontSize.sm, color: primitive.gray[600], marginBottom: spacing.scale[1] }}>
                 レイヤー 2
               </div>
@@ -223,7 +223,7 @@ export function DesignTokens() {
               </div>
             </div>
 
-            <div style={{ padding: spacing.scale[3], backgroundColor: primitive.white, borderRadius: radii.borderRadius.base, border: `1px solid ${primitive.gray[300]}` }}>
+            <div style={{ padding: spacing.scale[3], backgroundColor: primitive.white, borderRadius: radii.borderRadius.base, border: `${borders.width.thin} ${borders.style.solid} ${primitive.gray[300]}` }}>
               <div style={{ fontSize: typography.fontSize.sm, color: primitive.gray[600], marginBottom: spacing.scale[1] }}>
                 レイヤー 3
               </div>
@@ -257,7 +257,7 @@ export function DesignTokens() {
               padding: spacing.scale[4],
               backgroundColor: primitive.white,
               borderRadius: radii.borderRadius.base,
-              border: `1px solid ${primitive.blue[300]}`,
+              border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[300]}`,
             }}
           >
             <div style={{ fontSize: typography.fontSize.sm, lineHeight: typography.lineHeight.relaxed, color: primitive.gray[900] }}>
@@ -284,7 +284,7 @@ export function DesignTokens() {
             </div>
           </div>
 
-          <div style={{ marginTop: spacing.scale[4], padding: spacing.scale[3], backgroundColor: primitive.gray[50], borderRadius: radii.borderRadius.base, border: `1px solid ${primitive.gray[300]}` }}>
+          <div style={{ marginTop: spacing.scale[4], padding: spacing.scale[3], backgroundColor: primitive.gray[50], borderRadius: radii.borderRadius.base, border: `${borders.width.thin} ${borders.style.solid} ${primitive.gray[300]}` }}>
             <strong style={{ color: primitive.gray[900] }}>📦 このプロジェクトのSemanticトークン</strong>
             <div style={{ marginTop: spacing.scale[2], fontSize: typography.fontSize.sm, color: primitive.gray[700], display: 'flex', flexWrap: 'wrap', gap: spacing.scale[2] }}>
               <code style={{ backgroundColor: primitive.blue[100], padding: '4px 8px', borderRadius: '4px', color: primitive.blue[900] }}>spacing</code>
@@ -304,7 +304,7 @@ export function DesignTokens() {
             padding: spacing.scale[4],
             backgroundColor: colors.background.default,
             borderRadius: radii.borderRadius.base,
-            border: `1px solid ${colors.border.default}`,
+            border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
           }}
         >
           <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.blue[900] }}>
@@ -338,7 +338,7 @@ export function DesignTokens() {
             padding: spacing.scale[4],
             backgroundColor: colors.background.default,
             borderRadius: radii.borderRadius.base,
-            border: `1px solid ${colors.border.default}`,
+            border: `${borders.width.thin} ${borders.style.solid} ${colors.border.default}`,
           }}
         >
           <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.blue[900] }}>

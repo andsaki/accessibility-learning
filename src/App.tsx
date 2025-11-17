@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useToast, Breadcrumbs, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, Button } from "./design-system/components";
-import { spacing, typography, radii, icons } from "./design-system/tokens";
+import { spacing, typography, radii, icons, borders } from "./design-system/tokens";
 import { primitive } from "./design-system/tokens/colors";
 import { breakpointValues } from "./design-system/tokens/breakpoints";
 import { TableOfContents } from "./components/TableOfContents";
@@ -201,7 +201,7 @@ function App() {
           padding: spacing.scale[6],
           backgroundColor: primitive.blue[50],
           borderRadius: radii.borderRadius.xl,
-          border: `2px solid ${primitive.blue[200]}`,
+          border: `${borders.width.base} ${borders.style.solid} ${primitive.blue[200]}`,
         }}>
           <h2 style={{
             marginTop: 0,
@@ -227,7 +227,7 @@ function App() {
               padding: spacing.scale[4],
               backgroundColor: primitive.white,
               borderRadius: radii.borderRadius.lg,
-              border: `1px solid ${primitive.blue[200]}`,
+              border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[200]}`,
             }}>
               <icons.philosophy.inclusive size={32} color={primitive.blue[500]} strokeWidth={1.5} style={{ marginBottom: spacing.scale[2] }} aria-hidden="true" />
               <h3 style={{
@@ -253,7 +253,7 @@ function App() {
               padding: spacing.scale[4],
               backgroundColor: primitive.white,
               borderRadius: radii.borderRadius.lg,
-              border: `1px solid ${primitive.blue[200]}`,
+              border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[200]}`,
             }}>
               <icons.philosophy.pleasant size={32} color={primitive.blue[500]} strokeWidth={1.5} style={{ marginBottom: spacing.scale[2] }} aria-hidden="true" />
               <h3 style={{
@@ -279,7 +279,7 @@ function App() {
               padding: spacing.scale[4],
               backgroundColor: primitive.white,
               borderRadius: radii.borderRadius.lg,
-              border: `1px solid ${primitive.blue[200]}`,
+              border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[200]}`,
             }}>
               <icons.philosophy.scalable size={32} color={primitive.blue[500]} strokeWidth={1.5} style={{ marginBottom: spacing.scale[2] }} aria-hidden="true" />
               <h3 style={{

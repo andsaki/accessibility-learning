@@ -1,4 +1,6 @@
 import type { Meta, StoryObj } from "@storybook/react";
+import { borders } from '../tokens';
+import { primitive } from '../tokens/colors';
 import { TextArea } from "./TextArea";
 import { useState } from "react";
 
@@ -273,10 +275,10 @@ export const KeyboardInteraction: Story = {
         <div
           style={{
             padding: "1rem",
-            backgroundColor: "#eff6ff",
+            backgroundColor: primitive.blue[50],
             borderRadius: "8px",
             marginBottom: "1.5rem",
-            border: "2px solid #3b82f6",
+            border: `${borders.width.base} ${borders.style.solid} ${primitive.blue[500]}`,
           }}
         >
           <h3 style={{ marginTop: 0, fontSize: "16px", fontWeight: "bold" }}>
@@ -334,10 +336,10 @@ export const WCAGLevels: Story = {
         <div
           style={{
             padding: "1rem",
-            backgroundColor: "#fff3cd",
+            backgroundColor: primitive.yellow[50],
             borderRadius: "8px",
             marginBottom: "1rem",
-            border: "2px solid #ffc107",
+            border: `${borders.width.base} ${borders.style.solid} ${primitive.yellow[400]}`,
           }}
         >
           <h3 style={{ marginTop: 0, fontSize: "16px", fontWeight: "bold" }}>
@@ -353,7 +355,7 @@ export const WCAGLevels: Story = {
           <h3 style={{ marginBottom: "0.5rem", fontSize: "14px", fontWeight: "bold" }}>
             レベルA（最低限）
           </h3>
-          <p style={{ marginBottom: "1rem", fontSize: "12px", color: "#666" }}>
+          <p style={{ marginBottom: "1rem", fontSize: "12px", color: primitive.gray[500] }}>
             薄いアウトラインのみ
           </p>
           <TextArea
@@ -369,7 +371,7 @@ export const WCAGLevels: Story = {
           <h3 style={{ marginBottom: "0.5rem", fontSize: "14px", fontWeight: "bold" }}>
             レベルAA（推奨）⭐
           </h3>
-          <p style={{ marginBottom: "1rem", fontSize: "12px", color: "#666" }}>
+          <p style={{ marginBottom: "1rem", fontSize: "12px", color: primitive.gray[500] }}>
             背景色 + 太めのアウトライン
           </p>
           <TextArea
@@ -385,7 +387,7 @@ export const WCAGLevels: Story = {
           <h3 style={{ marginBottom: "0.5rem", fontSize: "14px", fontWeight: "bold" }}>
             レベルAAA（最高）
           </h3>
-          <p style={{ marginBottom: "1rem", fontSize: "12px", color: "#666" }}>
+          <p style={{ marginBottom: "1rem", fontSize: "12px", color: primitive.gray[500] }}>
             黄色背景 + 黒の太いアウトライン（最も目立つ）
           </p>
           <TextArea
