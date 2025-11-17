@@ -1,7 +1,4 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { borders } from '../tokens';
-import { primitive } from '../tokens/colors';
-import { spacing } from '../tokens';
 import { Button } from './Button';
 
 /**
@@ -350,15 +347,15 @@ export const KeyboardInteraction: Story = {
     <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
       <div style={{
         padding: '1rem',
-        backgroundColor: primitive.yellow[50],
-        borderRadius: spacing.scale[2],
+        backgroundColor: '#fef9c3',
+        borderRadius: '8px',
         marginBottom: '1rem',
-        border: `${borders.width.base} ${borders.style.solid} ${primitive.yellow[400]}`
+        border: '1px solid #facc15'
       }}>
-        <h3 style={{ marginTop: 0, fontSize: '16px', fontWeight: 'bold', color: primitive.yellow[900] }}>
+        <h3 style={{ marginTop: 0, fontSize: '16px', fontWeight: 'bold', color: '#713f12' }}>
           ⚠️ 動作確認方法
         </h3>
-        <p style={{ margin: '0.5rem 0', fontSize: '14px', lineHeight: '1.6', color: primitive.yellow[900] }}>
+        <p style={{ margin: '0.5rem 0', fontSize: '14px', lineHeight: '1.6', color: '#713f12' }}>
           Storybook内ではTabキーが正しく動作しない場合があります。<br />
           <strong>右上の「Open canvas in new tab」ボタンで新しいタブを開いて確認してください。</strong>
         </p>
@@ -366,8 +363,8 @@ export const KeyboardInteraction: Story = {
 
       <div style={{
         padding: '1rem',
-        backgroundColor: primitive.gray[100],
-        borderRadius: spacing.scale[2],
+        backgroundColor: '#f3f4f6',
+        borderRadius: '8px',
         marginBottom: '1rem'
       }}>
         <h3 style={{ marginTop: 0, fontSize: '16px', fontWeight: 'bold' }}>
@@ -429,9 +426,9 @@ export const KeyboardInteraction: Story = {
       <div style={{
         marginTop: '2rem',
         padding: '1rem',
-        backgroundColor: primitive.blue[50],
-        borderRadius: spacing.scale[2],
-        borderLeft: `${borders.width.thicker} ${borders.style.solid} ${primitive.blue[500]}`
+        backgroundColor: '#eff6ff',
+        borderRadius: '8px',
+        borderLeft: '4px solid #3b82f6'
       }}>
         <h4 style={{ marginTop: 0, fontSize: '14px', fontWeight: 'bold' }}>
           🎯 実装のポイント
