@@ -83,8 +83,8 @@ export const ARIAGuide = () => {
               🎭 役割（Role）を伝える
             </h4>
             <p style={{ margin: 0, color: primitive.gray[700], fontSize: typography.fontSize.sm, lineHeight: typography.lineHeight.relaxed }}>
-              要素が何であるかを支援技術に伝えます。例：<code style={{ backgroundColor: primitive.blue[100], padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>role="button"</code>、
-              <code style={{ backgroundColor: primitive.blue[100], padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>role="navigation"</code>など。
+              要素が何であるかを支援技術に伝えます。例：<code style={{ backgroundColor: primitive.blue[100], padding: `${spacing.scale[1]} ${spacing.scale[2]}`, borderRadius: spacing.scale[2] }}>role="button"</code>、
+              <code style={{ backgroundColor: primitive.blue[100], padding: `${spacing.scale[1]} ${spacing.scale[2]}`, borderRadius: spacing.scale[2] }}>role="navigation"</code>など。
               HTMLのセマンティック要素（<code>&lt;button&gt;</code>、<code>&lt;nav&gt;</code>）を使えば、roleは自動的に付与されます。
             </p>
           </div>
@@ -105,8 +105,8 @@ export const ARIAGuide = () => {
               🏷️ 名前（Name）をつける
             </h4>
             <p style={{ margin: 0, color: primitive.gray[700], fontSize: typography.fontSize.sm, lineHeight: typography.lineHeight.relaxed }}>
-              要素に読み上げられる名前を与えます。<code style={{ backgroundColor: primitive.blue[100], padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>aria-label</code>、
-              <code style={{ backgroundColor: primitive.blue[100], padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>aria-labelledby</code>などで指定します。
+              要素に読み上げられる名前を与えます。<code style={{ backgroundColor: primitive.blue[100], padding: `${spacing.scale[1]} ${spacing.scale[2]}`, borderRadius: spacing.scale[2] }}>aria-label</code>、
+              <code style={{ backgroundColor: primitive.blue[100], padding: `${spacing.scale[1]} ${spacing.scale[2]}`, borderRadius: spacing.scale[2] }}>aria-labelledby</code>などで指定します。
               「閉じるボタン」「メニューを開く」など、要素の目的を明確に伝えます。
             </p>
           </div>
@@ -127,9 +127,9 @@ export const ARIAGuide = () => {
               📊 状態（State）を伝える
             </h4>
             <p style={{ margin: 0, color: primitive.gray[700], fontSize: typography.fontSize.sm, lineHeight: typography.lineHeight.relaxed }}>
-              要素の現在の状態を伝えます。<code style={{ backgroundColor: primitive.blue[100], padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>aria-expanded="true"</code>（展開中）、
-              <code style={{ backgroundColor: primitive.blue[100], padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>aria-checked="false"</code>（未チェック）、
-              <code style={{ backgroundColor: primitive.blue[100], padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>aria-disabled="true"</code>（無効）など、
+              要素の現在の状態を伝えます。<code style={{ backgroundColor: primitive.blue[100], padding: `${spacing.scale[1]} ${spacing.scale[2]}`, borderRadius: spacing.scale[2] }}>aria-expanded="true"</code>（展開中）、
+              <code style={{ backgroundColor: primitive.blue[100], padding: `${spacing.scale[1]} ${spacing.scale[2]}`, borderRadius: spacing.scale[2] }}>aria-checked="false"</code>（未チェック）、
+              <code style={{ backgroundColor: primitive.blue[100], padding: `${spacing.scale[1]} ${spacing.scale[2]}`, borderRadius: spacing.scale[2] }}>aria-disabled="true"</code>（無効）など、
               動的に変化する状態を支援技術に伝えます。
             </p>
           </div>
@@ -150,9 +150,9 @@ export const ARIAGuide = () => {
               🔗 関係性（Relationship）を示す
             </h4>
             <p style={{ margin: 0, color: primitive.gray[700], fontSize: typography.fontSize.sm, lineHeight: typography.lineHeight.relaxed }}>
-              要素間の関係を伝えます。<code style={{ backgroundColor: primitive.blue[100], padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>aria-describedby</code>（説明要素）、
-              <code style={{ backgroundColor: primitive.blue[100], padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>aria-controls</code>（制御する要素）、
-              <code style={{ backgroundColor: primitive.blue[100], padding: '0.125rem 0.25rem', borderRadius: '0.25rem' }}>aria-owns</code>（所有する要素）など、
+              要素間の関係を伝えます。<code style={{ backgroundColor: primitive.blue[100], padding: `${spacing.scale[1]} ${spacing.scale[2]}`, borderRadius: spacing.scale[2] }}>aria-describedby</code>（説明要素）、
+              <code style={{ backgroundColor: primitive.blue[100], padding: `${spacing.scale[1]} ${spacing.scale[2]}`, borderRadius: spacing.scale[2] }}>aria-controls</code>（制御する要素）、
+              <code style={{ backgroundColor: primitive.blue[100], padding: `${spacing.scale[1]} ${spacing.scale[2]}`, borderRadius: spacing.scale[2] }}>aria-owns</code>（所有する要素）など、
               要素同士のつながりを明確にします。
             </p>
           </div>
@@ -191,7 +191,7 @@ export const ARIAGuide = () => {
             minWidth: 0
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.pink[900] }}>
-              <code style={{ backgroundColor: primitive.pink[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-label</code>
+              <code style={{ backgroundColor: primitive.pink[100], padding: `${spacing.scale[2]} ${spacing.scale[4]}`, borderRadius: spacing.scale[2] }}>aria-label</code>
             </h4>
             <p style={{ color: primitive.gray[700], marginTop: 0 }}>
               要素に対して、スクリーンリーダーが読み上げるラベルを指定します。視覚的なテキストがない要素に使用します。
@@ -232,7 +232,7 @@ export const ARIAGuide = () => {
             minWidth: 0
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.blue[900] }}>
-              <code style={{ backgroundColor: primitive.blue[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-labelledby</code>
+              <code style={{ backgroundColor: primitive.blue[100], padding: `${spacing.scale[2]} ${spacing.scale[4]}`, borderRadius: spacing.scale[2] }}>aria-labelledby</code>
             </h4>
             <p style={{ color: primitive.gray[700], marginTop: 0 }}>
               他の要素のIDを参照して、その要素のテキストをラベルとして使用します。複数のIDをスペース区切りで指定できます。
@@ -262,7 +262,7 @@ export const ARIAGuide = () => {
             minWidth: 0
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.green[900] }}>
-              <code style={{ backgroundColor: primitive.green[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-describedby</code>
+              <code style={{ backgroundColor: primitive.green[100], padding: `${spacing.scale[2]} ${spacing.scale[4]}`, borderRadius: spacing.scale[2] }}>aria-describedby</code>
             </h4>
             <p style={{ color: primitive.gray[700], marginTop: 0 }}>
               要素の説明や補足情報を提供する他の要素のIDを参照します。エラーメッセージやヒントテキストに使用します。
@@ -311,7 +311,7 @@ export const ARIAGuide = () => {
             minWidth: 0
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.orange[900] }}>
-              <code style={{ backgroundColor: primitive.orange[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-current</code>
+              <code style={{ backgroundColor: primitive.orange[100], padding: `${spacing.scale[2]} ${spacing.scale[4]}`, borderRadius: spacing.scale[2] }}>aria-current</code>
             </h4>
             <p style={{ color: primitive.gray[700], marginTop: 0 }}>
               現在の項目を示します。ナビゲーションやパンくずリストで使用します。
@@ -420,7 +420,7 @@ export const ARIAGuide = () => {
             minWidth: 0
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.pink[900] }}>
-              <code style={{ backgroundColor: primitive.pink[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-expanded</code>
+              <code style={{ backgroundColor: primitive.pink[100], padding: `${spacing.scale[2]} ${spacing.scale[4]}`, borderRadius: spacing.scale[2] }}>aria-expanded</code>
             </h4>
             <p style={{ color: primitive.gray[700], marginTop: 0 }}>
               要素が展開されているか折りたたまれているかを示します。アコーディオンやドロップダウンメニューで使用します。
@@ -461,7 +461,7 @@ export const ARIAGuide = () => {
             minWidth: 0
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.gray[900] }}>
-              <code style={{ backgroundColor: primitive.gray[200], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-hidden</code>
+              <code style={{ backgroundColor: primitive.gray[200], padding: `${spacing.scale[2]} ${spacing.scale[4]}`, borderRadius: spacing.scale[2] }}>aria-hidden</code>
             </h4>
             <p style={{ color: primitive.gray[700], marginTop: 0 }}>
               要素をスクリーンリーダーから隠します。装飾的なアイコンやSVGに使用します。
@@ -494,7 +494,7 @@ export const ARIAGuide = () => {
           border: `${borders.width.thin} ${borders.style.solid} ${primitive.pink[200]}`,
         }}>
           <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.pink[900] }}>
-            <code style={{ backgroundColor: primitive.pink[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>role="tooltip"</code>
+            <code style={{ backgroundColor: primitive.pink[100], padding: `${spacing.scale[2]} ${spacing.scale[4]}`, borderRadius: spacing.scale[2] }}>role="tooltip"</code>
           </h4>
           <p style={{ color: primitive.gray[700], marginTop: 0 }}>
             ツールチップは、要素に関する補足情報を提供するポップアップです。aria-describedby と組み合わせて使用します。
@@ -602,7 +602,7 @@ export const ARIAGuide = () => {
             border: `${borders.width.thin} ${borders.style.solid} ${primitive.blue[200]}`,
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.blue[900] }}>
-              <code style={{ backgroundColor: primitive.blue[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>role="button"</code>
+              <code style={{ backgroundColor: primitive.blue[100], padding: `${spacing.scale[2]} ${spacing.scale[4]}`, borderRadius: spacing.scale[2] }}>role="button"</code>
             </h4>
             <p style={{ color: primitive.gray[700], marginTop: 0 }}>
               div や span などの要素をボタンとして扱います。可能な限り &lt;button&gt; 要素を使用してください。
@@ -634,7 +634,7 @@ export const ARIAGuide = () => {
             border: `${borders.width.thin} ${borders.style.solid} ${primitive.pink[200]}`,
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.pink[900] }}>
-              <code style={{ backgroundColor: primitive.pink[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>role="dialog"</code>
+              <code style={{ backgroundColor: primitive.pink[100], padding: `${spacing.scale[2]} ${spacing.scale[4]}`, borderRadius: spacing.scale[2] }}>role="dialog"</code>
             </h4>
             <p style={{ color: primitive.gray[700], marginTop: 0 }}>
               モーダルダイアログを示します。aria-labelledby または aria-label と組み合わせて使用します。
@@ -711,7 +711,7 @@ export const ARIAGuide = () => {
             border: `${borders.width.thin} ${borders.style.solid} ${primitive.green[200]}`,
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.green[900] }}>
-              <code style={{ backgroundColor: primitive.green[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>role="navigation"</code>
+              <code style={{ backgroundColor: primitive.green[100], padding: `${spacing.scale[2]} ${spacing.scale[4]}`, borderRadius: spacing.scale[2] }}>role="navigation"</code>
             </h4>
             <p style={{ color: primitive.gray[700], marginTop: 0 }}>
               ナビゲーションリンクのグループを示します。&lt;nav&gt; 要素を使用すれば、暗黙的にこのroleが付与されます。
@@ -747,7 +747,7 @@ export const ARIAGuide = () => {
             border: `${borders.width.thin} ${borders.style.solid} ${primitive.red[200]}`,
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.red[900] }}>
-              <code style={{ backgroundColor: primitive.red[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>role="alert"</code>
+              <code style={{ backgroundColor: primitive.red[100], padding: `${spacing.scale[2]} ${spacing.scale[4]}`, borderRadius: spacing.scale[2] }}>role="alert"</code>
             </h4>
             <p style={{ color: primitive.gray[700], marginTop: 0 }}>
               重要なメッセージを即座にスクリーンリーダーに通知します。エラーメッセージや警告に使用します。

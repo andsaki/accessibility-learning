@@ -141,7 +141,7 @@ export const WithFooter: Story = {
             <div style={{
               padding: spacing.scale[4],
               backgroundColor: 'primitive.red[50]',
-              borderRadius: '8px',
+              borderRadius: spacing.scale[2],
               border: '1px solid primitive.red[300]'
             }}>
               <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: 'primitive.red[900]' }}>
@@ -271,7 +271,7 @@ export const WCAGLevels: Story = {
               <div style={{
                 padding: spacing.scale[4],
                 backgroundColor: level === 'A' ? primitive.blue[50] : level === 'AA' ? primitive.blue[50] : primitive.yellow[50],
-                borderRadius: '8px',
+                borderRadius: spacing.scale[2],
                 border: `2px solid ${level === 'A' ? primitive.blue[100] : level === 'AA' ? primitive.blue[500] : primitive.yellow[400]}`
               }}>
                 <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2] }}>

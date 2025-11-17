@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Accordion, AccordionSummary, AccordionContent } from './Accordion';
 import { primitive } from '../tokens/colors';
+import { spacing } from '../tokens';
 
 const meta = {
   title: 'Design System/Accordion',
@@ -137,7 +138,7 @@ export const RichContent: Story = {
             display: 'block',
             padding: '8px 12px',
             backgroundColor: primitive.gray[100],
-            borderRadius: '4px',
+            borderRadius: spacing.scale[1],
             fontFamily: 'monospace',
             fontSize: '14px'
           }}>
@@ -154,7 +155,7 @@ export const RichContent: Story = {
             display: 'block',
             padding: '8px 12px',
             backgroundColor: primitive.gray[100],
-            borderRadius: '4px',
+            borderRadius: spacing.scale[1],
             fontFamily: 'monospace',
             fontSize: '14px'
           }}>
@@ -171,7 +172,7 @@ export const RichContent: Story = {
             display: 'block',
             padding: '8px 12px',
             backgroundColor: primitive.gray[100],
-            borderRadius: '4px',
+            borderRadius: spacing.scale[1],
             fontFamily: 'monospace',
             fontSize: '14px'
           }}>
@@ -323,7 +324,7 @@ export const WCAGLevels: Story = {
         marginTop: '16px',
         padding: '16px',
         backgroundColor: primitive.gray[100],
-        borderRadius: '8px',
+        borderRadius: spacing.scale[2],
         fontSize: '14px',
         lineHeight: 1.6
       }}>

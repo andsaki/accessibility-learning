@@ -198,7 +198,7 @@ export const WCAGLevels: Story = {
             marginTop: spacing.scale[4],
             padding: spacing.scale[4],
             backgroundColor: level === 'A' ? primitive.blue[50] : level === 'AA' ? primitive.blue[50] : primitive.yellow[50],
-            borderRadius: '8px',
+            borderRadius: spacing.scale[2],
             border: `${borders.width.base} ${borders.style.solid} ${level === 'A' ? primitive.blue[100] : level === 'AA' ? primitive.blue[500] : primitive.yellow[400]}`
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2] }}>

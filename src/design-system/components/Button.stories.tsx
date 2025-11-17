@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { borders } from '../tokens';
 import { primitive } from '../tokens/colors';
+import { spacing } from '../tokens';
 import { Button } from './Button';
 
 /**
@@ -350,7 +351,7 @@ export const KeyboardInteraction: Story = {
       <div style={{
         padding: '1rem',
         backgroundColor: primitive.yellow[50],
-        borderRadius: '8px',
+        borderRadius: spacing.scale[2],
         marginBottom: '1rem',
         border: `${borders.width.base} ${borders.style.solid} ${primitive.yellow[400]}`
       }}>
@@ -366,7 +367,7 @@ export const KeyboardInteraction: Story = {
       <div style={{
         padding: '1rem',
         backgroundColor: primitive.gray[100],
-        borderRadius: '8px',
+        borderRadius: spacing.scale[2],
         marginBottom: '1rem'
       }}>
         <h3 style={{ marginTop: 0, fontSize: '16px', fontWeight: 'bold' }}>
@@ -429,7 +430,7 @@ export const KeyboardInteraction: Story = {
         marginTop: '2rem',
         padding: '1rem',
         backgroundColor: primitive.blue[50],
-        borderRadius: '8px',
+        borderRadius: spacing.scale[2],
         borderLeft: `${borders.width.thicker} ${borders.style.solid} ${primitive.blue[500]}`
       }}>
         <h4 style={{ marginTop: 0, fontSize: '14px', fontWeight: 'bold' }}>

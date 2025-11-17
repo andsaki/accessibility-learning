@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { borders } from '../tokens';
 import { primitive } from '../tokens/colors';
+import { spacing } from '../tokens';
 import { Select } from './Select';
 
 const meta = {
@@ -172,7 +173,7 @@ export const WCAGLevels: Story = {
       <div style={{
         padding: '1.5rem',
         backgroundColor: primitive.gray[50],
-        borderRadius: '0.5rem',
+        borderRadius: spacing.scale[4],
         border: `${borders.width.base} ${borders.style.solid} ${primitive.gray[300]}`
       }}>
         <h3 style={{ marginBottom: '0.5rem', fontSize: '1.125rem', fontWeight: 'bold', color: primitive.gray[800] }}>
@@ -193,7 +194,7 @@ export const WCAGLevels: Story = {
       <div style={{
         padding: '1.5rem',
         backgroundColor: primitive.gray[50],
-        borderRadius: '0.5rem',
+        borderRadius: spacing.scale[4],
         border: `${borders.width.base} ${borders.style.solid} ${primitive.blue[700]}`
       }}>
         <h3 style={{ marginBottom: '0.5rem', fontSize: '1.125rem', fontWeight: 'bold', color: primitive.gray[800] }}>
@@ -214,7 +215,7 @@ export const WCAGLevels: Story = {
       <div style={{
         padding: '1.5rem',
         backgroundColor: primitive.gray[50],
-        borderRadius: '0.5rem',
+        borderRadius: spacing.scale[4],
         border: `${borders.width.base} ${borders.style.solid} ${primitive.blue[900]}`
       }}>
         <h3 style={{ marginBottom: '0.5rem', fontSize: '1.125rem', fontWeight: 'bold', color: primitive.gray[800] }}>

@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { borders } from '../tokens';
 import { primitive } from '../tokens/colors';
+import { spacing } from '../tokens';
 import { useState } from 'react';
 import { Input } from './Input';
 
@@ -357,7 +358,7 @@ export const WCAGLevels: Story = {
         style={{
           padding: '1rem',
           backgroundColor: primitive.yellow[50],
-          borderRadius: '8px',
+          borderRadius: spacing.scale[2],
           border: `${borders.width.base} ${borders.style.solid} ${primitive.yellow[400]}`,
         }}
       >

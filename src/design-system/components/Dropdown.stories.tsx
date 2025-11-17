@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 import { Dropdown } from './Dropdown';
 import { primitive } from '../tokens/colors';
+import { spacing } from '../tokens';
 import { ThemeProvider } from '../theme';
 import { useState } from 'react';
 
@@ -157,7 +158,7 @@ export const Interactive = {
         <div style={{
           padding: '16px',
           backgroundColor: primitive.gray[100],
-          borderRadius: '8px',
+          borderRadius: spacing.scale[2],
           fontSize: '14px',
         }}>
           <p><strong>選択された値:</strong></p>

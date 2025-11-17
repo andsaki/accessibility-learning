@@ -287,10 +287,10 @@ export function DesignTokens() {
           <div style={{ marginTop: spacing.scale[4], padding: spacing.scale[3], backgroundColor: primitive.gray[50], borderRadius: radii.borderRadius.base, border: `${borders.width.thin} ${borders.style.solid} ${primitive.gray[300]}` }}>
             <strong style={{ color: primitive.gray[900] }}>📦 このプロジェクトのSemanticトークン</strong>
             <div style={{ marginTop: spacing.scale[2], fontSize: typography.fontSize.sm, color: primitive.gray[700], display: 'flex', flexWrap: 'wrap', gap: spacing.scale[2] }}>
-              <code style={{ backgroundColor: primitive.blue[100], padding: '4px 8px', borderRadius: '4px', color: primitive.blue[900] }}>spacing</code>
-              <code style={{ backgroundColor: primitive.blue[100], padding: '4px 8px', borderRadius: '4px', color: primitive.blue[900] }}>typography</code>
-              <code style={{ backgroundColor: primitive.blue[100], padding: '4px 8px', borderRadius: '4px', color: primitive.blue[900] }}>colors</code>
-              <code style={{ backgroundColor: primitive.blue[100], padding: '4px 8px', borderRadius: '4px', color: primitive.blue[900] }}>radii</code>
+              <code style={{ backgroundColor: primitive.blue[100], padding: '4px 8px', borderRadius: spacing.scale[1], color: primitive.blue[900] }}>spacing</code>
+              <code style={{ backgroundColor: primitive.blue[100], padding: '4px 8px', borderRadius: spacing.scale[1], color: primitive.blue[900] }}>typography</code>
+              <code style={{ backgroundColor: primitive.blue[100], padding: '4px 8px', borderRadius: spacing.scale[1], color: primitive.blue[900] }}>colors</code>
+              <code style={{ backgroundColor: primitive.blue[100], padding: '4px 8px', borderRadius: spacing.scale[1], color: primitive.blue[900] }}>radii</code>
             </div>
           </div>
         </div>
