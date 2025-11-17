@@ -175,7 +175,9 @@ export const ARIAGuide = () => {
         <div style={{
           display: 'grid',
           gap: spacing.scale[4],
-          marginBottom: spacing.scale[8]
+          marginBottom: spacing.scale[8],
+          width: '100%',
+          minWidth: 0
         }}>
           {/* aria-label */}
           <div style={{
@@ -183,6 +185,7 @@ export const ARIAGuide = () => {
             backgroundColor: primitive.pink[50],
             borderRadius: radii.borderRadius.md,
             border: `1px solid ${primitive.pink[200]}`,
+            minWidth: 0
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.pink[900] }}>
               <code style={{ backgroundColor: primitive.pink[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-label</code>
@@ -223,6 +226,7 @@ export const ARIAGuide = () => {
             backgroundColor: primitive.blue[50],
             borderRadius: radii.borderRadius.md,
             border: `1px solid ${primitive.blue[200]}`,
+            minWidth: 0
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.blue[900] }}>
               <code style={{ backgroundColor: primitive.blue[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-labelledby</code>
@@ -252,6 +256,7 @@ export const ARIAGuide = () => {
             backgroundColor: primitive.green[50],
             borderRadius: radii.borderRadius.md,
             border: `1px solid ${primitive.green[200]}`,
+            minWidth: 0
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.green[900] }}>
               <code style={{ backgroundColor: primitive.green[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-describedby</code>
@@ -300,6 +305,7 @@ export const ARIAGuide = () => {
             backgroundColor: primitive.orange[50],
             borderRadius: radii.borderRadius.md,
             border: `1px solid ${primitive.orange[200]}`,
+            minWidth: 0
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.orange[900] }}>
               <code style={{ backgroundColor: primitive.orange[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-current</code>
@@ -408,6 +414,7 @@ export const ARIAGuide = () => {
             backgroundColor: primitive.pink[50],
             borderRadius: radii.borderRadius.md,
             border: `1px solid ${primitive.pink[200]}`,
+            minWidth: 0
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.pink[900] }}>
               <code style={{ backgroundColor: primitive.pink[100], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-expanded</code>
@@ -448,6 +455,7 @@ export const ARIAGuide = () => {
             backgroundColor: primitive.gray[100],
             borderRadius: radii.borderRadius.md,
             border: `1px solid ${primitive.gray[300]}`,
+            minWidth: 0
           }}>
             <h4 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.gray[900] }}>
               <code style={{ backgroundColor: primitive.gray[200], padding: '0.25rem 0.5rem', borderRadius: '0.25rem' }}>aria-hidden</code>
