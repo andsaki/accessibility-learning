@@ -203,7 +203,7 @@ export const ARIAGuide = () => {
 </button>`}</code>
               </pre>
             </div>
-            <div style={{ marginTop: spacing.scale[3] }}>
+            <div style={{ marginTop: spacing.scale[3], display: 'flex', gap: spacing.scale[2], alignItems: 'center', flexWrap: 'wrap' }}>
               <Button
                 aria-label="設定を開く"
                 icon={<icons.component.button size={16} />}
@@ -211,7 +211,7 @@ export const ARIAGuide = () => {
                 size="sm"
               >
               </Button>
-              <span style={{ marginLeft: spacing.scale[2], fontSize: typography.fontSize.sm, color: primitive.gray[600] }}>
+              <span style={{ fontSize: typography.fontSize.sm, color: primitive.gray[600] }}>
                 ← アイコンのみのボタンに aria-label を使用
               </span>
             </div>
