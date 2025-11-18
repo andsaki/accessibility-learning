@@ -5,6 +5,7 @@ import { colors, radii, spacing, typography, icons, borders } from "../design-sy
 import { primitive } from "../design-system/tokens/colors";
 import { SectionHeading } from "../components/SectionHeading";
 import { Tooltip } from "../components/Tooltip";
+import { CodeBlock } from "../components/CodeBlock";
 
 export const ARIAGuide = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -196,18 +197,14 @@ export const ARIAGuide = () => {
             <p style={{ color: primitive.gray[700], marginTop: 0 }}>
               要素に対して、スクリーンリーダーが読み上げるラベルを指定します。視覚的なテキストがない要素に使用します。
             </p>
-            <div style={{
-              backgroundColor: primitive.white,
-              padding: spacing.scale[3],
-              borderRadius: radii.borderRadius.base,
-              marginTop: spacing.scale[2],
-              border: `${borders.width.thin} solid ${primitive.pink[200]}`,
-            }}>
-              <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
-                <code>{`<button aria-label="メニューを開く">
+            <div style={{ marginTop: spacing.scale[2] }}>
+              <CodeBlock
+                code={`<button aria-label="メニューを開く">
   <icons.menu />
-</button>`}</code>
-              </pre>
+</button>`}
+                language="html"
+                showLineNumbers={false}
+              />
             </div>
             <div style={{ marginTop: spacing.scale[3], display: 'flex', gap: spacing.scale[2], alignItems: 'center', flexWrap: 'wrap' }}>
               <Button
@@ -237,19 +234,14 @@ export const ARIAGuide = () => {
             <p style={{ color: primitive.gray[700], marginTop: 0 }}>
               他の要素のIDを参照して、その要素のテキストをラベルとして使用します。複数のIDをスペース区切りで指定できます。
             </p>
-            <div style={{
-              backgroundColor: primitive.white,
-              padding: spacing.scale[3],
-              borderRadius: radii.borderRadius.base,
-              marginTop: spacing.scale[2],
-              border: `${borders.width.thin} solid ${primitive.blue[200]}`,
-            }}>
-              <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
-                <code>{`<h2 id="section-title">ユーザー設定</h2>
+            <div style={{ marginTop: spacing.scale[2] }}>
+              <CodeBlock
+                code={`<h2 id="section-title">ユーザー設定</h2>
 <section aria-labelledby="section-title">
   {/* セクションの内容 */}
-</section>`}</code>
-              </pre>
+</section>`}
+                language="html"
+              />
             </div>
           </div>
 
@@ -267,22 +259,17 @@ export const ARIAGuide = () => {
             <p style={{ color: primitive.gray[700], marginTop: 0 }}>
               要素の説明や補足情報を提供する他の要素のIDを参照します。エラーメッセージやヒントテキストに使用します。
             </p>
-            <div style={{
-              backgroundColor: primitive.white,
-              padding: spacing.scale[3],
-              borderRadius: radii.borderRadius.base,
-              marginTop: spacing.scale[2],
-              border: `${borders.width.thin} solid ${primitive.green[200]}`,
-            }}>
-              <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
-                <code>{`<input
+            <div style={{ marginTop: spacing.scale[2] }}>
+              <CodeBlock
+                code={`<input
   type="password"
   aria-describedby="password-hint"
 />
 <span id="password-hint">
   8文字以上、英数字を含む
-</span>`}</code>
-              </pre>
+</span>`}
+                language="html"
+              />
             </div>
             <div style={{ marginTop: spacing.scale[3] }}>
               <Input
@@ -387,14 +374,15 @@ export const ARIAGuide = () => {
               <h5 style={{ marginTop: 0, marginBottom: spacing.scale[2], color: primitive.orange[900], fontSize: typography.fontSize.base }}>
                 💡 使用例：パンくずリスト
               </h5>
-              <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
-                <code>{`<BreadcrumbItem
+              <CodeBlock
+                code={`<BreadcrumbItem
   aria-current="page"
   isCurrent
 >
   現在のページ
-</BreadcrumbItem>`}</code>
-              </pre>
+</BreadcrumbItem>`}
+                language="jsx"
+              />
             </div>
             <div style={{ marginTop: spacing.scale[3] }}>
               <Breadcrumbs>
@@ -425,20 +413,15 @@ export const ARIAGuide = () => {
             <p style={{ color: primitive.gray[700], marginTop: 0 }}>
               要素が展開されているか折りたたまれているかを示します。アコーディオンやドロップダウンメニューで使用します。
             </p>
-            <div style={{
-              backgroundColor: primitive.white,
-              padding: spacing.scale[3],
-              borderRadius: radii.borderRadius.base,
-              marginTop: spacing.scale[2],
-              border: `${borders.width.thin} solid ${primitive.pink[200]}`,
-            }}>
-              <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
-                <code>{`<AccordionSummary
+            <div style={{ marginTop: spacing.scale[2] }}>
+              <CodeBlock
+                code={`<AccordionSummary
   aria-expanded={isOpen}
 >
   セクションタイトル
-</AccordionSummary>`}</code>
-              </pre>
+</AccordionSummary>`}
+                language="jsx"
+              />
             </div>
             <div style={{ marginTop: spacing.scale[3] }}>
               <Accordion>
@@ -466,19 +449,14 @@ export const ARIAGuide = () => {
             <p style={{ color: primitive.gray[700], marginTop: 0 }}>
               要素をスクリーンリーダーから隠します。装飾的なアイコンやSVGに使用します。
             </p>
-            <div style={{
-              backgroundColor: primitive.white,
-              padding: spacing.scale[3],
-              borderRadius: radii.borderRadius.base,
-              marginTop: spacing.scale[2],
-              border: `${borders.width.thin} solid ${primitive.gray[300]}`,
-            }}>
-              <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
-                <code>{`<svg aria-hidden="true">
+            <div style={{ marginTop: spacing.scale[2] }}>
+              <CodeBlock
+                code={`<svg aria-hidden="true">
   <path d="..." />
 </svg>
-<span>アイコンの意味を説明するテキスト</span>`}</code>
-              </pre>
+<span>アイコンの意味を説明するテキスト</span>`}
+                language="html"
+              />
             </div>
           </div>
         </div>
@@ -511,18 +489,13 @@ export const ARIAGuide = () => {
             </ul>
           </InfoBox>
 
-          <div style={{
-            backgroundColor: primitive.white,
-            padding: spacing.scale[3],
-            borderRadius: radii.borderRadius.base,
-            marginTop: spacing.scale[3],
-            border: `${borders.width.thin} solid ${primitive.pink[200]}`,
-          }}>
-            <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
-              <code>{`<Tooltip content="追加の説明テキスト" position="top">
+          <div style={{ marginTop: spacing.scale[3] }}>
+            <CodeBlock
+              code={`<Tooltip content="追加の説明テキスト" position="top">
   <button>ホバーまたはフォーカス</button>
-</Tooltip>`}</code>
-            </pre>
+</Tooltip>`}
+              language="jsx"
+            />
           </div>
 
           <div style={{
@@ -607,22 +580,17 @@ export const ARIAGuide = () => {
             <p style={{ color: primitive.gray[700], marginTop: 0 }}>
               div や span などの要素をボタンとして扱います。可能な限り &lt;button&gt; 要素を使用してください。
             </p>
-            <div style={{
-              backgroundColor: primitive.white,
-              padding: spacing.scale[3],
-              borderRadius: radii.borderRadius.base,
-              marginTop: spacing.scale[2],
-              border: `${borders.width.thin} solid ${primitive.blue[200]}`,
-            }}>
-              <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
-                <code>{`<!-- ❌ 避けるべき -->
+            <div style={{ marginTop: spacing.scale[2] }}>
+              <CodeBlock
+                code={`<!-- ❌ 避けるべき -->
 <div role="button" tabIndex={0}>
   クリック
 </div>
 
 <!-- ✅ 推奨 -->
-<button>クリック</button>`}</code>
-              </pre>
+<button>クリック</button>`}
+                language="html"
+              />
             </div>
           </div>
 
@@ -652,22 +620,17 @@ export const ARIAGuide = () => {
               </ul>
             </InfoBox>
 
-            <div style={{
-              backgroundColor: primitive.white,
-              padding: spacing.scale[3],
-              borderRadius: radii.borderRadius.base,
-              marginTop: spacing.scale[3],
-              border: `${borders.width.thin} solid ${primitive.pink[200]}`,
-            }}>
-              <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
-                <code>{`<Modal
+            <div style={{ marginTop: spacing.scale[3] }}>
+              <CodeBlock
+                code={`<Modal
   isOpen={isOpen}
   onClose={() => setIsOpen(false)}
   title="確認"
 >
   この操作を実行してもよろしいですか？
-</Modal>`}</code>
-              </pre>
+</Modal>`}
+                language="jsx"
+              />
             </div>
 
             <div style={{ marginTop: spacing.scale[3] }}>
@@ -716,15 +679,9 @@ export const ARIAGuide = () => {
             <p style={{ color: primitive.gray[700], marginTop: 0 }}>
               ナビゲーションリンクのグループを示します。&lt;nav&gt; 要素を使用すれば、暗黙的にこのroleが付与されます。
             </p>
-            <div style={{
-              backgroundColor: primitive.white,
-              padding: spacing.scale[3],
-              borderRadius: radii.borderRadius.base,
-              marginTop: spacing.scale[2],
-              border: `${borders.width.thin} solid ${primitive.green[200]}`,
-            }}>
-              <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
-                <code>{`<!-- ✅ 推奨: セマンティックHTML -->
+            <div style={{ marginTop: spacing.scale[2] }}>
+              <CodeBlock
+                code={`<!-- ✅ 推奨: セマンティックHTML -->
 <nav aria-label="メインナビゲーション">
   <ul>
     <li><a href="/">ホーム</a></li>
@@ -734,8 +691,9 @@ export const ARIAGuide = () => {
 <!-- または -->
 <div role="navigation" aria-label="...">
   {/* ナビゲーション */}
-</div>`}</code>
-              </pre>
+</div>`}
+                language="html"
+              />
             </div>
           </div>
 
@@ -752,18 +710,13 @@ export const ARIAGuide = () => {
             <p style={{ color: primitive.gray[700], marginTop: 0 }}>
               重要なメッセージを即座にスクリーンリーダーに通知します。エラーメッセージや警告に使用します。
             </p>
-            <div style={{
-              backgroundColor: primitive.white,
-              padding: spacing.scale[3],
-              borderRadius: radii.borderRadius.base,
-              marginTop: spacing.scale[2],
-              border: `${borders.width.thin} solid ${primitive.red[200]}`,
-            }}>
-              <pre style={{ margin: 0, fontSize: typography.fontSize.sm, overflow: 'auto', color: primitive.gray[900] }}>
-                <code>{`<div role="alert">
+            <div style={{ marginTop: spacing.scale[2] }}>
+              <CodeBlock
+                code={`<div role="alert">
   エラー: フォームの送信に失敗しました
-</div>`}</code>
-              </pre>
+</div>`}
+                language="html"
+              />
             </div>
           </div>
         </div>
@@ -1064,20 +1017,13 @@ function ARIAComparisonDemo() {
             {current.bad.element}
           </div>
 
-          <pre
-            style={{
-              margin: 0,
-              marginBottom: spacing.scale[2],
-              padding: spacing.scale[2],
-              backgroundColor: primitive.gray[900],
-              color: primitive.green[400],
-              borderRadius: radii.borderRadius.sm,
-              fontSize: typography.fontSize.xs,
-              overflow: "auto",
-            }}
-          >
-            {current.bad.code}
-          </pre>
+          <div style={{ marginBottom: spacing.scale[2] }}>
+            <CodeBlock
+              code={current.bad.code}
+              language="html"
+              showCopyButton={false}
+            />
+          </div>
 
           <div
             style={{
@@ -1140,20 +1086,13 @@ function ARIAComparisonDemo() {
             {current.good.element}
           </div>
 
-          <pre
-            style={{
-              margin: 0,
-              marginBottom: spacing.scale[2],
-              padding: spacing.scale[2],
-              backgroundColor: primitive.gray[900],
-              color: primitive.green[400],
-              borderRadius: radii.borderRadius.sm,
-              fontSize: typography.fontSize.xs,
-              overflow: "auto",
-            }}
-          >
-            {current.good.code}
-          </pre>
+          <div style={{ marginBottom: spacing.scale[2] }}>
+            <CodeBlock
+              code={current.good.code}
+              language="html"
+              showCopyButton={false}
+            />
+          </div>
 
           <div
             style={{
@@ -1280,24 +1219,16 @@ function ScreenReaderSimulator() {
         </div>
       </div>
 
-      <pre
-        style={{
-          marginTop: spacing.scale[3],
-          padding: spacing.scale[3],
-          backgroundColor: primitive.gray[900],
-          color: primitive.green[400],
-          borderRadius: radii.borderRadius.md,
-          fontSize: typography.fontSize.sm,
-          overflow: "auto",
-        }}
-      >
-        {`<button aria-label="閉じる">
+      <div style={{ marginTop: spacing.scale[3] }}>
+        <CodeBlock
+          code={`<button aria-label="閉じる">
   ✕
-</button>
-
-// スクリーンリーダーが読み上げる内容:
+</button>`}
+          language="html"
+          description={`// スクリーンリーダーが読み上げる内容:
 // "ボタン" → "閉じる" → "クリック可能"`}
-      </pre>
+        />
+      </div>
     </div>
   );
 }
@@ -1374,28 +1305,20 @@ function LiveRegionDemo() {
         {message || <span style={{ color: primitive.gray[500] }}>ボタンをクリックしてメッセージを表示</span>}
       </div>
 
-      <pre
-        style={{
-          marginTop: spacing.scale[3],
-          padding: spacing.scale[3],
-          backgroundColor: primitive.gray[900],
-          color: primitive.green[400],
-          borderRadius: radii.borderRadius.md,
-          fontSize: typography.fontSize.sm,
-          overflow: "auto",
-        }}
-      >
-        {`<div
+      <div style={{ marginTop: spacing.scale[3] }}>
+        <CodeBlock
+          code={`<div
   aria-live="polite"
   aria-atomic="true"
 >
   {message}
-</div>
-
-// aria-live="polite": 適切なタイミングで読み上げ
+</div>`}
+          language="jsx"
+          description={`// aria-live="polite": 適切なタイミングで読み上げ
 // aria-live="assertive": すぐに読み上げ（緊急時）
 // aria-atomic="true": 領域全体を読み上げ`}
-      </pre>
+        />
+      </div>
 
       <div
         style={{

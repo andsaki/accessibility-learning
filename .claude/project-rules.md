@@ -543,6 +543,44 @@ export const UsageExample: Story = {
 5. **Accessibility**: アクセシビリティ機能の説明
 6. **UsageExample**: 実際の使用例とコードサンプル
 
+### A/AA/AAAストーリーの命名規則
+
+**WCAGレベルに対応するストーリーを作成する場合は、必ず大文字のA/AA/AAAを使用する**
+
+```tsx
+// ✅ 正しい: 大文字のA/AA/AAA
+export const A: Story = {
+  name: 'A) Basic（最小限）',
+  // ...
+};
+
+export const AA: Story = {
+  name: 'AA) With Description（推奨）⭐',
+  // ...
+};
+
+export const AAA: Story = {
+  name: 'AAA) With Line Numbers（最高）',
+  // ...
+};
+
+// ❌ 間違い: 小文字のa/aa/aaa
+export const A: Story = {
+  name: 'a) Basic',  // NG
+  // ...
+};
+```
+
+**理由:**
+- WCAGレベルは大文字のA/AA/AAAで表記される国際標準
+- プロジェクト全体でWCAGレベルの表記を統一
+- ユーザーがWCAGレベルとして認識しやすい
+
+**適用例:**
+- Button: A（最小限）, AA（推奨）, AAA（最高）のフォーカススタイル
+- CodeBlock: A（基本）, AA（説明付き）, AAA（行番号付き）の機能レベル
+- Input: A/AA/AAAのバリデーション表示レベル
+
 ### 実例
 
 #### Button.stories.tsx
