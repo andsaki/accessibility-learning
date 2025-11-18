@@ -50,7 +50,13 @@ src/
 │   ├── TableOfContents.tsx     # 目次ナビゲーション
 │   ├── HamburgerButton.tsx     # モバイルメニューボタン
 │   ├── MobileDrawer.tsx        # モバイル用ドロワー
-│   └── SectionHeading.tsx      # セクション見出し
+│   ├── SectionHeading.tsx      # セクション見出し
+│   ├── CodeBlock.tsx           # コードブロック（シンタックスハイライト付き）
+│   ├── Tooltip.tsx             # ツールチップ
+│   └── index.tsx               # コンポーネント統合エクスポート
+├── sections/                    # セクションコンポーネント
+│   ├── ARIAGuide.tsx           # ARIAガイド
+│   └── WCAGLevelInfo.tsx       # WCAGレベル説明
 ├── hooks/                      # カスタムフック
 │   └── useActiveSection.ts     # アクティブセクション検出
 ├── design-system/              # デザインシステム
@@ -473,6 +479,7 @@ npm run build-storybook
 | **Accordion** | ✅ AA | ARIA属性、キーボード操作、スムーズアニメーション |
 | **Breadcrumbs** | ✅ AA | セマンティックHTML、aria-current、構造化データ対応 |
 | **Form** | ✅ AA/AAA | 統合バリデーション、エラー管理、送信状態管理 |
+| **CodeBlock** | ✅ AA | シンタックスハイライト、コピー機能、行番号表示、説明文表示 |
 
 ## 📝 今後の予定
 
