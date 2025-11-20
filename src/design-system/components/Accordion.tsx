@@ -2,7 +2,6 @@ import React from 'react';
 import { spacing, typography, radii, accessibilityLevels } from '../tokens';
 import type { WCAGLevel } from '../tokens';
 import { useTheme } from '../theme';
-import './Accordion.css';
 
 export interface AccordionProps extends React.DetailsHTMLAttributes<HTMLDetailsElement> {
   children: React.ReactNode;

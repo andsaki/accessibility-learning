@@ -311,5 +311,15 @@ export default defineConfig({
     'input[type="checkbox"], input[type="radio"]': {
       accentColor: '#3b82f6',
     },
+    // Accordion styles
+    'details[open] .accordion-icon': {
+      transform: 'rotate(180deg)',
+    },
+    'summary::-webkit-details-marker': {
+      display: 'none',
+    },
+    'summary::marker': {
+      display: 'none',
+    },
   },
 });
