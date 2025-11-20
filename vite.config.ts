@@ -10,7 +10,7 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 
 // More info at: https://storybook.js.org/docs/next/writing-tests/integrations/vitest-addon
 export default defineConfig({
-  base: process.env.NODE_ENV === 'production' ? '/accessibility-learning/' : '/',
+  base: process.env.NODE_ENV === 'production' ? '/kind-design-system-learning/' : '/',
   plugins: [react()],
   test: {
     projects: [{
