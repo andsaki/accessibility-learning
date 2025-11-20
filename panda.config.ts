@@ -321,5 +321,28 @@ export default defineConfig({
     'summary::marker': {
       display: 'none',
     },
+    // Button styles - hover and focus state management
+    'button': {
+      borderColor: 'var(--border-color)',
+    },
+    'button:hover:not([data-focused]):not(:disabled)': {
+      backgroundColor: 'var(--hover-bg) !important',
+      borderColor: 'var(--hover-border) !important',
+      transition: 'background-color 0.2s ease, border-color 0.2s ease',
+    },
+    'button[data-focused]': {
+      backgroundColor: 'var(--focus-bg) !important',
+      outline: 'var(--focus-outline-width) solid var(--focus-outline) !important',
+      outlineOffset: 'var(--focus-outline-offset) !important',
+    },
+    'button[data-focused]:not([data-focus-text-inherit])': {
+      color: 'var(--focus-text) !important',
+    },
+    'button[data-focused]:hover': {
+      backgroundColor: 'var(--focus-bg) !important',
+    },
+    'button[data-focused]:hover:not([data-focus-text-inherit])': {
+      color: 'var(--focus-text) !important',
+    },
   },
 });

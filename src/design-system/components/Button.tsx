@@ -7,7 +7,6 @@ import {
 } from "../tokens";
 import type { WCAGLevel } from "../tokens";
 import { useTheme } from "../theme";
-import "./Button.css";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
