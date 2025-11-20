@@ -1,4 +1,5 @@
 import { defineConfig } from "@pandacss/dev";
+import { button } from "./panda-config/recipes/button";
 
 export default defineConfig({
   // Whether to use css reset
@@ -282,6 +283,9 @@ export default defineConfig({
         xl: '1280px',
         '2xl': '1536px',
       },
+      recipes: {
+        button,
+      },
     },
   },
 
@@ -326,15 +330,7 @@ export default defineConfig({
     'summary::marker': {
       display: 'none',
     },
-    // Button styles - hover and focus state management
-    'button': {
-      borderColor: 'var(--border-color)',
-    },
-    'button:hover:not([data-focused]):not(:disabled)': {
-      backgroundColor: 'var(--hover-bg) !important',
-      borderColor: 'var(--hover-border) !important',
-      transition: 'background-color 0.2s ease, border-color 0.2s ease',
-    },
+    // Button focus state management (keyboard focus only)
     'button[data-focused]': {
       backgroundColor: 'var(--focus-bg) !important',
       outline: 'var(--focus-outline-width) solid var(--focus-outline) !important',
