@@ -308,6 +308,11 @@ export default defineConfig({
       color: 'text.primary',
       backgroundColor: 'bg.canvas',
     },
+    '#root': {
+      width: '100%',
+      margin: '0 auto',
+      textAlign: 'left',
+    },
     'input[type="checkbox"], input[type="radio"]': {
       accentColor: '#3b82f6',
     },

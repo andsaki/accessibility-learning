@@ -13,7 +13,6 @@ import { ARIAGuide } from "./sections/ARIAGuide";
 import { AccessibilityFeatures } from "./sections/AccessibilityFeatures";
 import { WCAGLevels } from "./sections/WCAGLevels";
 import { DesignTokens } from "./sections/DesignTokens";
-import "./App.css";
 
 function App() {
   const { mode, toggleTheme, colors: themeColors } = useTheme();
