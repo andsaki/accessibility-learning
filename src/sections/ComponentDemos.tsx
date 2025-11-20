@@ -1105,7 +1105,7 @@ export function ComponentDemos({
           <SectionHeading>見出しレベル</SectionHeading>
           <div style={{
             padding: spacing.scale[4],
-            backgroundColor: primitive.gray[50],
+            backgroundColor: colors.background.subtle,
             borderRadius: radii.borderRadius.base,
             border: borders.default,
         maxWidth: '100%',
@@ -1127,7 +1127,7 @@ export function ComponentDemos({
           <SectionHeading>本文バリエーション</SectionHeading>
           <div style={{
             padding: spacing.scale[4],
-            backgroundColor: primitive.gray[50],
+            backgroundColor: colors.background.subtle,
             borderRadius: radii.borderRadius.base,
             border: borders.default,
         maxWidth: '100%',
@@ -1148,7 +1148,7 @@ export function ComponentDemos({
           <SectionHeading>テキスト装飾</SectionHeading>
           <div style={{
             padding: spacing.scale[4],
-            backgroundColor: primitive.gray[50],
+            backgroundColor: colors.background.subtle,
             borderRadius: radii.borderRadius.base,
             border: borders.default,
         maxWidth: '100%',
@@ -1169,7 +1169,7 @@ export function ComponentDemos({
           <SectionHeading>カラーバリエーション</SectionHeading>
           <div style={{
             padding: spacing.scale[4],
-            backgroundColor: primitive.gray[50],
+            backgroundColor: colors.background.subtle,
             borderRadius: radii.borderRadius.base,
             border: borders.default,
         maxWidth: '100%',
@@ -1203,7 +1203,7 @@ export function ComponentDemos({
 
           <div style={{
             padding: spacing.scale[4],
-            backgroundColor: primitive.gray[50],
+            backgroundColor: colors.background.subtle,
             borderRadius: radii.borderRadius.base,
             border: borders.default,
         maxWidth: '100%',
@@ -1213,25 +1213,25 @@ export function ComponentDemos({
             <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[5] }}>
               <div style={{
                 padding: spacing.scale[4],
-                backgroundColor: primitive.white,
+                backgroundColor: colors.background.default,
                 borderRadius: radii.borderRadius.md,
-                border: `${borders.width.base} solid ${primitive.gray[300]}`,
+                border: `${borders.width.base} solid ${colors.border.default}`,
               }}>
-                <Text variant="h6" color={primitive.gray[900]} style={{ marginBottom: spacing.scale[2] }}>
+                <Text variant="h6" color={colors.text.primary} style={{ marginBottom: spacing.scale[2] }}>
                   レベルA（最低限）
                 </Text>
-                <Text variant="body-small" color={primitive.gray[700]} style={{ marginBottom: spacing.scale[2] }}>
+                <Text variant="body-small" color={colors.text.secondary} style={{ marginBottom: spacing.scale[2] }}>
                   コントラスト比: <strong>3:1</strong>（大きいテキストのみ）
                 </Text>
-                <Text variant="body-small" color={primitive.gray[700]} style={{ marginBottom: spacing.scale[2] }}>
+                <Text variant="body-small" color={colors.text.secondary} style={{ marginBottom: spacing.scale[2] }}>
                   最も基本的なアクセシビリティ要件。これを満たさないと多くのユーザーがコンテンツにアクセスできない。
                 </Text>
                 <div style={{
                   marginTop: spacing.scale[3],
                   paddingTop: spacing.scale[3],
-                  borderTop: `${borders.width.thin} solid ${primitive.gray[200]}`,
+                  borderTop: `${borders.width.thin} solid ${colors.border.default}`,
                 }}>
-                  <Text variant="body-small" bold color={primitive.gray[800]} style={{ marginBottom: spacing.scale[1] }}>
+                  <Text variant="body-small" bold color={colors.text.primary} style={{ marginBottom: spacing.scale[1] }}>
                     主な要件例：
                   </Text>
                   <ul style={{
@@ -1239,7 +1239,7 @@ export function ComponentDemos({
                     paddingLeft: spacing.scale[5],
                     fontSize: typography.fontSize.sm,
                     lineHeight: typography.lineHeight.relaxed,
-                    color: primitive.gray[700],
+                    color: colors.text.secondary,
                   }}>
                     <li>キーボードで操作可能</li>
                     <li>画像に代替テキスト（alt属性）を提供</li>
@@ -1251,23 +1251,23 @@ export function ComponentDemos({
 
               <div style={{
                 padding: spacing.scale[4],
-                backgroundColor: primitive.white,
+                backgroundColor: colors.background.default,
                 borderRadius: radii.borderRadius.md,
                 border: `${borders.width.base} solid ${primitive.blue[400]}`,
               }}>
                 <Text variant="h6" color={primitive.blue[700]} style={{ marginBottom: spacing.scale[2] }}>
                   レベルAA（推奨）⭐
                 </Text>
-                <Text variant="body-small" color={primitive.gray[700]} style={{ marginBottom: spacing.scale[2] }}>
+                <Text variant="body-small" color={colors.text.secondary} style={{ marginBottom: spacing.scale[2] }}>
                   コントラスト比: <strong>4.5:1</strong>（通常テキスト）、<strong>3:1</strong>（大きいテキスト18px以上）
                 </Text>
-                <Text variant="body-small" color={primitive.gray[700]} style={{ marginBottom: spacing.scale[2] }}>
+                <Text variant="body-small" color={colors.text.secondary} style={{ marginBottom: spacing.scale[2] }}>
                   ほとんどのWebサイトが目指すべき標準レベル。法律や規制で要求されることが多い（米国のADA、欧州のEAA、日本のJIS X 8341-3など）。
                 </Text>
                 <div style={{
                   marginTop: spacing.scale[3],
                   paddingTop: spacing.scale[3],
-                  borderTop: `${borders.width.thin} solid ${primitive.blue[200]}`,
+                  borderTop: `${borders.width.thin} solid ${colors.border.default}`,
                 }}>
                   <Text variant="body-small" bold color={primitive.blue[800]} style={{ marginBottom: spacing.scale[1] }}>
                     レベルAに加えて：
@@ -1277,7 +1277,7 @@ export function ComponentDemos({
                     paddingLeft: spacing.scale[5],
                     fontSize: typography.fontSize.sm,
                     lineHeight: typography.lineHeight.relaxed,
-                    color: primitive.gray[700],
+                    color: colors.text.secondary,
                   }}>
                     <li>十分なカラーコントラスト（4.5:1以上）</li>
                     <li>テキストのリサイズ（200%まで拡大可能）</li>
@@ -1290,24 +1290,24 @@ export function ComponentDemos({
 
               <div style={{
                 padding: spacing.scale[4],
-                backgroundColor: primitive.white,
+                backgroundColor: colors.background.default,
                 borderRadius: radii.borderRadius.md,
                 border: `2px solid ${primitive.green[400]}`,
               }}>
                 <Text variant="h6" color={primitive.green[700]} style={{ marginBottom: spacing.scale[2] }}>
                   レベルAAA（最高）
                 </Text>
-                <Text variant="body-small" color={primitive.gray[700]} style={{ marginBottom: spacing.scale[2] }}>
+                <Text variant="body-small" color={colors.text.secondary} style={{ marginBottom: spacing.scale[2] }}>
                   コントラスト比: <strong>7:1</strong>（通常テキスト）、<strong>4.5:1</strong>（大きいテキスト18px以上）
                 </Text>
-                <Text variant="body-small" color={primitive.gray[700]} style={{ marginBottom: spacing.scale[2] }}>
+                <Text variant="body-small" color={colors.text.secondary} style={{ marginBottom: spacing.scale[2] }}>
                   最も厳格なアクセシビリティ基準。公共機関、医療、金融、教育機関などで推奨。
                   <strong>すべてのコンテンツでAAA達成は現実的でない場合が多い</strong>ため、重要な部分に適用することが推奨される。
                 </Text>
                 <div style={{
                   marginTop: spacing.scale[3],
                   paddingTop: spacing.scale[3],
-                  borderTop: `1px solid ${primitive.green[200]}`,
+                  borderTop: `1px solid ${colors.border.default}`,
                 }}>
                   <Text variant="body-small" bold color={primitive.green[800]} style={{ marginBottom: spacing.scale[1] }}>
                     レベルAAに加えて：
@@ -1317,7 +1317,7 @@ export function ComponentDemos({
                     paddingLeft: spacing.scale[5],
                     fontSize: typography.fontSize.sm,
                     lineHeight: typography.lineHeight.relaxed,
-                    color: primitive.gray[700],
+                    color: colors.text.secondary,
                   }}>
                     <li>非常に高いコントラスト比（7:1以上）</li>
                     <li>音声のみのコンテンツに代替テキストを提供</li>
@@ -1335,12 +1335,12 @@ export function ComponentDemos({
             padding: spacing.scale[3],
             backgroundColor: primitive.yellow,
             borderRadius: radii.borderRadius.md,
-            border: `2px solid ${primitive.gray[400]}`,
+            border: `2px solid ${colors.border.default}`,
           }}>
-            <Text variant="body-small" bold color={primitive.gray[900]}>
+            <Text variant="body-small" bold color={colors.text.primary}>
               💡 実用的な選び方
             </Text>
-            <ul style={{ margin: `${spacing.scale[2]} 0 0 0`, paddingLeft: spacing.scale[5], fontSize: typography.fontSize.sm, lineHeight: typography.lineHeight.relaxed, color: primitive.gray[900] }}>
+            <ul style={{ margin: `${spacing.scale[2]} 0 0 0`, paddingLeft: spacing.scale[5], fontSize: typography.fontSize.sm, lineHeight: typography.lineHeight.relaxed, color: colors.text.primary }}>
               <li><strong>一般的なWebサイト</strong>: AA を目指す</li>
               <li><strong>公共サービス、医療、金融</strong>: AAA を検討</li>
               <li><strong>最低限</strong>: A は避け、少なくとも AA を満たす</li>
@@ -1405,7 +1405,7 @@ export function ComponentDemos({
           <SectionHeading>基本的な使い方</SectionHeading>
           <div style={{
             padding: spacing.scale[4],
-            backgroundColor: primitive.gray[50],
+            backgroundColor: colors.background.subtle,
             borderRadius: radii.borderRadius.base,
             border: borders.default,
         maxWidth: '100%',
@@ -1430,7 +1430,7 @@ export function ComponentDemos({
           <SectionHeading>階層の深いナビゲーション</SectionHeading>
           <div style={{
             padding: spacing.scale[4],
-            backgroundColor: primitive.gray[50],
+            backgroundColor: colors.background.subtle,
             borderRadius: radii.borderRadius.base,
             border: borders.default,
         maxWidth: '100%',
