@@ -1,5 +1,6 @@
 import React from "react";
 import { button } from "../../../styled-system/recipes";
+import { css, cx } from "@/styled-system/css";
 import type { WCAGLevel } from "../tokens";
 import { accessibilityLevels } from "../tokens";
 
@@ -72,6 +73,16 @@ export const Button: React.FC<ButtonProps> = ({
 
   // Panda CSSレシピを使用してクラス名を生成
   const recipeClassName = button({ variant, size, wcagLevel });
+  // WCAGレベルごとのフォーカスリングはアクセシビリティ情報から
+  // 可変値を注入する必要があるため、レシピ側ではなく CSS 変数で制御する
+  // （Pandaのrecipeはトークン/リテラル値しか持てず、実行時の任意値を渡せないため）
+  const focusVarsClass = css({
+    "--focus-bg": levelFocus.background,
+    "--focus-text": levelFocus.text,
+    "--focus-outline": levelFocus.outline,
+    "--focus-outline-width": levelFocus.outlineWidth,
+    "--focus-outline-offset": levelFocus.outlineOffset,
+  });
 
   return (
     <button
@@ -80,17 +91,9 @@ export const Button: React.FC<ButtonProps> = ({
       disabled={disabled || isLoading}
       aria-busy={isLoading}
       aria-disabled={disabled || isLoading}
-      className={`${recipeClassName} ${className || ''}`}
+      className={cx(recipeClassName, focusVarsClass, className)}
       {...props}
-      style={{
-        // CSS変数でフォーカス色を定義（globalCSSで使用）
-        ["--focus-bg" as string]: levelFocus.background,
-        ["--focus-text" as string]: levelFocus.text,
-        ["--focus-outline" as string]: levelFocus.outline,
-        ["--focus-outline-width" as string]: levelFocus.outlineWidth,
-        ["--focus-outline-offset" as string]: levelFocus.outlineOffset,
-        ...props.style,
-      }}
+      style={props.style}
       onFocus={(e) => {
         // キーボードフォーカスの場合のみ表示
         if (isKeyboardFocus) {
