@@ -1,5 +1,6 @@
 import { defineConfig } from "@pandacss/dev";
 import { button } from "./panda-config/recipes/button";
+// Force rebuild
 
 export default defineConfig({
   // Whether to use css reset
@@ -291,6 +292,29 @@ export default defineConfig({
 
   // The output directory for your css system
   outdir: "styled-system",
+
+  // Static CSS generation for all button variants
+  staticCss: {
+    recipes: {
+      button: [
+        // All size variants
+        { size: ['sm', 'md', 'lg'] },
+        // All variant + wcagLevel combinations
+        { variant: ['outline'], wcagLevel: ['A'] },
+        { variant: ['outline'], wcagLevel: ['AA'] },
+        { variant: ['outline'], wcagLevel: ['AAA'] },
+        { variant: ['primary'], wcagLevel: ['A'] },
+        { variant: ['primary'], wcagLevel: ['AA'] },
+        { variant: ['primary'], wcagLevel: ['AAA'] },
+        { variant: ['secondary'], wcagLevel: ['A'] },
+        { variant: ['secondary'], wcagLevel: ['AA'] },
+        { variant: ['secondary'], wcagLevel: ['AAA'] },
+        { variant: ['danger'], wcagLevel: ['A'] },
+        { variant: ['danger'], wcagLevel: ['AA'] },
+        { variant: ['danger'], wcagLevel: ['AAA'] },
+      ]
+    }
+  },
 
   // Global CSS
   globalCss: {

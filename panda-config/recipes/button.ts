@@ -27,11 +27,11 @@ export const button: RecipeConfig = {
         fontSize: "sm",
       },
       md: {
-        padding: "1.25rem 1.75rem",
+        padding: "0.75rem 1rem",
         fontSize: "base",
       },
       lg: {
-        padding: "1.25rem 2rem",
+        padding: "1rem 1.5rem",
         fontSize: "lg",
       },
     },
@@ -71,7 +71,7 @@ export const button: RecipeConfig = {
         borderColor: "blue.400",
         _hover: {
           _disabled: {
-            backgroundColor: "blue.400",
+            backgroundColor: "gray.300",
           },
           backgroundColor: "blue.600",
           borderColor: "blue.600",
@@ -93,7 +93,7 @@ export const button: RecipeConfig = {
         borderColor: "blue.500",
         _hover: {
           _disabled: {
-            backgroundColor: "blue.500",
+            backgroundColor: "gray.300",
           },
           backgroundColor: "blue.600",
           borderColor: "blue.600",
@@ -115,7 +115,7 @@ export const button: RecipeConfig = {
         borderColor: "blue.800",
         _hover: {
           _disabled: {
-            backgroundColor: "blue.700",
+            backgroundColor: "gray.300",
           },
           backgroundColor: "blue.600",
           borderColor: "blue.600",
@@ -137,7 +137,7 @@ export const button: RecipeConfig = {
         borderColor: "gray.300",
         _hover: {
           _disabled: {
-            backgroundColor: "gray.200",
+            backgroundColor: "gray.100",
           },
           backgroundColor: "gray.50",
           borderColor: "gray.400",
@@ -181,7 +181,7 @@ export const button: RecipeConfig = {
         borderColor: "gray.600",
         _hover: {
           _disabled: {
-            backgroundColor: "white",
+            backgroundColor: "gray.100",
           },
           backgroundColor: "gray.50",
           borderColor: "gray.400",
@@ -198,6 +198,7 @@ export const button: RecipeConfig = {
       variant: "outline",
       wcagLevel: "A",
       css: {
+        backgroundColor: "transparent",
         color: "blue.400",
         borderColor: "blue.400",
         _hover: {
@@ -219,6 +220,7 @@ export const button: RecipeConfig = {
       variant: "outline",
       wcagLevel: "AA",
       css: {
+        backgroundColor: "transparent",
         color: "blue.500",
         borderColor: "blue.500",
         _hover: {
@@ -240,6 +242,7 @@ export const button: RecipeConfig = {
       variant: "outline",
       wcagLevel: "AAA",
       css: {
+        backgroundColor: "transparent",
         color: "blue.700",
         borderColor: "blue.700",
         _hover: {
@@ -266,7 +269,7 @@ export const button: RecipeConfig = {
         borderColor: "red.400",
         _hover: {
           _disabled: {
-            backgroundColor: "red.400",
+            backgroundColor: "gray.300",
           },
           backgroundColor: "red.700",
           borderColor: "red.700",
@@ -288,7 +291,7 @@ export const button: RecipeConfig = {
         borderColor: "red.600",
         _hover: {
           _disabled: {
-            backgroundColor: "red.600",
+            backgroundColor: "gray.300",
           },
           backgroundColor: "red.700",
           borderColor: "red.700",
@@ -310,7 +313,7 @@ export const button: RecipeConfig = {
         borderColor: "red.800",
         _hover: {
           _disabled: {
-            backgroundColor: "red.700",
+            backgroundColor: "gray.300",
           },
           backgroundColor: "red.700",
           borderColor: "red.700",
