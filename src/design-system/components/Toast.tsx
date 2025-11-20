@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { spacing, typography, radii, accessibilityLevels } from '../tokens';
-import { primitive } from '../tokens/colors';
+import { useTheme } from '../theme';
 
 export type ToastType = 'success' | 'error' | 'warning' | 'info';
 export type WCAGLevel = 'A' | 'AA' | 'AAA';
@@ -45,6 +45,9 @@ export const Toast: React.FC<ToastProps> = ({
   index = 0,
   wcagLevel = 'AA',
 }) => {
+  const { colors } = useTheme();
+  const primitive = colors.primitive;
+
   const [isVisible, setIsVisible] = useState(false);
   const [isExiting, setIsExiting] = useState(false);
 

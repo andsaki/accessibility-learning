@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { ReactNode } from 'react';
-import { spacing, radii, colors, primitive } from '../design-system/tokens';
+import { spacing, radii } from '../design-system/tokens';
+import { useTheme } from '../design-system/theme';
 import { Copy, Check } from 'lucide-react';
 
 interface CodeBlockProps {
@@ -57,6 +58,8 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
   showLineNumbers = false,
   ariaLabel,
 }) => {
+  const { colors } = useTheme();
+  const primitive = colors.primitive;
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {

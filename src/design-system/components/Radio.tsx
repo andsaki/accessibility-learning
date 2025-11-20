@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { colors, spacing, typography, radii, accessibilityLevels } from "../tokens";
-import { primitive } from "../tokens/colors";
+import { spacing, typography, radii, accessibilityLevels } from "../tokens";
 import type { WCAGLevel } from "../tokens";
+import { useTheme } from "../theme";
 
 export interface RadioProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> {
@@ -33,6 +33,8 @@ export const Radio: React.FC<RadioProps> = ({
   wcagLevel = "AA",
   ...props
 }) => {
+  const { colors } = useTheme();
+  const primitive = colors.primitive;
   const generatedId = React.useId();
   const radioId = id || generatedId;
   const errorId = `${radioId}-error`;
@@ -122,7 +124,7 @@ export const Radio: React.FC<RadioProps> = ({
           style={{
             fontSize: typography.fontSize.base,
             fontWeight: typography.fontWeight.medium,
-            color: disabled ? primitive.gray[400] : primitive.gray[900],
+            color: disabled ? colors.text.disabled : colors.text.primary,
             cursor: disabled ? "not-allowed" : "pointer",
             userSelect: "none",
           }}
@@ -135,7 +137,7 @@ export const Radio: React.FC<RadioProps> = ({
             style={{
               margin: `${spacing.scale[1]} 0 0 0`,
               fontSize: typography.fontSize.sm,
-              color: primitive.gray[600],
+              color: colors.text.secondary,
               lineHeight: typography.lineHeight.normal,
             }}
           >
@@ -184,6 +186,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   error,
   helpText,
 }) => {
+  const { colors } = useTheme();
   const groupId = React.useId();
   const errorId = `${groupId}-error`;
   const helpId = `${groupId}-help`;

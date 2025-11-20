@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { colors, spacing, typography, radii, accessibilityLevels } from "../tokens";
+import { spacing, typography, radii, accessibilityLevels } from "../tokens";
 import type { WCAGLevel } from "../tokens";
+import { useTheme } from "../theme";
 
 export interface TextAreaProps
   extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, ""> {
@@ -46,6 +47,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
   onChange,
   ...props
 }) => {
+  const { colors } = useTheme();
   const generatedId = React.useId();
   const textareaId = id || generatedId;
   const errorId = `${textareaId}-error`;

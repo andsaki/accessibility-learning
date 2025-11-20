@@ -1,8 +1,10 @@
-import { colors, radii, spacing, typography, icons, borders } from "../design-system/tokens";
-import { primitive } from "../design-system/tokens/colors";
+import { radii, spacing, typography, icons, borders } from "../design-system/tokens";
+import { useTheme } from "../design-system/theme";
 import { SectionHeading } from "../components/SectionHeading";
 
 export function DesignTokens() {
+  const { colors } = useTheme();
+  const primitive = colors.primitive;
   return (
     <section
       id="design-tokens"

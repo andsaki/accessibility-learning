@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { spacing, typography, colors, radii } from '../design-system/tokens';
-import { primitive } from '../design-system/tokens/colors';
+import { spacing, typography, radii } from '../design-system/tokens';
+import { useTheme } from '../design-system/theme';
 
 interface TocItem {
   id: string;
@@ -12,6 +12,8 @@ interface TableOfContentsProps {
 }
 
 export const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
+  const { colors } = useTheme();
+  const primitive = colors.primitive;
   const [activeId, setActiveId] = useState<string>('');
 
   useEffect(() => {

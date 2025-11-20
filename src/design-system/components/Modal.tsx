@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import type { ReactNode } from 'react';
 import { spacing, typography, radii, accessibilityLevels } from '../tokens';
-import { primitive } from '../tokens/colors';
+import { useTheme } from '../theme';
 
 export type WCAGLevel = 'A' | 'AA' | 'AAA';
 
@@ -44,6 +44,9 @@ export const Modal: React.FC<ModalProps> = ({
   size = 'md',
   wcagLevel = 'AA',
 }) => {
+  const { colors } = useTheme();
+  const primitive = colors.primitive;
+
   const dialogRef = useRef<HTMLDivElement>(null);
   const previousActiveElement = useRef<HTMLElement | null>(null);
 
@@ -183,7 +186,7 @@ export const Modal: React.FC<ModalProps> = ({
                 margin: 0,
                 fontSize: typography.fontSize.xl,
                 fontWeight: typography.fontWeight.semibold,
-                color: primitive.gray[900],
+                color: colors.text.primary,
               }}
             >
               {title}
@@ -200,7 +203,7 @@ export const Modal: React.FC<ModalProps> = ({
                 padding: 0,
                 border: 'none',
                 background: 'transparent',
-                color: primitive.gray[500],
+                color: colors.text.secondary,
                 cursor: 'pointer',
                 fontSize: typography.fontSize['2xl'],
                 lineHeight: 1,

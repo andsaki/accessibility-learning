@@ -1,5 +1,5 @@
-import { spacing, colors } from '../design-system/tokens';
-import { primitive } from '../design-system/tokens/colors';
+import { spacing } from '../design-system/tokens';
+import { useTheme } from '../design-system/theme';
 
 interface HamburgerButtonProps {
   isOpen: boolean;
@@ -7,6 +7,8 @@ interface HamburgerButtonProps {
 }
 
 export const HamburgerButton: React.FC<HamburgerButtonProps> = ({ isOpen, onClick }) => {
+  const { colors } = useTheme();
+  const primitive = colors.primitive;
   return (
     <button
       onClick={onClick}

@@ -5,8 +5,8 @@ import { Checkbox } from "../design-system/components/Checkbox";
 import { Radio, RadioGroup } from "../design-system/components/Radio";
 import { Loading, InlineLoading } from "../design-system/components/Loading";
 import { InfoBox } from "../design-system/components/InfoBox";
-import { colors, radii, spacing, typography, icons, borders } from "../design-system/tokens";
-import { primitive } from "../design-system/tokens/colors";
+import { radii, spacing, typography, icons, borders } from "../design-system/tokens";
+import { useTheme } from "../design-system/theme";
 import { SectionHeading } from "../components/SectionHeading";
 import { z } from "zod";
 import { useState } from "react";
@@ -52,6 +52,8 @@ export function ComponentDemos({
   isModalOpen,
   setIsModalOpen,
 }: ComponentDemosProps) {
+  const { colors } = useTheme();
+  const primitive = colors.primitive;
   return (
     <>
       <section
@@ -69,7 +71,7 @@ export function ComponentDemos({
       >
         <h2 style={{
           marginTop: 0,
-          color: primitive.gray[900],
+          color: colors.text.primary,
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
           borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
@@ -82,7 +84,7 @@ export function ComponentDemos({
           <icons.component.button size={28} color={primitive.blue[600]} strokeWidth={2} />
           Button コンポーネント
         </h2>
-        <p style={{ color: primitive.gray[700], marginTop: 0 }}>WCAG準拠のアクセシブルなボタンコンポーネントです。</p>
+        <p style={{ color: colors.text.primary, marginTop: 0 }}>WCAG準拠のアクセシブルなボタンコンポーネントです。</p>
 
         <div
           style={{
@@ -157,7 +159,7 @@ export function ComponentDemos({
       >
         <h2 style={{
           marginTop: 0,
-          color: primitive.gray[900],
+          color: colors.text.primary,
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
           borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
@@ -170,7 +172,7 @@ export function ComponentDemos({
           <icons.component.input size={28} color={primitive.blue[600]} strokeWidth={2} />
           Input コンポーネント
         </h2>
-        <p style={{ color: primitive.gray[700], marginTop: 0 }}>
+        <p style={{ color: colors.text.primary, marginTop: 0 }}>
           ラベル、エラー表示、ヘルプテキストを備えたアクセシブルな入力フィールドです。
         </p>
 
@@ -275,7 +277,7 @@ export function ComponentDemos({
       >
         <h2 style={{
           marginTop: 0,
-          color: primitive.gray[900],
+          color: colors.text.primary,
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
           borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
@@ -288,7 +290,7 @@ export function ComponentDemos({
           <icons.component.input size={28} color={primitive.blue[600]} strokeWidth={2} />
           Select コンポーネント
         </h2>
-        <p style={{ color: primitive.gray[700] }}>
+        <p style={{ color: colors.text.primary }}>
           セレクトボックス（ドロップダウンメニュー）コンポーネントです。
           ユーザーが選択肢の中から1つを選ぶインターフェースを提供します。
         </p>
@@ -434,7 +436,7 @@ export function ComponentDemos({
       >
         <h2 style={{
           marginTop: 0,
-          color: primitive.gray[900],
+          color: colors.text.primary,
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
           borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
@@ -447,7 +449,7 @@ export function ComponentDemos({
           <icons.component.input size={28} color={primitive.blue[600]} strokeWidth={2} />
           TextArea コンポーネント
         </h2>
-        <p style={{ color: primitive.gray[700] }}>
+        <p style={{ color: colors.text.primary }}>
           テキストエリアコンポーネントです。
           複数行のテキスト入力が必要な場面で使用します。
         </p>
@@ -573,7 +575,7 @@ export function ComponentDemos({
       >
         <h2 style={{
           marginTop: 0,
-          color: primitive.gray[900],
+          color: colors.text.primary,
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
           borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
@@ -586,7 +588,7 @@ export function ComponentDemos({
           <icons.component.button size={28} color={primitive.blue[600]} strokeWidth={2} />
           Loading コンポーネント
         </h2>
-        <p style={{ color: primitive.gray[700] }}>
+        <p style={{ color: colors.text.primary }}>
           ローディングスピナーコンポーネントです。
           データの読み込み中やAPI通信中などの処理待ち状態を表示します。
         </p>
@@ -620,7 +622,7 @@ export function ComponentDemos({
       >
         <h2 style={{
           marginTop: 0,
-          color: primitive.gray[900],
+          color: colors.text.primary,
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
           borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
@@ -633,7 +635,7 @@ export function ComponentDemos({
           <icons.component.form size={28} color={primitive.blue[600]} strokeWidth={2} />
           Form コンポーネント
         </h2>
-        <p style={{ color: primitive.gray[700], marginTop: 0 }}>
+        <p style={{ color: colors.text.primary, marginTop: 0 }}>
           react-hook-formとZodを統合したアクセシブルなフォームコンポーネントです。
           バリデーション、エラー表示、型安全性が統合されています。
         </p>
@@ -673,7 +675,7 @@ export function ComponentDemos({
 
         <div style={{ marginTop: spacing.scale[8] }}>
           <SectionHeading>複雑なバリデーション</SectionHeading>
-          <p style={{ color: primitive.gray[700], marginBottom: spacing.scale[4] }}>
+          <p style={{ color: colors.text.primary, marginBottom: spacing.scale[4] }}>
             パスワード確認フィールドの一致検証など、複雑なバリデーションルールを簡単に実装できます。
           </p>
           <Form
@@ -760,7 +762,7 @@ export function ComponentDemos({
       >
         <h2 style={{
           marginTop: 0,
-          color: primitive.gray[900],
+          color: colors.text.primary,
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
           borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
@@ -773,7 +775,7 @@ export function ComponentDemos({
           <icons.component.accordion size={28} color={primitive.blue[600]} strokeWidth={2} />
           Accordion コンポーネント
         </h2>
-        <p style={{ color: primitive.gray[700], marginTop: 0 }}>
+        <p style={{ color: colors.text.primary, marginTop: 0 }}>
           ネイティブの&lt;details&gt;/&lt;summary&gt;要素を使用したアクセシブルなアコーディオンです。
           キーボード操作とスクリーンリーダーに完全対応しています。
         </p>
@@ -824,7 +826,7 @@ export function ComponentDemos({
 
         <div style={{ marginTop: spacing.scale[8] }}>
           <SectionHeading>WCAGレベル別フォーカススタイル</SectionHeading>
-          <p style={{ color: primitive.gray[700], marginBottom: spacing.scale[4] }}>
+          <p style={{ color: colors.text.primary, marginBottom: spacing.scale[4] }}>
             <strong>Tabキー</strong>でアコーディオンにフォーカスを当てて、各レベルの違いを確認してください。
           </p>
 
@@ -854,7 +856,7 @@ export function ComponentDemos({
           <p style={{
             marginTop: spacing.scale[4],
             fontSize: typography.fontSize.sm,
-            color: primitive.gray[600]
+            color: colors.text.primary
           }}>
             💡 WCAGレベルとコントラスト比の詳細は<a href="#wcag-levels" style={{ color: colors.text.link }}>こちらのセクション</a>をご覧ください
           </p>
@@ -896,7 +898,7 @@ export function ComponentDemos({
       >
         <h2 style={{
           marginTop: 0,
-          color: primitive.gray[900],
+          color: colors.text.primary,
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
           borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
@@ -909,7 +911,7 @@ export function ComponentDemos({
           <icons.component.toast size={28} color={primitive.blue[600]} strokeWidth={2} />
           Toast コンポーネント
         </h2>
-        <p style={{ lineHeight: typography.lineHeight.normal, color: primitive.gray[700] }}>
+        <p style={{ lineHeight: typography.lineHeight.normal, color: colors.text.primary }}>
           トースト通知は、ユーザーの操作に対する一時的なフィードバックを提供します。
         </p>
 
@@ -984,7 +986,7 @@ export function ComponentDemos({
       >
         <h2 style={{
           marginTop: 0,
-          color: primitive.gray[900],
+          color: colors.text.primary,
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
           borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
@@ -997,7 +999,7 @@ export function ComponentDemos({
           <icons.component.modal size={28} color={primitive.blue[600]} strokeWidth={2} />
           Modal コンポーネント
         </h2>
-        <p style={{ lineHeight: typography.lineHeight.normal, color: primitive.gray[700] }}>
+        <p style={{ lineHeight: typography.lineHeight.normal, color: colors.text.primary }}>
           モーダルダイアログは、ユーザーの注意を特定のタスクに集中させるために使用します。
         </p>
 
@@ -1081,7 +1083,7 @@ export function ComponentDemos({
       >
         <h2 style={{
           marginTop: 0,
-          color: primitive.gray[900],
+          color: colors.text.primary,
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
           borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
@@ -1094,7 +1096,7 @@ export function ComponentDemos({
           <icons.component.text size={28} color={primitive.blue[600]} strokeWidth={2} />
           Text コンポーネント
         </h2>
-        <p style={{ color: primitive.gray[700], marginTop: 0 }}>
+        <p style={{ color: colors.text.primary, marginTop: 0 }}>
           タイポグラフィトークンを使用したテキスト表示コンポーネントです。
           セマンティックなHTML要素の選択と柔軟なスタイリングが可能です。
         </p>
@@ -1381,7 +1383,7 @@ export function ComponentDemos({
       >
         <h2 style={{
           marginTop: 0,
-          color: primitive.gray[900],
+          color: colors.text.primary,
           fontSize: typography.fontSize['2xl'],
           fontWeight: 'bold',
           borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
@@ -1394,7 +1396,7 @@ export function ComponentDemos({
           <icons.component.navigation size={28} color={primitive.blue[600]} strokeWidth={2} />
           Breadcrumbs コンポーネント
         </h2>
-        <p style={{ color: primitive.gray[700], marginTop: 0 }}>
+        <p style={{ color: colors.text.primary, marginTop: 0 }}>
           パンくずリスト（Breadcrumbs）は、ユーザーが現在いる場所を示すナビゲーション要素です。
           Webサイトの階層構造を視覚的に表示し、ユーザーが簡単に上位階層へ戻ることができます。
         </p>

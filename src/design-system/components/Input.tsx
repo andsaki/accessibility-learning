@@ -1,6 +1,7 @@
 import React, { useId } from 'react';
-import { colors, spacing, typography, accessibilityLevels, radii } from '../tokens';
+import { spacing, typography, accessibilityLevels, radii } from '../tokens';
 import type { WCAGLevel } from '../tokens';
+import { useTheme } from '../theme';
 
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /** ラベルテキスト */
@@ -38,6 +39,7 @@ export const Input: React.FC<InputProps> = ({
   id,
   ...props
 }) => {
+  const { colors } = useTheme();
   // ユニークなIDを自動生成（idが指定されていない場合）
   const autoId = useId();
   const inputId = id || autoId;

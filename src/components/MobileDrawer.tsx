@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { spacing, typography, colors, radii } from '../design-system/tokens';
-import { primitive } from '../design-system/tokens/colors';
+import { spacing, typography, radii } from '../design-system/tokens';
+import { useTheme } from '../design-system/theme';
 
 interface TocItem {
   id: string;
@@ -20,6 +20,8 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
   items,
   activeId,
 }) => {
+  const { colors } = useTheme();
+  const primitive = colors.primitive;
   // ドロワーが開いているときはスクロールを無効化
   useEffect(() => {
     if (isOpen) {

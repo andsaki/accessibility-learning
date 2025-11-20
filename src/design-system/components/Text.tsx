@@ -1,5 +1,6 @@
 import React from "react";
-import { colors, typography } from "../tokens";
+import { typography } from "../tokens";
+import { useTheme } from "../theme";
 
 export interface TextProps {
   /** テキストのバリエーション */
@@ -49,7 +50,7 @@ export interface TextProps {
 export const Text: React.FC<TextProps> = ({
   variant = "body",
   as,
-  color = colors.text.primary,
+  color,
   align = "left",
   bold = false,
   italic = false,
@@ -59,6 +60,8 @@ export const Text: React.FC<TextProps> = ({
   className,
   style: externalStyle,
 }) => {
+  const { colors } = useTheme();
+  const textColor = color || colors.text.primary;
   // variantに応じたデフォルトのHTML要素を決定
   const defaultElement =
     variant === "h1"
@@ -115,7 +118,7 @@ export const Text: React.FC<TextProps> = ({
   // スタイルの構築
   const styles: React.CSSProperties = {
     ...typographyStyle,
-    color,
+    color: textColor,
     textAlign: align,
     fontWeight: bold
       ? typography.fontWeight.bold

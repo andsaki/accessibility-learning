@@ -1,6 +1,6 @@
 import React from 'react';
 import { spacing } from '../tokens';
-import { primitive } from '../tokens/colors';
+import { useTheme } from '../theme';
 
 export type InfoBoxVariant = 'info' | 'warning' | 'success' | 'tip';
 export type WCAGLevel = 'A' | 'AA' | 'AAA';
@@ -28,7 +28,7 @@ type VariantColors = {
   color: string;
 };
 
-const variantStylesAA: Record<InfoBoxVariant, VariantColors> = {
+const getVariantStylesAA = (primitive: any): Record<InfoBoxVariant, VariantColors> => ({
   info: {
     bg: primitive.blue[50],
     border: primitive.blue[300],
@@ -49,9 +49,9 @@ const variantStylesAA: Record<InfoBoxVariant, VariantColors> = {
     border: primitive.blue[300],
     color: primitive.blue[800],
   },
-};
+});
 
-const variantStylesAAA: Record<InfoBoxVariant, VariantColors> = {
+const getVariantStylesAAA = (primitive: any): Record<InfoBoxVariant, VariantColors> => ({
   info: {
     bg: primitive.blue[50],
     border: primitive.blue[500],
@@ -72,9 +72,9 @@ const variantStylesAAA: Record<InfoBoxVariant, VariantColors> = {
     border: primitive.blue[500],
     color: primitive.blue[900],
   },
-};
+});
 
-const variantStylesA: Record<InfoBoxVariant, VariantColors> = {
+const getVariantStylesA = (primitive: any): Record<InfoBoxVariant, VariantColors> => ({
   info: {
     bg: primitive.blue[50],
     border: primitive.blue[200],
@@ -95,7 +95,7 @@ const variantStylesA: Record<InfoBoxVariant, VariantColors> = {
     border: primitive.blue[200],
     color: primitive.blue[700],
   },
-};
+});
 
 /**
  * 情報ボックスコンポーネント
@@ -116,10 +116,13 @@ export const InfoBox: React.FC<InfoBoxProps> = ({
   wcagLevel = 'AA',
   style,
 }) => {
+  const { colors } = useTheme();
+  const primitive = colors.primitive;
+
   const variantStylesMap = {
-    A: variantStylesA,
-    AA: variantStylesAA,
-    AAA: variantStylesAAA,
+    A: getVariantStylesA(primitive),
+    AA: getVariantStylesAA(primitive),
+    AAA: getVariantStylesAAA(primitive),
   };
 
   const styles = variantStylesMap[wcagLevel][variant];

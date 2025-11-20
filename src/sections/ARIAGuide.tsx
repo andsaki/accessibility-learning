@@ -1,13 +1,15 @@
 import { useState } from "react";
 import { Button, Input, Accordion, AccordionSummary, AccordionContent, Breadcrumbs, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, Modal } from "../design-system/components";
 import { InfoBox } from "../design-system/components/InfoBox";
-import { colors, radii, spacing, typography, icons, borders } from "../design-system/tokens";
-import { primitive } from "../design-system/tokens/colors";
+import { radii, spacing, typography, icons, borders } from "../design-system/tokens";
+import { useTheme } from "../design-system/theme";
 import { SectionHeading } from "../components/SectionHeading";
 import { Tooltip } from "../components/Tooltip";
 import { CodeBlock } from "../components/CodeBlock";
 
 export const ARIAGuide = () => {
+  const { colors } = useTheme();
+  const primitive = colors.primitive;
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -794,6 +796,8 @@ export const ARIAGuide = () => {
 
 // ARIA属性の有無を比較するデモ
 function ARIAComparisonDemo() {
+  const { colors } = useTheme();
+  const primitive = colors.primitive;
   const [selectedExample, setSelectedExample] = useState<'button' | 'input' | 'link'>('button');
 
   const examples = {
@@ -1128,6 +1132,8 @@ function ARIAComparisonDemo() {
 
 // スクリーンリーダーシミュレーター
 function ScreenReaderSimulator() {
+  const { colors } = useTheme();
+  const primitive = colors.primitive;
   const [isReading, setIsReading] = useState(false);
   const [currentText, setCurrentText] = useState("");
 
@@ -1235,6 +1241,8 @@ function ScreenReaderSimulator() {
 
 // aria-live デモ
 function LiveRegionDemo() {
+  const { colors } = useTheme();
+  const primitive = colors.primitive;
   const [message, setMessage] = useState("");
   const [messageCount, setMessageCount] = useState(0);
 

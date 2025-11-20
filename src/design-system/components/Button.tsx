@@ -1,12 +1,12 @@
 import React from "react";
 import {
-  colors,
   spacing,
   typography,
   accessibilityLevels,
   radii,
 } from "../tokens";
 import type { WCAGLevel } from "../tokens";
+import { useTheme } from "../theme";
 import "./Button.css";
 
 export interface ButtonProps
@@ -44,6 +44,7 @@ export const Button: React.FC<ButtonProps> = ({
   wcagLevel = "AA",
   ...props
 }) => {
+  const { colors } = useTheme();
   // WCAGレベルに応じたカラートークンを取得
   const levelColors = accessibilityLevels.button[wcagLevel];
   const levelFocus = variant === 'danger'

@@ -1,6 +1,6 @@
 import React from "react";
-import { colors, spacing } from "../tokens";
-import { primitive } from "../tokens/colors";
+import { spacing } from "../tokens";
+import { useTheme } from "../theme";
 
 export interface LoadingProps {
   /** スピナーのサイズ */
@@ -20,12 +20,6 @@ const sizeMap = {
   xl: 48,
 } as const;
 
-const colorMap = {
-  primary: primitive.blue[500],
-  secondary: primitive.gray[600],
-  white: primitive.white,
-} as const;
-
 /**
  * アクセシブルなローディングスピナーコンポーネント
  *
@@ -42,6 +36,15 @@ export const Loading: React.FC<LoadingProps> = ({
   label = "読み込み中",
   fullscreen = false,
 }) => {
+  const { colors } = useTheme();
+  const primitive = colors.primitive;
+
+  const colorMap = {
+    primary: primitive.blue[500],
+    secondary: primitive.gray[600],
+    white: primitive.white,
+  } as const;
+
   const spinnerSize = sizeMap[size];
   const spinnerColor = colorMap[color];
 
@@ -141,6 +144,14 @@ export const InlineLoading: React.FC<{
   size?: "sm" | "md";
   color?: "primary" | "secondary";
 }> = ({ size = "sm", color = "primary" }) => {
+  const { colors } = useTheme();
+  const primitive = colors.primitive;
+
+  const colorMap = {
+    primary: primitive.blue[500],
+    secondary: primitive.gray[600],
+  } as const;
+
   const spinnerSize = size === "sm" ? 14 : 18;
   const spinnerColor = colorMap[color];
 

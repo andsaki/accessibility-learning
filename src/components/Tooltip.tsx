@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from 'react';
 import type { ReactNode } from 'react';
-import { spacing, colors } from '../design-system/tokens';
-import { primitive } from '../design-system/tokens/colors';
+import { spacing } from '../design-system/tokens';
+import { useTheme } from '../design-system/theme';
 
 interface TooltipProps {
   content: string;
@@ -16,6 +16,8 @@ export const Tooltip: React.FC<TooltipProps> = ({
   position = 'top',
   delay = 300,
 }) => {
+  const { colors } = useTheme();
+  const primitive = colors.primitive;
   const [isVisible, setIsVisible] = useState(false);
   const [isFocusVisible, setIsFocusVisible] = useState(false);
   const timeoutRef = useRef<number | undefined>(undefined);
