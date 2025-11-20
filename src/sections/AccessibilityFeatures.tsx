@@ -1,24 +1,35 @@
-import { spacing, typography, borders, radii, primitive } from "../design-system/tokens";
+import { css, cx } from "@/styled-system/css";
+
+const sectionClass = css({
+  mb: 12,
+  p: 6,
+  bg: "blue.50",
+  borderWidth: "base",
+  borderStyle: "solid",
+  borderColor: "blue.500",
+  rounded: "lg",
+  maxW: "full",
+  overflowX: "hidden",
+  boxSizing: "border-box",
+});
+
+const headingClass = css({ color: "blue.900", mt: 0 });
+
+const listClass = css({
+  lineHeight: "relaxed",
+  color: "blue.900",
+});
 
 export function AccessibilityFeatures() {
   return (
     <section
       id="accessibility-features"
-      style={{
-        marginBottom: spacing.scale[12],
-        padding: spacing.scale[6],
-        backgroundColor: primitive.blue[50],
-        border: `${borders.width.base} solid ${primitive.blue[500]}`,
-        borderRadius: radii.borderRadius.lg,
-        maxWidth: '100%',
-        overflowX: 'hidden',
-        boxSizing: 'border-box'
-      }}
+      className={cx("accessibility-features", sectionClass)}
     >
-      <h3 style={{ color: primitive.blue[900], marginTop: 0 }}>
+      <h3 className={cx(headingClass)}>
         アクセシビリティ機能
       </h3>
-      <ul style={{ lineHeight: typography.lineHeight.relaxed, color: primitive.blue[900] }}>
+      <ul className={cx(listClass)}>
         <li>✅ キーボード操作対応（Tab、Enter、Space）</li>
         <li>✅ フォーカスインジケーター表示</li>
         <li>✅ スクリーンリーダー対応（ARIA属性）</li>

@@ -12,6 +12,18 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 export default defineConfig({
   base: process.env.NODE_ENV === 'production' ? '/kind-design-system-learning/' : '/',
   plugins: [react()],
+  resolve: {
+    alias: [
+      {
+        find: '@/styled-system',
+        replacement: path.resolve(dirname, 'styled-system'),
+      },
+      {
+        find: '@',
+        replacement: path.resolve(dirname, 'src'),
+      },
+    ],
+  },
   test: {
     projects: [{
       extends: true,
