@@ -71,7 +71,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
           marginBottom: spacing.scale[4],
           fontSize: typography.fontSize.lg,
           fontWeight: 600,
-          color: primitive.gray[900],
+          color: colors.text.primary,
         }}
       >
         目次
@@ -100,10 +100,10 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
                   display: 'block',
                   padding: `${spacing.scale[2]} ${spacing.scale[3]}`,
                   fontSize: typography.fontSize.sm,
-                  color: isActive ? primitive.blue[700] : primitive.gray[700],
+                  color: isActive ? colors.text.link : colors.text.primary,
                   textDecoration: 'none',
                   borderRadius: radii.borderRadius.base,
-                  backgroundColor: isActive ? primitive.blue[50] : 'transparent',
+                  backgroundColor: isActive ? colors.background.active : 'transparent',
                   borderLeft: isActive
                     ? `3px solid ${primitive.blue[500]}`
                     : `3px solid transparent`,
@@ -113,7 +113,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
                 }}
                 onMouseEnter={(e) => {
                   if (!isActive) {
-                    e.currentTarget.style.backgroundColor = primitive.gray[100];
+                    e.currentTarget.style.backgroundColor = colors.background.hover;
                   }
                 }}
                 onMouseLeave={(e) => {
