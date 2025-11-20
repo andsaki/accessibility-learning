@@ -1,5 +1,4 @@
-import { spacing, typography, radii } from "../design-system/tokens";
-import { primitive } from "../design-system/tokens/colors";
+import { spacing, typography, radii, primitive } from "../design-system/tokens";
 import { InfoBox } from "../design-system/components/InfoBox";
 
 /**

@@ -6,8 +6,8 @@ import {
   typography,
   icons,
   borders,
+  primitive,
 } from "../design-system/tokens";
-import { primitive } from "../design-system/tokens/colors";
 import { SectionHeading } from "../components/SectionHeading";
 
 export function WCAGLevels() {

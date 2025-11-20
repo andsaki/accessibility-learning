@@ -1,6 +1,4 @@
-import { spacing, typography, borders } from "../design-system/tokens";
-import { primitive } from "../design-system/tokens/colors";
-import { radii } from "../design-system/tokens";
+import { spacing, typography, borders, radii, primitive } from "../design-system/tokens";
 
 export function AccessibilityFeatures() {
   return (

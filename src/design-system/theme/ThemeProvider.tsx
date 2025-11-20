@@ -1,6 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
-import { colors as lightColors, darkColors } from '../tokens/colors';
+import { colors } from '../tokens';
 
 /**
  * テーマのタイプ
@@ -14,7 +14,7 @@ export interface ThemeContextType {
   mode: ThemeMode;
   toggleTheme: () => void;
   setTheme: (mode: ThemeMode) => void;
-  colors: typeof lightColors | typeof darkColors;
+  colors: typeof colors;
 }
 
 /**
@@ -111,9 +111,6 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
     setMode(newMode);
   };
 
-  // テーマに応じてカラートークンを切り替え
-  const colors = mode === 'light' ? lightColors : darkColors;
-
   const value: ThemeContextType = {
     mode,
     toggleTheme,
@@ -129,10 +126,13 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
  *
  * テーマコンテキストを取得するカスタムフック
  *
+ * Panda CSS の semanticTokens により、カラートークンは自動的に
+ * data-theme 属性に基づいて切り替わります
+ *
  * @throws ThemeProvider外で使用した場合にエラー
  *
  * @example
- * const { mode, toggleTheme, colors } = useTheme();
+ * const { mode, toggleTheme } = useTheme();
  *
  * <button onClick={toggleTheme}>
  *   {mode === 'light' ? '🌙' : '☀️'}

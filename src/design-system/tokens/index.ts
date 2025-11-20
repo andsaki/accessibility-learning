@@ -550,6 +550,9 @@ export const breakpoints = {
   },
 } as const;
 
+// 後方互換用に値オブジェクトを直接参照できるようにする
+export const breakpointValues = breakpoints.values;
+
 // フォーカストークン（トップレベル）
 export const focus = {
   ring: token('colors.blue.500'),
@@ -819,6 +822,7 @@ export const tokens = {
   transitions,
   borders,
   breakpoints,
+  breakpointValues,
   focus,
   accessibilityLevels,
 } as const;
