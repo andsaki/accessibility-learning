@@ -256,6 +256,22 @@ export default defineConfig({
             text: { value: { base: '#212121', _dark: '#fafafa' } },
             icon: { value: { base: '#757575', _dark: '#eeeeee' } },
           },
+          // Input colors
+          input: {
+            bg: { value: { base: '#ffffff', _dark: '#424242' } },
+            bgDisabled: { value: { base: '#f5f5f5', _dark: '#616161' } },
+            text: { value: { base: '#212121', _dark: '#fafafa' } },
+            textDisabled: { value: { base: '#9e9e9e', _dark: '#757575' } },
+            placeholder: { value: { base: '#bdbdbd', _dark: '#9e9e9e' } },
+            border: { value: { base: '#e0e0e0', _dark: '#616161' } },
+            borderHover: { value: { base: '#bdbdbd', _dark: '#757575' } },
+            borderFocus: { value: '#2196f3' },
+            borderError: { value: '#f44336' },
+            borderSuccess: { value: '#4caf50' },
+            label: { value: { base: '#616161', _dark: '#eeeeee' } },
+            helperText: { value: { base: '#757575', _dark: '#bdbdbd' } },
+            errorText: { value: { base: '#d32f2f', _dark: '#ef5350' } },
+          },
         },
       },
       breakpoints: {

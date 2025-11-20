@@ -1,6 +1,6 @@
 import React from 'react';
 import { spacing } from '../design-system/tokens';
-import { primitive } from '../design-system/tokens/colors';
+import { useTheme } from '../design-system/theme';
 
 export interface SectionHeadingProps {
   /** 見出しの前に表示する絵文字 */
@@ -24,8 +24,10 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
   level = 'h3',
   style = {},
 }) => {
+  const { colors } = useTheme();
+
   const headingStyle: React.CSSProperties = {
-    color: primitive.gray[900],
+    color: colors.text.primary,
     marginBottom: spacing.scale[4],
     ...style,
   };

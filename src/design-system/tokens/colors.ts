@@ -210,19 +210,19 @@ export const button = {
 } as const;
 
 export const input = {
-  bg: token('colors.white'),
-  bgDisabled: token('colors.gray.100'),
-  text: token('colors.gray.900'),
-  textDisabled: token('colors.gray.500'),
-  placeholder: token('colors.gray.400'),
-  border: token('colors.gray.300'),
-  borderHover: token('colors.gray.400'),
-  borderFocus: token('colors.brand.primary'),
-  borderError: token('colors.red.500'),
-  borderSuccess: token('colors.green.500'),
-  label: token('colors.gray.700'),
-  helperText: token('colors.gray.600'),
-  errorText: token('colors.red.700'),
+  bg: token('colors.input.bg'),
+  bgDisabled: token('colors.input.bgDisabled'),
+  text: token('colors.input.text'),
+  textDisabled: token('colors.input.textDisabled'),
+  placeholder: token('colors.input.placeholder'),
+  border: token('colors.input.border'),
+  borderHover: token('colors.input.borderHover'),
+  borderFocus: token('colors.input.borderFocus'),
+  borderError: token('colors.input.borderError'),
+  borderSuccess: token('colors.input.borderSuccess'),
+  label: token('colors.input.label'),
+  helperText: token('colors.input.helperText'),
+  errorText: token('colors.input.errorText'),
 } as const;
 
 export const accordion = {
