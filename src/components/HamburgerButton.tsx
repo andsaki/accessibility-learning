@@ -22,9 +22,7 @@ const buttonContainer = css({
   borderRadius: 'md',
   cursor: 'pointer',
   boxShadow: 'md',
-  display: { base: 'inline-flex', md: 'none' },
 });
-
 const barBase = css({
   position: 'absolute',
   left: 0,

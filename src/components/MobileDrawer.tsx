@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
-import { spacing, typography, radii } from '../design-system/tokens';
-import { useTheme } from '../design-system/theme';
+import { css } from "@/styled-system/css";
 
 interface TocItem {
   id: string;
@@ -14,14 +13,89 @@ interface MobileDrawerProps {
   activeId: string;
 }
 
+const overlayClass = css({
+  position: 'fixed',
+  inset: 0,
+  bg: 'rgba(0, 0, 0, 0.5)',
+  zIndex: 999,
+  opacity: 1,
+  pointerEvents: 'auto',
+  transition: 'opacity 0.3s ease',
+  "&[data-open='false']": {
+    opacity: 0,
+    pointerEvents: 'none',
+  },
+});
+
+const drawerClass = css({
+  position: 'fixed',
+  top: 0,
+  right: 0,
+  bottom: 0,
+  width: '280px',
+  maxWidth: '80vw',
+  bg: 'bg.primary',
+  zIndex: 1000,
+  p: 6,
+  overflowY: 'auto',
+  boxShadow: 'lg',
+  transform: 'translateX(0)',
+  opacity: 1,
+  pointerEvents: 'auto',
+  transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, box-shadow 0.3s ease',
+  "&[data-open='false']": {
+    transform: 'translateX(100%)',
+    opacity: 0,
+    pointerEvents: 'none',
+    boxShadow: 'none',
+  },
+});
+
+const headingClass = css({
+  m: 0,
+  mb: 4,
+  fontSize: 'lg',
+  fontWeight: 'semibold',
+  color: 'contents.primary',
+});
+
+const drawerList = css({
+  listStyle: 'none',
+  m: 0,
+  p: 0,
+  display: 'flex',
+  flexDirection: 'column',
+  gap: 2,
+});
+
+const drawerLink = css({
+  display: 'block',
+  px: 3,
+  py: 2,
+  fontSize: 'sm',
+  textDecoration: 'none',
+  borderRadius: 'base',
+  borderLeftWidth: '3px',
+  borderLeftStyle: 'solid',
+  borderLeftColor: 'transparent',
+  transition: 'all 0.2s ease',
+  cursor: 'pointer',
+  color: 'contents.primary',
+  _hover: { bg: 'bg.hover' },
+  "&[data-active='true']": {
+    color: 'contents.link',
+    bg: 'bg.active',
+    borderLeftColor: 'accent.primary',
+    fontWeight: 'semibold',
+  },
+});
+
 export const MobileDrawer: React.FC<MobileDrawerProps> = ({
   isOpen,
   onClose,
   items,
   activeId,
 }) => {
-  const { colors } = useTheme();
-  const primitive = colors.primitive;
   // ドロワーが開いているときはスクロールを無効化
   useEffect(() => {
     if (isOpen) {
@@ -57,69 +131,23 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
 
   return (
     <>
-      {/* オーバーレイ */}
       <div
-        onClick={onClose}
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: 'rgba(0, 0, 0, 0.5)',
-          zIndex: 999,
-          opacity: isOpen ? 1 : 0,
-          pointerEvents: isOpen ? 'auto' : 'none',
-          transition: 'opacity 0.3s ease',
-        }}
         aria-hidden="true"
+        onClick={onClose}
+        className={overlayClass}
+        data-open={isOpen}
       />
 
-      {/* ドロワー */}
       <nav
         role="dialog"
         aria-label="目次"
         aria-modal="true"
-        style={{
-          position: 'fixed',
-          top: 0,
-          right: 0,
-          bottom: 0,
-          width: '280px',
-          maxWidth: '80vw',
-          backgroundColor: colors.background.default,
-          zIndex: 1000,
-          padding: spacing.scale[6],
-          overflowY: 'auto',
-          boxShadow: isOpen ? '-4px 0 16px rgba(0, 0, 0, 0.1)' : 'none',
-          transform: isOpen ? 'translateX(0)' : 'translateX(100%)',
-          opacity: isOpen ? 1 : 0,
-          transition: 'transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s ease, box-shadow 0.3s ease',
-          pointerEvents: isOpen ? 'auto' : 'none',
-        }}
+        className={drawerClass}
+        data-open={isOpen}
       >
-        <div style={{ marginTop: spacing.scale[12] }}>
-          <h2
-            style={{
-              margin: 0,
-              marginBottom: spacing.scale[4],
-              fontSize: typography.fontSize.lg,
-              fontWeight: 600,
-              color: colors.contents.primary,
-            }}
-          >
-            目次
-          </h2>
-          <ul
-            style={{
-              listStyle: 'none',
-              margin: 0,
-              padding: 0,
-              display: 'flex',
-              flexDirection: 'column',
-              gap: spacing.scale[2],
-            }}
-          >
+        <div className={css({ mt: 12 })}>
+          <h2 className={headingClass}>目次</h2>
+          <ul className={drawerList}>
             {items.map((item) => {
               const isActive = activeId === item.id;
               return (
@@ -130,31 +158,8 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
                       e.preventDefault();
                       handleClick(item.id);
                     }}
-                    style={{
-                      display: 'block',
-                      padding: `${spacing.scale[2]} ${spacing.scale[3]}`,
-                      fontSize: typography.fontSize.sm,
-                      color: isActive ? colors.contents.link : colors.contents.primary,
-                      textDecoration: 'none',
-                      borderRadius: radii.borderRadius.base,
-                      backgroundColor: isActive ? colors.background.active : 'transparent',
-                      borderLeft: isActive
-                        ? `3px solid ${primitive.blue[500]}`
-                        : `3px solid transparent`,
-                      fontWeight: isActive ? 600 : 400,
-                      transition: 'all 0.2s ease',
-                      cursor: 'pointer',
-                    }}
-                    onMouseEnter={(e) => {
-                      if (!isActive) {
-                        e.currentTarget.style.backgroundColor = colors.background.hover;
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      if (!isActive) {
-                        e.currentTarget.style.backgroundColor = 'transparent';
-                      }
-                    }}
+                    className={drawerLink}
+                    data-active={isActive}
                   >
                     {item.title}
                   </a>
