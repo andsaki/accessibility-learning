@@ -8,6 +8,7 @@ import { breadcrumbs } from "./panda-config/recipes/breadcrumbs";
 import { checkbox } from "./panda-config/recipes/checkbox";
 import { dropdown } from "./panda-config/recipes/dropdown";
 import { loading } from "./panda-config/recipes/loading";
+import { infoBox } from "./panda-config/recipes/infobox";
 import { pandaSemanticColors } from "./panda-config/types/semanticTokens";
 import {
   pandaColors,
@@ -95,6 +96,7 @@ export default defineConfig({
         checkbox,
         dropdown,
         loading,
+        infoBox,
       },
     },
   },
@@ -160,6 +162,9 @@ export default defineConfig({
       ],
       loading: [
         { size: ['sm', 'md', 'lg', 'xl'], color: ['primary', 'secondary', 'white'] },
+      ],
+      infoBox: [
+        { variant: ['info', 'warning', 'success', 'tip'], wcagLevel: ['A', 'AA', 'AAA'], leftBorder: ['true', 'false'] },
       ],
     }
   },
