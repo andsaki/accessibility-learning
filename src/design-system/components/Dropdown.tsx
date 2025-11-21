@@ -1,8 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { spacing } from '../constants/spacing';
-import { typography } from '../constants/typography';
-import { radii } from '../constants/radii';
-import { colors } from '../constants/colors';
+import { css, cx } from '@/styled-system/css';
 import { accessibilityLevels } from '../constants/accessibility';
 import type { WCAGLevel } from '../constants/accessibility';
 
@@ -13,37 +10,18 @@ export interface DropdownOption {
 }
 
 export interface DropdownProps {
-  /** ラベルテキスト */
   label: string;
-  /** 選択肢 */
   options: DropdownOption[];
-  /** 選択された値 */
   value?: string;
-  /** プレースホルダー */
   placeholder?: string;
-  /** 変更時のコールバック */
   onChange?: (value: string) => void;
-  /** エラーメッセージ */
   error?: string;
-  /** ヘルプテキスト */
   helperText?: string;
-  /** 無効化 */
   disabled?: boolean;
-  /** 必須項目 */
   required?: boolean;
-  /** WCAGレベル */
   wcagLevel?: WCAGLevel;
 }
 
-/**
- * カスタムドロップダウンコンポーネント
- *
- * 機能:
- * - 完全カスタマイズ可能なドロップダウンUI
- * - キーボード操作対応（矢印キー、Enter、Escape、Space）
- * - クリック外で閉じる
- * - アクセシビリティ対応（ARIA属性）
- */
 export const Dropdown: React.FC<DropdownProps> = ({
   label,
   options,
@@ -59,15 +37,12 @@ export const Dropdown: React.FC<DropdownProps> = ({
   const [isOpen, setIsOpen] = useState(false);
   const [selectedValue, setSelectedValue] = useState(value || '');
   const [focusedIndex, setFocusedIndex] = useState(-1);
-  const [isKeyboardFocus, setIsKeyboardFocus] = useState(false);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
 
-  const primitive = colors.primitive;
   const levelFocus = accessibilityLevels.focus[wcagLevel];
-
   const selectedOption = options.find(opt => opt.value === selectedValue);
   const displayText = selectedOption ? selectedOption.label : placeholder;
 
@@ -77,28 +52,6 @@ export const Dropdown: React.FC<DropdownProps> = ({
   const errorId = `dropdown-error-${autoId}`;
   const helperId = `dropdown-helper-${autoId}`;
 
-  // キーボード/マウス検出
-  useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Tab') {
-        setIsKeyboardFocus(true);
-      }
-    };
-
-    const handleMouseDown = () => {
-      setIsKeyboardFocus(false);
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('mousedown', handleMouseDown);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('mousedown', handleMouseDown);
-    };
-  }, []);
-
-  // 外側クリックで閉じる
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -115,7 +68,6 @@ export const Dropdown: React.FC<DropdownProps> = ({
     };
   }, [isOpen]);
 
-  // キーボード操作
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (disabled) return;
 
@@ -140,15 +92,13 @@ export const Dropdown: React.FC<DropdownProps> = ({
           setIsOpen(true);
           setFocusedIndex(0);
         } else {
-          setFocusedIndex(prev =>
-            prev < options.length - 1 ? prev + 1 : prev
-          );
+          setFocusedIndex(prev => (prev < options.length - 1 ? prev + 1 : prev));
         }
         break;
       case 'ArrowUp':
         e.preventDefault();
         if (isOpen) {
-          setFocusedIndex(prev => prev > 0 ? prev - 1 : prev);
+          setFocusedIndex(prev => (prev > 0 ? prev - 1 : prev));
         }
         break;
     }
@@ -170,35 +120,173 @@ export const Dropdown: React.FC<DropdownProps> = ({
     }
   };
 
+  const focusVarsClass = css({
+    '--dropdown-focus-bg': levelFocus.background,
+    '--dropdown-focus-text': levelFocus.text,
+    '--dropdown-focus-outline': levelFocus.outline,
+    '--dropdown-focus-outline-width': levelFocus.outlineWidth,
+    '--dropdown-focus-outline-offset': levelFocus.outlineOffset,
+  });
+
+  const rootClass = css({
+    width: '100%',
+    mb: 4,
+  });
+
+  const labelClass = css({
+    display: 'block',
+    mb: 2,
+    fontSize: 'sm',
+    fontWeight: 'medium',
+    color: 'contents.primary',
+  });
+
+  const requiredMarkClass = css({
+    color: 'contents.error',
+    ml: 1,
+  });
+
+  const triggerWrapperClass = css({
+    position: 'relative',
+  });
+
+  const triggerClass = css({
+    width: '100%',
+    textAlign: 'left',
+    borderWidth: '2px',
+    borderStyle: 'solid',
+    borderColor: 'border.default',
+    borderRadius: 'md',
+    backgroundColor: 'bg.paper',
+    color: 'contents.primary',
+    px: 4,
+    py: 3,
+    pr: 10,
+    fontSize: 'base',
+    transition: 'background-color 0.2s, border-color 0.2s, color 0.2s',
+    cursor: 'pointer',
+    _hover: {
+      backgroundColor: 'bg.hover',
+    },
+    _focusVisible: {
+      backgroundColor: 'var(--dropdown-focus-bg)',
+      color: 'var(--dropdown-focus-text)',
+      outline: 'var(--dropdown-focus-outline-width) solid var(--dropdown-focus-outline)',
+      outlineOffset: 'var(--dropdown-focus-outline-offset)',
+    },
+    _disabled: {
+      cursor: 'not-allowed',
+      backgroundColor: 'bg.disabled',
+      color: 'contents.disabled',
+    },
+  });
+
+  const triggerErrorClass = css({
+    borderColor: 'border.error',
+  });
+
+  const triggerPlaceholderClass = css({
+    color: 'contents.secondary',
+  });
+
+  const arrowClass = css({
+    position: 'absolute',
+    right: '3',
+    top: '50%',
+    transform: 'translateY(-50%)',
+    transition: 'transform 0.2s',
+    pointerEvents: 'none',
+    color: 'inherit',
+  });
+
+  const arrowOpenClass = css({
+    transform: 'translateY(-50%) rotate(180deg)',
+  });
+
+  const menuClass = css({
+    position: 'absolute',
+    top: '100%',
+    left: 0,
+    right: 0,
+    mt: 1,
+    listStyle: 'none',
+    p: 1,
+    bg: 'bg.paper',
+    borderWidth: '2px',
+    borderStyle: 'solid',
+    borderColor: 'border.default',
+    borderRadius: 'md',
+    boxShadow: 'lg',
+    maxH: '15rem',
+    overflowY: 'auto',
+    zIndex: 10,
+  });
+
+  const optionClass = css({
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+    px: 3,
+    py: 2,
+    fontSize: 'base',
+    color: 'contents.primary',
+    borderRadius: 'sm',
+    cursor: 'pointer',
+    transition: 'background-color 0.15s, color 0.15s',
+    _hover: {
+      backgroundColor: 'bg.hover',
+    },
+    _focusVisible: {
+      outline: '2px solid',
+      outlineColor: 'border.focus',
+      outlineOffset: '2px',
+    },
+  });
+
+  const optionFocusedClass = css({
+    backgroundColor: 'blue.50',
+  });
+
+  const optionSelectedClass = css({
+    backgroundColor: 'blue.100',
+    fontWeight: 'semibold',
+  });
+
+  const optionDisabledClass = css({
+    color: 'contents.disabled',
+    cursor: 'not-allowed',
+    _hover: { backgroundColor: 'transparent' },
+  });
+
+  const checkMarkClass = css({
+    ml: 2,
+    color: 'blue.600',
+  });
+
+  const errorTextClass = css({
+    mt: 1,
+    fontSize: 'sm',
+    color: 'contents.error',
+  });
+
+  const helperTextClass = css({
+    mt: 1,
+    fontSize: 'sm',
+    color: 'contents.secondary',
+  });
+
   return (
-    <div style={{ marginBottom: spacing.scale[4] }} ref={dropdownRef}>
-      {/* ラベル */}
-      <label
-        htmlFor={buttonId}
-        style={{
-          display: 'block',
-          marginBottom: spacing.scale[2],
-          fontSize: typography.fontSize.sm,
-          fontWeight: typography.fontWeight.medium,
-          color: colors.contents.primary,
-        }}
-      >
+    <div className={rootClass} ref={dropdownRef}>
+      <label htmlFor={buttonId} className={labelClass}>
         {label}
         {required && (
-          <span
-            style={{
-              color: colors.contents.error,
-              marginLeft: spacing.scale[1],
-            }}
-            aria-label="必須"
-          >
+          <span className={requiredMarkClass} aria-label="必須">
             *
           </span>
         )}
       </label>
 
-      {/* ドロップダウンボタン */}
-      <div style={{ position: 'relative' }}>
+      <div className={triggerWrapperClass}>
         <button
           ref={buttonRef}
           id={buttonId}
@@ -210,52 +298,21 @@ export const Dropdown: React.FC<DropdownProps> = ({
           aria-describedby={error ? errorId : helperText ? helperId : undefined}
           onClick={toggleOpen}
           onKeyDown={handleKeyDown}
-          style={{
-            width: '100%',
-            padding: `${spacing.scale[3]} ${spacing.scale[4]}`,
-            paddingRight: spacing.scale[10],
-            fontSize: typography.fontSize.base,
-            fontWeight: typography.fontWeight.normal,
-            textAlign: 'left',
-            backgroundColor: disabled ? colors.background.disabled : colors.background.paper,
-            color: selectedValue ? colors.contents.primary : colors.contents.secondary,
-            border: error
-              ? `2px solid ${colors.border.error}`
-              : `2px solid ${colors.border.default}`,
-            borderRadius: radii.borderRadius.md,
-            cursor: disabled ? 'not-allowed' : 'pointer',
-            transition: 'border-color 0.2s, box-shadow 0.2s',
-            outline: isKeyboardFocus ? `${levelFocus.outlineWidth} solid ${levelFocus.outline}` : 'none',
-            outlineOffset: levelFocus.outlineOffset,
-          }}
-          onFocus={(e) => {
-            if (isKeyboardFocus) {
-              e.currentTarget.style.backgroundColor = levelFocus.background;
-            }
-          }}
-          onBlur={(e) => {
-            e.currentTarget.style.backgroundColor = disabled ? colors.background.disabled : colors.background.paper;
-          }}
+          className={cx(
+            triggerClass,
+            focusVarsClass,
+            error && triggerErrorClass,
+            !selectedValue && triggerPlaceholderClass
+          )}
         >
           {displayText}
-
-          {/* 矢印アイコン */}
-          <span
-            style={{
-              position: 'absolute',
-              right: spacing.scale[3],
-              top: '50%',
-              transform: isOpen ? 'translateY(-50%) rotate(180deg)' : 'translateY(-50%)',
-              transition: 'transform 0.2s',
-              pointerEvents: 'none',
-            }}
-          >
+          <span className={cx(arrowClass, isOpen && arrowOpenClass)}>
             <svg
               width="20"
               height="20"
               viewBox="0 0 24 24"
               fill="none"
-              stroke={disabled ? colors.contents.disabled : colors.contents.primary}
+              stroke="currentColor"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -265,30 +322,13 @@ export const Dropdown: React.FC<DropdownProps> = ({
           </span>
         </button>
 
-        {/* ドロップダウンメニュー */}
         {isOpen && (
           <ul
             ref={listRef}
             id={listId}
             role="listbox"
             aria-labelledby={buttonId}
-            style={{
-              position: 'absolute',
-              top: '100%',
-              left: 0,
-              right: 0,
-              marginTop: spacing.scale[1],
-              padding: spacing.scale[1],
-              backgroundColor: colors.background.paper,
-              border: `2px solid ${colors.border.default}`,
-              borderRadius: radii.borderRadius.md,
-              boxShadow: '0 4px 12px rgba(0, 0, 0, 0.15)',
-              maxHeight: '240px',
-              overflowY: 'auto',
-              zIndex: 1000,
-              listStyle: 'none',
-              margin: `${spacing.scale[1]} 0 0 0`,
-            }}
+            className={menuClass}
           >
             {options.map((option, index) => (
               <li
@@ -304,58 +344,30 @@ export const Dropdown: React.FC<DropdownProps> = ({
                     }
                   }
                 }}
-                onMouseEnter={() => setFocusedIndex(index)}
-                style={{
-                  padding: `${spacing.scale[2]} ${spacing.scale[3]}`,
-                  fontSize: typography.fontSize.base,
-                  color: option.disabled ? colors.contents.disabled : colors.contents.primary,
-                  backgroundColor:
-                    focusedIndex === index
-                      ? primitive.blue[50]
-                      : selectedValue === option.value
-                      ? primitive.blue[100]
-                      : 'transparent',
-                  borderRadius: radii.borderRadius.sm,
-                  cursor: option.disabled ? 'not-allowed' : 'pointer',
-                  transition: 'background-color 0.15s',
-                  fontWeight: selectedValue === option.value ? typography.fontWeight.semibold : typography.fontWeight.normal,
-                }}
+                onMouseEnter={() => !option.disabled && setFocusedIndex(index)}
+                className={cx(
+                  optionClass,
+                  focusedIndex === index && optionFocusedClass,
+                  selectedValue === option.value && optionSelectedClass,
+                  option.disabled && optionDisabledClass
+                )}
               >
                 {option.label}
-                {selectedValue === option.value && (
-                  <span style={{ marginLeft: spacing.scale[2], color: primitive.blue[600] }}>✓</span>
-                )}
+                {selectedValue === option.value && <span className={checkMarkClass}>✓</span>}
               </li>
             ))}
           </ul>
         )}
       </div>
 
-      {/* エラーメッセージ */}
       {error && (
-        <p
-          id={errorId}
-          role="alert"
-          style={{
-            marginTop: spacing.scale[1],
-            fontSize: typography.fontSize.sm,
-            color: colors.contents.error,
-          }}
-        >
+        <p id={errorId} role="alert" className={errorTextClass}>
           {error}
         </p>
       )}
 
-      {/* ヘルプテキスト */}
       {helperText && !error && (
-        <p
-          id={helperId}
-          style={{
-            marginTop: spacing.scale[1],
-            fontSize: typography.fontSize.sm,
-            color: colors.contents.secondary,
-          }}
-        >
+        <p id={helperId} className={helperTextClass}>
           {helperText}
         </p>
       )}
