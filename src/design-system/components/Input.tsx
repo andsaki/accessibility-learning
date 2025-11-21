@@ -1,7 +1,7 @@
-import React, { useId } from 'react';
-import { input as inputRecipe } from '../../../styled-system/recipes';
-import type { WCAGLevel } from '../constants/accessibility';
-import { cx, css } from '@/styled-system/css';
+import React, { useId } from "react";
+import { input as inputRecipe } from "../../../styled-system/recipes";
+import type { WCAGLevel } from "../constants/accessibility";
+import { cx, css } from "@/styled-system/css";
 
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /** ラベルテキスト */
@@ -46,30 +46,6 @@ export const Input: React.FC<InputProps> = ({
   const inputId = id || autoId;
   const errorId = `${inputId}-error`;
   const helperId = `${inputId}-helper`;
-
-  // キーボード操作によるフォーカスかどうかを追跡
-  const [isKeyboardFocus, setIsKeyboardFocus] = React.useState(false);
-
-  // グローバルなキーボード/マウスの使用を検出
-  React.useEffect(() => {
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Tab') {
-        setIsKeyboardFocus(true);
-      }
-    };
-
-    const handleMouseDown = () => {
-      setIsKeyboardFocus(false);
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    window.addEventListener('mousedown', handleMouseDown);
-
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-      window.removeEventListener('mousedown', handleMouseDown);
-    };
-  }, []);
 
   // aria-describedbyの値を構築
   const getAriaDescribedBy = () => {
@@ -128,17 +104,6 @@ export const Input: React.FC<InputProps> = ({
         className={cx(recipeClassName, className)}
         style={style}
         {...props}
-        // フォーカス時のスタイル: WCAGレベルに応じて変更
-        onFocus={(e) => {
-          if (!disabled && isKeyboardFocus) {
-            e.currentTarget.setAttribute('data-focused', 'true');
-          }
-          props.onFocus?.(e);
-        }}
-        onBlur={(e) => {
-          e.currentTarget.removeAttribute('data-focused');
-          props.onBlur?.(e);
-        }}
       />
 
       {/* エラーメッセージ: role="alert"で即座に読み上げ */}
