@@ -1,6 +1,5 @@
 import React from 'react';
-import { spacing } from '../tokens';
-import { useTheme } from '../theme';
+import { css, cx } from '@/styled-system/css';
 
 export type InfoBoxVariant = 'info' | 'warning' | 'success' | 'tip';
 export type WCAGLevel = 'A' | 'AA' | 'AAA';
@@ -24,79 +23,105 @@ export interface InfoBoxProps {
   className?: string;
 }
 
-type VariantColors = {
-  bg: string;
-  border: string;
-  color: string;
+// ベーススタイル
+const baseStyle = css({
+  p: 4,
+  rounded: 'base',
+  borderWidth: 'thin',
+  borderStyle: 'solid',
+});
+
+// バリアントとWCAGレベルに応じたスタイル
+const variantStyles = {
+  info: {
+    A: css({
+      bg: 'blue.50',
+      borderColor: 'blue.200',
+      color: 'blue.700',
+    }),
+    AA: css({
+      bg: 'blue.50',
+      borderColor: 'blue.300',
+      color: 'blue.800',
+    }),
+    AAA: css({
+      bg: 'blue.50',
+      borderColor: 'blue.500',
+      color: 'blue.900',
+    }),
+  },
+  warning: {
+    A: css({
+      bg: 'orange.50',
+      borderColor: 'orange.200',
+      color: 'orange.800',
+    }),
+    AA: css({
+      bg: 'orange.50',
+      borderColor: 'orange.300',
+      color: 'orange.900',
+    }),
+    AAA: css({
+      bg: 'orange.50',
+      borderColor: 'orange.500',
+      color: 'orange.900',
+    }),
+  },
+  success: {
+    A: css({
+      bg: 'green.50',
+      borderColor: 'green.200',
+      color: 'green.700',
+    }),
+    AA: css({
+      bg: 'green.50',
+      borderColor: 'green.300',
+      color: 'green.800',
+    }),
+    AAA: css({
+      bg: 'green.50',
+      borderColor: 'green.500',
+      color: 'green.900',
+    }),
+  },
+  tip: {
+    A: css({
+      bg: 'blue.50',
+      borderColor: 'blue.200',
+      color: 'blue.700',
+    }),
+    AA: css({
+      bg: 'blue.50',
+      borderColor: 'blue.300',
+      color: 'blue.800',
+    }),
+    AAA: css({
+      bg: 'blue.50',
+      borderColor: 'blue.500',
+      color: 'blue.900',
+    }),
+  },
 };
 
-const getVariantStylesAA = (primitive: any): Record<InfoBoxVariant, VariantColors> => ({
-  info: {
-    bg: primitive.blue[50],
-    border: primitive.blue[300],
-    color: primitive.blue[800],
-  },
-  warning: {
-    bg: primitive.orange[50],
-    border: primitive.orange[300],
-    color: primitive.orange[900],
-  },
-  success: {
-    bg: primitive.green[50],
-    border: primitive.green[300],
-    color: primitive.green[800],
-  },
-  tip: {
-    bg: primitive.blue[50],
-    border: primitive.blue[300],
-    color: primitive.blue[800],
-  },
+// 左ボーダーのスタイル
+const leftBorderStyle = css({
+  borderLeftWidth: 'base',
 });
 
-const getVariantStylesAAA = (primitive: any): Record<InfoBoxVariant, VariantColors> => ({
-  info: {
-    bg: primitive.blue[50],
-    border: primitive.blue[500],
-    color: primitive.blue[900],
-  },
-  warning: {
-    bg: primitive.orange[50],
-    border: primitive.orange[500],
-    color: primitive.orange[900],
-  },
-  success: {
-    bg: primitive.green[50],
-    border: primitive.green[500],
-    color: primitive.green[900],
-  },
-  tip: {
-    bg: primitive.blue[50],
-    border: primitive.blue[500],
-    color: primitive.blue[900],
-  },
+// タイトルスタイル
+const titleStyle = css({
+  fontWeight: 600,
+  mb: 2,
 });
 
-const getVariantStylesA = (primitive: any): Record<InfoBoxVariant, VariantColors> => ({
-  info: {
-    bg: primitive.blue[50],
-    border: primitive.blue[200],
-    color: primitive.blue[700],
-  },
-  warning: {
-    bg: primitive.orange[50],
-    border: primitive.orange[200],
-    color: primitive.orange[800],
-  },
-  success: {
-    bg: primitive.green[50],
-    border: primitive.green[200],
-    color: primitive.green[700],
-  },
-  tip: {
-    bg: primitive.blue[50],
-    border: primitive.blue[200],
-    color: primitive.blue[700],
-  },
+// アイコンスタイル
+const iconStyle = css({
+  mr: 2,
+});
+
+// コンテンツスタイル
+const contentStyle = css({
+  lineHeight: 1.6,
 });
 
 /**
@@ -119,43 +144,25 @@ export const InfoBox: React.FC<InfoBoxProps> = ({
   style,
   className,
 }) => {
-  const { colors } = useTheme();
-  const primitive = colors.primitive;
-
-  const variantStylesMap = {
-    A: getVariantStylesA(primitive),
-    AA: getVariantStylesAA(primitive),
-    AAA: getVariantStylesAAA(primitive),
-  };
-
-  const styles = variantStylesMap[wcagLevel][variant];
+  const variantStyle = variantStyles[variant][wcagLevel];
 
   return (
     <div
-      className={className}
-      style={{
-        padding: spacing.scale[4],
-        backgroundColor: styles.bg,
-        borderRadius: '8px',
-        border: `1px solid ${styles.border}`,
-        borderLeft: leftBorder ? `4px solid ${styles.border}` : `1px solid ${styles.border}`,
-        color: styles.color,
-        ...style,
-      }}
+      className={cx(
+        baseStyle,
+        variantStyle,
+        leftBorder && leftBorderStyle,
+        className
+      )}
+      style={style}
     >
       {(title || icon) && (
-        <div
-          style={{
-            fontWeight: 600,
-            marginBottom: spacing.scale[2],
-            color: styles.color,
-          }}
-        >
-          {icon && <span style={{ marginRight: spacing.scale[2] }}>{icon}</span>}
+        <div className={titleStyle}>
+          {icon && <span className={iconStyle}>{icon}</span>}
           {title}
         </div>
       )}
-      <div style={{ lineHeight: 1.6 }}>{children}</div>
+      <div className={contentStyle}>{children}</div>
     </div>
   );
 };
