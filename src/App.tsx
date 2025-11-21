@@ -174,7 +174,7 @@ function App() {
           </div>
           <div style={{ display: 'flex', gap: spacing.scale[2], alignItems: 'flex-start' }}>
             <Button
-              onClick={() => window.open('/accessibility-learning/storybook/', '_blank')}
+              onClick={() => window.open('/kind-design-system-learning/storybook/', '_blank')}
               variant="secondary"
               size="sm"
               aria-label="Storybookを開く"
