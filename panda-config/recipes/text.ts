@@ -1,5 +1,17 @@
 import type { RecipeConfig } from "@pandacss/dev";
 
+const wcagTextColors = {
+  A: {
+    color: "primitive.gray[600]",
+  },
+  AA: {
+    color: "contents.primary",
+  },
+  AAA: {
+    color: "primitive.black",
+  },
+} as const;
+
 export const text: RecipeConfig = {
   className: "text",
   description: "Text component typography styles",
@@ -80,9 +92,15 @@ export const text: RecipeConfig = {
       right: { textAlign: "right" },
       justify: { textAlign: "justify" },
     },
+    wcagLevel: {
+      A: wcagTextColors.A,
+      AA: wcagTextColors.AA,
+      AAA: wcagTextColors.AAA,
+    },
   },
   defaultVariants: {
     variant: "body",
     align: "left",
+    wcagLevel: "AA",
   },
 };

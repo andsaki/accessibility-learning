@@ -1,6 +1,7 @@
 import React from "react";
 import { text as textRecipe } from "../../../styled-system/recipes";
 import { cx } from "@/styled-system/css";
+import type { WCAGLevel } from "../constants/accessibility";
 
 export interface TextProps {
   /** テキストのバリエーション */
@@ -22,6 +23,8 @@ export interface TextProps {
   color?: string;
   /** テキストの配置 */
   align?: "left" | "center" | "right" | "justify";
+  /** WCAGレベル */
+  wcagLevel?: WCAGLevel;
   /** 太字にする */
   bold?: boolean;
   /** イタリック体にする */
@@ -59,6 +62,7 @@ export const Text: React.FC<TextProps> = ({
   children,
   className,
   style: externalStyle,
+  wcagLevel = "AA",
 }) => {
   // variantに応じたデフォルトのHTML要素を決定
   const defaultElement =
@@ -81,7 +85,7 @@ export const Text: React.FC<TextProps> = ({
   // 実際に使用するHTML要素
   const Component = (as || defaultElement) as React.ElementType;
 
-  const recipeClassName = textRecipe({ variant, align });
+  const recipeClassName = textRecipe({ variant, align, wcagLevel });
 
   // スタイルの構築
   const styles: React.CSSProperties = {
