@@ -67,7 +67,46 @@ const heroRow = css({ display: "flex" });
 - [ ] JSX のすぐ近くで `css({ ... })` が記述されているか？
 - [ ] 再利用すべき塊はデザインシステムへ昇格できないか検討したか？
 - [ ] クラス命名（文字列）は BEM などで構造が伝わるか？
+- [ ] フォーカスリングは Panda recipe / `:focus-visible` で表現できているか？ 無闇に `useEffect` で Tab 検知していないか？
 
-## 5. 参考
+## 5. フォーカス管理の指針
+
+- **基本は `:focus-visible`**  
+  ブラウザがキーボード操作を自動判定してくれるので、`useEffect` で `keydown`/`mousedown` を監視して `data-focused` を付け替えるロジックは不要。Panda レシピで `_focusVisible` を使うか、`css({ _focusVisible: {...} })` で記述する。
+
+  ```ts
+  // panda-config/recipes/checkbox.ts の一例
+  variants: {
+    wcagLevel: {
+      AA: {
+        input: {
+          _focusVisible: {
+            outlineColor: "blue.600",
+            outlineWidth: "0.1875rem",
+            outlineOffset: "0.125rem",
+          },
+        },
+      },
+    },
+  }
+  ```
+
+  ```tsx
+  // コンポーネント側では onFocus/onBlur を書かず、className を合成するだけ
+  <input
+    className={slots.input}
+    aria-invalid={error ? true : undefined}
+    {...props}
+  />
+  ```
+
+- **CSS 変数より recipe で完結させる**  
+  フォーカスリングの色・太さを WCAG レベルごとに変えたい場合は、Button や Checkbox のように `wcagLevel` variant をレシピに追加して `_focusVisible` に値を流し込む。JS から `style` へ直接書き込むのは禁止。
+- **どうしても `data-focused` が必要なケース**  
+  Safari のバグ回避など、`:focus-visible` では表現できない事情があるときだけ `data-focused` を使う。その場合でも、ロジックをコンポーネント内部に閉じ込め、ドキュメント（ADR またはここ）へ理由を必ず記載する。
+- **Past change log**  
+  チェックボックスやボタンのように従来 `useEffect` で Tab 検知していた箇所は、Panda recipe へ移行済み（2025-02）。今後は同じ実装を繰り返さないこと。
+
+## 6. 参考
 
 - [ADR 002: Panda CSSユーティリティの積極活用](./adr/002-panda-css-utilities.md)

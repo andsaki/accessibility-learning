@@ -131,6 +131,7 @@ export const AccessibilityCard = ({ className, ...props }) => (
 - inline style を見つけた際の `css` 化ガイドラインを docs / Storybook に記載。
 - `css` / `cx` によるアクセシビリティパターン（フォーカスリング、タップターゲットなど）を設計ドキュメントに追加。
 - VSCode などでの補完を活用できるよう、チーム向けにショートチュートリアルを配布。
+- 既存のインタラクティブ要素は **Panda recipe + `:focus-visible`** を基本とする。Tab 判定用の `useEffect` や `data-focused` を新たに増やさない。どうしても JS 側で制御する必要が出た場合は、理由をこの ADR か Style Guide に追記すること。
 
 ## 参考資料
 
