@@ -8,7 +8,7 @@ import {
   BreadcrumbLink,
   Button,
 } from "./design-system/components";
-import { icons, breakpointValues } from "./design-system/tokens";
+import { icons } from "./design-system/tokens";
 import { TableOfContents } from "./components/TableOfContents";
 import { HamburgerButton } from "./components/HamburgerButton";
 import { MobileDrawer } from "./components/MobileDrawer";
@@ -128,15 +128,17 @@ const underlineLink = css({
 });
 
 const contentLayout = css({
-  display: "grid",
-  gridTemplateColumns: { base: "1fr", lg: "280px 1fr" },
+  display: "flex",
+  flexDirection: { base: "column", lg: "row" },
   gap: { base: 4, lg: 8 },
-  alignItems: "start",
+  alignItems: "flex-start",
   mt: 8,
 });
 const tocAside = css({
   width: "280px",
   flexShrink: 0,
+  position: { base: "static", lg: "sticky" },
+  top: { base: "auto", lg: 4 },
   display: { base: "none", lg: "block" },
 });
 const mainContent = css({ flex: 1, minW: 0 });
@@ -165,19 +167,8 @@ function App() {
   const { success, error, warning, info } = useToast();
   const [count, setCount] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  const [isMobile, setIsMobile] = useState(
-    window.innerWidth < breakpointValues.md
-  );
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < breakpointValues.md);
-    };
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
 
   useEffect(() => {
     const hash = window.location.hash.slice(1);
@@ -261,23 +252,26 @@ function App() {
   ];
 
   const activeId = useActiveSection(tocItems);
+  const handleNavigate = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      window.history.pushState(null, '', `#${id}`);
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   return (
     <div className={appContainer}>
-      {isMobile && (
-        <>
-          <HamburgerButton
-            isOpen={isDrawerOpen}
-            onClick={() => setIsDrawerOpen(!isDrawerOpen)}
-          />
-          <MobileDrawer
-            isOpen={isDrawerOpen}
-            onClose={() => setIsDrawerOpen(false)}
-            items={tocItems}
-            activeId={activeId}
-          />
-        </>
-      )}
+      <HamburgerButton
+        isOpen={isDrawerOpen}
+        onClick={() => setIsDrawerOpen(!isDrawerOpen)}
+      />
+      <MobileDrawer
+        isOpen={isDrawerOpen}
+        onClose={() => setIsDrawerOpen(false)}
+        items={tocItems}
+        activeId={activeId}
+      />
 
       <header className={pageHeader}>
         <div className={breadcrumbsWrapper}>
@@ -300,11 +294,7 @@ function App() {
           <div className={heroIntro}>
             <h1 className={heroTitle}>
               <span className={heroTitleIcon} aria-hidden="true">
-                <icons.philosophy.kind
-                  size={isMobile ? 28 : 40}
-                  color="currentColor"
-                  strokeWidth={1.5}
-                />
+                <icons.philosophy.kind size={32} color="currentColor" strokeWidth={1.5} />
               </span>
               優しい体験を学ぶデザインシステム
             </h1>
@@ -384,7 +374,7 @@ function App() {
 
       <div className={contentLayout}>
         <aside className={tocAside}>
-          <TableOfContents items={tocItems} />
+          <TableOfContents items={tocItems} activeId={activeId} onNavigate={handleNavigate} />
         </aside>
 
         <main className={mainContent}>

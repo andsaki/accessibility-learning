@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { spacing, typography, radii } from '../design-system/tokens';
 import { useTheme } from '../design-system/theme';
 
@@ -9,43 +8,21 @@ interface TocItem {
 
 interface TableOfContentsProps {
   items: TocItem[];
+  activeId?: string;
+  onNavigate?: (id: string) => void;
 }
 
-export const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
+export const TableOfContents: React.FC<TableOfContentsProps> = ({ items, activeId, onNavigate }) => {
   const { colors } = useTheme();
   const primitive = colors.primitive;
-  const [activeId, setActiveId] = useState<string>('');
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setActiveId(entry.target.id);
-          }
-        });
-      },
-      {
-        rootMargin: '-20% 0px -70% 0px',
-      }
-    );
-
-    items.forEach((item) => {
-      const element = document.getElementById(item.id);
-      if (element) {
-        observer.observe(element);
-      }
-    });
-
-    return () => {
-      observer.disconnect();
-    };
-  }, [items]);
-
-  const handleClick = (id: string) => {
+  const handleNavigate = (id: string) => {
+    if (onNavigate) {
+      onNavigate(id);
+      return;
+    }
     const element = document.getElementById(id);
     if (element) {
-      // URLハッシュを更新
       window.history.pushState(null, '', `#${id}`);
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
@@ -94,7 +71,7 @@ export const TableOfContents: React.FC<TableOfContentsProps> = ({ items }) => {
                 href={`#${item.id}`}
                 onClick={(e) => {
                   e.preventDefault();
-                  handleClick(item.id);
+                  handleNavigate(item.id);
                 }}
                 style={{
                   display: 'block',
