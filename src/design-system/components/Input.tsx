@@ -1,7 +1,9 @@
 import React, { useId } from 'react';
-import { spacing, typography, accessibilityLevels, radii } from '../tokens';
+import { input as inputRecipe } from '../../../styled-system/recipes';
+import { spacing, typography } from '../tokens';
 import type { WCAGLevel } from '../tokens';
 import { useTheme } from '../theme';
+import { cx } from '@/styled-system/css';
 
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /** ラベルテキスト */
@@ -37,6 +39,8 @@ export const Input: React.FC<InputProps> = ({
   disabled = false,
   wcagLevel = 'AA',
   id,
+  className,
+  style,
   ...props
 }) => {
   const { colors } = useTheme();
@@ -45,9 +49,6 @@ export const Input: React.FC<InputProps> = ({
   const inputId = id || autoId;
   const errorId = `${inputId}-error`;
   const helperId = `${inputId}-helper`;
-
-  // WCAGレベルに応じたフォーカススタイルを取得
-  const levelFocus = accessibilityLevels.focus[wcagLevel];
 
   // キーボード操作によるフォーカスかどうかを追跡
   const [isKeyboardFocus, setIsKeyboardFocus] = React.useState(false);
@@ -73,35 +74,6 @@ export const Input: React.FC<InputProps> = ({
     };
   }, []);
 
-  // サイズスタイル
-  const sizeStyles: Record<string, React.CSSProperties> = {
-    sm: {
-      padding: `${spacing.input.paddingY.sm} ${spacing.input.paddingX.sm}`,
-      fontSize: typography.fontSize.sm,
-    },
-    md: {
-      padding: `${spacing.input.paddingY.md} ${spacing.input.paddingX.md}`,
-      fontSize: typography.fontSize.base,
-    },
-    lg: {
-      padding: `${spacing.input.paddingY.lg} ${spacing.input.paddingX.lg}`,
-      fontSize: typography.fontSize.lg,
-    },
-  };
-
-  // ベーススタイル
-  const inputStyles: React.CSSProperties = {
-    width: '100%',
-    fontFamily: typography.fontFamily.base,
-    borderRadius: radii.borderRadius.md,
-    border: `2px solid ${error ? colors.input.borderError : colors.input.border}`,
-    outline: 'none',
-    transition: 'all 0.2s ease-in-out',
-    backgroundColor: disabled ? colors.input.bgDisabled : colors.input.bg,
-    color: disabled ? colors.input.textDisabled : colors.input.text,
-    cursor: disabled ? 'not-allowed' : 'text',
-    ...sizeStyles[size],
-  };
 
   const labelStyles: React.CSSProperties = {
     display: 'block',
@@ -130,6 +102,12 @@ export const Input: React.FC<InputProps> = ({
     return ids.length > 0 ? ids.join(' ') : undefined;
   };
 
+  const recipeClassName = inputRecipe({
+    size,
+    state: error ? 'error' : 'default',
+    wcagLevel,
+  });
+
   return (
     <div style={containerStyles}>
       {/* ラベル: for属性でinputと関連付け */}
@@ -154,26 +132,18 @@ export const Input: React.FC<InputProps> = ({
         aria-required={required}
         aria-invalid={!!error}
         aria-describedby={getAriaDescribedBy()}
-        style={inputStyles}
+        className={cx(recipeClassName, className)}
+        style={style}
         {...props}
         // フォーカス時のスタイル: WCAGレベルに応じて変更
         onFocus={(e) => {
           if (!disabled && isKeyboardFocus) {
-            e.currentTarget.style.backgroundColor = levelFocus.background;
-            e.currentTarget.style.color = levelFocus.text;
-            e.currentTarget.style.borderColor = levelFocus.outline;
-            e.currentTarget.style.outline = `${levelFocus.outlineWidth} solid ${levelFocus.outline}`;
-            e.currentTarget.style.outlineOffset = levelFocus.outlineOffset;
+            e.currentTarget.setAttribute('data-focused', 'true');
           }
           props.onFocus?.(e);
         }}
         onBlur={(e) => {
-          // 元のスタイルに戻す
-          e.currentTarget.style.backgroundColor = disabled ? colors.input.bgDisabled : colors.input.bg;
-          e.currentTarget.style.color = disabled ? colors.input.textDisabled : colors.input.text;
-          e.currentTarget.style.borderColor = error ? colors.input.borderError : colors.input.border;
-          e.currentTarget.style.outline = 'none';
-          e.currentTarget.style.outlineOffset = '0';
+          e.currentTarget.removeAttribute('data-focused');
           props.onBlur?.(e);
         }}
       />

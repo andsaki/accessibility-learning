@@ -1,5 +1,8 @@
 import { defineConfig } from "@pandacss/dev";
 import { button } from "./panda-config/recipes/button";
+import { input } from "./panda-config/recipes/input";
+import { text } from "./panda-config/recipes/text";
+import { textarea } from "./panda-config/recipes/textarea";
 import { pandaSemanticColors } from "./panda-config/types/semanticTokens";
 import {
   pandaColors,
@@ -77,6 +80,9 @@ export default defineConfig({
       },
       recipes: {
         button,
+        input,
+        text,
+        textarea,
       },
     },
   },
@@ -103,7 +109,31 @@ export default defineConfig({
         { variant: ['danger'], wcagLevel: ['A'] },
         { variant: ['danger'], wcagLevel: ['AA'] },
         { variant: ['danger'], wcagLevel: ['AAA'] },
-      ]
+      ],
+      input: [
+        { size: ['sm', 'md', 'lg'], state: ['default', 'error'], wcagLevel: ['A', 'AA', 'AAA'] },
+      ],
+      text: [
+        {
+          variant: [
+            'h1',
+            'h2',
+            'h3',
+            'h4',
+            'h5',
+            'h6',
+            'body-large',
+            'body',
+            'body-small',
+            'caption',
+            'overline',
+          ],
+          align: ['left', 'center', 'right', 'justify'],
+        },
+      ],
+      textarea: [
+        { state: ['default', 'error'], wcagLevel: ['A', 'AA', 'AAA'] },
+      ],
     }
   },
 
@@ -158,6 +188,22 @@ export default defineConfig({
       backgroundColor: 'var(--focus-bg) !important',
     },
     'button[data-focused]:hover:not([data-focus-text-inherit])': {
+      color: 'var(--focus-text) !important',
+    },
+    'input[data-focused], textarea[data-focused]': {
+      backgroundColor: 'var(--focus-bg) !important',
+      color: 'var(--focus-text) !important',
+      borderColor: 'var(--focus-outline) !important',
+      outline: 'var(--focus-outline-width) solid var(--focus-outline) !important',
+      outlineOffset: 'var(--focus-outline-offset) !important',
+    },
+    'input[data-focused]:not([data-focus-text-inherit]), textarea[data-focused]:not([data-focus-text-inherit])': {
+      color: 'var(--focus-text) !important',
+    },
+    'input[data-focused]:hover, textarea[data-focused]:hover': {
+      backgroundColor: 'var(--focus-bg) !important',
+    },
+    'input[data-focused]:hover:not([data-focus-text-inherit]), textarea[data-focused]:hover:not([data-focus-text-inherit])': {
       color: 'var(--focus-text) !important',
     },
   },

@@ -170,7 +170,7 @@ export const colors = {
     bgDisabled: token('colors.gray.100'),
     text: token('colors.gray.900'),
     textDisabled: token('colors.gray.500'),
-    placeholder: token('colors.gray.400'),
+    placeholder: token('colors.gray.500'),
     border: token('colors.gray.300'),
     borderHover: token('colors.gray.400'),
     borderFocus: token('colors.brand.primary'),

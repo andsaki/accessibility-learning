@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
-import { spacing, typography, radii, accessibilityLevels } from "../tokens";
+import { textarea as textareaRecipe } from "../../../styled-system/recipes";
+import { spacing, typography } from "../tokens";
 import type { WCAGLevel } from "../tokens";
 import { useTheme } from "../theme";
+import { cx } from "@/styled-system/css";
 
 export interface TextAreaProps
   extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, ""> {
@@ -45,6 +47,8 @@ export const TextArea: React.FC<TextAreaProps> = ({
   value,
   defaultValue,
   onChange,
+  className,
+  style,
   ...props
 }) => {
   const { colors } = useTheme();
@@ -53,8 +57,6 @@ export const TextArea: React.FC<TextAreaProps> = ({
   const errorId = `${textareaId}-error`;
   const helpId = `${textareaId}-help`;
   const countId = `${textareaId}-count`;
-
-  const levelFocus = accessibilityLevels.focus[wcagLevel];
 
   // キーボードフォーカスの検出
   const [isKeyboardFocus, setIsKeyboardFocus] = useState(false);
@@ -92,6 +94,11 @@ export const TextArea: React.FC<TextAreaProps> = ({
     setCharCount(e.target.value.length);
     onChange?.(e);
   };
+
+  const recipeClassName = textareaRecipe({
+    state: error ? "error" : "default",
+    wcagLevel,
+  });
 
   return (
     <div style={{ width: "100%" }}>
@@ -137,44 +144,19 @@ export const TextArea: React.FC<TextAreaProps> = ({
               .join(" ") || undefined
           }
           {...props}
+          className={cx(recipeClassName, className)}
           style={{
-            width: "100%",
-            minHeight: "120px",
-            padding: spacing.scale[3],
-            fontSize: typography.fontSize.base,
-            lineHeight: typography.lineHeight.normal,
-            color: disabled ? colors.text.disabled : colors.text.primary,
-            backgroundColor: disabled
-              ? colors.input.bgDisabled
-              : colors.input.bg,
-            border: `1px solid ${
-              error
-                ? colors.input.borderError
-                : disabled
-                ? colors.input.bgDisabled
-                : colors.input.border
-            }`,
-            borderRadius: radii.borderRadius.md,
-            outline: "none",
             resize: "vertical",
-            transition: "border-color 0.2s, box-shadow 0.2s",
-            cursor: disabled ? "not-allowed" : "text",
-            fontFamily: "inherit",
-            ...props.style,
+            ...style,
           }}
           onFocus={(e) => {
             if (isKeyboardFocus && !disabled) {
-              e.currentTarget.style.outline = `${levelFocus.outlineWidth} solid ${levelFocus.outline}`;
-              e.currentTarget.style.outlineOffset = levelFocus.outlineOffset;
-              e.currentTarget.style.backgroundColor = levelFocus.background;
+              e.currentTarget.setAttribute("data-focused", "true");
             }
             props.onFocus?.(e);
           }}
           onBlur={(e) => {
-            e.currentTarget.style.outline = "none";
-            e.currentTarget.style.backgroundColor = disabled
-              ? colors.input.bgDisabled
-              : colors.input.bg;
+            e.currentTarget.removeAttribute("data-focused");
             props.onBlur?.(e);
           }}
           onMouseDown={() => {
