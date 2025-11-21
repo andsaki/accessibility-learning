@@ -1,6 +1,5 @@
 import { InfoBox } from "../design-system/components/InfoBox";
 import { css, cx } from "@/styled-system/css";
-import { token } from "@/styled-system/tokens";
 
 const containerClass = css({
   mt: 4,
@@ -86,10 +85,12 @@ export const WCAGLevelInfo = () => {
         variant="warning"
         icon="💡"
         title="実用的な選び方"
-        style={{
-          backgroundColor: token("colors.yellow"),
-          border: `${token("borderWidths.base")} solid ${token("colors.black")}`,
-        }}
+        className={css({
+          bg: "yellow",
+          borderWidth: "base",
+          borderStyle: "solid",
+          borderColor: "black",
+        })}
       >
         <ul
           className={cx(warningListClass)}
