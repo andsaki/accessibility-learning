@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
-import { spacing, typography, radii, accessibilityLevels, colors } from "../tokens";
-import type { WCAGLevel } from "../tokens";
+import { spacing } from "../constants/spacing";
+import { typography } from "../constants/typography";
+import { radii } from "../constants/radii";
+import { colors } from "../constants/colors";
+import { accessibilityLevels } from "../constants/accessibility";
+import type { WCAGLevel } from "../constants/accessibility";
 
 export interface RadioProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> {

@@ -1,5 +1,6 @@
 import React from "react";
-import { spacing, colors } from "../tokens";
+import { spacing } from "../constants/spacing";
+import { colors } from "../constants/colors";
 
 export interface LoadingProps {
   /** スピナーのサイズ */

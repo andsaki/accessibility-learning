@@ -1,8 +1,8 @@
 import React from "react";
 import { button } from "../../../styled-system/recipes";
 import { css, cx } from "@/styled-system/css";
-import type { WCAGLevel } from "../tokens";
-import { accessibilityLevels } from "../tokens";
+import type { WCAGLevel } from "../constants/accessibility";
+import { accessibilityLevels } from "../constants/accessibility";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {

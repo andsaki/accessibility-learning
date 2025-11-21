@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { textarea as textareaRecipe } from "../../../styled-system/recipes";
-import type { WCAGLevel } from "../tokens";
+import type { WCAGLevel } from "../constants/accessibility";
 import { cx, css } from "@/styled-system/css";
 
 export interface TextAreaProps

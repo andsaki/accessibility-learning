@@ -12,8 +12,8 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
 import { Input } from './Input';
 import { Button } from './Button';
-import { spacing } from '../tokens';
-import type { WCAGLevel } from '../tokens';
+import { spacing } from '../constants/spacing';
+import type { WCAGLevel } from '../constants/accessibility';
 
 export interface FormFieldConfig<T> {
   /** フィールド名 */

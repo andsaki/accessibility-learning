@@ -5,7 +5,7 @@ import { Checkbox } from "../design-system/components/Checkbox";
 import { Radio, RadioGroup } from "../design-system/components/Radio";
 import { Loading, InlineLoading } from "../design-system/components/Loading";
 import { InfoBox } from "../design-system/components/InfoBox";
-import { icons } from "../design-system/tokens";
+import { icons } from "../design-system/tokens/icons";
 import { SectionHeading } from "../components/SectionHeading";
 import { z } from "zod";
 import { useState } from "react";

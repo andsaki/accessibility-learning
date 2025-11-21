@@ -3,6 +3,7 @@ import { button } from "./panda-config/recipes/button";
 import { input } from "./panda-config/recipes/input";
 import { text } from "./panda-config/recipes/text";
 import { textarea } from "./panda-config/recipes/textarea";
+import { accordion } from "./panda-config/recipes/accordion";
 import { pandaSemanticColors } from "./panda-config/types/semanticTokens";
 import {
   pandaColors,
@@ -85,6 +86,7 @@ export default defineConfig({
         input,
         text,
         textarea,
+        accordion,
       },
     },
   },
@@ -135,6 +137,9 @@ export default defineConfig({
       ],
       textarea: [
         { state: ['default', 'error'], wcagLevel: ['A', 'AA', 'AAA'] },
+      ],
+      accordion: [
+        { wcagLevel: ['A', 'AA', 'AAA'] },
       ],
     }
   },

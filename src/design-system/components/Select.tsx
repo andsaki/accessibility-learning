@@ -1,6 +1,9 @@
 import React, { useId } from 'react';
-import { spacing, typography, accessibilityLevels, radii } from '../tokens';
-import type { WCAGLevel } from '../tokens';
+import { spacing } from '../constants/spacing';
+import { typography } from '../constants/typography';
+import { radii } from '../constants/radii';
+import { accessibilityLevels } from '../constants/accessibility';
+import type { WCAGLevel } from '../constants/accessibility';
 import { token } from '@/styled-system/tokens';
 
 export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'size'> {

@@ -8,7 +8,7 @@ import {
   BreadcrumbLink,
   Button,
 } from "./design-system/components";
-import { icons } from "./design-system/tokens";
+import { icons } from "./design-system/tokens/icons";
 import { TableOfContents } from "./components/TableOfContents";
 import { HamburgerButton } from "./components/HamburgerButton";
 import { MobileDrawer } from "./components/MobileDrawer";

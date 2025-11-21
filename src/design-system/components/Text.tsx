@@ -1,6 +1,7 @@
 import React from "react";
 import { text as textRecipe } from "../../../styled-system/recipes";
-import { typography, colors } from "../tokens";
+import { typography } from "../constants/typography";
+import { colors } from "../constants/colors";
 import { cx } from "@/styled-system/css";
 
 export interface TextProps {

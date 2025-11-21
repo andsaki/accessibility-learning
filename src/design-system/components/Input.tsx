@@ -1,6 +1,6 @@
 import React, { useId } from 'react';
 import { input as inputRecipe } from '../../../styled-system/recipes';
-import type { WCAGLevel } from '../tokens';
+import type { WCAGLevel } from '../constants/accessibility';
 import { cx, css } from '@/styled-system/css';
 
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {

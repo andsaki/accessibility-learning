@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useCallback } from 'react';
-import { accessibilityLevels } from '../tokens';
+import { accessibilityLevels } from '../constants/accessibility';
+import type { WCAGLevel } from '../constants/accessibility';
 import { css, cx } from '@/styled-system/css';
 
+export type { WCAGLevel } from '../constants/accessibility';
 export type ToastType = 'success' | 'error' | 'warning' | 'info';
-export type WCAGLevel = 'A' | 'AA' | 'AAA';
 
 export interface ToastProps {
   /** トーストのID */

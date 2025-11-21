@@ -1,4 +1,5 @@
-import { accessibilityLevels, icons } from "../design-system/tokens";
+import { accessibilityLevels } from "../design-system/constants/accessibility";
+import { icons } from "../design-system/tokens/icons";
 import { css, cx } from "@/styled-system/css";
 import { token } from "@/styled-system/tokens";
 import { SectionHeading } from "../components/SectionHeading";

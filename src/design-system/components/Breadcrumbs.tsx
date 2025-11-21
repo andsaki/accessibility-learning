@@ -1,6 +1,9 @@
 import React from 'react';
-import { spacing, typography, accessibilityLevels, borders } from '../tokens';
-import type { WCAGLevel } from '../tokens';
+import { spacing } from '../constants/spacing';
+import { typography } from '../constants/typography';
+import { accessibilityLevels } from '../constants/accessibility';
+import { borders } from '../constants/borders';
+import type { WCAGLevel } from '../constants/accessibility';
 
 // Context for passing WCAG level to child components
 const BreadcrumbsContext = React.createContext<WCAGLevel>('AA');

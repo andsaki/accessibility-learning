@@ -2,7 +2,7 @@ import { useState } from "react";
 import { css } from "@/styled-system/css";
 import { Button, Input, Accordion, AccordionSummary, AccordionContent, Breadcrumbs, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, Modal } from "../design-system/components";
 import { InfoBox } from "../design-system/components/InfoBox";
-import { icons } from "../design-system/tokens";
+import { icons } from "../design-system/tokens/icons";
 import { SectionHeading } from "../components/SectionHeading";
 import { Tooltip } from "../components/Tooltip";
 import { CodeBlock } from "../components/CodeBlock";

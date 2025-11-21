@@ -1,5 +1,5 @@
 import { css } from "@/styled-system/css";
-import { icons } from "../design-system/tokens";
+import { icons } from "../design-system/tokens/icons";
 import { SectionHeading } from "../components/SectionHeading";
 
 export function DesignTokens() {

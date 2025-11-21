@@ -1,8 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import type { ReactNode } from 'react';
-import { spacing, typography, radii, accessibilityLevels, colors } from '../tokens';
-
-export type WCAGLevel = 'A' | 'AA' | 'AAA';
+import { spacing } from '../constants/spacing';
+import { typography } from '../constants/typography';
+import { radii } from '../constants/radii';
+import { colors } from '../constants/colors';
+import { accessibilityLevels } from '../constants/accessibility';
+import type { WCAGLevel } from '../constants/accessibility';
 
 export interface ModalProps {
   /** モーダルの開閉状態 */
