@@ -195,7 +195,7 @@ export const Modal: React.FC<ModalProps> = ({
                 margin: 0,
                 fontSize: typography.fontSize.xl,
                 fontWeight: typography.fontWeight.semibold,
-                color: colors.text.primary,
+                color: colors.contents.primary,
               }}
             >
               {title}
@@ -212,7 +212,7 @@ export const Modal: React.FC<ModalProps> = ({
                 padding: 0,
                 border: 'none',
                 background: 'transparent',
-                color: colors.text.secondary,
+                color: colors.contents.secondary,
                 cursor: 'pointer',
                 fontSize: typography.fontSize['2xl'],
                 lineHeight: 1,

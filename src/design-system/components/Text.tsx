@@ -63,7 +63,7 @@ export const Text: React.FC<TextProps> = ({
   style: externalStyle,
 }) => {
   const { colors } = useTheme();
-  const textColor = color || colors.text.primary;
+  const textColor = color || colors.contents.primary;
   // variantに応じたデフォルトのHTML要素を決定
   const defaultElement =
     variant === "h1"

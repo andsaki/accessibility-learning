@@ -34,7 +34,7 @@ export const textarea: RecipeConfig = {
     py: "3",
     fontSize: "base",
     lineHeight: "normal",
-    color: "text.primary",
+    color: "contents.primary",
     backgroundColor: "input.bg",
     borderWidth: "thin",
     borderStyle: "solid",
@@ -50,7 +50,7 @@ export const textarea: RecipeConfig = {
       opacity: 1,
     },
     _disabled: {
-      color: "text.disabled",
+      color: "contents.disabled",
       backgroundColor: "input.bgDisabled",
       borderColor: "input.bgDisabled",
       cursor: "not-allowed",

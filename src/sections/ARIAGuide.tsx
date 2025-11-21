@@ -16,7 +16,7 @@ export const ARIAGuide = () => {
       className={css({
         marginBottom: 12,
         padding: 6,
-        backgroundColor: "bg.canvas",
+        backgroundColor: "bg.primary",
         borderRadius: "lg",
         borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
         maxWidth: '100%',

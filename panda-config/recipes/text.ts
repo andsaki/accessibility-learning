@@ -5,7 +5,7 @@ export const text: RecipeConfig = {
   description: "Text component typography styles",
   base: {
     margin: "0",
-    color: "text.primary",
+    color: "contents.primary",
     textDecoration: "none",
   },
   variants: {

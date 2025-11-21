@@ -9,7 +9,7 @@ export function DesignTokens() {
       className={css({
         marginBottom: 12,
         padding: 6,
-        backgroundColor: "bg.canvas",
+        backgroundColor: "bg.primary",
         borderRadius: "lg",
         borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
         maxWidth: '100%',
@@ -43,7 +43,7 @@ export function DesignTokens() {
           className={css({
             marginTop: 4,
             padding: 4,
-            backgroundColor: "bg.canvas",
+            backgroundColor: "bg.primary",
             borderRadius: "base",
             borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
           })}
@@ -90,7 +90,7 @@ export function DesignTokens() {
           className={css({
             marginTop: 4,
             padding: 4,
-            backgroundColor: "bg.canvas",
+            backgroundColor: "bg.primary",
             borderRadius: "base",
             borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
           })}
@@ -113,9 +113,9 @@ export function DesignTokens() {
               <div className={css({ padding: 2, backgroundColor: "green.50", borderRadius: "base", borderWidth: "base", borderStyle: "solid", borderColor: "green.500" })}>
                 <strong className={css({ color: "green.900" })}>2. セマンティックトークン（colors）</strong>
                 <p className={css({ marginY: 1, fontSize: "sm", color: "gray.700" })}>
-                  意味を持った色の定義。text.primary、background.default、border.focusなど。
+                  意味を持った色の定義。contents.primary、background.default、border.focusなど。
                   <br />
-                  例: colors.text.primary, colors.background.subtle
+                  例: colors.contents.primary, colors.background.subtle
                 </p>
               </div>
             </div>
@@ -209,7 +209,7 @@ export function DesignTokens() {
               </p>
               <div className={css({ padding: 2, backgroundColor: "gray.50", borderRadius: "sm", fontSize: "sm" })}>
                 <div className={css({ marginBottom: 1 })}>
-                  <code className={css({ color: "blue.700" })}>colors.text.primary</code>
+                  <code className={css({ color: "blue.700" })}>colors.contents.primary</code>
                   <span className={css({ color: "gray.600" })}> = "gray.900"</span>
                 </div>
                 <div className={css({ marginBottom: 1 })}>
@@ -272,7 +272,7 @@ export function DesignTokens() {
                 <strong className={css({ color: "blue.700" })}>✅ コードが読みやすい</strong>
                 <p className={css({ marginY: 1, color: "gray.700" })}>
                   <code className={css({ backgroundColor: "red.50", paddingY: 1, paddingX: 2, borderRadius: "sm", color: "red.700" })}>color: #212121</code> より
-                  <code className={css({ backgroundColor: "green.50", paddingY: 1, paddingX: 2, borderRadius: "sm", color: "green.700" })}>color: colors.text.primary</code> の方が意図が明確
+                  <code className={css({ backgroundColor: "green.50", paddingY: 1, paddingX: 2, borderRadius: "sm", color: "green.700" })}>color: colors.contents.primary</code> の方が意図が明確
                 </p>
               </div>
               <div>
@@ -302,7 +302,7 @@ export function DesignTokens() {
           className={css({
             marginTop: 4,
             padding: 4,
-            backgroundColor: "bg.canvas",
+            backgroundColor: "bg.primary",
             borderRadius: "base",
             borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
           })}
@@ -336,7 +336,7 @@ export function DesignTokens() {
           className={css({
             marginTop: 4,
             padding: 4,
-            backgroundColor: "bg.canvas",
+            backgroundColor: "bg.primary",
             borderRadius: "base",
             borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
           })}

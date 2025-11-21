@@ -19,7 +19,7 @@ export type GetPandaConfigMap<
 
 /**
  * Config型からtheme.extend.semanticTokensの型を抽出
- * セマンティックトークン（bg.canvas、text.primaryなど）の型を推論
+ * セマンティックトークン（bg.primary、contents.primaryなど）の型を推論
  */
 export type GetPandaSemanticToken<
   T extends keyof Required<Required<Config>["theme"]>["semanticTokens"],

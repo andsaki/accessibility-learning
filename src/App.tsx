@@ -137,7 +137,7 @@ function App() {
     <div
       style={{
         backgroundColor: themeColors.background.default,
-        color: themeColors.text.primary,
+        color: themeColors.contents.primary,
         minHeight: "100vh",
         transition: "background-color 0.3s ease, color 0.3s ease",
         padding: isMobile ? spacing.scale[3] : spacing.scale[8],
@@ -190,7 +190,7 @@ function App() {
               style={{
                 marginBottom: spacing.scale[2],
                 fontSize: isMobile ? "1.75rem" : "2.5rem",
-                color: themeColors.text.primary,
+                color: themeColors.contents.primary,
                 fontWeight: typography.fontWeight.bold,
                 display: "flex",
                 alignItems: "center",
@@ -207,7 +207,7 @@ function App() {
             </h1>
             <p
               style={{
-                color: themeColors.text.secondary,
+                color: themeColors.contents.secondary,
                 fontSize: typography.fontSize.lg,
                 lineHeight: typography.lineHeight.normal,
               }}

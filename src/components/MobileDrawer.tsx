@@ -105,7 +105,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
               marginBottom: spacing.scale[4],
               fontSize: typography.fontSize.lg,
               fontWeight: 600,
-              color: colors.text.primary,
+              color: colors.contents.primary,
             }}
           >
             目次
@@ -134,7 +134,7 @@ export const MobileDrawer: React.FC<MobileDrawerProps> = ({
                       display: 'block',
                       padding: `${spacing.scale[2]} ${spacing.scale[3]}`,
                       fontSize: typography.fontSize.sm,
-                      color: isActive ? colors.text.link : colors.text.primary,
+                      color: isActive ? colors.contents.link : colors.contents.primary,
                       textDecoration: 'none',
                       borderRadius: radii.borderRadius.base,
                       backgroundColor: isActive ? colors.background.active : 'transparent',

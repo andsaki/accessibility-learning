@@ -27,7 +27,7 @@ export const SectionHeading: React.FC<SectionHeadingProps> = ({
   const { colors } = useTheme();
 
   const headingStyle: React.CSSProperties = {
-    color: colors.text.primary,
+    color: colors.contents.primary,
     marginBottom: spacing.scale[4],
     ...style,
   };

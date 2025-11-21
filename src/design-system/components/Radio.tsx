@@ -123,7 +123,7 @@ export const Radio: React.FC<RadioProps> = ({
           style={{
             fontSize: typography.fontSize.base,
             fontWeight: typography.fontWeight.medium,
-            color: disabled ? colors.text.disabled : colors.text.primary,
+            color: disabled ? colors.contents.disabled : colors.contents.primary,
             cursor: disabled ? "not-allowed" : "pointer",
             userSelect: "none",
           }}
@@ -136,7 +136,7 @@ export const Radio: React.FC<RadioProps> = ({
             style={{
               margin: `${spacing.scale[1]} 0 0 0`,
               fontSize: typography.fontSize.sm,
-              color: colors.text.secondary,
+              color: colors.contents.secondary,
               lineHeight: typography.lineHeight.normal,
             }}
           >
@@ -150,7 +150,7 @@ export const Radio: React.FC<RadioProps> = ({
             style={{
               margin: `${spacing.scale[1]} 0 0 0`,
               fontSize: typography.fontSize.sm,
-              color: colors.text.error,
+              color: colors.contents.error,
               lineHeight: typography.lineHeight.normal,
             }}
           >
@@ -210,7 +210,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
         style={{
           fontSize: typography.fontSize.base,
           fontWeight: typography.fontWeight.semibold,
-          color: colors.text.primary,
+          color: colors.contents.primary,
           padding: `0 ${spacing.scale[2]}`,
         }}
       >
@@ -222,7 +222,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
           style={{
             margin: `0 0 ${spacing.scale[3]} 0`,
             fontSize: typography.fontSize.sm,
-            color: colors.text.secondary,
+            color: colors.contents.secondary,
             lineHeight: typography.lineHeight.normal,
           }}
         >
@@ -245,7 +245,7 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
           style={{
             margin: `${spacing.scale[3]} 0 0 0`,
             fontSize: typography.fontSize.sm,
-            color: colors.text.error,
+            color: colors.contents.error,
             lineHeight: typography.lineHeight.normal,
           }}
         >

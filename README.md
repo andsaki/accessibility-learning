@@ -107,7 +107,7 @@ Primitiveに意味のある名前を付けたもの。アプリ全体で再利�
 
 ```typescript
 // 例: tokens/index.ts
-colors.text.primary = primitive.gray[900]
+colors.contents.primary = primitive.gray[900]
 spacing.scale[4] = 16px
 radii.borderRadius.base = 4px
 ```
@@ -187,7 +187,7 @@ primitive.orange[50] 〜 primitive.orange[900]
 primitive.pink[50] 〜 primitive.pink[900]  // 優しいテーマ用
 
 // Semantic
-colors.text.primary      // メインテキスト
+colors.contents.primary      // メインテキスト
 colors.background.default // 背景色
 colors.border.focus      // フォーカス時の境界線
 ```

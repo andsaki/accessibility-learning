@@ -178,14 +178,14 @@ export const Dropdown: React.FC<DropdownProps> = ({
           marginBottom: spacing.scale[2],
           fontSize: typography.fontSize.sm,
           fontWeight: typography.fontWeight.medium,
-          color: colors.text.primary,
+          color: colors.contents.primary,
         }}
       >
         {label}
         {required && (
           <span
             style={{
-              color: colors.text.error,
+              color: colors.contents.error,
               marginLeft: spacing.scale[1],
             }}
             aria-label="必須"
@@ -216,7 +216,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
             fontWeight: typography.fontWeight.normal,
             textAlign: 'left',
             backgroundColor: disabled ? colors.background.disabled : colors.background.paper,
-            color: selectedValue ? colors.text.primary : colors.text.secondary,
+            color: selectedValue ? colors.contents.primary : colors.contents.secondary,
             border: error
               ? `2px solid ${colors.border.error}`
               : `2px solid ${colors.border.default}`,
@@ -253,7 +253,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
               height="20"
               viewBox="0 0 24 24"
               fill="none"
-              stroke={disabled ? colors.text.disabled : colors.text.primary}
+              stroke={disabled ? colors.contents.disabled : colors.contents.primary}
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
@@ -306,7 +306,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
                 style={{
                   padding: `${spacing.scale[2]} ${spacing.scale[3]}`,
                   fontSize: typography.fontSize.base,
-                  color: option.disabled ? colors.text.disabled : colors.text.primary,
+                  color: option.disabled ? colors.contents.disabled : colors.contents.primary,
                   backgroundColor:
                     focusedIndex === index
                       ? primitive.blue[50]
@@ -337,7 +337,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
           style={{
             marginTop: spacing.scale[1],
             fontSize: typography.fontSize.sm,
-            color: colors.text.error,
+            color: colors.contents.error,
           }}
         >
           {error}
@@ -351,7 +351,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
           style={{
             marginTop: spacing.scale[1],
             fontSize: typography.fontSize.sm,
-            color: colors.text.secondary,
+            color: colors.contents.secondary,
           }}
         >
           {helperText}

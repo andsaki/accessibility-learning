@@ -5,7 +5,7 @@ import type { GetPandaSemanticToken } from "./interfaces";
  *
  * 嬉しいポイント:
  * 1. VSCodeで補完が効く
- *    - bg.canvas, bg.paper, text.primary など、定義済みのトークンが候補に出る
+ *    - bg.primary, contents.primary など、定義済みのトークンが候補に出る
  *    - 存在しないトークン名を書くとエラーになる（typo防止）
  *
  * 2. ダークモード対応が型安全
@@ -28,67 +28,76 @@ export const pandaSemanticColors: GetPandaSemanticToken<"colors"> = {
     primaryDark: { value: "#1976d2" },
   },
 
-  // テキストカラー - ライト/ダークモード対応
-  text: {
-    primary: { value: { base: "#212121", _dark: "#fafafa" } },
-    secondary: { value: { base: "#616161", _dark: "#f5f5f5" } },
-    tertiary: { value: { base: "#757575", _dark: "#eeeeee" } },
-    disabled: { value: { base: "#bdbdbd", _dark: "#757575" } },
-    inverse: { value: { base: "#ffffff", _dark: "#212121" } },
-    link: { value: { base: "#1976d2", _dark: "#42a5f5" } },
-    linkHover: { value: { base: "#1565c0", _dark: "#64b5f6" } },
-    error: { value: { base: "#d32f2f", _dark: "#ef5350" } },
-    success: { value: { base: "#388e3c", _dark: "#66bb6a" } },
-    warning: { value: { base: "#ef6c00", _dark: "#ffa726" } },
-  },
-
   // 背景カラー - ライト/ダークモード対応
   bg: {
-    canvas: { value: { base: "#ffffff", _dark: "#212121" } },
-    paper: { value: { base: "#fafafa", _dark: "#424242" } },
-    subtle: { value: { base: "#f5f5f5", _dark: "#424242" } },
-    hover: { value: { base: "#f5f5f5", _dark: "#616161" } },
-    active: { value: { base: "#eeeeee", _dark: "#757575" } },
-    disabled: { value: { base: "#f5f5f5", _dark: "#424242" } },
+    primary: { value: { base: "{colors.white}", _dark: "{colors.gray.900}" } },
+    secondary: { value: { base: "{colors.gray.50}", _dark: "{colors.gray.800}" } },
+    tertiary: { value: { base: "{colors.gray.100}", _dark: "{colors.gray.700}" } },
+    hover: { value: { base: "{colors.gray.100}", _dark: "{colors.gray.700}" } },
+    active: { value: { base: "{colors.gray.200}", _dark: "{colors.gray.600}" } },
+    disabled: { value: { base: "{colors.gray.100}", _dark: "{colors.gray.800}" } },
+  },
+
+  // コンテンツカラー - テキストやアイコンなど
+  contents: {
+    primary: { value: { base: "{colors.gray.900}", _dark: "{colors.gray.100}" } },
+    secondary: { value: { base: "{colors.gray.700}", _dark: "{colors.gray.200}" } },
+    tertiary: { value: { base: "{colors.gray.600}", _dark: "{colors.gray.300}" } },
+    disabled: { value: { base: "{colors.gray.400}", _dark: "{colors.gray.600}" } },
+    inverse: { value: { base: "{colors.white}", _dark: "{colors.gray.900}" } },
+    link: { value: { base: "{colors.blue.600}", _dark: "{colors.blue.400}" } },
+    linkHover: { value: { base: "{colors.blue.700}", _dark: "{colors.blue.300}" } },
+    error: { value: { base: "{colors.red.600}", _dark: "{colors.red.400}" } },
+    success: { value: { base: "{colors.green.600}", _dark: "{colors.green.400}" } },
+    warning: { value: { base: "{colors.orange.600}", _dark: "{colors.orange.400}" } },
+  },
+
+  // 状態色 - 成功/警告などのアクセント
+  accent: {
+    primary: { value: { base: "{colors.blue.600}", _dark: "{colors.blue.400}" } },
+    success: { value: { base: "{colors.green.600}", _dark: "{colors.green.400}" } },
+    error: { value: { base: "{colors.red.600}", _dark: "{colors.red.400}" } },
+    warn: { value: { base: "{colors.orange.600}", _dark: "{colors.orange.400}" } },
+    disabled: { value: { base: "{colors.gray.400}", _dark: "{colors.gray.600}" } },
   },
 
   // ボーダーカラー - ライト/ダークモード対応
   border: {
-    default: { value: { base: "#e0e0e0", _dark: "#616161" } },
-    subtle: { value: { base: "#eeeeee", _dark: "#424242" } },
-    strong: { value: { base: "#bdbdbd", _dark: "#757575" } },
-    hover: { value: { base: "#bdbdbd", _dark: "#757575" } },
-    focus: { value: "#2196f3" },
-    error: { value: "#f44336" },
-    success: { value: "#4caf50" },
-    warning: { value: "#ff9800" },
+    default: { value: { base: "{colors.gray.300}", _dark: "{colors.gray.700}" } },
+    subtle: { value: { base: "{colors.gray.200}", _dark: "{colors.gray.800}" } },
+    strong: { value: { base: "{colors.gray.400}", _dark: "{colors.gray.600}" } },
+    hover: { value: { base: "{colors.gray.400}", _dark: "{colors.gray.600}" } },
+    focus: { value: "{colors.blue.500}" },
+    error: { value: "{colors.red.500}" },
+    success: { value: "{colors.green.500}" },
+    warning: { value: "{colors.orange.500}" },
   },
 
   // アコーディオンカラー - コンポーネント固有
   accordion: {
-    bg: { value: { base: "#ffffff", _dark: "#424242" } },
-    bgHover: { value: { base: "#fafafa", _dark: "#616161" } },
-    bgActive: { value: { base: "#f5f5f5", _dark: "#757575" } },
-    bgOpen: { value: { base: "#fafafa", _dark: "#424242" } },
-    border: { value: { base: "#e0e0e0", _dark: "#616161" } },
-    text: { value: { base: "#212121", _dark: "#fafafa" } },
-    icon: { value: { base: "#757575", _dark: "#eeeeee" } },
+    bg: { value: { base: "{colors.white}", _dark: "{colors.gray.800}" } },
+    bgHover: { value: { base: "{colors.gray.50}", _dark: "{colors.gray.700}" } },
+    bgActive: { value: { base: "{colors.gray.100}", _dark: "{colors.gray.600}" } },
+    bgOpen: { value: { base: "{colors.gray.50}", _dark: "{colors.gray.800}" } },
+    border: { value: { base: "{colors.gray.300}", _dark: "{colors.gray.700}" } },
+    text: { value: { base: "{colors.gray.900}", _dark: "{colors.gray.100}" } },
+    icon: { value: { base: "{colors.gray.600}", _dark: "{colors.gray.300}" } },
   },
 
   // インプットカラー - フォーム要素用
   input: {
-    bg: { value: { base: "#ffffff", _dark: "#424242" } },
-    bgDisabled: { value: { base: "#f5f5f5", _dark: "#616161" } },
-    text: { value: { base: "#212121", _dark: "#fafafa" } },
-    textDisabled: { value: { base: "#9e9e9e", _dark: "#757575" } },
-    placeholder: { value: { base: "#bdbdbd", _dark: "#9e9e9e" } },
-    border: { value: { base: "#e0e0e0", _dark: "#616161" } },
-    borderHover: { value: { base: "#bdbdbd", _dark: "#757575" } },
-    borderFocus: { value: "#2196f3" },
-    borderError: { value: "#f44336" },
-    borderSuccess: { value: "#4caf50" },
-    label: { value: { base: "#616161", _dark: "#eeeeee" } },
-    helperText: { value: { base: "#757575", _dark: "#bdbdbd" } },
-    errorText: { value: { base: "#d32f2f", _dark: "#ef5350" } },
+    bg: { value: { base: "{colors.white}", _dark: "{colors.gray.800}" } },
+    bgDisabled: { value: { base: "{colors.gray.100}", _dark: "{colors.gray.700}" } },
+    text: { value: { base: "{colors.gray.900}", _dark: "{colors.gray.100}" } },
+    textDisabled: { value: { base: "{colors.gray.500}", _dark: "{colors.gray.600}" } },
+    placeholder: { value: { base: "{colors.gray.500}", _dark: "{colors.gray.500}" } },
+    border: { value: { base: "{colors.gray.300}", _dark: "{colors.gray.700}" } },
+    borderHover: { value: { base: "{colors.gray.400}", _dark: "{colors.gray.600}" } },
+    borderFocus: { value: "{colors.blue.500}" },
+    borderError: { value: "{colors.red.500}" },
+    borderSuccess: { value: "{colors.green.500}" },
+    label: { value: { base: "{colors.gray.700}", _dark: "{colors.gray.200}" } },
+    helperText: { value: { base: "{colors.gray.600}", _dark: "{colors.gray.300}" } },
+    errorText: { value: { base: "{colors.red.700}", _dark: "{colors.red.400}" } },
   },
 };

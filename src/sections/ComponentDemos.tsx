@@ -40,7 +40,7 @@ interface ComponentDemosProps {
 const sectionStyle = css({
   mb: 12,
   p: 6,
-  bg: "bg.canvas",
+  bg: "bg.primary",
   rounded: "lg",
   borderWidth: "thin",
   borderStyle: "solid",
@@ -52,7 +52,7 @@ const sectionStyle = css({
 
 const sectionHeading = css({
   mt: 0,
-  color: "text.primary",
+  color: "contents.primary",
   fontSize: "2xl",
   fontWeight: "bold",
   borderBottomWidth: "thick",
@@ -66,7 +66,7 @@ const sectionHeading = css({
 });
 
 const sectionDescription = css({
-  color: "text.primary",
+  color: "contents.primary",
   mt: 0,
 });
 
@@ -546,7 +546,7 @@ export function ComponentDemos({
 
         <div className={css({ mt: 8 })}>
           <SectionHeading>複雑なバリデーション</SectionHeading>
-          <p className={css({ color: "text.primary", mb: 4 })}>
+          <p className={css({ color: "contents.primary", mb: 4 })}>
             パスワード確認フィールドの一致検証など、複雑なバリデーションルールを簡単に実装できます。
           </p>
           <Form
@@ -679,7 +679,7 @@ export function ComponentDemos({
 
         <div className={css({ mt: 8 })}>
           <SectionHeading>WCAGレベル別フォーカススタイル</SectionHeading>
-          <p className={css({ color: "text.primary", mb: 4 })}>
+          <p className={css({ color: "contents.primary", mb: 4 })}>
             <strong>Tabキー</strong>でアコーディオンにフォーカスを当てて、各レベルの違いを確認してください。
           </p>
 
@@ -706,8 +706,8 @@ export function ComponentDemos({
             </Accordion>
           </div>
 
-          <p className={css({ mt: 4, fontSize: "sm", color: "text.primary" })}>
-            💡 WCAGレベルとコントラスト比の詳細は<a href="#wcag-levels" className={css({ color: "text.link" })}>こちらのセクション</a>をご覧ください
+          <p className={css({ mt: 4, fontSize: "sm", color: "contents.primary" })}>
+            💡 WCAGレベルとコントラスト比の詳細は<a href="#wcag-levels" className={css({ color: "contents.link" })}>こちらのセクション</a>をご覧ください
           </p>
         </div>
 
@@ -742,7 +742,7 @@ export function ComponentDemos({
           <icons.component.toast size={28} className={css({ color: "blue.600" })} strokeWidth={2} />
           Toast コンポーネント
         </h2>
-          <p className={css({ lineHeight: "normal", color: "text.primary" })}>
+          <p className={css({ lineHeight: "normal", color: "contents.primary" })}>
           トースト通知は、ユーザーの操作に対する一時的なフィードバックを提供します。
         </p>
 
@@ -807,7 +807,7 @@ export function ComponentDemos({
           <icons.component.modal size={28} className={css({ color: "blue.600" })} strokeWidth={2} />
           Modal コンポーネント
         </h2>
-          <p className={css({ lineHeight: "normal", color: "text.primary" })}>
+          <p className={css({ lineHeight: "normal", color: "contents.primary" })}>
           モーダルダイアログは、ユーザーの注意を特定のタスクに集中させるために使用します。
         </p>
 
@@ -890,7 +890,7 @@ export function ComponentDemos({
           <SectionHeading>見出しレベル</SectionHeading>
           <div className={css({
             p: 4,
-            bg: "bg.subtle",
+            bg: "bg.tertiary",
             rounded: "base",
             borderWidth: "thin",
             borderStyle: "solid",
@@ -914,7 +914,7 @@ export function ComponentDemos({
           <SectionHeading>本文バリエーション</SectionHeading>
           <div className={css({
             p: 4,
-            bg: "bg.subtle",
+            bg: "bg.tertiary",
             rounded: "base",
             borderWidth: "thin",
             borderStyle: "solid",
@@ -937,7 +937,7 @@ export function ComponentDemos({
           <SectionHeading>テキスト装飾</SectionHeading>
           <div className={css({
             p: 4,
-            bg: "bg.subtle",
+            bg: "bg.tertiary",
             rounded: "base",
             borderWidth: "thin",
             borderStyle: "solid",
@@ -960,7 +960,7 @@ export function ComponentDemos({
           <SectionHeading>カラーバリエーション</SectionHeading>
           <div className={css({
             p: 4,
-            bg: "bg.subtle",
+            bg: "bg.tertiary",
             rounded: "base",
             borderWidth: "thin",
             borderStyle: "solid",
@@ -998,7 +998,7 @@ export function ComponentDemos({
 
           <div className={css({
             p: 4,
-            bg: "bg.subtle",
+            bg: "bg.tertiary",
             rounded: "base",
             borderWidth: "thin",
             borderStyle: "solid",
@@ -1010,19 +1010,19 @@ export function ComponentDemos({
             <div className={cx(flexColumn, css({ gap: 5 }))}>
               <div className={css({
                 p: 4,
-                bg: "bg.canvas",
+                bg: "bg.primary",
                 rounded: "md",
                 borderWidth: "base",
                 borderStyle: "solid",
                 borderColor: "border.default",
               })}>
-                <Text variant="h6" className={css({ color: "text.primary", mb: 2 })}>
+                <Text variant="h6" className={css({ color: "contents.primary", mb: 2 })}>
                   レベルA（最低限）
                 </Text>
-                <Text variant="body-small" className={css({ color: "text.secondary", mb: 2 })}>
+                <Text variant="body-small" className={css({ color: "contents.secondary", mb: 2 })}>
                   コントラスト比: <strong>3:1</strong>（大きいテキストのみ）
                 </Text>
-                <Text variant="body-small" className={css({ color: "text.secondary", mb: 2 })}>
+                <Text variant="body-small" className={css({ color: "contents.secondary", mb: 2 })}>
                   最も基本的なアクセシビリティ要件。これを満たさないと多くのユーザーがコンテンツにアクセスできない。
                 </Text>
                 <div className={css({
@@ -1032,7 +1032,7 @@ export function ComponentDemos({
                   borderTopStyle: "solid",
                   borderTopColor: "border.default",
                 })}>
-                  <Text variant="body-small" bold className={css({ color: "text.primary", mb: 1 })}>
+                  <Text variant="body-small" bold className={css({ color: "contents.primary", mb: 1 })}>
                     主な要件例：
                   </Text>
                   <ul className={css({
@@ -1040,7 +1040,7 @@ export function ComponentDemos({
                     pl: 5,
                     fontSize: "sm",
                     lineHeight: "relaxed",
-                    color: "text.secondary",
+                    color: "contents.secondary",
                   })}>
                     <li>キーボードで操作可能</li>
                     <li>画像に代替テキスト（alt属性）を提供</li>
@@ -1052,7 +1052,7 @@ export function ComponentDemos({
 
               <div className={css({
                 p: 4,
-                bg: "bg.canvas",
+                bg: "bg.primary",
                 rounded: "md",
                 borderWidth: "base",
                 borderStyle: "solid",
@@ -1061,10 +1061,10 @@ export function ComponentDemos({
                 <Text variant="h6" className={css({ color: "blue.700", mb: 2 })}>
                   レベルAA（推奨）⭐
                 </Text>
-                <Text variant="body-small" className={css({ color: "text.secondary", mb: 2 })}>
+                <Text variant="body-small" className={css({ color: "contents.secondary", mb: 2 })}>
                   コントラスト比: <strong>4.5:1</strong>（通常テキスト）、<strong>3:1</strong>（大きいテキスト18px以上）
                 </Text>
-                <Text variant="body-small" className={css({ color: "text.secondary", mb: 2 })}>
+                <Text variant="body-small" className={css({ color: "contents.secondary", mb: 2 })}>
                   ほとんどのWebサイトが目指すべき標準レベル。法律や規制で要求されることが多い（米国のADA、欧州のEAA、日本のJIS X 8341-3など）。
                 </Text>
                 <div className={css({
@@ -1082,7 +1082,7 @@ export function ComponentDemos({
                     pl: 5,
                     fontSize: "sm",
                     lineHeight: "relaxed",
-                    color: "text.secondary",
+                    color: "contents.secondary",
                   })}>
                     <li>十分なカラーコントラスト（4.5:1以上）</li>
                     <li>テキストのリサイズ（200%まで拡大可能）</li>
@@ -1095,7 +1095,7 @@ export function ComponentDemos({
 
               <div className={css({
                 p: 4,
-                bg: "bg.canvas",
+                bg: "bg.primary",
                 rounded: "md",
                 borderWidth: "base",
                 borderStyle: "solid",
@@ -1104,10 +1104,10 @@ export function ComponentDemos({
                 <Text variant="h6" className={css({ color: "green.700", mb: 2 })}>
                   レベルAAA（最高）
                 </Text>
-                <Text variant="body-small" className={css({ color: "text.secondary", mb: 2 })}>
+                <Text variant="body-small" className={css({ color: "contents.secondary", mb: 2 })}>
                   コントラスト比: <strong>7:1</strong>（通常テキスト）、<strong>4.5:1</strong>（大きいテキスト18px以上）
                 </Text>
-                <Text variant="body-small" className={css({ color: "text.secondary", mb: 2 })}>
+                <Text variant="body-small" className={css({ color: "contents.secondary", mb: 2 })}>
                   最も厳格なアクセシビリティ基準。公共機関、医療、金融、教育機関などで推奨。
                   <strong>すべてのコンテンツでAAA達成は現実的でない場合が多い</strong>ため、重要な部分に適用することが推奨される。
                 </Text>
@@ -1126,7 +1126,7 @@ export function ComponentDemos({
                     pl: 5,
                     fontSize: "sm",
                     lineHeight: "relaxed",
-                    color: "text.secondary",
+                    color: "contents.secondary",
                   })}>
                     <li>非常に高いコントラスト比（7:1以上）</li>
                     <li>音声のみのコンテンツに代替テキストを提供</li>
@@ -1148,10 +1148,10 @@ export function ComponentDemos({
             borderStyle: "solid",
             borderColor: "border.default",
           })}>
-            <Text variant="body-small" bold className={css({ color: "text.primary" })}>
+            <Text variant="body-small" bold className={css({ color: "contents.primary" })}>
               💡 実用的な選び方
             </Text>
-            <ul className={css({ margin: "0.5rem 0 0 0", pl: 5, fontSize: "sm", lineHeight: "relaxed", color: "text.primary" })}>
+            <ul className={css({ margin: "0.5rem 0 0 0", pl: 5, fontSize: "sm", lineHeight: "relaxed", color: "contents.primary" })}>
               <li><strong>一般的なWebサイト</strong>: AA を目指す</li>
               <li><strong>公共サービス、医療、金融</strong>: AAA を検討</li>
               <li><strong>最低限</strong>: A は避け、少なくとも AA を満たす</li>
@@ -1198,7 +1198,7 @@ export function ComponentDemos({
           <SectionHeading>基本的な使い方</SectionHeading>
           <div className={css({
             p: 4,
-            bg: "bg.subtle",
+            bg: "bg.tertiary",
             rounded: "base",
             borderWidth: "thin",
             borderStyle: "solid",
@@ -1225,7 +1225,7 @@ export function ComponentDemos({
           <SectionHeading>階層の深いナビゲーション</SectionHeading>
           <div className={css({
             p: 4,
-            bg: "bg.subtle",
+            bg: "bg.tertiary",
             rounded: "base",
             borderWidth: "thin",
             borderStyle: "solid",
@@ -1533,4 +1533,3 @@ function LoadingSection() {
     </>
   );
 }
-

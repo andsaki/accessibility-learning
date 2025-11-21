@@ -109,13 +109,13 @@ export const TextArea: React.FC<TextAreaProps> = ({
           marginBottom: spacing.scale[2],
           fontSize: typography.fontSize.sm,
           fontWeight: typography.fontWeight.medium,
-          color: disabled ? colors.text.disabled : colors.text.primary,
+          color: disabled ? colors.contents.disabled : colors.contents.primary,
         }}
       >
         {label}
         {required && (
           <span
-            style={{ color: colors.text.error, marginLeft: spacing.scale[1] }}
+            style={{ color: colors.contents.error, marginLeft: spacing.scale[1] }}
             aria-label="必須"
           >
             *
@@ -173,8 +173,8 @@ export const TextArea: React.FC<TextAreaProps> = ({
             fontSize: typography.fontSize.xs,
             color:
               charCount > maxLength
-                ? colors.text.error
-                : colors.text.secondary,
+                ? colors.contents.error
+                : colors.contents.secondary,
             textAlign: "right",
           }}
           aria-live="polite"
@@ -189,7 +189,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
           style={{
             margin: `${spacing.scale[1]} 0 0 0`,
             fontSize: typography.fontSize.sm,
-            color: colors.text.secondary,
+            color: colors.contents.secondary,
             lineHeight: typography.lineHeight.normal,
           }}
         >
@@ -204,7 +204,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
           style={{
             margin: `${spacing.scale[1]} 0 0 0`,
             fontSize: typography.fontSize.sm,
-            color: colors.text.error,
+            color: colors.contents.error,
             lineHeight: typography.lineHeight.normal,
           }}
         >

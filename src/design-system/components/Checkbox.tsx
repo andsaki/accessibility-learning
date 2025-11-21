@@ -137,7 +137,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
           style={{
             fontSize: typography.fontSize.base,
             fontWeight: typography.fontWeight.medium,
-            color: disabled ? colors.text.disabled : colors.text.primary,
+            color: disabled ? colors.contents.disabled : colors.contents.primary,
             cursor: disabled ? "not-allowed" : "pointer",
             userSelect: "none",
           }}
@@ -150,7 +150,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
             style={{
               margin: `${spacing.scale[1]} 0 0 0`,
               fontSize: typography.fontSize.sm,
-              color: colors.text.secondary,
+              color: colors.contents.secondary,
               lineHeight: typography.lineHeight.normal,
             }}
           >
@@ -164,7 +164,7 @@ export const Checkbox: React.FC<CheckboxProps> = ({
             style={{
               margin: `${spacing.scale[1]} 0 0 0`,
               fontSize: typography.fontSize.sm,
-              color: colors.text.error,
+              color: colors.contents.error,
               lineHeight: typography.lineHeight.normal,
             }}
           >

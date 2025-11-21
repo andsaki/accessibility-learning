@@ -102,7 +102,7 @@ export const Loading: React.FC<LoadingProps> = ({
         <span
           style={{
             fontSize: size === "sm" ? "12px" : size === "md" ? "14px" : "16px",
-            color: color === "white" ? primitive.white : colors.text.secondary,
+            color: color === "white" ? primitive.white : colors.contents.secondary,
             fontWeight: 500,
           }}
         >

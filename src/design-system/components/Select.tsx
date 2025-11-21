@@ -153,7 +153,7 @@ export const Select: React.FC<SelectProps> = ({
         {required && (
           <span
             style={{
-              color: colors.text.error,
+              color: colors.contents.error,
               marginLeft: spacing.scale[1],
             }}
             aria-label="必須"
@@ -201,7 +201,7 @@ export const Select: React.FC<SelectProps> = ({
           style={{
             marginTop: spacing.scale[1],
             fontSize: typography.fontSize.sm,
-            color: colors.text.error,
+            color: colors.contents.error,
           }}
         >
           {error}

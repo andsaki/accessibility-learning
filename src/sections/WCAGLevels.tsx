@@ -6,7 +6,7 @@ import { SectionHeading } from "../components/SectionHeading";
 const sectionClass = css({
   mb: 12,
   p: 6,
-  bg: "bg.canvas",
+  bg: "bg.primary",
   rounded: "lg",
   borderWidth: "base",
   borderStyle: "solid",
@@ -84,7 +84,7 @@ const toolListClass = css({
   color: "gray.900",
 });
 
-const linkClass = css({ color: "text.link" });
+const linkClass = css({ color: "contents.link" });
 
 export function WCAGLevels() {
   return (
@@ -575,7 +575,7 @@ export function WCAGLevels() {
           ratioCardBase,
           css({
             mt: 8,
-            bg: "bg.canvas",
+            bg: "bg.primary",
             borderColor: "green.500",
           })
         )}

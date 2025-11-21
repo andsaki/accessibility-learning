@@ -32,6 +32,8 @@ export default defineConfig({
 
   // Theme conditions
   conditions: {
+    // ThemeProviderが付与するdata-theme属性に従って手動切替やlocalStorage保存を反映する。
+    // OS依存の@media (prefers-color-scheme: …)だけだとボタン操作で強制切替できないため採用しない。
     light: '[data-theme=light] &',
     dark: '[data-theme=dark] &',
   },
@@ -65,7 +67,7 @@ export default defineConfig({
         // panda-config/types/semanticTokens.ts で定義されています
         //
         // 嬉しいポイント:
-        // - VSCodeで bg.canvas, text.primary などの補完が効く
+        // - VSCodeで bg.primary, contents.primary などの補完が効く
         // - typoを防げる（存在しないトークン名はエラー）
         // - ダークモード対応の定義漏れを防げる
         colors: pandaSemanticColors,
@@ -154,8 +156,8 @@ export default defineConfig({
       placeItems: 'center',
       minWidth: '320px',
       minHeight: '100vh',
-      color: 'text.primary',
-      backgroundColor: 'bg.canvas',
+      color: 'contents.primary',
+      backgroundColor: 'bg.primary',
     },
     '#root': {
       width: '100%',
