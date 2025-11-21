@@ -1,6 +1,6 @@
-import { useState, useRef, useEffect } from 'react';
-import type { ReactNode } from 'react';
-import { spacing, colors } from '../design-system/tokens';
+import { useState, useRef, cloneElement, isValidElement } from 'react';
+import type { ReactNode, ReactElement, HTMLAttributes } from 'react';
+import { spacing } from '../design-system/tokens';
 import { primitive } from '../design-system/tokens/colors';
 
 interface TooltipProps {
@@ -17,24 +17,8 @@ export const Tooltip: React.FC<TooltipProps> = ({
   delay = 300,
 }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [isFocusVisible, setIsFocusVisible] = useState(false);
   const timeoutRef = useRef<number | undefined>(undefined);
   const tooltipId = useRef<string>(`tooltip-${Math.random().toString(36).substring(2, 11)}`);
-
-  useEffect(() => {
-    const handleMouseDown = () => setIsFocusVisible(false);
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Tab') setIsFocusVisible(true);
-    };
-
-    window.addEventListener('mousedown', handleMouseDown);
-    window.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      window.removeEventListener('mousedown', handleMouseDown);
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
 
   const showTooltip = () => {
     timeoutRef.current = window.setTimeout(() => {
@@ -125,26 +109,19 @@ export const Tooltip: React.FC<TooltipProps> = ({
     }
   };
 
+  const child = isValidElement(children)
+    ? cloneElement(children as ReactElement<HTMLAttributes<HTMLElement>>, {
+        'aria-describedby': isVisible ? tooltipId.current : undefined,
+        onMouseEnter: showTooltip,
+        onMouseLeave: hideTooltip,
+        onFocus: showTooltip,
+        onBlur: hideTooltip,
+      })
+    : children;
+
   return (
-    <span
-      style={{ position: 'relative', display: 'inline-block' }}
-      onMouseEnter={showTooltip}
-      onMouseLeave={hideTooltip}
-      onFocus={showTooltip}
-      onBlur={hideTooltip}
-    >
-      <span
-        aria-describedby={isVisible ? tooltipId.current : undefined}
-        style={{
-          outline: isFocusVisible ? `2px solid ${colors.border.focus}` : 'none',
-          outlineOffset: '2px',
-          borderRadius: '4px',
-          display: 'inline-block',
-        }}
-        tabIndex={0}
-      >
-        {children}
-      </span>
+    <span style={{ position: 'relative', display: 'inline-block' }}>
+      {child}
       {isVisible && (
         <span
           role="tooltip"

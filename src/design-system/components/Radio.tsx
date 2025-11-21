@@ -76,7 +76,6 @@ export const Radio: React.FC<RadioProps> = ({
           type="radio"
           id={radioId}
           disabled={disabled}
-          aria-invalid={error ? true : undefined}
           aria-describedby={
             error
               ? errorId

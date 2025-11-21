@@ -898,7 +898,7 @@ function ARIAComparisonDemo() {
         code: '<a href="/about">詳しくはこちら</a>',
         element: (
           <a
-            href="#"
+            href="/about"
             onClick={(e) => e.preventDefault()}
             style={{
               color: primitive.blue[700],
@@ -915,7 +915,7 @@ function ARIAComparisonDemo() {
         code: '<a\n  href="/about"\n  aria-label="会社概要について詳しく見る"\n>\n  詳しくはこちら\n</a>',
         element: (
           <a
-            href="#"
+            href="/about"
             onClick={(e) => e.preventDefault()}
             aria-label="会社概要について詳しく見る"
             style={{

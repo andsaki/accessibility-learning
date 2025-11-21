@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { spacing, typography, radii, accessibilityLevels } from '../tokens';
 import { primitive } from '../tokens/colors';
 
@@ -53,6 +53,13 @@ export const Toast: React.FC<ToastProps> = ({
     setTimeout(() => setIsVisible(true), 50);
   }, []);
 
+  const handleClose = useCallback(() => {
+    setIsExiting(true);
+    setTimeout(() => {
+      onClose(id);
+    }, 300); // アニメーション時間と合わせる
+  }, [onClose, id]);
+
   // 自動クローズ
   useEffect(() => {
     if (duration === 0) return;
@@ -62,14 +69,7 @@ export const Toast: React.FC<ToastProps> = ({
     }, duration);
 
     return () => clearTimeout(timer);
-  }, [duration]);
-
-  const handleClose = () => {
-    setIsExiting(true);
-    setTimeout(() => {
-      onClose(id);
-    }, 300); // アニメーション時間と合わせる
-  };
+  }, [duration, handleClose]);
 
   // タイプごとの色
   const typeColors = {

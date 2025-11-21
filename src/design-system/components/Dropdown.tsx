@@ -294,6 +294,14 @@ export const Dropdown: React.FC<DropdownProps> = ({
                 role="option"
                 aria-selected={selectedValue === option.value}
                 onClick={() => !option.disabled && handleSelect(option.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    if (!option.disabled) {
+                      handleSelect(option.value);
+                    }
+                  }
+                }}
                 onMouseEnter={() => setFocusedIndex(index)}
                 style={{
                   padding: `${spacing.scale[2]} ${spacing.scale[3]}`,
