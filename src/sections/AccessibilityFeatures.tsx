@@ -3,21 +3,21 @@ import { css, cx } from "@/styled-system/css";
 const sectionClass = css({
   mb: 12,
   p: 6,
-  bg: "blue.50",
+  bg: "bg.secondary",
   borderWidth: "base",
   borderStyle: "solid",
-  borderColor: "blue.500",
+  borderColor: "border.default",
   rounded: "lg",
   maxW: "full",
   overflowX: "hidden",
   boxSizing: "border-box",
 });
 
-const headingClass = css({ color: "blue.900", mt: 0 });
+const headingClass = css({ color: "contents.primary", mt: 0 });
 
 const listClass = css({
   lineHeight: "relaxed",
-  color: "blue.900",
+  color: "contents.primary",
 });
 
 export function AccessibilityFeatures() {

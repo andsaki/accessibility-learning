@@ -600,16 +600,16 @@ export function ComponentDemos({
         <div className={css({
           mt: 8,
           p: 4,
-          bg: "blue.50",
+          bg: "bg.secondary",
           rounded: "md",
           borderWidth: "thin",
           borderStyle: "solid",
-          borderColor: "blue.200",
+          borderColor: "border.default",
         })}>
-          <h4 className={css({ color: "blue.900", mt: 0 })}>
+          <h4 className={css({ color: "contents.primary", mt: 0 })}>
             💡 Formコンポーネントの特徴
           </h4>
-          <ul className={css({ color: "blue.900", lineHeight: "relaxed" })}>
+          <ul className={css({ color: "contents.primary", lineHeight: "relaxed" })}>
             <li><strong>Zodスキーマ統合</strong>: 型安全なバリデーション</li>
             <li><strong>react-hook-form</strong>: 高パフォーマンスなフォーム管理</li>
             <li><strong>アクセシブルなエラー表示</strong>: aria-invalid, aria-describedby, role="alert"</li>
@@ -714,16 +714,16 @@ export function ComponentDemos({
         <div className={css({
           mt: 8,
           p: 4,
-          bg: "blue.50",
+          bg: "bg.secondary",
           rounded: "md",
           borderWidth: "thin",
           borderStyle: "solid",
-          borderColor: "blue.200",
+          borderColor: "border.default",
         })}>
-          <h4 className={css({ color: "blue.900", mt: 0 })}>
+          <h4 className={css({ color: "contents.primary", mt: 0 })}>
             💡 アコーディオンの特徴
           </h4>
-          <ul className={css({ color: "blue.900", lineHeight: "relaxed" })}>
+          <ul className={css({ color: "contents.primary", lineHeight: "relaxed" })}>
             <li><strong>セマンティックHTML</strong>: ネイティブの&lt;details&gt;/&lt;summary&gt;要素を使用</li>
             <li><strong>キーボード操作</strong>: Tab、Enter、Spaceキーで完全に操作可能</li>
             <li><strong>スクリーンリーダー対応</strong>: 自動的に適切なARIA属性が付与される</li>
@@ -779,16 +779,16 @@ export function ComponentDemos({
         <div className={css({
           mt: 8,
           p: 4,
-          bg: "blue.50",
+          bg: "bg.secondary",
           rounded: "md",
           borderWidth: "thin",
           borderStyle: "solid",
-          borderColor: "blue.200",
+          borderColor: "border.default",
         })}>
-          <h4 className={css({ color: "blue.900", mt: 0 })}>
+          <h4 className={css({ color: "contents.primary", mt: 0 })}>
             💡 Toastの特徴
           </h4>
-          <ul className={css({ color: "blue.900", lineHeight: "relaxed" })}>
+          <ul className={css({ color: "contents.primary", lineHeight: "relaxed" })}>
             <li><strong>4種類のタイプ</strong>: success、error、warning、info</li>
             <li><strong>自動消去</strong>: デフォルト5秒で自動的に閉じる</li>
             <li><strong>スライドアニメーション</strong>: 画面右上からスムーズに表示</li>
@@ -852,16 +852,16 @@ export function ComponentDemos({
         <div className={css({
           mt: 8,
           p: 4,
-          bg: "blue.50",
+          bg: "bg.secondary",
           rounded: "md",
           borderWidth: "thin",
           borderStyle: "solid",
-          borderColor: "blue.200",
+          borderColor: "border.default",
         })}>
-          <h4 className={css({ color: "blue.900", mt: 0 })}>
+          <h4 className={css({ color: "contents.primary", mt: 0 })}>
             💡 Modalの特徴
           </h4>
-          <ul className={css({ color: "blue.900", lineHeight: "relaxed" })}>
+          <ul className={css({ color: "contents.primary", lineHeight: "relaxed" })}>
             <li><strong>role="dialog"</strong>: ダイアログであることを支援技術に伝える</li>
             <li><strong>aria-modal="true"</strong>: モーダルであることを明示</li>
             <li><strong>aria-labelledby</strong>: タイトルとの関連付け</li>
@@ -983,14 +983,14 @@ export function ComponentDemos({
 
           <div className={css({
             p: 4,
-            bg: "blue.50",
+            bg: "bg.secondary",
             rounded: "md",
             borderWidth: "thin",
             borderStyle: "solid",
-            borderColor: "blue.200",
+            borderColor: "border.default",
             mb: 4,
           })}>
-            <Text variant="body" className={css({ color: "blue.900" })}>
+            <Text variant="body" className={css({ color: "contents.primary" })}>
               <strong>WCAG（Web Content Accessibility Guidelines）</strong>は、Webコンテンツをアクセシブルにするための国際的なガイドラインです。
               3つの適合レベル（A、AA、AAA）があり、レベルが上がるほど厳格な基準となります。
             </Text>
@@ -1139,15 +1139,15 @@ export function ComponentDemos({
             </div>
           </div>
 
-          <div className={css({
-            mt: 4,
-            p: 3,
-            bg: "yellow",
-            rounded: "md",
-            borderWidth: "base",
-            borderStyle: "solid",
-            borderColor: "border.default",
-          })}>
+        <div className={css({
+          mt: 4,
+          p: 3,
+          bg: "bg.secondary",
+          rounded: "md",
+          borderWidth: "base",
+          borderStyle: "solid",
+          borderColor: "border.warning",
+        })}>
             <Text variant="body-small" bold className={css({ color: "contents.primary" })}>
               💡 実用的な選び方
             </Text>
@@ -1162,16 +1162,16 @@ export function ComponentDemos({
         <div className={css({
           mt: 8,
           p: 4,
-          bg: "blue.50",
+          bg: "bg.secondary",
           rounded: "md",
           borderWidth: "thin",
           borderStyle: "solid",
-          borderColor: "blue.200",
+          borderColor: "border.default",
         })}>
-          <h4 className={css({ color: "blue.900", mt: 0 })}>
+          <h4 className={css({ color: "contents.primary", mt: 0 })}>
             💡 Textコンポーネントの特徴
           </h4>
-          <ul className={css({ color: "blue.900", lineHeight: "relaxed" })}>
+          <ul className={css({ color: "contents.primary", lineHeight: "relaxed" })}>
             <li><strong>タイポグラフィトークン</strong>: デザインシステムの一貫性を保つ</li>
             <li><strong>セマンティックHTML</strong>: variantに応じて適切なHTML要素を自動選択</li>
             <li><strong>柔軟なカスタマイズ</strong>: as propでHTML要素を上書き可能</li>
@@ -1257,16 +1257,16 @@ export function ComponentDemos({
         <div className={css({
           mt: 8,
           p: 4,
-          bg: "blue.50",
+          bg: "bg.secondary",
           rounded: "md",
           borderWidth: "thin",
           borderStyle: "solid",
-          borderColor: "blue.200",
+          borderColor: "border.default",
         })}>
-          <h4 className={css({ color: "blue.900", mt: 0 })}>
+          <h4 className={css({ color: "contents.primary", mt: 0 })}>
             💡 Breadcrumbsの特徴
           </h4>
-          <ul className={css({ color: "blue.900", lineHeight: "relaxed" })}>
+          <ul className={css({ color: "contents.primary", lineHeight: "relaxed" })}>
             <li><strong>セマンティックHTML</strong>: &lt;nav aria-label="パンくずリスト"&gt;でアクセシブル</li>
             <li><strong>構造化マークアップ</strong>: &lt;ol&gt;と&lt;li&gt;でリスト構造を明示</li>
             <li><strong>aria-current="page"</strong>: 現在のページを支援技術に明示</li>

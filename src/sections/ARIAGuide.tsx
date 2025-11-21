@@ -26,7 +26,7 @@ export const ARIAGuide = () => {
     >
       <h2 className={css({
         marginTop: 0,
-        color: "gray.900",
+        color: "contents.primary",
         fontSize: "2xl",
         fontWeight: 'bold',
         borderBottomWidth: "thick", borderBottomStyle: "solid", borderBottomColor: "pink.500",
@@ -39,7 +39,7 @@ export const ARIAGuide = () => {
         <icons.philosophy.inclusive size={28} color={"pink.600"} strokeWidth={2} />
         ARIAラベルとrole属性ガイド
       </h2>
-      <p className={css({ color: "gray.700", marginBottom: 6 })}>
+      <p className={css({ color: "contents.secondary", marginBottom: 6 })}>
         ARIA（Accessible Rich Internet Applications）は、Webアプリケーションをスクリーンリーダーなどの支援技術に対してアクセシブルにするための仕様です。
         適切なARIA属性を使用することで、視覚障害者やキーボードユーザーに対して、より良いユーザー体験を提供できます。
       </p>
@@ -49,14 +49,14 @@ export const ARIAGuide = () => {
         marginTop: 6,
         marginBottom: 8,
         padding: 6,
-        backgroundColor: "blue.50",
+        backgroundColor: "bg.secondary",
         borderRadius: "lg",
-        borderWidth: "base", borderStyle: "solid", borderColor: "blue.200",
+        borderWidth: "base", borderStyle: "solid", borderColor: "border.default",
       })}>
         <h3 className={css({
           marginTop: 0,
           marginBottom: 4,
-          color: "blue.900",
+          color: "contents.primary",
           fontSize: "xl",
           fontWeight: "semibold",
           display: 'flex',
@@ -70,90 +70,90 @@ export const ARIAGuide = () => {
         <div className={css({ display: 'grid', gap: 4 })}>
           <div className={css({
             padding: 4,
-            backgroundColor: "white",
+            backgroundColor: "bg.primary",
             borderRadius: "md",
-            borderWidth: "thin", borderStyle: "solid", borderColor: "blue.200",
+            borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
           })}>
             <h4 className={css({
               marginTop: 0,
               marginBottom: 2,
-              color: "blue.900",
+              color: "contents.primary",
               fontSize: "base",
               fontWeight: "semibold",
             })}>
               🎭 役割（Role）を伝える
             </h4>
-            <p className={css({ margin: 0, color: "gray.700", fontSize: "sm", lineHeight: "relaxed" })}>
-              要素が何であるかを支援技術に伝えます。例：<code className={css({ backgroundColor: "blue.100", paddingY: 1, paddingX: 2, borderRadius: "sm" })}>role="button"</code>、
-              <code className={css({ backgroundColor: "blue.100", paddingY: 1, paddingX: 2, borderRadius: "sm" })}>role="navigation"</code>など。
+            <p className={css({ margin: 0, color: "contents.secondary", fontSize: "sm", lineHeight: "relaxed" })}>
+              要素が何であるかを支援技術に伝えます。例：<code className={css({ backgroundColor: "bg.tertiary", paddingY: 1, paddingX: 2, borderRadius: "sm" })}>role="button"</code>、
+              <code className={css({ backgroundColor: "bg.tertiary", paddingY: 1, paddingX: 2, borderRadius: "sm" })}>role="navigation"</code>など。
               HTMLのセマンティック要素（<code>&lt;button&gt;</code>、<code>&lt;nav&gt;</code>）を使えば、roleは自動的に付与されます。
             </p>
           </div>
 
           <div className={css({
             padding: 4,
-            backgroundColor: "white",
+            backgroundColor: "bg.primary",
             borderRadius: "md",
-            borderWidth: "thin", borderStyle: "solid", borderColor: "blue.200",
+            borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
           })}>
             <h4 className={css({
               marginTop: 0,
               marginBottom: 2,
-              color: "blue.900",
+              color: "contents.primary",
               fontSize: "base",
               fontWeight: "semibold",
             })}>
               🏷️ 名前（Name）をつける
             </h4>
-            <p className={css({ margin: 0, color: "gray.700", fontSize: "sm", lineHeight: "relaxed" })}>
-              要素に読み上げられる名前を与えます。<code className={css({ backgroundColor: "blue.100", paddingY: 1, paddingX: 2, borderRadius: "sm" })}>aria-label</code>、
-              <code className={css({ backgroundColor: "blue.100", paddingY: 1, paddingX: 2, borderRadius: "sm" })}>aria-labelledby</code>などで指定します。
+            <p className={css({ margin: 0, color: "contents.secondary", fontSize: "sm", lineHeight: "relaxed" })}>
+              要素に読み上げられる名前を与えます。<code className={css({ backgroundColor: "bg.tertiary", paddingY: 1, paddingX: 2, borderRadius: "sm" })}>aria-label</code>、
+              <code className={css({ backgroundColor: "bg.tertiary", paddingY: 1, paddingX: 2, borderRadius: "sm" })}>aria-labelledby</code>などで指定します。
               「閉じるボタン」「メニューを開く」など、要素の目的を明確に伝えます。
             </p>
           </div>
 
           <div className={css({
             padding: 4,
-            backgroundColor: "white",
+            backgroundColor: "bg.primary",
             borderRadius: "md",
-            borderWidth: "thin", borderStyle: "solid", borderColor: "blue.200",
+            borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
           })}>
             <h4 className={css({
               marginTop: 0,
               marginBottom: 2,
-              color: "blue.900",
+              color: "contents.primary",
               fontSize: "base",
               fontWeight: "semibold",
             })}>
               📊 状態（State）を伝える
             </h4>
-            <p className={css({ margin: 0, color: "gray.700", fontSize: "sm", lineHeight: "relaxed" })}>
-              要素の現在の状態を伝えます。<code className={css({ backgroundColor: "blue.100", paddingY: 1, paddingX: 2, borderRadius: "sm" })}>aria-expanded="true"</code>（展開中）、
-              <code className={css({ backgroundColor: "blue.100", paddingY: 1, paddingX: 2, borderRadius: "sm" })}>aria-checked="false"</code>（未チェック）、
-              <code className={css({ backgroundColor: "blue.100", paddingY: 1, paddingX: 2, borderRadius: "sm" })}>aria-disabled="true"</code>（無効）など、
+            <p className={css({ margin: 0, color: "contents.secondary", fontSize: "sm", lineHeight: "relaxed" })}>
+              要素の現在の状態を伝えます。<code className={css({ backgroundColor: "bg.tertiary", paddingY: 1, paddingX: 2, borderRadius: "sm" })}>aria-expanded="true"</code>（展開中）、
+              <code className={css({ backgroundColor: "bg.tertiary", paddingY: 1, paddingX: 2, borderRadius: "sm" })}>aria-checked="false"</code>（未チェック）、
+              <code className={css({ backgroundColor: "bg.tertiary", paddingY: 1, paddingX: 2, borderRadius: "sm" })}>aria-disabled="true"</code>（無効）など、
               動的に変化する状態を支援技術に伝えます。
             </p>
           </div>
 
           <div className={css({
             padding: 4,
-            backgroundColor: "white",
+            backgroundColor: "bg.primary",
             borderRadius: "md",
-            borderWidth: "thin", borderStyle: "solid", borderColor: "blue.200",
+            borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
           })}>
             <h4 className={css({
               marginTop: 0,
               marginBottom: 2,
-              color: "blue.900",
+              color: "contents.primary",
               fontSize: "base",
               fontWeight: "semibold",
             })}>
               🔗 関係性（Relationship）を示す
             </h4>
-            <p className={css({ margin: 0, color: "gray.700", fontSize: "sm", lineHeight: "relaxed" })}>
-              要素間の関係を伝えます。<code className={css({ backgroundColor: "blue.100", paddingY: 1, paddingX: 2, borderRadius: "sm" })}>aria-describedby</code>（説明要素）、
-              <code className={css({ backgroundColor: "blue.100", paddingY: 1, paddingX: 2, borderRadius: "sm" })}>aria-controls</code>（制御する要素）、
-              <code className={css({ backgroundColor: "blue.100", paddingY: 1, paddingX: 2, borderRadius: "sm" })}>aria-owns</code>（所有する要素）など、
+            <p className={css({ margin: 0, color: "contents.secondary", fontSize: "sm", lineHeight: "relaxed" })}>
+              要素間の関係を伝えます。<code className={css({ backgroundColor: "bg.tertiary", paddingY: 1, paddingX: 2, borderRadius: "sm" })}>aria-describedby</code>（説明要素）、
+              <code className={css({ backgroundColor: "bg.tertiary", paddingY: 1, paddingX: 2, borderRadius: "sm" })}>aria-controls</code>（制御する要素）、
+              <code className={css({ backgroundColor: "bg.tertiary", paddingY: 1, paddingX: 2, borderRadius: "sm" })}>aria-owns</code>（所有する要素）など、
               要素同士のつながりを明確にします。
             </p>
           </div>
@@ -162,11 +162,11 @@ export const ARIAGuide = () => {
         <div className={css({
           marginTop: 4,
           padding: 3,
-          backgroundColor: "yellow",
-          borderWidth: "base", borderStyle: "solid", borderColor: "black",
+          backgroundColor: "bg.secondary",
+          borderWidth: "base", borderStyle: "solid", borderColor: "border.warning",
           borderRadius: "md",
           fontSize: "sm",
-          color: "gray.900",
+          color: "contents.primary",
         })}>
           <strong>💡 重要な原則:</strong> まずは<strong>セマンティックHTML</strong>（<code>&lt;button&gt;</code>、<code>&lt;nav&gt;</code>、<code>&lt;main&gt;</code>など）を使いましょう。
           ARIAは、HTMLの機能では実現できない場合の「補完」として使用します。
@@ -186,15 +186,15 @@ export const ARIAGuide = () => {
           {/* aria-label */}
           <div className={css({
             padding: 4,
-            backgroundColor: "pink.50",
+            backgroundColor: "bg.secondary",
             borderRadius: "md",
-            borderWidth: "thin", borderStyle: "solid", borderColor: "pink.200",
+            borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
             minWidth: 0
           })}>
-            <h4 className={css({ marginTop: 0, marginBottom: 2, color: "pink.900" })}>
-              <code className={css({ backgroundColor: "pink.100", paddingY: 2, paddingX: 4, borderRadius: "sm" })}>aria-label</code>
+            <h4 className={css({ marginTop: 0, marginBottom: 2, color: "contents.primary" })}>
+              <code className={css({ backgroundColor: "bg.tertiary", paddingY: 2, paddingX: 4, borderRadius: "sm" })}>aria-label</code>
             </h4>
-            <p className={css({ color: "gray.700", marginTop: 0 })}>
+            <p className={css({ color: "contents.secondary", marginTop: 0 })}>
               要素に対して、スクリーンリーダーが読み上げるラベルを指定します。視覚的なテキストがない要素に使用します。
             </p>
             <div className={css({ marginTop: 2 })}>
@@ -214,7 +214,7 @@ export const ARIAGuide = () => {
                 size="sm"
               >
               </Button>
-              <span className={css({ fontSize: "sm", color: "gray.600" })}>
+              <span className={css({ fontSize: "sm", color: "contents.tertiary" })}>
                 ← アイコンのみのボタンに aria-label を使用
               </span>
             </div>
@@ -223,15 +223,15 @@ export const ARIAGuide = () => {
           {/* aria-labelledby */}
           <div className={css({
             padding: 4,
-            backgroundColor: "blue.50",
+            backgroundColor: "bg.secondary",
             borderRadius: "md",
-            borderWidth: "thin", borderStyle: "solid", borderColor: "blue.200",
+            borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
             minWidth: 0
           })}>
-            <h4 className={css({ marginTop: 0, marginBottom: 2, color: "blue.900" })}>
-              <code className={css({ backgroundColor: "blue.100", paddingY: 2, paddingX: 4, borderRadius: "sm" })}>aria-labelledby</code>
+            <h4 className={css({ marginTop: 0, marginBottom: 2, color: "contents.primary" })}>
+              <code className={css({ backgroundColor: "bg.tertiary", paddingY: 2, paddingX: 4, borderRadius: "sm" })}>aria-labelledby</code>
             </h4>
-            <p className={css({ color: "gray.700", marginTop: 0 })}>
+            <p className={css({ color: "contents.secondary", marginTop: 0 })}>
               他の要素のIDを参照して、その要素のテキストをラベルとして使用します。複数のIDをスペース区切りで指定できます。
             </p>
             <div className={css({ marginTop: 2 })}>
@@ -248,15 +248,15 @@ export const ARIAGuide = () => {
           {/* aria-describedby */}
           <div className={css({
             padding: 4,
-            backgroundColor: "green.50",
+            backgroundColor: "bg.secondary",
             borderRadius: "md",
-            borderWidth: "thin", borderStyle: "solid", borderColor: "green.200",
+            borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
             minWidth: 0
           })}>
-            <h4 className={css({ marginTop: 0, marginBottom: 2, color: "green.900" })}>
-              <code className={css({ backgroundColor: "green.100", paddingY: 2, paddingX: 4, borderRadius: "sm" })}>aria-describedby</code>
+            <h4 className={css({ marginTop: 0, marginBottom: 2, color: "contents.primary" })}>
+              <code className={css({ backgroundColor: "bg.tertiary", paddingY: 2, paddingX: 4, borderRadius: "sm" })}>aria-describedby</code>
             </h4>
-            <p className={css({ color: "gray.700", marginTop: 0 })}>
+            <p className={css({ color: "contents.secondary", marginTop: 0 })}>
               要素の説明や補足情報を提供する他の要素のIDを参照します。エラーメッセージやヒントテキストに使用します。
             </p>
             <div className={css({ marginTop: 2 })}>
@@ -282,7 +282,7 @@ export const ARIAGuide = () => {
                 display: 'block',
                 marginTop: 1,
                 fontSize: "sm",
-                color: "gray.600"
+                color: "contents.tertiary"
               })}>
                 8文字以上、英数字を含む
               </span>
@@ -292,72 +292,72 @@ export const ARIAGuide = () => {
           {/* aria-current */}
           <div className={css({
             padding: 4,
-            backgroundColor: "orange.50",
+            backgroundColor: "bg.secondary",
             borderRadius: "md",
-            borderWidth: "thin", borderStyle: "solid", borderColor: "orange.200",
+            borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
             minWidth: 0
           })}>
-            <h4 className={css({ marginTop: 0, marginBottom: 2, color: "orange.900" })}>
-              <code className={css({ backgroundColor: "orange.100", paddingY: 2, paddingX: 4, borderRadius: "sm" })}>aria-current</code>
+            <h4 className={css({ marginTop: 0, marginBottom: 2, color: "contents.primary" })}>
+              <code className={css({ backgroundColor: "bg.tertiary", paddingY: 2, paddingX: 4, borderRadius: "sm" })}>aria-current</code>
             </h4>
-            <p className={css({ color: "gray.700", marginTop: 0 })}>
+            <p className={css({ color: "contents.secondary", marginTop: 0 })}>
               現在の項目を示します。ナビゲーションやパンくずリストで使用します。
             </p>
 
             <div className={css({
               marginTop: 4,
               padding: 3,
-              backgroundColor: "white",
+              backgroundColor: "bg.primary",
               borderRadius: "base",
-              borderWidth: "thin", borderStyle: "solid", borderColor: "orange.200",
+              borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
             })}>
-              <h5 className={css({ marginTop: 0, marginBottom: 2, color: "orange.900", fontSize: "base" })}>
+              <h5 className={css({ marginTop: 0, marginBottom: 2, color: "contents.primary", fontSize: "base" })}>
                 📋 aria-current の値の種類
               </h5>
               <div className={css({ overflowX: 'auto' })}>
                 <table className={css({ width: '100%', borderCollapse: 'collapse', fontSize: "sm" })}>
                 <thead>
-                  <tr className={css({ borderBottomWidth: "base", borderBottomStyle: "solid", borderBottomColor: "orange.200" })}>
-                    <th className={css({ textAlign: 'left', padding: 2, color: "orange.900" })}>値</th>
-                    <th className={css({ textAlign: 'left', padding: 2, color: "orange.900" })}>使用場面</th>
-                    <th className={css({ textAlign: 'left', padding: 2, color: "orange.900" })}>例</th>
+                  <tr className={css({ borderBottomWidth: "base", borderBottomStyle: "solid", borderBottomColor: "border.default" })}>
+                    <th className={css({ textAlign: 'left', padding: 2, color: "contents.primary" })}>値</th>
+                    <th className={css({ textAlign: 'left', padding: 2, color: "contents.primary" })}>使用場面</th>
+                    <th className={css({ textAlign: 'left', padding: 2, color: "contents.primary" })}>例</th>
                   </tr>
                 </thead>
                 <tbody>
-                  <tr className={css({ borderBottomWidth: "thin", borderBottomStyle: "solid", borderBottomColor: "orange.100" })}>
-                    <td className={css({ padding: 2, fontFamily: 'monospace', color: "orange.800" })}>page</td>
-                    <td className={css({ padding: 2, color: "gray.700" })}>現在表示中のページ</td>
-                    <td className={css({ padding: 2, color: "gray.600", fontSize: "xs" })}>パンくずリスト、ページネーション</td>
+                  <tr className={css({ borderBottomWidth: "thin", borderBottomStyle: "solid", borderBottomColor: "bg.tertiary" })}>
+                    <td className={css({ padding: 2, fontFamily: 'monospace', color: "contents.primary" })}>page</td>
+                    <td className={css({ padding: 2, color: "contents.secondary" })}>現在表示中のページ</td>
+                    <td className={css({ padding: 2, color: "contents.tertiary", fontSize: "xs" })}>パンくずリスト、ページネーション</td>
                   </tr>
-                  <tr className={css({ borderBottomWidth: "thin", borderBottomStyle: "solid", borderBottomColor: "orange.100" })}>
-                    <td className={css({ padding: 2, fontFamily: 'monospace', color: "orange.800" })}>step</td>
-                    <td className={css({ padding: 2, color: "gray.700" })}>ステップ形式の現在位置</td>
-                    <td className={css({ padding: 2, color: "gray.600", fontSize: "xs" })}>フォームウィザード、チュートリアル</td>
+                  <tr className={css({ borderBottomWidth: "thin", borderBottomStyle: "solid", borderBottomColor: "bg.tertiary" })}>
+                    <td className={css({ padding: 2, fontFamily: 'monospace', color: "contents.primary" })}>step</td>
+                    <td className={css({ padding: 2, color: "contents.secondary" })}>ステップ形式の現在位置</td>
+                    <td className={css({ padding: 2, color: "contents.tertiary", fontSize: "xs" })}>フォームウィザード、チュートリアル</td>
                   </tr>
-                  <tr className={css({ borderBottomWidth: "thin", borderBottomStyle: "solid", borderBottomColor: "orange.100" })}>
-                    <td className={css({ padding: 2, fontFamily: 'monospace', color: "orange.800" })}>location</td>
-                    <td className={css({ padding: 2, color: "gray.700" })}>視覚的にハイライトされた場所</td>
-                    <td className={css({ padding: 2, color: "gray.600", fontSize: "xs" })}>フローチャート、サイトマップ</td>
+                  <tr className={css({ borderBottomWidth: "thin", borderBottomStyle: "solid", borderBottomColor: "bg.tertiary" })}>
+                    <td className={css({ padding: 2, fontFamily: 'monospace', color: "contents.primary" })}>location</td>
+                    <td className={css({ padding: 2, color: "contents.secondary" })}>視覚的にハイライトされた場所</td>
+                    <td className={css({ padding: 2, color: "contents.tertiary", fontSize: "xs" })}>フローチャート、サイトマップ</td>
                   </tr>
-                  <tr className={css({ borderBottomWidth: "thin", borderBottomStyle: "solid", borderBottomColor: "orange.100" })}>
-                    <td className={css({ padding: 2, fontFamily: 'monospace', color: "orange.800" })}>date</td>
-                    <td className={css({ padding: 2, color: "gray.700" })}>現在選択中の日付</td>
-                    <td className={css({ padding: 2, color: "gray.600", fontSize: "xs" })}>カレンダー、日付ピッカー</td>
+                  <tr className={css({ borderBottomWidth: "thin", borderBottomStyle: "solid", borderBottomColor: "bg.tertiary" })}>
+                    <td className={css({ padding: 2, fontFamily: 'monospace', color: "contents.primary" })}>date</td>
+                    <td className={css({ padding: 2, color: "contents.secondary" })}>現在選択中の日付</td>
+                    <td className={css({ padding: 2, color: "contents.tertiary", fontSize: "xs" })}>カレンダー、日付ピッカー</td>
                   </tr>
-                  <tr className={css({ borderBottomWidth: "thin", borderBottomStyle: "solid", borderBottomColor: "orange.100" })}>
-                    <td className={css({ padding: 2, fontFamily: 'monospace', color: "orange.800" })}>time</td>
-                    <td className={css({ padding: 2, color: "gray.700" })}>現在選択中の時刻</td>
-                    <td className={css({ padding: 2, color: "gray.600", fontSize: "xs" })}>タイムピッカー、スケジュール</td>
+                  <tr className={css({ borderBottomWidth: "thin", borderBottomStyle: "solid", borderBottomColor: "bg.tertiary" })}>
+                    <td className={css({ padding: 2, fontFamily: 'monospace', color: "contents.primary" })}>time</td>
+                    <td className={css({ padding: 2, color: "contents.secondary" })}>現在選択中の時刻</td>
+                    <td className={css({ padding: 2, color: "contents.tertiary", fontSize: "xs" })}>タイムピッカー、スケジュール</td>
                   </tr>
-                  <tr className={css({ borderBottomWidth: "thin", borderBottomStyle: "solid", borderBottomColor: "orange.100" })}>
-                    <td className={css({ padding: 2, fontFamily: 'monospace', color: "orange.800" })}>true</td>
-                    <td className={css({ padding: 2, color: "gray.700" })}>上記に当てはまらない現在項目</td>
-                    <td className={css({ padding: 2, color: "gray.600", fontSize: "xs" })}>汎用的な「現在」の表示</td>
+                  <tr className={css({ borderBottomWidth: "thin", borderBottomStyle: "solid", borderBottomColor: "bg.tertiary" })}>
+                    <td className={css({ padding: 2, fontFamily: 'monospace', color: "contents.primary" })}>true</td>
+                    <td className={css({ padding: 2, color: "contents.secondary" })}>上記に当てはまらない現在項目</td>
+                    <td className={css({ padding: 2, color: "contents.tertiary", fontSize: "xs" })}>汎用的な「現在」の表示</td>
                   </tr>
                   <tr>
-                    <td className={css({ padding: 2, fontFamily: 'monospace', color: "orange.800" })}>false</td>
-                    <td className={css({ padding: 2, color: "gray.700" })}>現在項目ではない（デフォルト）</td>
-                    <td className={css({ padding: 2, color: "gray.600", fontSize: "xs" })}>通常は省略可能</td>
+                    <td className={css({ padding: 2, fontFamily: 'monospace', color: "contents.primary" })}>false</td>
+                    <td className={css({ padding: 2, color: "contents.secondary" })}>現在項目ではない（デフォルト）</td>
+                    <td className={css({ padding: 2, color: "contents.tertiary", fontSize: "xs" })}>通常は省略可能</td>
                   </tr>
                 </tbody>
               </table>
@@ -365,13 +365,13 @@ export const ARIAGuide = () => {
             </div>
 
             <div className={css({
-              backgroundColor: "white",
+              backgroundColor: "bg.primary",
               padding: 3,
               borderRadius: "base",
               marginTop: 3,
-              borderWidth: "thin", borderStyle: "solid", borderColor: "orange.200",
+              borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
             })}>
-              <h5 className={css({ marginTop: 0, marginBottom: 2, color: "orange.900", fontSize: "base" })}>
+              <h5 className={css({ marginTop: 0, marginBottom: 2, color: "contents.primary", fontSize: "base" })}>
                 💡 使用例：パンくずリスト
               </h5>
               <CodeBlock
@@ -402,15 +402,15 @@ export const ARIAGuide = () => {
           {/* aria-expanded */}
           <div className={css({
             padding: 4,
-            backgroundColor: "pink.50",
+            backgroundColor: "bg.secondary",
             borderRadius: "md",
-            borderWidth: "thin", borderStyle: "solid", borderColor: "pink.200",
+            borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
             minWidth: 0
           })}>
-            <h4 className={css({ marginTop: 0, marginBottom: 2, color: "pink.900" })}>
-              <code className={css({ backgroundColor: "pink.100", paddingY: 2, paddingX: 4, borderRadius: "sm" })}>aria-expanded</code>
+            <h4 className={css({ marginTop: 0, marginBottom: 2, color: "contents.primary" })}>
+              <code className={css({ backgroundColor: "bg.tertiary", paddingY: 2, paddingX: 4, borderRadius: "sm" })}>aria-expanded</code>
             </h4>
-            <p className={css({ color: "gray.700", marginTop: 0 })}>
+            <p className={css({ color: "contents.secondary", marginTop: 0 })}>
               要素が展開されているか折りたたまれているかを示します。アコーディオンやドロップダウンメニューで使用します。
             </p>
             <div className={css({ marginTop: 2 })}>
@@ -438,15 +438,15 @@ export const ARIAGuide = () => {
           {/* aria-hidden */}
           <div className={css({
             padding: 4,
-            backgroundColor: "gray.100",
+            backgroundColor: "bg.tertiary",
             borderRadius: "md",
-            borderWidth: "thin", borderStyle: "solid", borderColor: "gray.300",
+            borderWidth: "thin", borderStyle: "solid", borderColor: "border.subtle",
             minWidth: 0
           })}>
-            <h4 className={css({ marginTop: 0, marginBottom: 2, color: "gray.900" })}>
-              <code className={css({ backgroundColor: "gray.200", paddingY: 2, paddingX: 4, borderRadius: "sm" })}>aria-hidden</code>
+            <h4 className={css({ marginTop: 0, marginBottom: 2, color: "contents.primary" })}>
+              <code className={css({ backgroundColor: "bg.tertiary", paddingY: 2, paddingX: 4, borderRadius: "sm" })}>aria-hidden</code>
             </h4>
-            <p className={css({ color: "gray.700", marginTop: 0 })}>
+            <p className={css({ color: "contents.secondary", marginTop: 0 })}>
               要素をスクリーンリーダーから隠します。装飾的なアイコンやSVGに使用します。
             </p>
             <div className={css({ marginTop: 2 })}>
@@ -467,14 +467,14 @@ export const ARIAGuide = () => {
 
         <div className={css({
           padding: 4,
-          backgroundColor: "pink.50",
+          backgroundColor: "bg.secondary",
           borderRadius: "md",
-          borderWidth: "thin", borderStyle: "solid", borderColor: "pink.200",
+          borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
         })}>
-          <h4 className={css({ marginTop: 0, marginBottom: 2, color: "pink.900" })}>
-            <code className={css({ backgroundColor: "pink.100", paddingY: 2, paddingX: 4, borderRadius: "sm" })}>role="tooltip"</code>
+          <h4 className={css({ marginTop: 0, marginBottom: 2, color: "contents.primary" })}>
+            <code className={css({ backgroundColor: "bg.tertiary", paddingY: 2, paddingX: 4, borderRadius: "sm" })}>role="tooltip"</code>
           </h4>
-          <p className={css({ color: "gray.700", marginTop: 0 })}>
+          <p className={css({ color: "contents.secondary", marginTop: 0 })}>
             ツールチップは、要素に関する補足情報を提供するポップアップです。aria-describedby と組み合わせて使用します。
           </p>
 
@@ -501,11 +501,11 @@ export const ARIAGuide = () => {
           <div className={css({
             marginTop: 4,
             padding: 3,
-            backgroundColor: "white",
+            backgroundColor: "bg.primary",
             borderRadius: "base",
-            borderWidth: "thin", borderStyle: "solid", borderColor: "pink.200",
+            borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
           })}>
-            <h5 className={css({ marginTop: 0, marginBottom: 3, color: "pink.900", fontSize: "base" })}>
+            <h5 className={css({ marginTop: 0, marginBottom: 3, color: "contents.primary", fontSize: "base" })}>
               🎨 実例
             </h5>
             <div className={css({ display: 'flex', gap: 4, flexWrap: 'wrap', alignItems: 'center' })}>
@@ -529,8 +529,8 @@ export const ARIAGuide = () => {
                   width: '24px',
                   height: '24px',
                   borderRadius: '50%',
-                  backgroundColor: "pink.100",
-                  color: "pink.700",
+                  backgroundColor: "bg.tertiary",
+                  color: "contents.secondary",
                   fontSize: "sm",
                   fontWeight: 'bold',
                   cursor: 'help',
@@ -545,14 +545,14 @@ export const ARIAGuide = () => {
           <div className={css({
             marginTop: 3,
             padding: 3,
-            backgroundColor: "yellow",
+            backgroundColor: "bg.secondary",
             borderRadius: "base",
-            borderWidth: "base", borderStyle: "solid", borderColor: "black",
+            borderWidth: "base", borderStyle: "solid", borderColor: "border.warning",
           })}>
-            <h5 className={css({ marginTop: 0, marginBottom: 2, color: "gray.900", fontSize: "base" })}>
+            <h5 className={css({ marginTop: 0, marginBottom: 2, color: "contents.primary", fontSize: "base" })}>
               ⚠️ ツールチップ vs タイトル属性
             </h5>
-            <p className={css({ color: "gray.900", margin: 0, lineHeight: "relaxed" })}>
+            <p className={css({ color: "contents.primary", margin: 0, lineHeight: "relaxed" })}>
               HTML の title 属性はアクセシビリティの観点から推奨されません。キーボードユーザーには利用できず、タッチデバイスでは表示されないためです。
               代わりに、適切に実装された aria-describedby と role="tooltip" を使用してください。
             </p>
@@ -570,14 +570,14 @@ export const ARIAGuide = () => {
           {/* role="button" */}
           <div className={css({
             padding: 4,
-            backgroundColor: "blue.50",
+            backgroundColor: "bg.secondary",
             borderRadius: "md",
-            borderWidth: "thin", borderStyle: "solid", borderColor: "blue.200",
+            borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
           })}>
-            <h4 className={css({ marginTop: 0, marginBottom: 2, color: "blue.900" })}>
-              <code className={css({ backgroundColor: "blue.100", paddingY: 2, paddingX: 4, borderRadius: "sm" })}>role="button"</code>
+            <h4 className={css({ marginTop: 0, marginBottom: 2, color: "contents.primary" })}>
+              <code className={css({ backgroundColor: "bg.tertiary", paddingY: 2, paddingX: 4, borderRadius: "sm" })}>role="button"</code>
             </h4>
-            <p className={css({ color: "gray.700", marginTop: 0 })}>
+            <p className={css({ color: "contents.secondary", marginTop: 0 })}>
               div や span などの要素をボタンとして扱います。可能な限り &lt;button&gt; 要素を使用してください。
             </p>
             <div className={css({ marginTop: 2 })}>
@@ -597,14 +597,14 @@ export const ARIAGuide = () => {
           {/* role="dialog" */}
           <div className={css({
             padding: 4,
-            backgroundColor: "pink.50",
+            backgroundColor: "bg.secondary",
             borderRadius: "md",
-            borderWidth: "thin", borderStyle: "solid", borderColor: "pink.200",
+            borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
           })}>
-            <h4 className={css({ marginTop: 0, marginBottom: 2, color: "pink.900" })}>
-              <code className={css({ backgroundColor: "pink.100", paddingY: 2, paddingX: 4, borderRadius: "sm" })}>role="dialog"</code>
+            <h4 className={css({ marginTop: 0, marginBottom: 2, color: "contents.primary" })}>
+              <code className={css({ backgroundColor: "bg.tertiary", paddingY: 2, paddingX: 4, borderRadius: "sm" })}>role="dialog"</code>
             </h4>
-            <p className={css({ color: "gray.700", marginTop: 0 })}>
+            <p className={css({ color: "contents.secondary", marginTop: 0 })}>
               モーダルダイアログを示します。aria-labelledby または aria-label と組み合わせて使用します。
             </p>
 
@@ -652,10 +652,10 @@ export const ARIAGuide = () => {
                   </>
                 }
               >
-                <p className={css({ margin: 0, color: "gray.700" })}>
+                <p className={css({ margin: 0, color: "contents.secondary" })}>
                   このモーダルは以下のアクセシビリティ機能を実装しています：
                 </p>
-                <ul className={css({ color: "gray.700", lineHeight: "relaxed" })}>
+                <ul className={css({ color: "contents.secondary", lineHeight: "relaxed" })}>
                   <li>フォーカストラップ（Tabキーでモーダル内を循環）</li>
                   <li>Escキーで閉じる</li>
                   <li>背景スクロール防止</li>
@@ -669,14 +669,14 @@ export const ARIAGuide = () => {
           {/* role="navigation" */}
           <div className={css({
             padding: 4,
-            backgroundColor: "green.50",
+            backgroundColor: "bg.secondary",
             borderRadius: "md",
-            borderWidth: "thin", borderStyle: "solid", borderColor: "green.200",
+            borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
           })}>
-            <h4 className={css({ marginTop: 0, marginBottom: 2, color: "green.900" })}>
-              <code className={css({ backgroundColor: "green.100", paddingY: 2, paddingX: 4, borderRadius: "sm" })}>role="navigation"</code>
+            <h4 className={css({ marginTop: 0, marginBottom: 2, color: "contents.primary" })}>
+              <code className={css({ backgroundColor: "bg.tertiary", paddingY: 2, paddingX: 4, borderRadius: "sm" })}>role="navigation"</code>
             </h4>
-            <p className={css({ color: "gray.700", marginTop: 0 })}>
+            <p className={css({ color: "contents.secondary", marginTop: 0 })}>
               ナビゲーションリンクのグループを示します。&lt;nav&gt; 要素を使用すれば、暗黙的にこのroleが付与されます。
             </p>
             <div className={css({ marginTop: 2 })}>
@@ -700,14 +700,14 @@ export const ARIAGuide = () => {
           {/* role="alert" */}
           <div className={css({
             padding: 4,
-            backgroundColor: "red.50",
+            backgroundColor: "bg.secondary",
             borderRadius: "md",
-            borderWidth: "thin", borderStyle: "solid", borderColor: "red.200",
+            borderWidth: "thin", borderStyle: "solid", borderColor: "border.error",
           })}>
-            <h4 className={css({ marginTop: 0, marginBottom: 2, color: "red.900" })}>
-              <code className={css({ backgroundColor: "red.100", paddingY: 2, paddingX: 4, borderRadius: "sm" })}>role="alert"</code>
+            <h4 className={css({ marginTop: 0, marginBottom: 2, color: "contents.primary" })}>
+              <code className={css({ backgroundColor: "bg.tertiary", paddingY: 2, paddingX: 4, borderRadius: "sm" })}>role="alert"</code>
             </h4>
-            <p className={css({ color: "gray.700", marginTop: 0 })}>
+            <p className={css({ color: "contents.secondary", marginTop: 0 })}>
               重要なメッセージを即座にスクリーンリーダーに通知します。エラーメッセージや警告に使用します。
             </p>
             <div className={css({ marginTop: 2 })}>
@@ -725,14 +725,14 @@ export const ARIAGuide = () => {
       <div className={css({
         marginTop: 8,
         padding: 4,
-        backgroundColor: "yellow",
+        backgroundColor: "bg.secondary",
         borderRadius: "md",
-        borderWidth: "base", borderStyle: "solid", borderColor: "black",
+        borderWidth: "base", borderStyle: "solid", borderColor: "border.default",
       })}>
-        <h4 className={css({ color: "gray.900", marginTop: 0 })}>
+        <h4 className={css({ color: "contents.primary", marginTop: 0 })}>
           💡 ARIAの第一原則
         </h4>
-        <ul className={css({ color: "gray.900", lineHeight: "relaxed" })}>
+        <ul className={css({ color: "contents.primary", lineHeight: "relaxed", mb: 0 })}>
           <li><strong>セマンティックHTMLを優先する</strong>: 可能な限り、適切なHTML要素を使用してください</li>
           <li><strong>ARIAは最後の手段</strong>: ネイティブHTML要素で実現できない場合のみARIAを使用</li>
           <li><strong>不要なARIAは追加しない</strong>: &lt;button&gt; に role="button" は不要です</li>
@@ -746,7 +746,7 @@ export const ARIAGuide = () => {
           className={css({
             fontSize: "xl",
             fontWeight: "semibold",
-            color: "pink.700",
+            color: "contents.secondary",
             marginBottom: 4,
             display: "flex",
             alignItems: "center",
@@ -772,14 +772,14 @@ export const ARIAGuide = () => {
       <div className={css({
         marginTop: 6,
         padding: 4,
-        backgroundColor: "blue.50",
+        backgroundColor: "bg.secondary",
         borderRadius: "md",
-        borderWidth: "thin", borderStyle: "solid", borderColor: "blue.200",
+        borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
       })}>
-        <h4 className={css({ color: "blue.900", marginTop: 0 })}>
+        <h4 className={css({ color: "contents.primary", marginTop: 0 })}>
           📚 このデザインシステムで使用しているARIA属性
         </h4>
-        <ul className={css({ color: "blue.900", lineHeight: "relaxed" })}>
+        <ul className={css({ color: "contents.primary", lineHeight: "relaxed" })}>
           <li><strong>Button</strong>: aria-busy (ローディング状態)</li>
           <li><strong>Input</strong>: aria-invalid, aria-describedby (エラー表示)</li>
           <li><strong>Modal</strong>: role="dialog", aria-modal, aria-labelledby</li>
@@ -805,11 +805,11 @@ function ARIAComparisonDemo() {
           <button
             className={css({
               padding: 2,
-              borderWidth: "thin", borderStyle: "solid", borderColor: "gray.300",
+              borderWidth: "thin", borderStyle: "solid", borderColor: "border.subtle",
               borderRadius: "md",
-              backgroundColor: "white",
+              backgroundColor: "bg.primary",
               cursor: "pointer",
-              color: "gray.900",
+              color: "contents.primary",
               fontSize: "lg",
             })}
           >
@@ -826,11 +826,11 @@ function ARIAComparisonDemo() {
             aria-label="閉じる"
             className={css({
               padding: 2,
-              borderWidth: "thin", borderStyle: "solid", borderColor: "gray.300",
+              borderWidth: "thin", borderStyle: "solid", borderColor: "border.subtle",
               borderRadius: "md",
-              backgroundColor: "white",
+              backgroundColor: "bg.primary",
               cursor: "pointer",
-              color: "gray.900",
+              color: "contents.primary",
               fontSize: "lg",
             })}
           >
@@ -851,12 +851,12 @@ function ARIAComparisonDemo() {
               type="email"
               className={css({
                 padding: 2,
-                borderWidth: "base", borderStyle: "solid", borderColor: "red.500",
+                borderWidth: "base", borderStyle: "solid", borderColor: "border.error",
                 borderRadius: "md",
                 width: "100%",
               })}
             />
-            <span className={css({ color: "red.700", fontSize: "sm" })}>
+            <span className={css({ color: "contents.error", fontSize: "sm" })}>
               無効なメールアドレス
             </span>
           </div>
@@ -874,7 +874,7 @@ function ARIAComparisonDemo() {
               aria-describedby="good-error-msg"
               className={css({
                 padding: 2,
-                borderWidth: "base", borderStyle: "solid", borderColor: "red.500",
+                borderWidth: "base", borderStyle: "solid", borderColor: "border.error",
                 borderRadius: "md",
                 width: "100%",
               })}
@@ -882,7 +882,7 @@ function ARIAComparisonDemo() {
             <span
               id="good-error-msg"
               role="alert"
-              className={css({ color: "red.700", fontSize: "sm" })}
+              className={css({ color: "contents.error", fontSize: "sm" })}
             >
               無効なメールアドレス
             </span>
@@ -901,7 +901,7 @@ function ARIAComparisonDemo() {
             href="/about"
             onClick={(e) => e.preventDefault()}
             className={css({
-              color: "blue.700",
+              color: "contents.link",
               textDecoration: "underline",
             })}
           >
@@ -919,7 +919,7 @@ function ARIAComparisonDemo() {
             onClick={(e) => e.preventDefault()}
             aria-label="会社概要について詳しく見る"
             className={css({
-              color: "blue.700",
+              color: "contents.link",
               textDecoration: "underline",
             })}
           >
@@ -938,9 +938,9 @@ function ARIAComparisonDemo() {
     <div
       className={css({
         padding: 4,
-        backgroundColor: "pink.50",
+        backgroundColor: "bg.secondary",
         borderRadius: "md",
-        borderWidth: "thin", borderStyle: "solid", borderColor: "pink.200",
+        borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
         minWidth: 0,
         maxWidth: '100%'
       })}
@@ -950,7 +950,7 @@ function ARIAComparisonDemo() {
           marginTop: 0,
           fontSize: "lg",
           fontWeight: "semibold",
-          color: "pink.900",
+          color: "contents.primary",
         })}
       >
         🔍 ARIA属性の効果を比較
@@ -966,10 +966,10 @@ function ARIAComparisonDemo() {
               paddingY: 2,
               borderWidth: "base",
               borderStyle: "solid",
-              borderColor: selectedExample === key ? "pink.500" : "gray.300",
+              borderColor: selectedExample === key ? "border.default" : "border.subtle",
               borderRadius: "md",
-              backgroundColor: selectedExample === key ? "pink.100" : "white",
-              color: selectedExample === key ? "pink.900" : "gray.700",
+              backgroundColor: selectedExample === key ? "bg.secondary" : "bg.primary",
+              color: selectedExample === key ? "contents.primary" : "contents.secondary",
               cursor: "pointer",
               fontWeight: selectedExample === key ? "semibold" : "normal",
             })}
@@ -991,9 +991,9 @@ function ARIAComparisonDemo() {
         <div
           className={css({
             padding: 3,
-            backgroundColor: "white",
+            backgroundColor: "bg.primary",
             borderRadius: "md",
-            borderWidth: "base", borderStyle: "solid", borderColor: "red.300",
+            borderWidth: "base", borderStyle: "solid", borderColor: "border.error",
             minWidth: 0
           })}
         >
@@ -1006,13 +1006,13 @@ function ARIAComparisonDemo() {
             })}
           >
             <span className={css({ fontSize: "lg" })}>❌</span>
-            <strong className={css({ color: "red.700" })}>ARIA属性なし</strong>
+            <strong className={css({ color: "contents.error" })}>ARIA属性なし</strong>
           </div>
 
           <div
             className={css({
               padding: 3,
-              backgroundColor: "gray.50",
+              backgroundColor: "bg.secondary",
               borderRadius: "sm",
               marginBottom: 2,
             })}
@@ -1031,13 +1031,13 @@ function ARIAComparisonDemo() {
           <div
             className={css({
               padding: 2,
-              backgroundColor: "blue.50",
+              backgroundColor: "bg.secondary",
               borderRadius: "sm",
               fontSize: "sm",
             })}
           >
-            <strong className={css({ color: "blue.900" })}>スクリーンリーダー:</strong>
-            <div className={css({ marginTop: 1, color: "gray.700", fontStyle: "italic" })}>
+            <strong className={css({ color: "contents.primary" })}>スクリーンリーダー:</strong>
+            <div className={css({ marginTop: 1, color: "contents.secondary", fontStyle: "italic" })}>
               "{current.bad.screenReader}"
             </div>
           </div>
@@ -1046,10 +1046,10 @@ function ARIAComparisonDemo() {
             className={css({
               marginTop: 2,
               padding: 2,
-              backgroundColor: "red.50",
+              backgroundColor: "bg.secondary",
               borderRadius: "sm",
               fontSize: "sm",
-              color: "red.900",
+              color: "contents.primary",
             })}
           >
             ⚠️ 問題: {current.bad.issue}
@@ -1060,9 +1060,9 @@ function ARIAComparisonDemo() {
         <div
           className={css({
             padding: 3,
-            backgroundColor: "white",
+            backgroundColor: "bg.primary",
             borderRadius: "md",
-            borderWidth: "base", borderStyle: "solid", borderColor: "green.300",
+            borderWidth: "base", borderStyle: "solid", borderColor: "border.success",
             minWidth: 0
           })}
         >
@@ -1075,13 +1075,13 @@ function ARIAComparisonDemo() {
             })}
           >
             <span className={css({ fontSize: "lg" })}>✅</span>
-            <strong className={css({ color: "green.700" })}>ARIA属性あり</strong>
+            <strong className={css({ color: "contents.success" })}>ARIA属性あり</strong>
           </div>
 
           <div
             className={css({
               padding: 3,
-              backgroundColor: "gray.50",
+              backgroundColor: "bg.secondary",
               borderRadius: "sm",
               marginBottom: 2,
             })}
@@ -1100,13 +1100,13 @@ function ARIAComparisonDemo() {
           <div
             className={css({
               padding: 2,
-              backgroundColor: "blue.50",
+              backgroundColor: "bg.secondary",
               borderRadius: "sm",
               fontSize: "sm",
             })}
           >
-            <strong className={css({ color: "blue.900" })}>スクリーンリーダー:</strong>
-            <div className={css({ marginTop: 1, color: "gray.700", fontStyle: "italic" })}>
+            <strong className={css({ color: "contents.primary" })}>スクリーンリーダー:</strong>
+            <div className={css({ marginTop: 1, color: "contents.secondary", fontStyle: "italic" })}>
               "{current.good.screenReader}"
             </div>
           </div>
@@ -1115,10 +1115,10 @@ function ARIAComparisonDemo() {
             className={css({
               marginTop: 2,
               padding: 2,
-              backgroundColor: "green.50",
+              backgroundColor: "bg.secondary",
               borderRadius: "sm",
               fontSize: "sm",
-              color: "green.900",
+              color: "contents.primary",
             })}
           >
             ✓ 改善: {current.good.benefit}
@@ -1159,9 +1159,9 @@ function ScreenReaderSimulator() {
     <div
       className={css({
         padding: 4,
-        backgroundColor: "blue.50",
+        backgroundColor: "bg.secondary",
         borderRadius: "md",
-        borderWidth: "thin", borderStyle: "solid", borderColor: "blue.200",
+        borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
         minWidth: 0,
         maxWidth: '100%'
       })}
@@ -1171,13 +1171,13 @@ function ScreenReaderSimulator() {
           marginTop: 0,
           fontSize: "lg",
           fontWeight: "semibold",
-          color: "blue.900",
+          color: "contents.primary",
         })}
       >
         🔊 スクリーンリーダーシミュレーター
       </h4>
 
-      <p className={css({ color: "gray.700", fontSize: "sm" })}>
+      <p className={css({ color: "contents.secondary", fontSize: "sm" })}>
         ボタンをクリックして、スクリーンリーダーがどのように読み上げるかを確認できます
       </p>
 
@@ -1188,13 +1188,13 @@ function ScreenReaderSimulator() {
           aria-label="閉じる"
           className={css({
             padding: 3,
-            borderWidth: "base", borderStyle: "solid", borderColor: "blue.500",
+            borderWidth: "base", borderStyle: "solid", borderColor: "border.default",
             borderRadius: "md",
-            backgroundColor: "white",
+            backgroundColor: "bg.primary",
             cursor: isReading ? "not-allowed" : "pointer",
             fontSize: "lg",
             opacity: isReading ? 0.6 : 1,
-            color: "gray.900",
+            color: "contents.primary",
           })}
         >
           ✕
@@ -1204,8 +1204,8 @@ function ScreenReaderSimulator() {
           className={css({
             flex: 1,
             padding: 3,
-            backgroundColor: "gray.900",
-            color: "green.400",
+            backgroundColor: "bg.primary",
+            color: "contents.success",
             borderRadius: "md",
             minHeight: "60px",
             display: "flex",
@@ -1217,7 +1217,7 @@ function ScreenReaderSimulator() {
           {isReading ? (
             <span className={css({ animation: "pulse 1s infinite" })}>🔊 {currentText}</span>
           ) : (
-            <span className={css({ color: "gray.600" })}>クリックして読み上げを開始...</span>
+            <span className={css({ color: "contents.tertiary" })}>クリックして読み上げを開始...</span>
           )}
         </div>
       </div>
@@ -1255,9 +1255,9 @@ function LiveRegionDemo() {
     <div
       className={css({
         padding: 4,
-        backgroundColor: "green.50",
+        backgroundColor: "bg.secondary",
         borderRadius: "md",
-        borderWidth: "thin", borderStyle: "solid", borderColor: "green.200",
+        borderWidth: "thin", borderStyle: "solid", borderColor: "border.default",
         minWidth: 0,
         maxWidth: '100%'
       })}
@@ -1267,13 +1267,13 @@ function LiveRegionDemo() {
           marginTop: 0,
           fontSize: "lg",
           fontWeight: "semibold",
-          color: "green.900",
+          color: "contents.primary",
         })}
       >
         📢 aria-live デモ（動的な通知）
       </h4>
 
-      <p className={css({ color: "gray.700", fontSize: "sm" })}>
+      <p className={css({ color: "contents.secondary", fontSize: "sm" })}>
         aria-live を使うと、画面の変更をスクリーンリーダーに自動で通知できます
       </p>
 
@@ -1295,8 +1295,8 @@ function LiveRegionDemo() {
         className={css({
           marginTop: 3,
           padding: 3,
-          backgroundColor: "white",
-          borderWidth: "base", borderStyle: "solid", borderColor: "green.300",
+          backgroundColor: "bg.primary",
+          borderWidth: "base", borderStyle: "solid", borderColor: "border.success",
           borderRadius: "md",
           minHeight: "60px",
           display: "flex",
@@ -1305,7 +1305,7 @@ function LiveRegionDemo() {
           fontSize: "base",
         })}
       >
-        {message || <span className={css({ color: "gray.500" })}>ボタンをクリックしてメッセージを表示</span>}
+        {message || <span className={css({ color: "contents.tertiary" })}>ボタンをクリックしてメッセージを表示</span>}
       </div>
 
       <div className={css({ marginTop: 3 })}>
@@ -1326,12 +1326,12 @@ function LiveRegionDemo() {
       <div
         className={css({
           marginTop: 3,
-          padding: 2,
-          backgroundColor: "yellow",
-          borderWidth: "base", borderStyle: "solid", borderColor: "black",
-          borderRadius: "sm",
+          padding: 3,
+          backgroundColor: "bg.secondary",
+          borderWidth: "base", borderStyle: "solid", borderColor: "border.default",
+          borderRadius: "md",
           fontSize: "sm",
-          color: "gray.900",
+          color: "contents.primary",
         })}
       >
         <strong>💡 ヒント:</strong> メッセージが変更されると、スクリーンリーダーが自動的に読み上げます（通知回数: {messageCount}回）

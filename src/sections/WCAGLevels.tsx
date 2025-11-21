@@ -23,27 +23,30 @@ const heroCardBase = css({
   borderStyle: "solid",
 });
 
-const heroCardWhite = css({ bg: "white" });
-const heroCardBlue = css({ bg: "blue.50" });
-const heroCardGrayBorder = css({ borderColor: "gray.300" });
+const heroCardWhite = css({ bg: "bg.primary" });
+const heroCardBlue = css({ bg: "bg.secondary" });
+const heroCardGrayBorder = css({ borderColor: "border.default" });
 const heroCardBlueBorder = css({
-  borderColor: "blue.400",
+  borderColor: "border.default",
   borderWidth: "base",
 });
-const heroCardOrangeBorder = css({ borderColor: "orange.400" });
+const heroCardOrangeBorder = css({ borderColor: "border.warning" });
 
 const heroBannerClass = css({
   mt: 4,
   p: 3,
-  bg: "blue.100",
+  bg: "bg.secondary",
   rounded: "md",
+  borderWidth: "thin",
+  borderStyle: "solid",
+  borderColor: "border.default",
 });
 
 const ratioListClass = css({
   margin: "0.5rem 0",
   pl: 6,
   lineHeight: "1.8",
-  color: "gray.900",
+  color: "contents.primary",
 });
 
 const ratioDemoClass = css({
@@ -81,7 +84,7 @@ const exampleLegendClass = css({
 const toolListClass = css({
   margin: "0.5rem 0",
   pl: 6,
-  color: "gray.900",
+  color: "contents.primary",
 });
 
 const linkClass = css({ color: "contents.link" });
@@ -95,12 +98,12 @@ export function WCAGLevels() {
       <h2
         className={css({
           mt: 0,
-          color: "gray.900",
+          color: "contents.primary",
           fontSize: "2xl",
           fontWeight: "bold",
           borderBottomWidth: "thick",
           borderBottomStyle: "solid",
-          borderBottomColor: "blue.500",
+          borderBottomColor: "border.default",
           pb: 2,
           mb: 4,
           display: "flex",
@@ -110,7 +113,7 @@ export function WCAGLevels() {
       >
         <icons.concept.wcag
           size={28}
-          className={css({ color: "blue.600" })}
+          className={css({ color: "contents.primary" })}
           strokeWidth={2}
           aria-hidden="true"
         />
@@ -120,11 +123,11 @@ export function WCAGLevels() {
       <div
         className={css({
           p: 6,
-          bg: "yellow.50",
+          bg: "bg.secondary",
           rounded: "lg",
           borderWidth: "thick",
           borderStyle: "solid",
-          borderColor: "yellow.400",
+          borderColor: "border.warning",
           mb: 8,
         })}
       >
@@ -132,7 +135,7 @@ export function WCAGLevels() {
           className={css({
             mt: 0,
             mb: 3,
-            color: "gray.900",
+            color: "contents.primary",
             fontSize: "xl",
           })}
         >
@@ -141,7 +144,7 @@ export function WCAGLevels() {
         <p
           className={css({
             lineHeight: "1.8",
-            color: "gray.900",
+            color: "contents.primary",
             mb: 4,
           })}
         >
@@ -162,7 +165,7 @@ export function WCAGLevels() {
               className={css({
                 m: 0,
                 mb: 1,
-                color: "gray.800",
+                color: "contents.primary",
                 fontSize: "base",
               })}
             >
@@ -172,7 +175,7 @@ export function WCAGLevels() {
               className={css({
                 m: 0,
                 lineHeight: "1.6",
-                color: "gray.700",
+                color: "contents.secondary",
                 fontSize: "sm",
               })}
             >
@@ -186,7 +189,7 @@ export function WCAGLevels() {
               className={css({
                 m: 0,
                 mb: 1,
-                color: "blue.900",
+                color: "contents.primary",
                 fontSize: "base",
               })}
             >
@@ -196,7 +199,7 @@ export function WCAGLevels() {
               className={css({
                 m: 0,
                 lineHeight: "1.6",
-                color: "gray.900",
+                color: "contents.primary",
                 fontSize: "sm",
               })}
             >
@@ -213,7 +216,7 @@ export function WCAGLevels() {
               className={css({
                 m: 0,
                 mb: 1,
-                color: "orange.900",
+                color: "contents.primary",
                 fontSize: "base",
               })}
             >
@@ -223,7 +226,7 @@ export function WCAGLevels() {
               className={css({
                 m: 0,
                 lineHeight: "1.6",
-                color: "gray.700",
+                color: "contents.secondary",
                 fontSize: "sm",
               })}
             >
@@ -238,7 +241,7 @@ export function WCAGLevels() {
             className={css({
               m: 0,
               lineHeight: "1.6",
-              color: "blue.900",
+              color: "contents.primary",
               fontSize: "sm",
               fontWeight: 600,
             })}
@@ -252,30 +255,42 @@ export function WCAGLevels() {
 
       <div className={css({ mt: 6 })}>
         <SectionHeading>コントラスト比とは？</SectionHeading>
-        <p className={css({ lineHeight: "1.8", color: "gray.900" })}>
-          コントラスト比は、テキストと背景の明るさの差を数値で表したものです。
-          数値が大きいほど見やすく、小さいほど見にくくなります。
-          <br />
-          例: 黒文字 ({token("colors.black")}) と白背景 ({token("colors.white")}
-          ) のコントラスト比は <strong>21:1</strong>（最大値）
-        </p>
+        <div
+          className={css({
+            mt: 3,
+            p: 3,
+            bg: "bg.secondary",
+            rounded: "md",
+            borderWidth: "thin",
+            borderStyle: "solid",
+            borderColor: "border.default",
+          })}
+        >
+          <p className={css({ lineHeight: "1.8", color: "contents.primary", m: 0 })}>
+            コントラスト比は、テキストと背景の明るさの差を数値で表したものです。
+            数値が大きいほど見やすく、小さいほど見にくくなります。
+            <br />
+            例: 黒文字 ({token("colors.black")}) と白背景 ({token("colors.white")}
+            ) のコントラスト比は <strong>21:1</strong>（最大値）
+          </p>
+        </div>
 
         <div
           className={css({
             mt: 4,
             p: 4,
-            bg: "blue.50",
+            bg: "bg.secondary",
             rounded: "base",
             borderWidth: "thin",
             borderStyle: "solid",
-            borderColor: "blue.200",
+            borderColor: "border.default",
           })}
         >
           <h4
             className={css({
               mt: 0,
               mb: 2,
-              color: "blue.900",
+              color: "contents.primary",
             })}
           >
             📐 コントラスト比の計算方法
@@ -284,7 +299,7 @@ export function WCAGLevels() {
             className={css({
               margin: "0.5rem 0",
               lineHeight: "1.8",
-              color: "gray.900",
+              color: "contents.primary",
             })}
           >
             コントラスト比 = (明るい方の輝度 + 0.05) ÷ (暗い方の輝度 + 0.05)
@@ -293,7 +308,7 @@ export function WCAGLevels() {
             className={css({
               margin: "0.5rem 0",
               fontSize: "sm",
-              color: "gray.700",
+              color: "contents.secondary",
             })}
           >
             ※ 輝度は0.0（完全な黒）〜 1.0（完全な白）の値
@@ -303,7 +318,7 @@ export function WCAGLevels() {
               className={css({
                 margin: "0.25rem 0",
                 fontSize: "sm",
-                color: "gray.900",
+                color: "contents.primary",
               })}
             >
               <strong>例1: 白背景 + グレー文字 = 3:1</strong>
@@ -311,7 +326,7 @@ export function WCAGLevels() {
               <span
                 className={css({
                   fontSize: "xs",
-                  color: "gray.700",
+                  color: "contents.secondary",
                 })}
               >
                 白(輝度1.0) ÷ グレー(輝度0.4) = (1.0+0.05)÷(0.4+0.05) ≈ 3:1
@@ -321,7 +336,7 @@ export function WCAGLevels() {
               className={css({
                 margin: "0.25rem 0",
                 fontSize: "sm",
-                color: "gray.900",
+                color: "contents.primary",
               })}
             >
               <strong>例2: 白背景 + 黒文字 = 21:1</strong>
@@ -329,7 +344,7 @@ export function WCAGLevels() {
               <span
                 className={css({
                   fontSize: "xs",
-                  color: "gray.700",
+                  color: "contents.secondary",
                 })}
               >
                 白(輝度1.0) ÷ 黒(輝度0.0) = (1.0+0.05)÷(0.0+0.05) = 21:1（最大）
@@ -354,7 +369,7 @@ export function WCAGLevels() {
             className={cx(
               ratioCardBase,
               css({
-                bg: "gray.100",
+                bg: "bg.tertiary",
                 borderColor: "border.default",
               })
             )}
@@ -363,7 +378,7 @@ export function WCAGLevels() {
               className={css({
                 mt: 0,
                 mb: 2,
-                color: "gray.800",
+                color: "contents.primary",
               })}
             >
               レベルA（最低限）
@@ -392,7 +407,7 @@ export function WCAGLevels() {
                 </div>
               </li>
               <li>⚠️ 通常サイズのテキストには基準なし</li>
-              <li className={css({ color: "red.700", fontWeight: 600 })}>
+              <li className={css({ color: "contents.error", fontWeight: 600 })}>
                 ❌ 実用的ではありません。AAレベル以上を推奨
               </li>
             </ul>
@@ -402,8 +417,8 @@ export function WCAGLevels() {
             className={cx(
               ratioCardBase,
               css({
-                bg: "blue.50",
-                borderColor: "blue.500",
+                bg: "bg.secondary",
+                borderColor: "border.default",
               })
             )}
           >
@@ -411,7 +426,7 @@ export function WCAGLevels() {
               className={css({
                 mt: 0,
                 mb: 2,
-                color: "blue.900",
+                color: "contents.primary",
               })}
             >
               レベルAA（推奨）★
@@ -450,8 +465,8 @@ export function WCAGLevels() {
             className={cx(
               ratioCardBase,
               css({
-                bg: "orange.50",
-                borderColor: "orange.600",
+                bg: "bg.secondary",
+                borderColor: "border.warning",
               })
             )}
           >
@@ -459,7 +474,7 @@ export function WCAGLevels() {
               className={css({
                 mt: 0,
                 mb: 2,
-                color: "orange.900",
+                color: "contents.primary",
               })}
             >
               レベルAAA（最高）
@@ -576,24 +591,32 @@ export function WCAGLevels() {
           css({
             mt: 8,
             bg: "bg.primary",
-            borderColor: "green.500",
+            borderColor: "border.success",
           })
         )}
       >
-        <h4
+        <div
           className={css({
             mt: 0,
             mb: 2,
-            color: "green.800",
+            p: 2,
+            bg: "bg.secondary",
+            borderRadius: "md",
+            display: "inline-flex",
+            alignItems: "center",
+            gap: 2,
           })}
         >
-          💡 コントラスト比の確認方法
-        </h4>
+          <span className={css({ color: "contents.success", fontSize: "xl" })}>💡</span>
+          <h4 className={css({ m: 0, color: "contents.primary" })}>
+            コントラスト比の確認方法
+          </h4>
+        </div>
         <p
           className={css({
             margin: "0.5rem 0",
             lineHeight: "1.8",
-            color: "gray.900",
+            color: "contents.primary",
           })}
         >
           オンラインツールを使って簡単に確認できます：
