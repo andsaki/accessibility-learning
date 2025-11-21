@@ -1,5 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { css, cx } from "@/styled-system/css";
+import { dropdown as dropdownRecipe } from "../../../styled-system/recipes";
 import { accessibilityLevels } from "../constants/accessibility";
 import type { WCAGLevel } from "../constants/accessibility";
 
@@ -135,120 +136,13 @@ export const Dropdown: React.FC<DropdownProps> = ({
     "--dropdown-focus-outline-width": levelFocus.outlineWidth,
     "--dropdown-focus-outline-offset": levelFocus.outlineOffset,
   });
-
-  const rootClass = css({
-    width: "100%",
-    mb: 4,
-  });
-
-  const labelClass = css({
-    display: "block",
-    mb: 2,
-    fontSize: "sm",
-    fontWeight: "medium",
-    color: "contents.primary",
-  });
-
-  const requiredMarkClass = css({
-    color: "contents.error",
-    ml: 1,
-  });
-
-  const triggerWrapperClass = css({
-    position: "relative",
-  });
-
-  const triggerClass = css({
-    width: "100%",
-    textAlign: "left",
-    borderWidth: "2px",
-    borderStyle: "solid",
-    borderColor: "border.default",
-    borderRadius: "md",
-    backgroundColor: "bg.secondary",
-    color: "contents.primary",
-    px: 4,
-    py: 3,
-    pr: 10,
-    fontSize: "base",
-    transition: "background-color 0.2s, border-color 0.2s, color 0.2s",
-    cursor: "pointer",
-    _hover: {
-      backgroundColor: "bg.hover",
-    },
-    _focusVisible: {
-      backgroundColor: "var(--dropdown-focus-bg)",
-      outline:
-        "var(--dropdown-focus-outline-width) solid var(--dropdown-focus-outline)",
-      outlineOffset: "var(--dropdown-focus-outline-offset)",
-    },
-    _disabled: {
-      cursor: "not-allowed",
-      backgroundColor: "bg.disabled",
-      color: "contents.disabled",
-    },
-  });
-
-  const triggerErrorClass = css({
-    borderColor: "border.error",
-  });
-
-  const triggerPlaceholderClass = css({
-    color: "contents.secondary",
-  });
-
-  const arrowClass = css({
-    position: "absolute",
-    right: "3",
-    top: "50%",
-    transform: "translateY(-50%)",
-    transition: "transform 0.2s",
-    pointerEvents: "none",
-    color: "inherit",
+  const slots = dropdownRecipe({
+    state: error ? "error" : "default",
+    placeholder: selectedValue ? "filled" : "empty",
   });
 
   const arrowOpenClass = css({
     transform: "translateY(-50%) rotate(180deg)",
-  });
-
-  const menuClass = css({
-    position: "absolute",
-    top: "100%",
-    left: 0,
-    right: 0,
-    mt: 1,
-    listStyle: "none",
-    p: 1,
-    bg: "bg.secondary",
-    borderWidth: "2px",
-    borderStyle: "solid",
-    borderColor: "border.default",
-    borderRadius: "md",
-    boxShadow: "lg",
-    maxH: "15rem",
-    overflowY: "auto",
-    zIndex: 10,
-  });
-
-  const optionClass = css({
-    display: "flex",
-    alignItems: "center",
-    justifyContent: "space-between",
-    px: 3,
-    py: 2,
-    fontSize: "base",
-    color: "contents.primary",
-    borderRadius: "sm",
-    cursor: "pointer",
-    transition: "background-color 0.15s, color 0.15s",
-    _hover: {
-      backgroundColor: "bg.hover",
-    },
-    _focusVisible: {
-      outline: "2px solid",
-      outlineColor: "border.focus",
-      outlineOffset: "2px",
-    },
   });
 
   const optionFocusedClass = css({
@@ -266,35 +160,18 @@ export const Dropdown: React.FC<DropdownProps> = ({
     _hover: { backgroundColor: "transparent" },
   });
 
-  const checkMarkClass = css({
-    ml: 2,
-    color: "blue.600",
-  });
-
-  const errorTextClass = css({
-    mt: 1,
-    fontSize: "sm",
-    color: "contents.error",
-  });
-
-  const helperTextClass = css({
-    mt: 1,
-    fontSize: "sm",
-    color: "contents.secondary",
-  });
-
   return (
-    <div className={rootClass} ref={dropdownRef}>
-      <label htmlFor={buttonId} className={labelClass}>
+    <div className={slots.root} ref={dropdownRef}>
+      <label htmlFor={buttonId} className={slots.label}>
         {label}
         {required && (
-          <span className={requiredMarkClass} aria-label="必須">
+          <span className={slots.requiredMark} aria-label="必須">
             *
           </span>
         )}
       </label>
 
-      <div className={triggerWrapperClass}>
+      <div className={slots.triggerWrapper}>
         <button
           ref={buttonRef}
           id={buttonId}
@@ -306,15 +183,15 @@ export const Dropdown: React.FC<DropdownProps> = ({
           aria-describedby={error ? errorId : helperText ? helperId : undefined}
           onClick={toggleOpen}
           onKeyDown={handleKeyDown}
-          className={cx(
-            triggerClass,
-            focusVarsClass,
-            error && triggerErrorClass,
-            !selectedValue && triggerPlaceholderClass
-          )}
+          className={cx(slots.trigger, focusVarsClass)}
         >
           {displayText}
-          <span className={cx(arrowClass, isOpen && arrowOpenClass)}>
+          <span
+            className={cx(
+              slots.arrow,
+              isOpen && arrowOpenClass
+            )}
+          >
             <svg
               width="20"
               height="20"
@@ -336,7 +213,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
             id={listId}
             role="listbox"
             aria-labelledby={buttonId}
-            className={menuClass}
+            className={slots.menu}
           >
             {options.map((option, index) => (
               <li
@@ -354,7 +231,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
                 }}
                 onMouseEnter={() => !option.disabled && setFocusedIndex(index)}
                 className={cx(
-                  optionClass,
+                  slots.option,
                   focusedIndex === index && optionFocusedClass,
                   selectedValue === option.value && optionSelectedClass,
                   option.disabled && optionDisabledClass
@@ -362,7 +239,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
               >
                 {option.label}
                 {selectedValue === option.value && (
-                  <span className={checkMarkClass}>✓</span>
+                  <span className={slots.checkmark}>✓</span>
                 )}
               </li>
             ))}
@@ -371,13 +248,13 @@ export const Dropdown: React.FC<DropdownProps> = ({
       </div>
 
       {error && (
-        <p id={errorId} role="alert" className={errorTextClass}>
+        <p id={errorId} role="alert" className={slots.error}>
           {error}
         </p>
       )}
 
       {helperText && !error && (
-        <p id={helperId} className={helperTextClass}>
+        <p id={helperId} className={slots.helper}>
           {helperText}
         </p>
       )}

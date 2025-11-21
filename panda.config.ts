@@ -6,6 +6,7 @@ import { textarea } from "./panda-config/recipes/textarea";
 import { accordion } from "./panda-config/recipes/accordion";
 import { breadcrumbs } from "./panda-config/recipes/breadcrumbs";
 import { checkbox } from "./panda-config/recipes/checkbox";
+import { dropdown } from "./panda-config/recipes/dropdown";
 import { pandaSemanticColors } from "./panda-config/types/semanticTokens";
 import {
   pandaColors,
@@ -91,6 +92,7 @@ export default defineConfig({
         accordion,
         breadcrumbs,
         checkbox,
+        dropdown,
       },
     },
   },
@@ -150,6 +152,9 @@ export default defineConfig({
       ],
       checkbox: [
         { wcagLevel: ['A', 'AA', 'AAA'], state: ['default', 'error'] },
+      ],
+      dropdown: [
+        { state: ['default', 'error'], placeholder: ['empty', 'filled'] },
       ],
     }
   },
