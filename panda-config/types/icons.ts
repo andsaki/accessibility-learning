@@ -23,6 +23,7 @@ import {
   Target,         // 🎯 WCAG
   Palette,        // 🎨 Design Tokens
   Rainbow,        // 🌈 デザイン哲学
+  List,           // 📋 Dropdown
 
   // その他
   Moon,
@@ -53,6 +54,7 @@ export const component = {
   text: Type,
   breadcrumbs: Navigation,
   navigation: Navigation,
+  dropdown: List,
 } as const;
 
 /**

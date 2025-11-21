@@ -1,4 +1,4 @@
-import { Button, Input, Select, Form, Accordion, AccordionSummary, AccordionContent, Modal, Breadcrumbs, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, formSchemas } from "../design-system/components";
+import { Button, Input, Select, Form, Accordion, AccordionSummary, AccordionContent, Modal, Breadcrumbs, BreadcrumbList, BreadcrumbItem, BreadcrumbLink, formSchemas, Dropdown } from "../design-system/components";
 import { Text } from "../design-system/components/Text";
 import { TextArea } from "../design-system/components/TextArea";
 import { Checkbox } from "../design-system/components/Checkbox";
@@ -99,6 +99,20 @@ export function ComponentDemos({
   isModalOpen,
   setIsModalOpen,
 }: ComponentDemosProps) {
+  const [selectedFruit, setSelectedFruit] = useState("apple");
+  const [selectedPlan, setSelectedPlan] = useState("");
+  const dropdownOptions = [
+    { value: "apple", label: "りんご" },
+    { value: "banana", label: "バナナ" },
+    { value: "orange", label: "オレンジ" },
+    { value: "grape", label: "ぶどう" },
+  ];
+  const planOptions = [
+    { value: "basic", label: "Basicプラン" },
+    { value: "pro", label: "Proプラン" },
+    { value: "enterprise", label: "Enterpriseプラン" },
+  ];
+
   return (
     <>
       <section
@@ -617,6 +631,40 @@ export function ComponentDemos({
             <li><strong>ヘルパースキーマ</strong>: よく使うバリデーションを簡単に利用</li>
             <li><strong>再利用可能</strong>: fields配列でフォームを簡単に定義</li>
           </ul>
+        </div>
+      </section>
+
+      <section
+        id="dropdown-component"
+        className={sectionStyle}
+      >
+        <h2 className={sectionHeading}>
+          <icons.component.dropdown size={28} className={css({ color: "blue.600" })} strokeWidth={2} />
+          Dropdown コンポーネント
+        </h2>
+        <p className={sectionDescription}>
+          カスタム UI として実装したアクセシブルなドロップダウン。キーボード操作、aria属性、WCAG レベル別フォーカスが揃っています。
+        </p>
+
+        <div className={flexColumn}>
+          <Dropdown
+            label="好きなフルーツ"
+            options={dropdownOptions}
+            value={selectedFruit}
+            onChange={setSelectedFruit}
+            helperText="選択すると現在値がラベルに表示されます"
+            placeholder="フルーツを選択"
+          />
+
+          <Dropdown
+            label="ご希望のプラン"
+            options={planOptions}
+            value={selectedPlan}
+            onChange={setSelectedPlan}
+            error={selectedPlan ? undefined : "プランを選択してください"}
+            placeholder="プランを選択"
+            required
+          />
         </div>
       </section>
 

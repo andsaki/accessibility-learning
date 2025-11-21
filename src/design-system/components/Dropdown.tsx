@@ -1,7 +1,7 @@
-import React, { useState, useRef, useEffect } from 'react';
-import { css, cx } from '@/styled-system/css';
-import { accessibilityLevels } from '../constants/accessibility';
-import type { WCAGLevel } from '../constants/accessibility';
+import React, { useState, useRef, useEffect } from "react";
+import { css, cx } from "@/styled-system/css";
+import { accessibilityLevels } from "../constants/accessibility";
+import type { WCAGLevel } from "../constants/accessibility";
 
 export interface DropdownOption {
   value: string;
@@ -26,16 +26,16 @@ export const Dropdown: React.FC<DropdownProps> = ({
   label,
   options,
   value,
-  placeholder = '選択してください',
+  placeholder = "選択してください",
   onChange,
   error,
   helperText,
   disabled = false,
   required = false,
-  wcagLevel = 'AA',
+  wcagLevel = "AA",
 }) => {
   const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(value || '');
+  const [selectedValue, setSelectedValue] = useState(value || "");
   const [focusedIndex, setFocusedIndex] = useState(-1);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -43,7 +43,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   const listRef = useRef<HTMLUListElement>(null);
 
   const levelFocus = accessibilityLevels.focus[wcagLevel];
-  const selectedOption = options.find(opt => opt.value === selectedValue);
+  const selectedOption = options.find((opt) => opt.value === selectedValue);
   const displayText = selectedOption ? selectedOption.label : placeholder;
 
   const autoId = React.useId();
@@ -54,17 +54,20 @@ export const Dropdown: React.FC<DropdownProps> = ({
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setIsOpen(false);
       }
     };
 
     if (isOpen) {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [isOpen]);
 
@@ -72,33 +75,37 @@ export const Dropdown: React.FC<DropdownProps> = ({
     if (disabled) return;
 
     switch (e.key) {
-      case 'Enter':
-      case ' ':
+      case "Enter":
+      case " ":
         e.preventDefault();
         if (!isOpen) {
           setIsOpen(true);
-          setFocusedIndex(options.findIndex(opt => opt.value === selectedValue));
+          setFocusedIndex(
+            options.findIndex((opt) => opt.value === selectedValue)
+          );
         } else if (focusedIndex >= 0) {
           handleSelect(options[focusedIndex].value);
         }
         break;
-      case 'Escape':
+      case "Escape":
         setIsOpen(false);
         buttonRef.current?.focus();
         break;
-      case 'ArrowDown':
+      case "ArrowDown":
         e.preventDefault();
         if (!isOpen) {
           setIsOpen(true);
           setFocusedIndex(0);
         } else {
-          setFocusedIndex(prev => (prev < options.length - 1 ? prev + 1 : prev));
+          setFocusedIndex((prev) =>
+            prev < options.length - 1 ? prev + 1 : prev
+          );
         }
         break;
-      case 'ArrowUp':
+      case "ArrowUp":
         e.preventDefault();
         if (isOpen) {
-          setFocusedIndex(prev => (prev > 0 ? prev - 1 : prev));
+          setFocusedIndex((prev) => (prev > 0 ? prev - 1 : prev));
         }
         break;
     }
@@ -115,164 +122,165 @@ export const Dropdown: React.FC<DropdownProps> = ({
     if (!disabled) {
       setIsOpen(!isOpen);
       if (!isOpen) {
-        setFocusedIndex(options.findIndex(opt => opt.value === selectedValue));
+        setFocusedIndex(
+          options.findIndex((opt) => opt.value === selectedValue)
+        );
       }
     }
   };
 
   const focusVarsClass = css({
-    '--dropdown-focus-bg': levelFocus.background,
-    '--dropdown-focus-text': levelFocus.text,
-    '--dropdown-focus-outline': levelFocus.outline,
-    '--dropdown-focus-outline-width': levelFocus.outlineWidth,
-    '--dropdown-focus-outline-offset': levelFocus.outlineOffset,
+    "--dropdown-focus-bg": levelFocus.background,
+    "--dropdown-focus-outline": levelFocus.outline,
+    "--dropdown-focus-outline-width": levelFocus.outlineWidth,
+    "--dropdown-focus-outline-offset": levelFocus.outlineOffset,
   });
 
   const rootClass = css({
-    width: '100%',
+    width: "100%",
     mb: 4,
   });
 
   const labelClass = css({
-    display: 'block',
+    display: "block",
     mb: 2,
-    fontSize: 'sm',
-    fontWeight: 'medium',
-    color: 'contents.primary',
+    fontSize: "sm",
+    fontWeight: "medium",
+    color: "contents.primary",
   });
 
   const requiredMarkClass = css({
-    color: 'contents.error',
+    color: "contents.error",
     ml: 1,
   });
 
   const triggerWrapperClass = css({
-    position: 'relative',
+    position: "relative",
   });
 
   const triggerClass = css({
-    width: '100%',
-    textAlign: 'left',
-    borderWidth: '2px',
-    borderStyle: 'solid',
-    borderColor: 'border.default',
-    borderRadius: 'md',
-    backgroundColor: 'bg.paper',
-    color: 'contents.primary',
+    width: "100%",
+    textAlign: "left",
+    borderWidth: "2px",
+    borderStyle: "solid",
+    borderColor: "border.default",
+    borderRadius: "md",
+    backgroundColor: "bg.secondary",
+    color: "contents.primary",
     px: 4,
     py: 3,
     pr: 10,
-    fontSize: 'base',
-    transition: 'background-color 0.2s, border-color 0.2s, color 0.2s',
-    cursor: 'pointer',
+    fontSize: "base",
+    transition: "background-color 0.2s, border-color 0.2s, color 0.2s",
+    cursor: "pointer",
     _hover: {
-      backgroundColor: 'bg.hover',
+      backgroundColor: "bg.hover",
     },
     _focusVisible: {
-      backgroundColor: 'var(--dropdown-focus-bg)',
-      color: 'var(--dropdown-focus-text)',
-      outline: 'var(--dropdown-focus-outline-width) solid var(--dropdown-focus-outline)',
-      outlineOffset: 'var(--dropdown-focus-outline-offset)',
+      backgroundColor: "var(--dropdown-focus-bg)",
+      outline:
+        "var(--dropdown-focus-outline-width) solid var(--dropdown-focus-outline)",
+      outlineOffset: "var(--dropdown-focus-outline-offset)",
     },
     _disabled: {
-      cursor: 'not-allowed',
-      backgroundColor: 'bg.disabled',
-      color: 'contents.disabled',
+      cursor: "not-allowed",
+      backgroundColor: "bg.disabled",
+      color: "contents.disabled",
     },
   });
 
   const triggerErrorClass = css({
-    borderColor: 'border.error',
+    borderColor: "border.error",
   });
 
   const triggerPlaceholderClass = css({
-    color: 'contents.secondary',
+    color: "contents.secondary",
   });
 
   const arrowClass = css({
-    position: 'absolute',
-    right: '3',
-    top: '50%',
-    transform: 'translateY(-50%)',
-    transition: 'transform 0.2s',
-    pointerEvents: 'none',
-    color: 'inherit',
+    position: "absolute",
+    right: "3",
+    top: "50%",
+    transform: "translateY(-50%)",
+    transition: "transform 0.2s",
+    pointerEvents: "none",
+    color: "inherit",
   });
 
   const arrowOpenClass = css({
-    transform: 'translateY(-50%) rotate(180deg)',
+    transform: "translateY(-50%) rotate(180deg)",
   });
 
   const menuClass = css({
-    position: 'absolute',
-    top: '100%',
+    position: "absolute",
+    top: "100%",
     left: 0,
     right: 0,
     mt: 1,
-    listStyle: 'none',
+    listStyle: "none",
     p: 1,
-    bg: 'bg.paper',
-    borderWidth: '2px',
-    borderStyle: 'solid',
-    borderColor: 'border.default',
-    borderRadius: 'md',
-    boxShadow: 'lg',
-    maxH: '15rem',
-    overflowY: 'auto',
+    bg: "bg.secondary",
+    borderWidth: "2px",
+    borderStyle: "solid",
+    borderColor: "border.default",
+    borderRadius: "md",
+    boxShadow: "lg",
+    maxH: "15rem",
+    overflowY: "auto",
     zIndex: 10,
   });
 
   const optionClass = css({
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "space-between",
     px: 3,
     py: 2,
-    fontSize: 'base',
-    color: 'contents.primary',
-    borderRadius: 'sm',
-    cursor: 'pointer',
-    transition: 'background-color 0.15s, color 0.15s',
+    fontSize: "base",
+    color: "contents.primary",
+    borderRadius: "sm",
+    cursor: "pointer",
+    transition: "background-color 0.15s, color 0.15s",
     _hover: {
-      backgroundColor: 'bg.hover',
+      backgroundColor: "bg.hover",
     },
     _focusVisible: {
-      outline: '2px solid',
-      outlineColor: 'border.focus',
-      outlineOffset: '2px',
+      outline: "2px solid",
+      outlineColor: "border.focus",
+      outlineOffset: "2px",
     },
   });
 
   const optionFocusedClass = css({
-    backgroundColor: 'blue.50',
+    backgroundColor: "blue.50",
   });
 
   const optionSelectedClass = css({
-    backgroundColor: 'blue.100',
-    fontWeight: 'semibold',
+    backgroundColor: "blue.100",
+    fontWeight: "semibold",
   });
 
   const optionDisabledClass = css({
-    color: 'contents.disabled',
-    cursor: 'not-allowed',
-    _hover: { backgroundColor: 'transparent' },
+    color: "contents.disabled",
+    cursor: "not-allowed",
+    _hover: { backgroundColor: "transparent" },
   });
 
   const checkMarkClass = css({
     ml: 2,
-    color: 'blue.600',
+    color: "blue.600",
   });
 
   const errorTextClass = css({
     mt: 1,
-    fontSize: 'sm',
-    color: 'contents.error',
+    fontSize: "sm",
+    color: "contents.error",
   });
 
   const helperTextClass = css({
     mt: 1,
-    fontSize: 'sm',
-    color: 'contents.secondary',
+    fontSize: "sm",
+    color: "contents.secondary",
   });
 
   return (
@@ -337,7 +345,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
                 aria-selected={selectedValue === option.value}
                 onClick={() => !option.disabled && handleSelect(option.value)}
                 onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
+                  if (e.key === "Enter" || e.key === " ") {
                     e.preventDefault();
                     if (!option.disabled) {
                       handleSelect(option.value);
@@ -353,7 +361,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
                 )}
               >
                 {option.label}
-                {selectedValue === option.value && <span className={checkMarkClass}>✓</span>}
+                {selectedValue === option.value && (
+                  <span className={checkMarkClass}>✓</span>
+                )}
               </li>
             ))}
           </ul>
