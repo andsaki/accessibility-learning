@@ -5,11 +5,11 @@ import { Checkbox } from "../design-system/components/Checkbox";
 import { Radio, RadioGroup } from "../design-system/components/Radio";
 import { Loading, InlineLoading } from "../design-system/components/Loading";
 import { InfoBox } from "../design-system/components/InfoBox";
-import { radii, spacing, typography, icons, borders } from "../design-system/tokens";
-import { useTheme } from "../design-system/theme";
+import { icons } from "../design-system/tokens";
 import { SectionHeading } from "../components/SectionHeading";
 import { z } from "zod";
 import { useState } from "react";
+import { css, cx } from "@/styled-system/css";
 
 interface ComponentDemosProps {
   count: number;
@@ -36,6 +36,53 @@ interface ComponentDemosProps {
   setIsModalOpen: (open: boolean) => void;
 }
 
+// 共通スタイル定義
+const sectionStyle = css({
+  mb: 12,
+  p: 6,
+  bg: "bg.canvas",
+  rounded: "lg",
+  borderWidth: "thin",
+  borderStyle: "solid",
+  borderColor: "border.default",
+  maxW: "full",
+  overflowX: "hidden",
+  boxSizing: "border-box",
+});
+
+const sectionHeading = css({
+  mt: 0,
+  color: "text.primary",
+  fontSize: "2xl",
+  fontWeight: "bold",
+  borderBottomWidth: "thick",
+  borderBottomStyle: "solid",
+  borderBottomColor: "blue.500",
+  pb: 2,
+  mb: 4,
+  display: "flex",
+  alignItems: "center",
+  gap: 2,
+});
+
+const sectionDescription = css({
+  color: "text.primary",
+  mt: 0,
+});
+
+const flexWrap = css({
+  display: "flex",
+  gap: 4,
+  flexWrap: "wrap",
+  mt: 4,
+});
+
+const flexColumn = css({
+  display: "flex",
+  flexDirection: "column",
+  gap: 4,
+});
+
 export function ComponentDemos({
   count,
   isLoading,
@@ -52,48 +99,19 @@ export function ComponentDemos({
   isModalOpen,
   setIsModalOpen,
 }: ComponentDemosProps) {
-  const { colors } = useTheme();
-  const primitive = colors.primitive;
   return (
     <>
       <section
         id="button-component"
-        style={{
-          marginBottom: spacing.scale[12],
-          padding: spacing.scale[6],
-          backgroundColor: colors.background.default,
-          borderRadius: radii.borderRadius.lg,
-          border: borders.default,
-        maxWidth: '100%',
-        overflowX: 'hidden',
-        boxSizing: 'border-box'
-        }}
+        className={sectionStyle}
       >
-        <h2 style={{
-          marginTop: 0,
-          color: colors.text.primary,
-          fontSize: typography.fontSize['2xl'],
-          fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
-          paddingBottom: spacing.scale[2],
-          marginBottom: spacing.scale[4],
-          display: 'flex',
-          alignItems: 'center',
-          gap: spacing.scale[2]
-        }}>
-          <icons.component.button size={28} color={primitive.blue[600]} strokeWidth={2} />
+        <h2 className={sectionHeading}>
+          <icons.component.button size={28} className={css({ color: "blue.600" })} strokeWidth={2} />
           Button コンポーネント
         </h2>
-        <p style={{ color: colors.text.primary, marginTop: 0 }}>WCAG準拠のアクセシブルなボタンコンポーネントです。</p>
+        <p className={sectionDescription}>WCAG準拠のアクセシブルなボタンコンポーネントです。</p>
 
-        <div
-          style={{
-            display: "flex",
-            gap: spacing.scale[4],
-            flexWrap: "wrap",
-            marginTop: spacing.scale[4],
-          }}
-        >
+        <div className={flexWrap}>
           <Button
             variant="primary"
             onClick={handleClick}
@@ -118,14 +136,7 @@ export function ComponentDemos({
           </Button>
         </div>
 
-        <div
-          style={{
-            display: "flex",
-            gap: spacing.scale[4],
-            flexWrap: "wrap",
-            marginTop: spacing.scale[4],
-          }}
-        >
+        <div className={flexWrap}>
           <Button size="sm" variant="primary">
             小サイズ
           </Button>
@@ -137,7 +148,7 @@ export function ComponentDemos({
           </Button>
         </div>
 
-        <div style={{ display: "flex", gap: spacing.scale[4], flexWrap: "wrap", marginTop: spacing.scale[4] }}>
+        <div className={flexWrap}>
           <Button disabled>無効化</Button>
           <Button isLoading>読み込み中</Button>
           <Button icon={<icons.component.button size={16} />}>アイコン付き</Button>
@@ -146,37 +157,17 @@ export function ComponentDemos({
 
       <section
         id="input-component"
-        style={{
-          marginBottom: spacing.scale[12],
-          padding: spacing.scale[6],
-          backgroundColor: colors.background.default,
-          borderRadius: radii.borderRadius.lg,
-          border: borders.default,
-        maxWidth: '100%',
-        overflowX: 'hidden',
-        boxSizing: 'border-box'
-        }}
+        className={sectionStyle}
       >
-        <h2 style={{
-          marginTop: 0,
-          color: colors.text.primary,
-          fontSize: typography.fontSize['2xl'],
-          fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
-          paddingBottom: spacing.scale[2],
-          marginBottom: spacing.scale[4],
-          display: 'flex',
-          alignItems: 'center',
-          gap: spacing.scale[2]
-        }}>
-          <icons.component.input size={28} color={primitive.blue[600]} strokeWidth={2} />
+        <h2 className={sectionHeading}>
+          <icons.component.input size={28} className={css({ color: "blue.600" })} strokeWidth={2} />
           Input コンポーネント
         </h2>
-        <p style={{ color: colors.text.primary, marginTop: 0 }}>
+        <p className={sectionDescription}>
           ラベル、エラー表示、ヘルプテキストを備えたアクセシブルな入力フィールドです。
         </p>
 
-        <form onSubmit={handleSubmit} style={{ marginTop: spacing.scale[6] }}>
+        <form onSubmit={handleSubmit} className={css({ mt: 6 })}>
           <Input
             label="お名前"
             placeholder="山田太郎"
@@ -214,7 +205,7 @@ export function ComponentDemos({
             required
           />
 
-          <div style={{ display: "flex", gap: spacing.scale[4], marginTop: spacing.scale[4], flexWrap: "wrap" }}>
+          <div className={flexWrap}>
             <Button type="submit" variant="primary">
               送信
             </Button>
@@ -231,14 +222,14 @@ export function ComponentDemos({
           </div>
         </form>
 
-        <div style={{ marginTop: spacing.scale[8] }}>
+        <div className={css({ mt: 8 })}>
           <SectionHeading>サイズバリエーション</SectionHeading>
           <Input label="小サイズ" size="sm" placeholder="小さい入力欄" />
           <Input label="中サイズ" size="md" placeholder="標準の入力欄" />
           <Input label="大サイズ" size="lg" placeholder="大きい入力欄" />
         </div>
 
-        <div style={{ marginTop: spacing.scale[8] }}>
+        <div className={css({ mt: 8 })}>
           <SectionHeading>無効化状態</SectionHeading>
           <Input
             label="無効な入力欄"
@@ -248,7 +239,7 @@ export function ComponentDemos({
           />
         </div>
 
-        <div style={{ marginTop: spacing.scale[8] }}>
+        <div className={css({ mt: 8 })}>
           <SectionHeading>数値入力（スピンボタン付き）</SectionHeading>
           <Input
             label="数量"
@@ -264,40 +255,20 @@ export function ComponentDemos({
 
       <section
         id="select-component"
-        style={{
-          marginBottom: spacing.scale[12],
-          padding: spacing.scale[6],
-          backgroundColor: colors.background.default,
-          borderRadius: radii.borderRadius.lg,
-          border: borders.default,
-        maxWidth: '100%',
-        overflowX: 'hidden',
-        boxSizing: 'border-box'
-        }}
+        className={sectionStyle}
       >
-        <h2 style={{
-          marginTop: 0,
-          color: colors.text.primary,
-          fontSize: typography.fontSize['2xl'],
-          fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
-          paddingBottom: spacing.scale[2],
-          marginBottom: spacing.scale[4],
-          display: 'flex',
-          alignItems: 'center',
-          gap: spacing.scale[2]
-        }}>
-          <icons.component.input size={28} color={primitive.blue[600]} strokeWidth={2} />
+        <h2         className={sectionHeading}>
+          <icons.component.input size={28} className={css({ color: "blue.600" })} strokeWidth={2} />
           Select コンポーネント
         </h2>
-        <p style={{ color: colors.text.primary }}>
+        <p className={sectionDescription}>
           セレクトボックス（ドロップダウンメニュー）コンポーネントです。
           ユーザーが選択肢の中から1つを選ぶインターフェースを提供します。
         </p>
 
-        <div style={{ marginTop: spacing.scale[6] }}>
+        <div className={css({ mt: 6 })}>
           <SectionHeading>基本的な使い方</SectionHeading>
-          <div style={{ maxWidth: '400px' }}>
+          <div className={css({ maxW: "400px" })}>
             <Select
               label="国を選択"
               options={[
@@ -312,9 +283,9 @@ export function ComponentDemos({
           </div>
         </div>
 
-        <div style={{ marginTop: spacing.scale[8] }}>
+        <div className={css({ mt: 8 })}>
           <SectionHeading>ヘルプテキスト付き</SectionHeading>
-          <div style={{ maxWidth: '400px' }}>
+          <div className={css({ maxW: "400px" })}>
             <Select
               label="配送先の国"
               options={[
@@ -328,9 +299,9 @@ export function ComponentDemos({
           </div>
         </div>
 
-        <div style={{ marginTop: spacing.scale[8] }}>
+        <div className={css({ mt: 8 })}>
           <SectionHeading>エラー状態</SectionHeading>
-          <div style={{ maxWidth: '400px' }}>
+          <div className={css({ maxW: "400px" })}>
             <Select
               label="国を選択"
               options={[
@@ -344,9 +315,9 @@ export function ComponentDemos({
           </div>
         </div>
 
-        <div style={{ marginTop: spacing.scale[8] }}>
+        <div className={css({ mt: 8 })}>
           <SectionHeading>必須項目</SectionHeading>
-          <div style={{ maxWidth: '400px' }}>
+          <div className={css({ maxW: "400px" })}>
             <Select
               label="国を選択"
               options={[
@@ -360,9 +331,9 @@ export function ComponentDemos({
           </div>
         </div>
 
-        <div style={{ marginTop: spacing.scale[8] }}>
+        <div className={css({ mt: 8 })}>
           <SectionHeading>無効化状態</SectionHeading>
-          <div style={{ maxWidth: '400px' }}>
+          <div className={css({ maxW: "400px" })}>
             <Select
               label="国を選択"
               options={[
@@ -376,9 +347,9 @@ export function ComponentDemos({
           </div>
         </div>
 
-        <div style={{ marginTop: spacing.scale[8] }}>
+        <div className={css({ mt: 8 })}>
           <SectionHeading>サイズバリエーション</SectionHeading>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[4], maxWidth: '400px' }}>
+          <div className={cx(flexColumn, css({ maxW: "400px" }))}>
             <Select
               label="小（sm）"
               options={[
@@ -409,8 +380,8 @@ export function ComponentDemos({
           </div>
         </div>
 
-        <InfoBox variant="info" icon="💡" title="Selectの特徴" style={{ marginTop: spacing.scale[8] }}>
-          <ul style={{ lineHeight: typography.lineHeight.relaxed, margin: 0, paddingLeft: spacing.scale[6] }}>
+        <InfoBox variant="info" icon="💡" title="Selectの特徴" className={css({ mt: 8 })}>
+          <ul className={css({ lineHeight: "relaxed", margin: 0, pl: 6 })}>
             <li><strong>ラベル関連付け</strong>: for/id属性で自動関連付け</li>
             <li><strong>エラー表示</strong>: aria-invalid, aria-describedby, role="alert"</li>
             <li><strong>必須項目</strong>: aria-required属性でスクリーンリーダーに通知</li>
@@ -423,41 +394,21 @@ export function ComponentDemos({
 
       <section
         id="textarea-component"
-        style={{
-          marginBottom: spacing.scale[12],
-          padding: spacing.scale[6],
-          backgroundColor: colors.background.default,
-          borderRadius: radii.borderRadius.lg,
-          border: borders.default,
-        maxWidth: '100%',
-        overflowX: 'hidden',
-        boxSizing: 'border-box'
-        }}
+        className={sectionStyle}
       >
-        <h2 style={{
-          marginTop: 0,
-          color: colors.text.primary,
-          fontSize: typography.fontSize['2xl'],
-          fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
-          paddingBottom: spacing.scale[2],
-          marginBottom: spacing.scale[4],
-          display: 'flex',
-          alignItems: 'center',
-          gap: spacing.scale[2]
-        }}>
-          <icons.component.input size={28} color={primitive.blue[600]} strokeWidth={2} />
+        <h2         className={sectionHeading}>
+          <icons.component.input size={28} className={css({ color: "blue.600" })} strokeWidth={2} />
           TextArea コンポーネント
         </h2>
-        <p style={{ color: colors.text.primary }}>
+        <p className={sectionDescription}>
           テキストエリアコンポーネントです。
           複数行のテキスト入力が必要な場面で使用します。
         </p>
 
         <TextAreaSection />
 
-        <InfoBox variant="info" icon="💡" title="TextAreaの特徴" style={{ marginTop: spacing.scale[8] }}>
-          <ul style={{ lineHeight: typography.lineHeight.relaxed, margin: 0, paddingLeft: spacing.scale[6] }}>
+        <InfoBox variant="info" icon="💡" title="TextAreaの特徴" className={css({ mt: 8 })}>
+          <ul className={css({ lineHeight: "relaxed", margin: 0, pl: 6 })}>
             <li><strong>ラベル関連付け</strong>: for/id属性で自動関連付け</li>
             <li><strong>エラー表示</strong>: aria-invalid, aria-describedby, role="alert"</li>
             <li><strong>文字数カウント</strong>: maxLengthとshowCountで制限と表示</li>
@@ -470,41 +421,21 @@ export function ComponentDemos({
 
       <section
         id="checkbox-component"
-        style={{
-          marginBottom: spacing.scale[12],
-          padding: spacing.scale[6],
-          backgroundColor: colors.background.default,
-          borderRadius: radii.borderRadius.lg,
-          border: borders.default,
-        maxWidth: '100%',
-        overflowX: 'hidden',
-        boxSizing: 'border-box'
-        }}
+        className={sectionStyle}
       >
-        <h2 style={{
-          marginTop: 0,
-          color: colors.text.primary,
-          fontSize: typography.fontSize['2xl'],
-          fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
-          paddingBottom: spacing.scale[2],
-          marginBottom: spacing.scale[4],
-          display: 'flex',
-          alignItems: 'center',
-          gap: spacing.scale[2]
-        }}>
-          <icons.component.input size={28} color={primitive.blue[600]} strokeWidth={2} />
+        <h2         className={sectionHeading}>
+          <icons.component.input size={28} className={css({ color: "blue.600" })} strokeWidth={2} />
           Checkbox コンポーネント
         </h2>
-        <p style={{ color: colors.text.primary }}>
+        <p className={sectionDescription}>
           チェックボックスコンポーネントです。
           複数の選択肢から複数を選択できるインターフェースを提供します。
         </p>
 
         <CheckboxSection />
 
-        <InfoBox variant="info" icon="💡" title="Checkboxの特徴" style={{ marginTop: spacing.scale[8] }}>
-          <ul style={{ lineHeight: typography.lineHeight.relaxed, margin: 0, paddingLeft: spacing.scale[6] }}>
+        <InfoBox variant="info" icon="💡" title="Checkboxの特徴" className={css({ mt: 8 })}>
+          <ul className={css({ lineHeight: "relaxed", margin: 0, pl: 6 })}>
             <li><strong>ラベル関連付け</strong>: for/id属性で自動関連付け</li>
             <li><strong>エラー表示</strong>: aria-invalid, aria-describedby, role="alert"</li>
             <li><strong>不確定状態</strong>: indeterminate属性で一部選択状態を表現</li>
@@ -516,41 +447,21 @@ export function ComponentDemos({
 
       <section
         id="radio-component"
-        style={{
-          marginBottom: spacing.scale[12],
-          padding: spacing.scale[6],
-          backgroundColor: colors.background.default,
-          borderRadius: radii.borderRadius.lg,
-          border: borders.default,
-        maxWidth: '100%',
-        overflowX: 'hidden',
-        boxSizing: 'border-box'
-        }}
+        className={sectionStyle}
       >
-        <h2 style={{
-          marginTop: 0,
-          color: colors.text.primary,
-          fontSize: typography.fontSize['2xl'],
-          fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
-          paddingBottom: spacing.scale[2],
-          marginBottom: spacing.scale[4],
-          display: 'flex',
-          alignItems: 'center',
-          gap: spacing.scale[2]
-        }}>
-          <icons.component.input size={28} color={primitive.blue[600]} strokeWidth={2} />
+        <h2         className={sectionHeading}>
+          <icons.component.input size={28} className={css({ color: "blue.600" })} strokeWidth={2} />
           Radio コンポーネント
         </h2>
-        <p style={{ color: colors.text.primary }}>
+        <p className={sectionDescription}>
           ラジオボタンコンポーネントです。
           複数の選択肢から1つだけを選択できるインターフェースを提供します。
         </p>
 
         <RadioSection />
 
-        <InfoBox variant="info" icon="💡" title="Radioの特徴" style={{ marginTop: spacing.scale[8] }}>
-          <ul style={{ lineHeight: typography.lineHeight.relaxed, margin: 0, paddingLeft: spacing.scale[6] }}>
+        <InfoBox variant="info" icon="💡" title="Radioの特徴" className={css({ mt: 8 })}>
+          <ul className={css({ lineHeight: "relaxed", margin: 0, pl: 6 })}>
             <li><strong>RadioGroup</strong>: fieldset/legendで グループ化</li>
             <li><strong>エラー表示</strong>: aria-invalid, aria-describedby, role="alert"</li>
             <li><strong>キーボード操作</strong>: 矢印キーで選択変更、Spaceキーで選択</li>
@@ -562,41 +473,21 @@ export function ComponentDemos({
 
       <section
         id="loading-component"
-        style={{
-          marginBottom: spacing.scale[12],
-          padding: spacing.scale[6],
-          backgroundColor: colors.background.default,
-          borderRadius: radii.borderRadius.lg,
-          border: borders.default,
-        maxWidth: '100%',
-        overflowX: 'hidden',
-        boxSizing: 'border-box'
-        }}
+        className={sectionStyle}
       >
-        <h2 style={{
-          marginTop: 0,
-          color: colors.text.primary,
-          fontSize: typography.fontSize['2xl'],
-          fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
-          paddingBottom: spacing.scale[2],
-          marginBottom: spacing.scale[4],
-          display: 'flex',
-          alignItems: 'center',
-          gap: spacing.scale[2]
-        }}>
-          <icons.component.button size={28} color={primitive.blue[600]} strokeWidth={2} />
+        <h2         className={sectionHeading}>
+          <icons.component.button size={28} className={css({ color: "blue.600" })} strokeWidth={2} />
           Loading コンポーネント
         </h2>
-        <p style={{ color: colors.text.primary }}>
+        <p className={sectionDescription}>
           ローディングスピナーコンポーネントです。
           データの読み込み中やAPI通信中などの処理待ち状態を表示します。
         </p>
 
         <LoadingSection />
 
-        <InfoBox variant="info" icon="💡" title="Loadingの特徴" style={{ marginTop: spacing.scale[8] }}>
-          <ul style={{ lineHeight: typography.lineHeight.relaxed, margin: 0, paddingLeft: spacing.scale[6] }}>
+        <InfoBox variant="info" icon="💡" title="Loadingの特徴" className={css({ mt: 8 })}>
+          <ul className={css({ lineHeight: "relaxed", margin: 0, pl: 6 })}>
             <li><strong>スクリーンリーダー対応</strong>: role="status", aria-label, aria-live</li>
             <li><strong>サイズバリエーション</strong>: sm/md/lg/xlの4サイズ</li>
             <li><strong>カラーバリエーション</strong>: primary/secondary/whiteの3色</li>
@@ -609,38 +500,18 @@ export function ComponentDemos({
 
       <section
         id="form-component"
-        style={{
-          marginBottom: spacing.scale[12],
-          padding: spacing.scale[6],
-          backgroundColor: colors.background.default,
-          borderRadius: radii.borderRadius.lg,
-          border: borders.default,
-        maxWidth: '100%',
-        overflowX: 'hidden',
-        boxSizing: 'border-box'
-        }}
+        className={sectionStyle}
       >
-        <h2 style={{
-          marginTop: 0,
-          color: colors.text.primary,
-          fontSize: typography.fontSize['2xl'],
-          fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
-          paddingBottom: spacing.scale[2],
-          marginBottom: spacing.scale[4],
-          display: 'flex',
-          alignItems: 'center',
-          gap: spacing.scale[2]
-        }}>
-          <icons.component.form size={28} color={primitive.blue[600]} strokeWidth={2} />
+        <h2         className={sectionHeading}>
+          <icons.component.form size={28} className={css({ color: "blue.600" })} strokeWidth={2} />
           Form コンポーネント
         </h2>
-        <p style={{ color: colors.text.primary, marginTop: 0 }}>
+        <p className={sectionDescription}>
           react-hook-formとZodを統合したアクセシブルなフォームコンポーネントです。
           バリデーション、エラー表示、型安全性が統合されています。
         </p>
 
-        <div style={{ marginTop: spacing.scale[6] }}>
+        <div className={css({ mt: 6 })}>
           <SectionHeading>基本的な使い方</SectionHeading>
           <Form
             schema={z.object({
@@ -673,9 +544,9 @@ export function ComponentDemos({
           />
         </div>
 
-        <div style={{ marginTop: spacing.scale[8] }}>
+        <div className={css({ mt: 8 })}>
           <SectionHeading>複雑なバリデーション</SectionHeading>
-          <p style={{ color: colors.text.primary, marginBottom: spacing.scale[4] }}>
+          <p className={css({ color: "text.primary", mb: 4 })}>
             パスワード確認フィールドの一致検証など、複雑なバリデーションルールを簡単に実装できます。
           </p>
           <Form
@@ -726,17 +597,19 @@ export function ComponentDemos({
           />
         </div>
 
-        <div style={{
-          marginTop: spacing.scale[8],
-          padding: spacing.scale[4],
-          backgroundColor: primitive.blue[50],
-          borderRadius: radii.borderRadius.md,
-          border: `${borders.width.thin} solid ${primitive.blue[200]}`,
-        }}>
-          <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
+        <div className={css({
+          mt: 8,
+          p: 4,
+          bg: "blue.50",
+          rounded: "md",
+          borderWidth: "thin",
+          borderStyle: "solid",
+          borderColor: "blue.200",
+        })}>
+          <h4 className={css({ color: "blue.900", mt: 0 })}>
             💡 Formコンポーネントの特徴
           </h4>
-          <ul style={{ color: primitive.blue[900], lineHeight: typography.lineHeight.relaxed }}>
+          <ul className={css({ color: "blue.900", lineHeight: "relaxed" })}>
             <li><strong>Zodスキーマ統合</strong>: 型安全なバリデーション</li>
             <li><strong>react-hook-form</strong>: 高パフォーマンスなフォーム管理</li>
             <li><strong>アクセシブルなエラー表示</strong>: aria-invalid, aria-describedby, role="alert"</li>
@@ -749,44 +622,24 @@ export function ComponentDemos({
 
       <section
         id="accordion-component"
-        style={{
-          marginBottom: spacing.scale[12],
-          padding: spacing.scale[6],
-          backgroundColor: colors.background.default,
-          borderRadius: radii.borderRadius.lg,
-          border: borders.default,
-        maxWidth: '100%',
-        overflowX: 'hidden',
-        boxSizing: 'border-box'
-        }}
+        className={sectionStyle}
       >
-        <h2 style={{
-          marginTop: 0,
-          color: colors.text.primary,
-          fontSize: typography.fontSize['2xl'],
-          fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
-          paddingBottom: spacing.scale[2],
-          marginBottom: spacing.scale[4],
-          display: 'flex',
-          alignItems: 'center',
-          gap: spacing.scale[2]
-        }}>
-          <icons.component.accordion size={28} color={primitive.blue[600]} strokeWidth={2} />
+        <h2         className={sectionHeading}>
+          <icons.component.accordion size={28} className={css({ color: "blue.600" })} strokeWidth={2} />
           Accordion コンポーネント
         </h2>
-        <p style={{ color: colors.text.primary, marginTop: 0 }}>
+        <p className={sectionDescription}>
           ネイティブの&lt;details&gt;/&lt;summary&gt;要素を使用したアクセシブルなアコーディオンです。
           キーボード操作とスクリーンリーダーに完全対応しています。
         </p>
 
-        <div style={{ marginTop: spacing.scale[6] }}>
+        <div className={css({ mt: 6 })}>
           <SectionHeading>基本的な使い方</SectionHeading>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[4] }}>
+          <div className={flexColumn}>
             <Accordion>
               <AccordionSummary>アクセシビリティとは？</AccordionSummary>
               <AccordionContent>
-                <p style={{ marginBottom: spacing.scale[2] }}>
+                <p className={css({ mb: 2 })}>
                   アクセシビリティ（Accessibility、a11y）とは、障害の有無に関わらず、すべての人がWebサイトやアプリケーションを利用できるようにすることです。
                 </p>
                 <p>
@@ -798,10 +651,10 @@ export function ComponentDemos({
             <Accordion defaultOpen>
               <AccordionSummary>WCAGとは？</AccordionSummary>
               <AccordionContent>
-                <p style={{ marginBottom: spacing.scale[2] }}>
+                <p className={css({ mb: 2 })}>
                   WCAG（Web Content Accessibility Guidelines）は、Webコンテンツをよりアクセシブルにするための国際的なガイドラインです。
                 </p>
-                <ul style={{ paddingLeft: spacing.scale[5] }}>
+                <ul className={css({ pl: 5 })}>
                   <li>レベルA: 最低限のアクセシビリティ</li>
                   <li>レベルAA: 推奨される標準（ほとんどのサイトで目指すべき）</li>
                   <li>レベルAAA: 最高レベルのアクセシビリティ</li>
@@ -812,7 +665,7 @@ export function ComponentDemos({
             <Accordion>
               <AccordionSummary>デザイントークンとは？</AccordionSummary>
               <AccordionContent>
-                <p style={{ marginBottom: spacing.scale[2] }}>
+                <p className={css({ mb: 2 })}>
                   デザイントークンは、色、サイズ、間隔などのデザイン要素を変数として定義したものです。
                 </p>
                 <p>
@@ -824,13 +677,13 @@ export function ComponentDemos({
           </div>
         </div>
 
-        <div style={{ marginTop: spacing.scale[8] }}>
+        <div className={css({ mt: 8 })}>
           <SectionHeading>WCAGレベル別フォーカススタイル</SectionHeading>
-          <p style={{ color: colors.text.primary, marginBottom: spacing.scale[4] }}>
+          <p className={css({ color: "text.primary", mb: 4 })}>
             <strong>Tabキー</strong>でアコーディオンにフォーカスを当てて、各レベルの違いを確認してください。
           </p>
 
-          <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[4] }}>
+          <div className={flexColumn}>
             <Accordion wcagLevel="A">
               <AccordionSummary>Level A（最低限）</AccordionSummary>
               <AccordionContent>
@@ -853,26 +706,24 @@ export function ComponentDemos({
             </Accordion>
           </div>
 
-          <p style={{
-            marginTop: spacing.scale[4],
-            fontSize: typography.fontSize.sm,
-            color: colors.text.primary
-          }}>
-            💡 WCAGレベルとコントラスト比の詳細は<a href="#wcag-levels" style={{ color: colors.text.link }}>こちらのセクション</a>をご覧ください
+          <p className={css({ mt: 4, fontSize: "sm", color: "text.primary" })}>
+            💡 WCAGレベルとコントラスト比の詳細は<a href="#wcag-levels" className={css({ color: "text.link" })}>こちらのセクション</a>をご覧ください
           </p>
         </div>
 
-        <div style={{
-          marginTop: spacing.scale[8],
-          padding: spacing.scale[4],
-          backgroundColor: primitive.blue[50],
-          borderRadius: radii.borderRadius.md,
-          border: `${borders.width.thin} solid ${primitive.blue[200]}`,
-        }}>
-          <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
+        <div className={css({
+          mt: 8,
+          p: 4,
+          bg: "blue.50",
+          rounded: "md",
+          borderWidth: "thin",
+          borderStyle: "solid",
+          borderColor: "blue.200",
+        })}>
+          <h4 className={css({ color: "blue.900", mt: 0 })}>
             💡 アコーディオンの特徴
           </h4>
-          <ul style={{ color: primitive.blue[900], lineHeight: typography.lineHeight.relaxed }}>
+          <ul className={css({ color: "blue.900", lineHeight: "relaxed" })}>
             <li><strong>セマンティックHTML</strong>: ネイティブの&lt;details&gt;/&lt;summary&gt;要素を使用</li>
             <li><strong>キーボード操作</strong>: Tab、Enter、Spaceキーで完全に操作可能</li>
             <li><strong>スクリーンリーダー対応</strong>: 自動的に適切なARIA属性が付与される</li>
@@ -885,42 +736,17 @@ export function ComponentDemos({
 
       <section
         id="toast-component"
-        style={{
-          marginBottom: spacing.scale[12],
-          padding: spacing.scale[6],
-          backgroundColor: colors.background.default,
-          borderRadius: radii.borderRadius.lg,
-          border: borders.default,
-        maxWidth: '100%',
-        overflowX: 'hidden',
-        boxSizing: 'border-box'
-        }}
+        className={sectionStyle}
       >
-        <h2 style={{
-          marginTop: 0,
-          color: colors.text.primary,
-          fontSize: typography.fontSize['2xl'],
-          fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
-          paddingBottom: spacing.scale[2],
-          marginBottom: spacing.scale[4],
-          display: 'flex',
-          alignItems: 'center',
-          gap: spacing.scale[2]
-        }}>
-          <icons.component.toast size={28} color={primitive.blue[600]} strokeWidth={2} />
+        <h2         className={sectionHeading}>
+          <icons.component.toast size={28} className={css({ color: "blue.600" })} strokeWidth={2} />
           Toast コンポーネント
         </h2>
-        <p style={{ lineHeight: typography.lineHeight.normal, color: colors.text.primary }}>
+          <p className={css({ lineHeight: "normal", color: "text.primary" })}>
           トースト通知は、ユーザーの操作に対する一時的なフィードバックを提供します。
         </p>
 
-        <div style={{
-          marginTop: spacing.scale[6],
-          display: 'flex',
-          gap: spacing.scale[3],
-          flexWrap: 'wrap',
-        }}>
+        <div className={css({ mt: 6, display: "flex", gap: 3, flexWrap: "wrap" })}>
           <Button
             variant="primary"
             onClick={() => success('操作が完了しました', '成功')}
@@ -950,17 +776,19 @@ export function ComponentDemos({
           </Button>
         </div>
 
-        <div style={{
-          marginTop: spacing.scale[8],
-          padding: spacing.scale[4],
-          backgroundColor: primitive.blue[50],
-          borderRadius: radii.borderRadius.md,
-          border: `${borders.width.thin} solid ${primitive.blue[200]}`,
-        }}>
-          <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
+        <div className={css({
+          mt: 8,
+          p: 4,
+          bg: "blue.50",
+          rounded: "md",
+          borderWidth: "thin",
+          borderStyle: "solid",
+          borderColor: "blue.200",
+        })}>
+          <h4 className={css({ color: "blue.900", mt: 0 })}>
             💡 Toastの特徴
           </h4>
-          <ul style={{ color: primitive.blue[900], lineHeight: typography.lineHeight.relaxed }}>
+          <ul className={css({ color: "blue.900", lineHeight: "relaxed" })}>
             <li><strong>4種類のタイプ</strong>: success、error、warning、info</li>
             <li><strong>自動消去</strong>: デフォルト5秒で自動的に閉じる</li>
             <li><strong>スライドアニメーション</strong>: 画面右上からスムーズに表示</li>
@@ -973,42 +801,17 @@ export function ComponentDemos({
 
       <section
         id="modal-component"
-        style={{
-          marginBottom: spacing.scale[12],
-          padding: spacing.scale[6],
-          backgroundColor: colors.background.default,
-          borderRadius: radii.borderRadius.lg,
-          border: borders.default,
-        maxWidth: '100%',
-        overflowX: 'hidden',
-        boxSizing: 'border-box'
-        }}
+        className={sectionStyle}
       >
-        <h2 style={{
-          marginTop: 0,
-          color: colors.text.primary,
-          fontSize: typography.fontSize['2xl'],
-          fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
-          paddingBottom: spacing.scale[2],
-          marginBottom: spacing.scale[4],
-          display: 'flex',
-          alignItems: 'center',
-          gap: spacing.scale[2]
-        }}>
-          <icons.component.modal size={28} color={primitive.blue[600]} strokeWidth={2} />
+        <h2         className={sectionHeading}>
+          <icons.component.modal size={28} className={css({ color: "blue.600" })} strokeWidth={2} />
           Modal コンポーネント
         </h2>
-        <p style={{ lineHeight: typography.lineHeight.normal, color: colors.text.primary }}>
+          <p className={css({ lineHeight: "normal", color: "text.primary" })}>
           モーダルダイアログは、ユーザーの注意を特定のタスクに集中させるために使用します。
         </p>
 
-        <div style={{
-          marginTop: spacing.scale[6],
-          display: 'flex',
-          gap: spacing.scale[3],
-          flexWrap: 'wrap',
-        }}>
+        <div className={css({ mt: 6, display: "flex", gap: 3, flexWrap: "wrap" })}>
           <Button variant="primary" onClick={() => setIsModalOpen(true)}>
             モーダルを開く
           </Button>
@@ -1039,24 +842,26 @@ export function ComponentDemos({
           <p>
             <strong>試してみてください:</strong>
           </p>
-          <ul style={{ lineHeight: typography.lineHeight.relaxed }}>
+          <ul className={css({ lineHeight: "relaxed" })}>
             <li>Tab キーでフォーカスを移動（モーダル内を循環）</li>
             <li>Esc キーでモーダルを閉じる</li>
             <li>背景をクリックしてモーダルを閉じる</li>
           </ul>
         </Modal>
 
-        <div style={{
-          marginTop: spacing.scale[8],
-          padding: spacing.scale[4],
-          backgroundColor: primitive.blue[50],
-          borderRadius: radii.borderRadius.md,
-          border: `${borders.width.thin} solid ${primitive.blue[200]}`,
-        }}>
-          <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
+        <div className={css({
+          mt: 8,
+          p: 4,
+          bg: "blue.50",
+          rounded: "md",
+          borderWidth: "thin",
+          borderStyle: "solid",
+          borderColor: "blue.200",
+        })}>
+          <h4 className={css({ color: "blue.900", mt: 0 })}>
             💡 Modalの特徴
           </h4>
-          <ul style={{ color: primitive.blue[900], lineHeight: typography.lineHeight.relaxed }}>
+          <ul className={css({ color: "blue.900", lineHeight: "relaxed" })}>
             <li><strong>role="dialog"</strong>: ダイアログであることを支援技術に伝える</li>
             <li><strong>aria-modal="true"</strong>: モーダルであることを明示</li>
             <li><strong>aria-labelledby</strong>: タイトルとの関連付け</li>
@@ -1070,49 +875,31 @@ export function ComponentDemos({
 
       <section
         id="text-component"
-        style={{
-          marginBottom: spacing.scale[12],
-          padding: spacing.scale[6],
-          backgroundColor: colors.background.default,
-          borderRadius: radii.borderRadius.lg,
-          border: borders.default,
-        maxWidth: '100%',
-        overflowX: 'hidden',
-        boxSizing: 'border-box'
-        }}
+        className={sectionStyle}
       >
-        <h2 style={{
-          marginTop: 0,
-          color: colors.text.primary,
-          fontSize: typography.fontSize['2xl'],
-          fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
-          paddingBottom: spacing.scale[2],
-          marginBottom: spacing.scale[4],
-          display: 'flex',
-          alignItems: 'center',
-          gap: spacing.scale[2]
-        }}>
-          <icons.component.text size={28} color={primitive.blue[600]} strokeWidth={2} />
+        <h2         className={sectionHeading}>
+          <icons.component.text size={28} className={css({ color: "blue.600" })} strokeWidth={2} />
           Text コンポーネント
         </h2>
-        <p style={{ color: colors.text.primary, marginTop: 0 }}>
+        <p className={sectionDescription}>
           タイポグラフィトークンを使用したテキスト表示コンポーネントです。
           セマンティックなHTML要素の選択と柔軟なスタイリングが可能です。
         </p>
 
-        <div style={{ marginTop: spacing.scale[6] }}>
+        <div className={css({ mt: 6 })}>
           <SectionHeading>見出しレベル</SectionHeading>
-          <div style={{
-            padding: spacing.scale[4],
-            backgroundColor: colors.background.subtle,
-            borderRadius: radii.borderRadius.base,
-            border: borders.default,
-        maxWidth: '100%',
-        overflowX: 'hidden',
-        boxSizing: 'border-box'
-          }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[3] }}>
+          <div className={css({
+            p: 4,
+            bg: "bg.subtle",
+            rounded: "base",
+            borderWidth: "thin",
+            borderStyle: "solid",
+            borderColor: "border.default",
+            maxW: "full",
+            overflowX: "hidden",
+            boxSizing: "border-box",
+          })}>
+            <div className={cx(flexColumn, css({ gap: 3 }))}>
               <Text variant="h1">見出し1 - ページタイトル</Text>
               <Text variant="h2">見出し2 - セクションタイトル</Text>
               <Text variant="h3">見出し3 - サブセクション</Text>
@@ -1123,18 +910,20 @@ export function ComponentDemos({
           </div>
         </div>
 
-        <div style={{ marginTop: spacing.scale[8] }}>
+        <div className={css({ mt: 8 })}>
           <SectionHeading>本文バリエーション</SectionHeading>
-          <div style={{
-            padding: spacing.scale[4],
-            backgroundColor: colors.background.subtle,
-            borderRadius: radii.borderRadius.base,
-            border: borders.default,
-        maxWidth: '100%',
-        overflowX: 'hidden',
-        boxSizing: 'border-box'
-          }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[3] }}>
+          <div className={css({
+            p: 4,
+            bg: "bg.subtle",
+            rounded: "base",
+            borderWidth: "thin",
+            borderStyle: "solid",
+            borderColor: "border.default",
+            maxW: "full",
+            overflowX: "hidden",
+            boxSizing: "border-box",
+          })}>
+            <div className={cx(flexColumn, css({ gap: 3 }))}>
               <Text variant="body-large">大きめの本文テキスト - 重要な説明文などに使用</Text>
               <Text variant="body">標準の本文テキスト - 最も一般的に使用されるサイズ</Text>
               <Text variant="body-small">小さめの本文テキスト - 補足情報などに使用</Text>
@@ -1144,18 +933,20 @@ export function ComponentDemos({
           </div>
         </div>
 
-        <div style={{ marginTop: spacing.scale[8] }}>
+        <div className={css({ mt: 8 })}>
           <SectionHeading>テキスト装飾</SectionHeading>
-          <div style={{
-            padding: spacing.scale[4],
-            backgroundColor: colors.background.subtle,
-            borderRadius: radii.borderRadius.base,
-            border: borders.default,
-        maxWidth: '100%',
-        overflowX: 'hidden',
-        boxSizing: 'border-box'
-          }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[2] }}>
+          <div className={css({
+            p: 4,
+            bg: "bg.subtle",
+            rounded: "base",
+            borderWidth: "thin",
+            borderStyle: "solid",
+            borderColor: "border.default",
+            maxW: "full",
+            overflowX: "hidden",
+            boxSizing: "border-box",
+          })}>
+            <div className={cx(flexColumn, css({ gap: 2 }))}>
               <Text>通常のテキスト</Text>
               <Text bold>太字のテキスト</Text>
               <Text italic>イタリック体のテキスト</Text>
@@ -1165,82 +956,92 @@ export function ComponentDemos({
           </div>
         </div>
 
-        <div style={{ marginTop: spacing.scale[8] }}>
+        <div className={css({ mt: 8 })}>
           <SectionHeading>カラーバリエーション</SectionHeading>
-          <div style={{
-            padding: spacing.scale[4],
-            backgroundColor: colors.background.subtle,
-            borderRadius: radii.borderRadius.base,
-            border: borders.default,
-        maxWidth: '100%',
-        overflowX: 'hidden',
-        boxSizing: 'border-box'
-          }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[2] }}>
-              <Text color={primitive.blue[600]}>青色のテキスト</Text>
-              <Text color={primitive.red[600]}>赤色のテキスト</Text>
-              <Text color={primitive.green[600]}>緑色のテキスト</Text>
-              <Text color={primitive.pink?.[600] || primitive.blue[600]}>ピンク色のテキスト</Text>
+          <div className={css({
+            p: 4,
+            bg: "bg.subtle",
+            rounded: "base",
+            borderWidth: "thin",
+            borderStyle: "solid",
+            borderColor: "border.default",
+            maxW: "full",
+            overflowX: "hidden",
+            boxSizing: "border-box",
+          })}>
+            <div className={cx(flexColumn, css({ gap: 2 }))}>
+              <Text className={css({ color: "blue.600" })}>青色のテキスト</Text>
+              <Text className={css({ color: "red.600" })}>赤色のテキスト</Text>
+              <Text className={css({ color: "green.600" })}>緑色のテキスト</Text>
+              <Text className={css({ color: "pink.600" })}>ピンク色のテキスト</Text>
             </div>
           </div>
         </div>
 
-        <div style={{ marginTop: spacing.scale[8] }}>
+        <div className={css({ mt: 8 })}>
           <SectionHeading>WCAGレベルの違い（A / AA / AAA）</SectionHeading>
 
-          <div style={{
-            padding: spacing.scale[4],
-            backgroundColor: primitive.blue[50],
-            borderRadius: radii.borderRadius.md,
-            border: `${borders.width.thin} solid ${primitive.blue[200]}`,
-            marginBottom: spacing.scale[4],
-          }}>
-            <Text variant="body" color={primitive.blue[900]}>
+          <div className={css({
+            p: 4,
+            bg: "blue.50",
+            rounded: "md",
+            borderWidth: "thin",
+            borderStyle: "solid",
+            borderColor: "blue.200",
+            mb: 4,
+          })}>
+            <Text variant="body" className={css({ color: "blue.900" })}>
               <strong>WCAG（Web Content Accessibility Guidelines）</strong>は、Webコンテンツをアクセシブルにするための国際的なガイドラインです。
               3つの適合レベル（A、AA、AAA）があり、レベルが上がるほど厳格な基準となります。
             </Text>
           </div>
 
-          <div style={{
-            padding: spacing.scale[4],
-            backgroundColor: colors.background.subtle,
-            borderRadius: radii.borderRadius.base,
-            border: borders.default,
-        maxWidth: '100%',
-        overflowX: 'hidden',
-        boxSizing: 'border-box'
-          }}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[5] }}>
-              <div style={{
-                padding: spacing.scale[4],
-                backgroundColor: colors.background.default,
-                borderRadius: radii.borderRadius.md,
-                border: `${borders.width.base} solid ${colors.border.default}`,
-              }}>
-                <Text variant="h6" color={colors.text.primary} style={{ marginBottom: spacing.scale[2] }}>
+          <div className={css({
+            p: 4,
+            bg: "bg.subtle",
+            rounded: "base",
+            borderWidth: "thin",
+            borderStyle: "solid",
+            borderColor: "border.default",
+            maxW: "full",
+            overflowX: "hidden",
+            boxSizing: "border-box",
+          })}>
+            <div className={cx(flexColumn, css({ gap: 5 }))}>
+              <div className={css({
+                p: 4,
+                bg: "bg.canvas",
+                rounded: "md",
+                borderWidth: "base",
+                borderStyle: "solid",
+                borderColor: "border.default",
+              })}>
+                <Text variant="h6" className={css({ color: "text.primary", mb: 2 })}>
                   レベルA（最低限）
                 </Text>
-                <Text variant="body-small" color={colors.text.secondary} style={{ marginBottom: spacing.scale[2] }}>
+                <Text variant="body-small" className={css({ color: "text.secondary", mb: 2 })}>
                   コントラスト比: <strong>3:1</strong>（大きいテキストのみ）
                 </Text>
-                <Text variant="body-small" color={colors.text.secondary} style={{ marginBottom: spacing.scale[2] }}>
+                <Text variant="body-small" className={css({ color: "text.secondary", mb: 2 })}>
                   最も基本的なアクセシビリティ要件。これを満たさないと多くのユーザーがコンテンツにアクセスできない。
                 </Text>
-                <div style={{
-                  marginTop: spacing.scale[3],
-                  paddingTop: spacing.scale[3],
-                  borderTop: `${borders.width.thin} solid ${colors.border.default}`,
-                }}>
-                  <Text variant="body-small" bold color={colors.text.primary} style={{ marginBottom: spacing.scale[1] }}>
+                <div className={css({
+                  mt: 3,
+                  pt: 3,
+                  borderTopWidth: "thin",
+                  borderTopStyle: "solid",
+                  borderTopColor: "border.default",
+                })}>
+                  <Text variant="body-small" bold className={css({ color: "text.primary", mb: 1 })}>
                     主な要件例：
                   </Text>
-                  <ul style={{
+                  <ul className={css({
                     margin: 0,
-                    paddingLeft: spacing.scale[5],
-                    fontSize: typography.fontSize.sm,
-                    lineHeight: typography.lineHeight.relaxed,
-                    color: colors.text.secondary,
-                  }}>
+                    pl: 5,
+                    fontSize: "sm",
+                    lineHeight: "relaxed",
+                    color: "text.secondary",
+                  })}>
                     <li>キーボードで操作可能</li>
                     <li>画像に代替テキスト（alt属性）を提供</li>
                     <li>動画に字幕を提供</li>
@@ -1249,36 +1050,40 @@ export function ComponentDemos({
                 </div>
               </div>
 
-              <div style={{
-                padding: spacing.scale[4],
-                backgroundColor: colors.background.default,
-                borderRadius: radii.borderRadius.md,
-                border: `${borders.width.base} solid ${primitive.blue[400]}`,
-              }}>
-                <Text variant="h6" color={primitive.blue[700]} style={{ marginBottom: spacing.scale[2] }}>
+              <div className={css({
+                p: 4,
+                bg: "bg.canvas",
+                rounded: "md",
+                borderWidth: "base",
+                borderStyle: "solid",
+                borderColor: "blue.400",
+              })}>
+                <Text variant="h6" className={css({ color: "blue.700", mb: 2 })}>
                   レベルAA（推奨）⭐
                 </Text>
-                <Text variant="body-small" color={colors.text.secondary} style={{ marginBottom: spacing.scale[2] }}>
+                <Text variant="body-small" className={css({ color: "text.secondary", mb: 2 })}>
                   コントラスト比: <strong>4.5:1</strong>（通常テキスト）、<strong>3:1</strong>（大きいテキスト18px以上）
                 </Text>
-                <Text variant="body-small" color={colors.text.secondary} style={{ marginBottom: spacing.scale[2] }}>
+                <Text variant="body-small" className={css({ color: "text.secondary", mb: 2 })}>
                   ほとんどのWebサイトが目指すべき標準レベル。法律や規制で要求されることが多い（米国のADA、欧州のEAA、日本のJIS X 8341-3など）。
                 </Text>
-                <div style={{
-                  marginTop: spacing.scale[3],
-                  paddingTop: spacing.scale[3],
-                  borderTop: `${borders.width.thin} solid ${colors.border.default}`,
-                }}>
-                  <Text variant="body-small" bold color={primitive.blue[800]} style={{ marginBottom: spacing.scale[1] }}>
+                <div className={css({
+                  mt: 3,
+                  pt: 3,
+                  borderTopWidth: "thin",
+                  borderTopStyle: "solid",
+                  borderTopColor: "border.default",
+                })}>
+                  <Text variant="body-small" bold className={css({ color: "blue.800", mb: 1 })}>
                     レベルAに加えて：
                   </Text>
-                  <ul style={{
+                  <ul className={css({
                     margin: 0,
-                    paddingLeft: spacing.scale[5],
-                    fontSize: typography.fontSize.sm,
-                    lineHeight: typography.lineHeight.relaxed,
-                    color: colors.text.secondary,
-                  }}>
+                    pl: 5,
+                    fontSize: "sm",
+                    lineHeight: "relaxed",
+                    color: "text.secondary",
+                  })}>
                     <li>十分なカラーコントラスト（4.5:1以上）</li>
                     <li>テキストのリサイズ（200%まで拡大可能）</li>
                     <li>キーボードフォーカスの視覚的表示</li>
@@ -1288,37 +1093,41 @@ export function ComponentDemos({
                 </div>
               </div>
 
-              <div style={{
-                padding: spacing.scale[4],
-                backgroundColor: colors.background.default,
-                borderRadius: radii.borderRadius.md,
-                border: `2px solid ${primitive.green[400]}`,
-              }}>
-                <Text variant="h6" color={primitive.green[700]} style={{ marginBottom: spacing.scale[2] }}>
+              <div className={css({
+                p: 4,
+                bg: "bg.canvas",
+                rounded: "md",
+                borderWidth: "base",
+                borderStyle: "solid",
+                borderColor: "green.400",
+              })}>
+                <Text variant="h6" className={css({ color: "green.700", mb: 2 })}>
                   レベルAAA（最高）
                 </Text>
-                <Text variant="body-small" color={colors.text.secondary} style={{ marginBottom: spacing.scale[2] }}>
+                <Text variant="body-small" className={css({ color: "text.secondary", mb: 2 })}>
                   コントラスト比: <strong>7:1</strong>（通常テキスト）、<strong>4.5:1</strong>（大きいテキスト18px以上）
                 </Text>
-                <Text variant="body-small" color={colors.text.secondary} style={{ marginBottom: spacing.scale[2] }}>
+                <Text variant="body-small" className={css({ color: "text.secondary", mb: 2 })}>
                   最も厳格なアクセシビリティ基準。公共機関、医療、金融、教育機関などで推奨。
                   <strong>すべてのコンテンツでAAA達成は現実的でない場合が多い</strong>ため、重要な部分に適用することが推奨される。
                 </Text>
-                <div style={{
-                  marginTop: spacing.scale[3],
-                  paddingTop: spacing.scale[3],
-                  borderTop: `1px solid ${colors.border.default}`,
-                }}>
-                  <Text variant="body-small" bold color={primitive.green[800]} style={{ marginBottom: spacing.scale[1] }}>
+                <div className={css({
+                  mt: 3,
+                  pt: 3,
+                  borderTopWidth: "thin",
+                  borderTopStyle: "solid",
+                  borderTopColor: "border.default",
+                })}>
+                  <Text variant="body-small" bold className={css({ color: "green.800", mb: 1 })}>
                     レベルAAに加えて：
                   </Text>
-                  <ul style={{
+                  <ul className={css({
                     margin: 0,
-                    paddingLeft: spacing.scale[5],
-                    fontSize: typography.fontSize.sm,
-                    lineHeight: typography.lineHeight.relaxed,
-                    color: colors.text.secondary,
-                  }}>
+                    pl: 5,
+                    fontSize: "sm",
+                    lineHeight: "relaxed",
+                    color: "text.secondary",
+                  })}>
                     <li>非常に高いコントラスト比（7:1以上）</li>
                     <li>音声のみのコンテンツに代替テキストを提供</li>
                     <li>手話動画の提供</li>
@@ -1330,17 +1139,19 @@ export function ComponentDemos({
             </div>
           </div>
 
-          <div style={{
-            marginTop: spacing.scale[4],
-            padding: spacing.scale[3],
-            backgroundColor: primitive.yellow,
-            borderRadius: radii.borderRadius.md,
-            border: `2px solid ${colors.border.default}`,
-          }}>
-            <Text variant="body-small" bold color={colors.text.primary}>
+          <div className={css({
+            mt: 4,
+            p: 3,
+            bg: "yellow",
+            rounded: "md",
+            borderWidth: "base",
+            borderStyle: "solid",
+            borderColor: "border.default",
+          })}>
+            <Text variant="body-small" bold className={css({ color: "text.primary" })}>
               💡 実用的な選び方
             </Text>
-            <ul style={{ margin: `${spacing.scale[2]} 0 0 0`, paddingLeft: spacing.scale[5], fontSize: typography.fontSize.sm, lineHeight: typography.lineHeight.relaxed, color: colors.text.primary }}>
+            <ul className={css({ margin: "0.5rem 0 0 0", pl: 5, fontSize: "sm", lineHeight: "relaxed", color: "text.primary" })}>
               <li><strong>一般的なWebサイト</strong>: AA を目指す</li>
               <li><strong>公共サービス、医療、金融</strong>: AAA を検討</li>
               <li><strong>最低限</strong>: A は避け、少なくとも AA を満たす</li>
@@ -1348,17 +1159,19 @@ export function ComponentDemos({
           </div>
         </div>
 
-        <div style={{
-          marginTop: spacing.scale[8],
-          padding: spacing.scale[4],
-          backgroundColor: primitive.blue[50],
-          borderRadius: radii.borderRadius.md,
-          border: `${borders.width.thin} solid ${primitive.blue[200]}`,
-        }}>
-          <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
+        <div className={css({
+          mt: 8,
+          p: 4,
+          bg: "blue.50",
+          rounded: "md",
+          borderWidth: "thin",
+          borderStyle: "solid",
+          borderColor: "blue.200",
+        })}>
+          <h4 className={css({ color: "blue.900", mt: 0 })}>
             💡 Textコンポーネントの特徴
           </h4>
-          <ul style={{ color: primitive.blue[900], lineHeight: typography.lineHeight.relaxed }}>
+          <ul className={css({ color: "blue.900", lineHeight: "relaxed" })}>
             <li><strong>タイポグラフィトークン</strong>: デザインシステムの一貫性を保つ</li>
             <li><strong>セマンティックHTML</strong>: variantに応じて適切なHTML要素を自動選択</li>
             <li><strong>柔軟なカスタマイズ</strong>: as propでHTML要素を上書き可能</li>
@@ -1370,48 +1183,30 @@ export function ComponentDemos({
 
       <section
         id="breadcrumbs-component"
-        style={{
-          marginBottom: spacing.scale[12],
-          padding: spacing.scale[6],
-          backgroundColor: colors.background.default,
-          borderRadius: radii.borderRadius.lg,
-          border: borders.default,
-        maxWidth: '100%',
-        overflowX: 'hidden',
-        boxSizing: 'border-box'
-        }}
+        className={sectionStyle}
       >
-        <h2 style={{
-          marginTop: 0,
-          color: colors.text.primary,
-          fontSize: typography.fontSize['2xl'],
-          fontWeight: 'bold',
-          borderBottom: `${borders.width.thick} solid ${primitive.blue[500]}`,
-          paddingBottom: spacing.scale[2],
-          marginBottom: spacing.scale[4],
-          display: 'flex',
-          alignItems: 'center',
-          gap: spacing.scale[2]
-        }}>
-          <icons.component.navigation size={28} color={primitive.blue[600]} strokeWidth={2} />
+        <h2         className={sectionHeading}>
+          <icons.component.navigation size={28} className={css({ color: "blue.600" })} strokeWidth={2} />
           Breadcrumbs コンポーネント
         </h2>
-        <p style={{ color: colors.text.primary, marginTop: 0 }}>
+        <p className={sectionDescription}>
           パンくずリスト（Breadcrumbs）は、ユーザーが現在いる場所を示すナビゲーション要素です。
           Webサイトの階層構造を視覚的に表示し、ユーザーが簡単に上位階層へ戻ることができます。
         </p>
 
-        <div style={{ marginTop: spacing.scale[6] }}>
+        <div className={css({ mt: 6 })}>
           <SectionHeading>基本的な使い方</SectionHeading>
-          <div style={{
-            padding: spacing.scale[4],
-            backgroundColor: colors.background.subtle,
-            borderRadius: radii.borderRadius.base,
-            border: borders.default,
-        maxWidth: '100%',
-        overflowX: 'hidden',
-        boxSizing: 'border-box'
-          }}>
+          <div className={css({
+            p: 4,
+            bg: "bg.subtle",
+            rounded: "base",
+            borderWidth: "thin",
+            borderStyle: "solid",
+            borderColor: "border.default",
+            maxW: "full",
+            overflowX: "hidden",
+            boxSizing: "border-box",
+          })}>
             <Breadcrumbs>
               <BreadcrumbList>
                 <BreadcrumbItem>
@@ -1426,17 +1221,19 @@ export function ComponentDemos({
           </div>
         </div>
 
-        <div style={{ marginTop: spacing.scale[8] }}>
+        <div className={css({ mt: 8 })}>
           <SectionHeading>階層の深いナビゲーション</SectionHeading>
-          <div style={{
-            padding: spacing.scale[4],
-            backgroundColor: colors.background.subtle,
-            borderRadius: radii.borderRadius.base,
-            border: borders.default,
-        maxWidth: '100%',
-        overflowX: 'hidden',
-        boxSizing: 'border-box'
-          }}>
+          <div className={css({
+            p: 4,
+            bg: "bg.subtle",
+            rounded: "base",
+            borderWidth: "thin",
+            borderStyle: "solid",
+            borderColor: "border.default",
+            maxW: "full",
+            overflowX: "hidden",
+            boxSizing: "border-box",
+          })}>
             <Breadcrumbs>
               <BreadcrumbList>
                 <BreadcrumbItem>
@@ -1457,17 +1254,19 @@ export function ComponentDemos({
           </div>
         </div>
 
-        <div style={{
-          marginTop: spacing.scale[8],
-          padding: spacing.scale[4],
-          backgroundColor: primitive.blue[50],
-          borderRadius: radii.borderRadius.md,
-          border: `${borders.width.thin} solid ${primitive.blue[200]}`,
-        }}>
-          <h4 style={{ color: primitive.blue[900], marginTop: 0 }}>
+        <div className={css({
+          mt: 8,
+          p: 4,
+          bg: "blue.50",
+          rounded: "md",
+          borderWidth: "thin",
+          borderStyle: "solid",
+          borderColor: "blue.200",
+        })}>
+          <h4 className={css({ color: "blue.900", mt: 0 })}>
             💡 Breadcrumbsの特徴
           </h4>
-          <ul style={{ color: primitive.blue[900], lineHeight: typography.lineHeight.relaxed }}>
+          <ul className={css({ color: "blue.900", lineHeight: "relaxed" })}>
             <li><strong>セマンティックHTML</strong>: &lt;nav aria-label="パンくずリスト"&gt;でアクセシブル</li>
             <li><strong>構造化マークアップ</strong>: &lt;ol&gt;と&lt;li&gt;でリスト構造を明示</li>
             <li><strong>aria-current="page"</strong>: 現在のページを支援技術に明示</li>
@@ -1505,7 +1304,7 @@ function CheckboxSection() {
 
   return (
     <>
-      <div style={{ marginTop: spacing.scale[6] }}>
+      <div className={css({ mt: 6 })}>
         <SectionHeading>基本的な使い方</SectionHeading>
         <Checkbox
           label="利用規約に同意する"
@@ -1514,7 +1313,7 @@ function CheckboxSection() {
         />
       </div>
 
-      <div style={{ marginTop: spacing.scale[8] }}>
+      <div className={css({ mt: 8 })}>
         <SectionHeading>ヘルプテキスト付き</SectionHeading>
         <Checkbox
           label="ニュースレターを購読する"
@@ -1524,16 +1323,16 @@ function CheckboxSection() {
         />
       </div>
 
-      <div style={{ marginTop: spacing.scale[8] }}>
+      <div className={css({ mt: 8 })}>
         <SectionHeading>親子チェックボックス</SectionHeading>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: spacing.scale[3] }}>
+        <div className={cx(flexColumn, css({ gap: 3 }))}>
           <Checkbox
             label="すべて選択"
             checked={parent}
             indeterminate={someChecked}
             onChange={(e) => handleParentChange(e.target.checked)}
           />
-          <div style={{ marginLeft: spacing.scale[8], display: 'flex', flexDirection: 'column', gap: spacing.scale[2] }}>
+          <div className={cx(flexColumn, css({ ml: 8, gap: 2 }))}>
             <Checkbox
               label="項目1"
               checked={children.child1}
@@ -1563,7 +1362,7 @@ function RadioSection() {
 
   return (
     <>
-      <div style={{ marginTop: spacing.scale[6] }}>
+      <div className={css({ mt: 6 })}>
         <SectionHeading>基本的な使い方</SectionHeading>
         <RadioGroup label="お好きな色を選択してください">
           <Radio
@@ -1590,7 +1389,7 @@ function RadioSection() {
         </RadioGroup>
       </div>
 
-      <div style={{ marginTop: spacing.scale[8] }}>
+      <div className={css({ mt: 8 })}>
         <SectionHeading>ヘルプテキスト付き</SectionHeading>
         <RadioGroup
           label="配送方法を選択してください"
@@ -1626,9 +1425,9 @@ function TextAreaSection() {
 
   return (
     <>
-      <div style={{ marginTop: spacing.scale[6] }}>
+      <div className={css({ mt: 6 })}>
         <SectionHeading>基本的な使い方</SectionHeading>
-        <div style={{ maxWidth: '600px' }}>
+        <div className={css({ maxW: "600px" })}>
           <TextArea
             label="コメント"
             placeholder="コメントを入力してください"
@@ -1638,9 +1437,9 @@ function TextAreaSection() {
         </div>
       </div>
 
-      <div style={{ marginTop: spacing.scale[8] }}>
+      <div className={css({ mt: 8 })}>
         <SectionHeading>ヘルプテキスト付き</SectionHeading>
-        <div style={{ maxWidth: '600px' }}>
+        <div className={css({ maxW: "600px" })}>
           <TextArea
             label="レビュー"
             helpText="商品の感想をお聞かせください"
@@ -1651,9 +1450,9 @@ function TextAreaSection() {
         </div>
       </div>
 
-      <div style={{ marginTop: spacing.scale[8] }}>
+      <div className={css({ mt: 8 })}>
         <SectionHeading>文字数カウント付き</SectionHeading>
-        <div style={{ maxWidth: '600px' }}>
+        <div className={css({ maxW: "600px" })}>
           <TextArea
             label="ツイート"
             showCount
@@ -1675,9 +1474,9 @@ function LoadingSection() {
 
   return (
     <>
-      <div style={{ marginTop: spacing.scale[6] }}>
+      <div className={css({ mt: 6 })}>
         <SectionHeading>サイズバリエーション</SectionHeading>
-        <div style={{ display: "flex", alignItems: "center", gap: spacing.scale[8] }}>
+        <div className={css({ display: "flex", alignItems: "center", gap: 8 })}>
           <Loading size="sm" label="Small" />
           <Loading size="md" label="Medium" />
           <Loading size="lg" label="Large" />
@@ -1685,21 +1484,21 @@ function LoadingSection() {
         </div>
       </div>
 
-      <div style={{ marginTop: spacing.scale[8] }}>
+      <div className={css({ mt: 8 })}>
         <SectionHeading>インラインローディング</SectionHeading>
-        <div style={{ display: "flex", flexDirection: "column", gap: spacing.scale[3] }}>
-          <div style={{ fontSize: "14px", display: "flex", alignItems: "center", gap: "8px" }}>
+        <div className={cx(flexColumn, css({ gap: 3 }))}>
+          <div className={css({ fontSize: "sm", display: "flex", alignItems: "center", gap: 2 })}>
             <InlineLoading size="sm" color="primary" />
             <span>データを読み込んでいます...</span>
           </div>
-          <div style={{ fontSize: "16px", display: "flex", alignItems: "center", gap: "8px" }}>
+          <div className={css({ fontSize: "base", display: "flex", alignItems: "center", gap: 2 })}>
             <InlineLoading size="md" color="primary" />
             <span>処理中です...</span>
           </div>
         </div>
       </div>
 
-      <div style={{ marginTop: spacing.scale[8] }}>
+      <div className={css({ mt: 8 })}>
         <SectionHeading>ボタン内でのローディング</SectionHeading>
         <Button
           onClick={() => {
@@ -1709,7 +1508,7 @@ function LoadingSection() {
           disabled={isButtonLoading}
         >
           {isButtonLoading ? (
-            <span style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <span className={css({ display: "flex", alignItems: "center", gap: 2 })}>
               <InlineLoading size="sm" color="primary" />
               送信中...
             </span>
@@ -1719,7 +1518,7 @@ function LoadingSection() {
         </Button>
       </div>
 
-      <div style={{ marginTop: spacing.scale[8] }}>
+      <div className={css({ mt: 8 })}>
         <SectionHeading>フルスクリーンオーバーレイ</SectionHeading>
         <Button
           onClick={() => {
