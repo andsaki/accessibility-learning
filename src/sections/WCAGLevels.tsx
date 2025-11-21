@@ -26,7 +26,10 @@ const heroCardBase = css({
 const heroCardWhite = css({ bg: "white" });
 const heroCardBlue = css({ bg: "blue.50" });
 const heroCardGrayBorder = css({ borderColor: "gray.300" });
-const heroCardBlueBorder = css({ borderColor: "blue.400", borderWidth: "base" });
+const heroCardBlueBorder = css({
+  borderColor: "blue.400",
+  borderWidth: "base",
+});
 const heroCardOrangeBorder = css({ borderColor: "orange.400" });
 
 const heroBannerClass = css({
@@ -116,6 +119,7 @@ export function WCAGLevels() {
 
       <div
         className={css({
+          p: 6,
           bg: "yellow.50",
           rounded: "lg",
           borderWidth: "thick",
@@ -202,7 +206,9 @@ export function WCAGLevels() {
             </p>
           </div>
 
-          <div className={cx(heroCardBase, heroCardWhite, heroCardOrangeBorder)}>
+          <div
+            className={cx(heroCardBase, heroCardWhite, heroCardOrangeBorder)}
+          >
             <h4
               className={css({
                 m: 0,
@@ -250,9 +256,8 @@ export function WCAGLevels() {
           コントラスト比は、テキストと背景の明るさの差を数値で表したものです。
           数値が大きいほど見やすく、小さいほど見にくくなります。
           <br />
-          例: 黒文字 ({token("colors.black")}) と白背景 (
-          {token("colors.white")})
-          のコントラスト比は <strong>21:1</strong>（最大値）
+          例: 黒文字 ({token("colors.black")}) と白背景 ({token("colors.white")}
+          ) のコントラスト比は <strong>21:1</strong>（最大値）
         </p>
 
         <div
@@ -351,7 +356,7 @@ export function WCAGLevels() {
               css({
                 bg: "gray.100",
                 borderColor: "border.default",
-              }),
+              })
             )}
           >
             <h4
@@ -377,7 +382,7 @@ export function WCAGLevels() {
                       color: accessibilityLevels.contrastDemos.ratio3to1.text,
                       backgroundColor:
                         accessibilityLevels.contrastDemos.ratio3to1.background,
-                    }),
+                    })
                   )}
                 >
                   これが
@@ -399,7 +404,7 @@ export function WCAGLevels() {
               css({
                 bg: "blue.50",
                 borderColor: "blue.500",
-              }),
+              })
             )}
           >
             <h4
@@ -423,8 +428,9 @@ export function WCAGLevels() {
                       fontSize: "base",
                       color: accessibilityLevels.contrastDemos.ratio4_5to1.text,
                       backgroundColor:
-                        accessibilityLevels.contrastDemos.ratio4_5to1.background,
-                    }),
+                        accessibilityLevels.contrastDemos.ratio4_5to1
+                          .background,
+                    })
                   )}
                 >
                   これが
@@ -446,7 +452,7 @@ export function WCAGLevels() {
               css({
                 bg: "orange.50",
                 borderColor: "orange.600",
-              }),
+              })
             )}
           >
             <h4
@@ -471,7 +477,7 @@ export function WCAGLevels() {
                       color: accessibilityLevels.contrastDemos.ratio7to1.text,
                       backgroundColor:
                         accessibilityLevels.contrastDemos.ratio7to1.background,
-                    }),
+                    })
                   )}
                 >
                   これが
@@ -498,7 +504,7 @@ export function WCAGLevels() {
               css({
                 backgroundColor: accessibilityLevels.button.AA.primary.bg,
                 color: accessibilityLevels.button.AA.primary.text,
-              }),
+              })
             )}
           >
             <strong>コントラスト比 4.5:1</strong> - レベルAA Primary ボタン
@@ -515,7 +521,7 @@ export function WCAGLevels() {
               css({
                 backgroundColor: accessibilityLevels.button.AAA.primary.bg,
                 color: accessibilityLevels.button.AAA.primary.text,
-              }),
+              })
             )}
           >
             <strong>コントラスト比 4.59:1</strong> - レベルAAA Primary ボタン
@@ -535,7 +541,7 @@ export function WCAGLevels() {
                 borderWidth: "base",
                 borderStyle: "solid",
                 borderColor: "border.default",
-              }),
+              })
             )}
           >
             <strong>コントラスト比 19.56:1</strong> - レベルAAA フォーカス
@@ -552,7 +558,7 @@ export function WCAGLevels() {
               css({
                 bg: "gray.900",
                 color: "white",
-              }),
+              })
             )}
           >
             <strong>コントラスト比 16.1:1</strong> - 濃いグレー背景と白文字
@@ -571,7 +577,7 @@ export function WCAGLevels() {
             mt: 8,
             bg: "bg.canvas",
             borderColor: "green.500",
-          }),
+          })
         )}
       >
         <h4

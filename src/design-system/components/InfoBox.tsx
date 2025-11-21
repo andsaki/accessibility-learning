@@ -20,6 +20,8 @@ export interface InfoBoxProps {
   wcagLevel?: WCAGLevel;
   /** カスタムスタイル */
   style?: React.CSSProperties;
+  /** カスタムクラス */
+  className?: string;
 }
 
 type VariantColors = {
@@ -115,6 +117,7 @@ export const InfoBox: React.FC<InfoBoxProps> = ({
   leftBorder = false,
   wcagLevel = 'AA',
   style,
+  className,
 }) => {
   const { colors } = useTheme();
   const primitive = colors.primitive;
@@ -129,6 +132,7 @@ export const InfoBox: React.FC<InfoBoxProps> = ({
 
   return (
     <div
+      className={className}
       style={{
         padding: spacing.scale[4],
         backgroundColor: styles.bg,
