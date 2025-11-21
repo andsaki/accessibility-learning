@@ -58,9 +58,21 @@ export const infoBox: SlotRecipeConfig = {
       },
     },
     wcagLevel: {
-      A: { root: {} },
-      AA: { root: {} },
-      AAA: { root: {} },
+      A: {
+        root: {
+          color: "contents.primary",
+        },
+      },
+      AA: {
+        root: {
+          color: "contents.primary",
+        },
+      },
+      AAA: {
+        root: {
+          color: "contents.inverse",
+        },
+      },
     },
     leftBorder: {
       true: {

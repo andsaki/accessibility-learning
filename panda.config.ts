@@ -9,6 +9,7 @@ import { checkbox } from "./panda-config/recipes/checkbox";
 import { dropdown } from "./panda-config/recipes/dropdown";
 import { loading } from "./panda-config/recipes/loading";
 import { infoBox } from "./panda-config/recipes/infobox";
+import { modal } from "./panda-config/recipes/modal";
 import { pandaSemanticColors } from "./panda-config/types/semanticTokens";
 import {
   pandaColors,
@@ -97,6 +98,7 @@ export default defineConfig({
         dropdown,
         loading,
         infoBox,
+        modal,
       },
     },
   },
@@ -164,7 +166,10 @@ export default defineConfig({
         { size: ['sm', 'md', 'lg', 'xl'], color: ['primary', 'secondary', 'white'] },
       ],
       infoBox: [
-        { variant: ['info', 'warning', 'success', 'tip'], wcagLevel: ['A', 'AA', 'AAA'], leftBorder: ['true', 'false'] },
+        { variant: ['info', 'warning', 'success', 'tip'], wcagLevel: ['A', 'AA', 'AAA'], leftBorder: [true] },
+      ],
+      modal: [
+        { size: ['sm', 'md', 'lg'], wcagLevel: ['A', 'AA', 'AAA'] },
       ],
     }
   },
