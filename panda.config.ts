@@ -10,6 +10,7 @@ import { dropdown } from "./panda-config/recipes/dropdown";
 import { loading } from "./panda-config/recipes/loading";
 import { infoBox } from "./panda-config/recipes/infobox";
 import { modal } from "./panda-config/recipes/modal";
+import { radio } from "./panda-config/recipes/radio";
 import { pandaSemanticColors } from "./panda-config/types/semanticTokens";
 import {
   pandaColors,
@@ -99,6 +100,7 @@ export default defineConfig({
         loading,
         infoBox,
         modal,
+        radio,
       },
     },
   },
@@ -170,6 +172,9 @@ export default defineConfig({
       ],
       modal: [
         { size: ['sm', 'md', 'lg'], wcagLevel: ['A', 'AA', 'AAA'] },
+      ],
+      radio: [
+        { wcagLevel: ['A', 'AA', 'AAA'], state: ['default', 'error'] },
       ],
     }
   },
