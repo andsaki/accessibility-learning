@@ -1,6 +1,7 @@
 import { defineConfig } from "@pandacss/dev";
 import { button } from "./panda-config/recipes/button";
 import { input } from "./panda-config/recipes/input";
+import { select } from "./panda-config/recipes/select";
 import { text } from "./panda-config/recipes/text";
 import { textarea } from "./panda-config/recipes/textarea";
 import { accordion } from "./panda-config/recipes/accordion";
@@ -91,6 +92,7 @@ export default defineConfig({
       recipes: {
         button,
         input,
+        select,
         text,
         textarea,
         accordion,
@@ -130,6 +132,9 @@ export default defineConfig({
       ],
       input: [
         { size: ['sm', 'md', 'lg'], state: ['default', 'error'], wcagLevel: ['A', 'AA', 'AAA'] },
+      ],
+      select: [
+        { size: ['sm', 'md', 'lg'], state: ['default', 'error'], wcagLevel: ['A', 'AA', 'AAA'], disabled: [true] },
       ],
       text: [
         {
