@@ -1,5 +1,47 @@
 import type { SlotRecipeConfig } from "@pandacss/dev";
 
+const triggerFocusStyles = {
+  A: {
+    backgroundColor: "transparent",
+    outlineColor: "blue.300",
+    outlineWidth: "0.125rem",
+    outlineOffset: "0",
+  },
+  AA: {
+    backgroundColor: "blue.50",
+    outlineColor: "blue.700",
+    outlineWidth: "0.1875rem",
+    outlineOffset: "0.125rem",
+  },
+  AAA: {
+    backgroundColor: "yellow",
+    outlineColor: "black",
+    outlineWidth: "0.25rem",
+    outlineOffset: "0.125rem",
+  },
+} as const;
+
+const optionFocusStyles = {
+  A: {
+    backgroundColor: "blue.50",
+    outlineColor: "blue.300",
+    outlineWidth: "0.125rem",
+    outlineOffset: "0",
+  },
+  AA: {
+    backgroundColor: "blue.100",
+    outlineColor: "blue.700",
+    outlineWidth: "0.1875rem",
+    outlineOffset: "0.125rem",
+  },
+  AAA: {
+    backgroundColor: "yellow",
+    outlineColor: "black",
+    outlineWidth: "0.25rem",
+    outlineOffset: "0.125rem",
+  },
+} as const;
+
 export const dropdown: SlotRecipeConfig = {
   className: "dropdown",
   description: "Custom select style dropdown",
@@ -57,6 +99,12 @@ export const dropdown: SlotRecipeConfig = {
         cursor: "not-allowed",
         backgroundColor: "bg.disabled",
         color: "contents.disabled",
+      },
+      _focusVisible: {
+        outlineStyle: "solid",
+        outlineWidth: "0.1875rem",
+        outlineColor: "blue.500",
+        outlineOffset: "0.125rem",
       },
     },
     arrow: {
@@ -132,9 +180,54 @@ export const dropdown: SlotRecipeConfig = {
       empty: { trigger: { color: "contents.secondary" } },
       filled: {},
     },
+    wcagLevel: {
+      A: {
+        trigger: {
+          _focusVisible: {
+            outlineStyle: "solid",
+            ...triggerFocusStyles.A,
+          },
+        },
+        option: {
+          _focusVisible: {
+            outlineStyle: "solid",
+            ...optionFocusStyles.A,
+          },
+        },
+      },
+      AA: {
+        trigger: {
+          _focusVisible: {
+            outlineStyle: "solid",
+            ...triggerFocusStyles.AA,
+          },
+        },
+        option: {
+          _focusVisible: {
+            outlineStyle: "solid",
+            ...optionFocusStyles.AA,
+          },
+        },
+      },
+      AAA: {
+        trigger: {
+          _focusVisible: {
+            outlineStyle: "solid",
+            ...triggerFocusStyles.AAA,
+          },
+        },
+        option: {
+          _focusVisible: {
+            outlineStyle: "solid",
+            ...optionFocusStyles.AAA,
+          },
+        },
+      },
+    },
   },
   defaultVariants: {
     state: "default",
     placeholder: "empty",
+    wcagLevel: "AA",
   },
 };

@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from "react";
 import { css, cx } from "@/styled-system/css";
 import { dropdown as dropdownRecipe } from "../../../styled-system/recipes";
-import { accessibilityLevels } from "../constants/accessibility";
 import type { WCAGLevel } from "../constants/accessibility";
 
 export interface DropdownOption {
@@ -43,7 +42,6 @@ export const Dropdown: React.FC<DropdownProps> = ({
   const buttonRef = useRef<HTMLButtonElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
 
-  const levelFocus = accessibilityLevels.focus[wcagLevel];
   const selectedOption = options.find((opt) => opt.value === selectedValue);
   const displayText = selectedOption ? selectedOption.label : placeholder;
 
@@ -130,15 +128,10 @@ export const Dropdown: React.FC<DropdownProps> = ({
     }
   };
 
-  const focusVarsClass = css({
-    "--dropdown-focus-bg": levelFocus.background,
-    "--dropdown-focus-outline": levelFocus.outline,
-    "--dropdown-focus-outline-width": levelFocus.outlineWidth,
-    "--dropdown-focus-outline-offset": levelFocus.outlineOffset,
-  });
   const slots = dropdownRecipe({
     state: error ? "error" : "default",
     placeholder: selectedValue ? "filled" : "empty",
+    wcagLevel,
   });
 
   const arrowOpenClass = css({
@@ -183,7 +176,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
           aria-describedby={error ? errorId : helperText ? helperId : undefined}
           onClick={toggleOpen}
           onKeyDown={handleKeyDown}
-          className={cx(slots.trigger, focusVarsClass)}
+          className={slots.trigger}
         >
           {displayText}
           <span
