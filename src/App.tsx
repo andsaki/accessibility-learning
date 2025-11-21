@@ -20,129 +20,6 @@ import { AccessibilityFeatures } from "./sections/AccessibilityFeatures";
 import { WCAGLevels } from "./sections/WCAGLevels";
 import { DesignTokens } from "./sections/DesignTokens";
 
-const appContainer = css({
-  minHeight: "100vh",
-  transition: "background-color 0.3s ease, color 0.3s ease",
-  bg: "bg.primary",
-  color: "contents.primary",
-  px: { base: 4, md: 8 },
-  py: { base: 6, md: 10 },
-  maxW: "1400px",
-  mx: "auto",
-});
-
-const pageHeader = css({ mb: 8 });
-const breadcrumbsWrapper = css({ mb: 4 });
-const heroRow = css({
-  display: "flex",
-  justifyContent: "space-between",
-  alignItems: "flex-start",
-  flexWrap: "wrap",
-  gap: 3,
-  mb: 4,
-});
-const heroIntro = css({ flex: 1, minW: "300px" });
-const heroTitle = css({
-  mb: 2,
-  fontSize: { base: "1.75rem", md: "2.5rem" },
-  fontWeight: "bold",
-  display: "flex",
-  alignItems: "center",
-  gap: 2,
-});
-const heroTitleIcon = css({ color: "pink.400", display: "inline-flex" });
-const heroDescription = css({
-  color: "contents.secondary",
-  fontSize: "lg",
-  lineHeight: "normal",
-});
-const heroActions = css({
-  display: "flex",
-  gap: 2,
-  alignItems: "flex-start",
-  flexWrap: "wrap",
-});
-const buttonLabel = css({ ml: 1 });
-
-const heroBanner = css({
-  mt: 6,
-  p: 6,
-  bg: "bg.secondary",
-  borderRadius: "xl",
-  borderWidth: "base",
-  borderStyle: "solid",
-  borderColor: "border.default",
-});
-const bannerTitle = css({
-  mt: 0,
-  mb: 3,
-  color: "contents.primary",
-  fontSize: "xl",
-  fontWeight: "semibold",
-  display: "flex",
-  alignItems: "center",
-  gap: 2,
-});
-const accentIcon = css({ color: "contents.link", display: "inline-flex" });
-
-const principleGrid = css({
-  display: "grid",
-  gridTemplateColumns: { base: "1fr", lg: "repeat(3, 1fr)" },
-  gap: 4,
-  mt: 4,
-});
-const principleCard = css({
-  p: 4,
-  bg: "bg.primary",
-  borderRadius: "lg",
-  borderWidth: "thin",
-  borderStyle: "solid",
-  borderColor: "border.default",
-});
-const principleIcon = css({ mb: 2, display: "inline-flex", color: "contents.link" });
-const principleHeading = css({
-  mt: 0,
-  mb: 2,
-  color: "contents.primary",
-  fontSize: "base",
-  fontWeight: "semibold",
-});
-const principleBody = css({
-  m: 0,
-  color: "contents.secondary",
-  fontSize: "sm",
-  lineHeight: "relaxed",
-});
-
-const philosophyLinkCard = css({
-  mt: 4,
-  p: 3,
-  bg: "bg.primary",
-  borderRadius: "md",
-  fontSize: "sm",
-  color: "contents.primary",
-});
-const underlineLink = css({
-  color: "contents.link",
-  textDecoration: "underline",
-});
-
-const contentLayout = css({
-  display: "flex",
-  flexDirection: { base: "column", lg: "row" },
-  gap: { base: 4, lg: 8 },
-  alignItems: { base: "stretch", md: "flex-start" },
-  mt: 8,
-});
-const tocAside = css({
-  width: "280px",
-  flexShrink: 0,
-  position: { base: "static", lg: "sticky" },
-  top: { base: "auto", lg: 4 },
-  display: { base: "none", lg: "block" },
-});
-const mainContent = css({ flex: 1, minW: 0 });
-
 const heroPrinciples = [
   {
     icon: icons.philosophy.inclusive,
@@ -261,7 +138,18 @@ function App() {
   };
 
   return (
-    <div className={appContainer}>
+    <div
+      className={css({
+        minHeight: "100vh",
+        transition: "background-color 0.3s ease, color 0.3s ease",
+        bg: "bg.primary",
+        color: "contents.primary",
+        px: { base: 4, md: 8 },
+        py: { base: 6, md: 10 },
+        maxW: "1400px",
+        mx: "auto",
+      })}
+    >
       <HamburgerButton
         isOpen={isDrawerOpen}
         onClick={() => setIsDrawerOpen(!isDrawerOpen)}
@@ -273,8 +161,8 @@ function App() {
         activeId={activeId}
       />
 
-      <header className={pageHeader}>
-        <div className={breadcrumbsWrapper}>
+      <header className={css({ mb: 8 })}>
+        <div className={css({ mb: 4 })}>
           <Breadcrumbs>
             <BreadcrumbList>
               <BreadcrumbItem>
@@ -290,19 +178,50 @@ function App() {
           </Breadcrumbs>
         </div>
 
-        <div className={heroRow}>
-          <div className={heroIntro}>
-            <h1 className={heroTitle}>
-              <span className={heroTitleIcon} aria-hidden="true">
+        <div
+          className={css({
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+            flexWrap: "wrap",
+            gap: 3,
+            mb: 4,
+          })}
+        >
+          <div className={css({ flex: 1, minW: "300px" })}>
+            <h1
+              className={css({
+                mb: 2,
+                fontSize: { base: "1.75rem", md: "2.5rem" },
+                fontWeight: "bold",
+                display: "flex",
+                alignItems: "center",
+                gap: 2,
+              })}
+            >
+              <span className={css({ color: "pink.400", display: "inline-flex" })} aria-hidden="true">
                 <icons.philosophy.kind size={32} color="currentColor" strokeWidth={1.5} />
               </span>
               優しい体験を学ぶデザインシステム
             </h1>
-            <p className={heroDescription}>
+            <p
+              className={css({
+                color: "contents.secondary",
+                fontSize: "lg",
+                lineHeight: "normal",
+              })}
+            >
               すべてのユーザーに寄り添う、アクセシブルで心地よいUIコンポーネント集
             </p>
           </div>
-          <div className={heroActions}>
+          <div
+            className={css({
+              display: "flex",
+              gap: 2,
+              alignItems: { base: "stretch", md: "flex-start" },
+              flexWrap: "wrap",
+            })}
+          >
             <Button
               onClick={() =>
                 window.open("/accessibility-learning/storybook/", "_blank")
@@ -310,13 +229,13 @@ function App() {
               variant="secondary"
               size="sm"
               aria-label="Storybookを開く"
-            >
+              >
               <icons.component.button
                 size={20}
                 strokeWidth={2}
                 aria-hidden="true"
               />
-              <span className={buttonLabel}>Storybook</span>
+              <span className={css({ ml: 1 })}>Storybook</span>
             </Button>
             <Button
               onClick={toggleTheme}
@@ -337,33 +256,102 @@ function App() {
           </div>
         </div>
 
-        <div className={heroBanner}>
-          <h2 className={bannerTitle}>
-            <span className={accentIcon} aria-hidden="true">
+        <div
+          className={css({
+            mt: 6,
+            p: 6,
+            bg: "bg.secondary",
+            borderRadius: "xl",
+            borderWidth: "base",
+            borderStyle: "solid",
+            borderColor: "border.default",
+          })}
+        >
+          <h2
+            className={css({
+              mt: 0,
+              mb: 3,
+              color: "contents.primary",
+              fontSize: "xl",
+              fontWeight: "semibold",
+              display: "flex",
+              alignItems: "center",
+              gap: 2,
+            })}
+          >
+            <span className={css({ color: "contents.link", display: "inline-flex" })} aria-hidden="true">
               <icons.philosophy.overview size={24} strokeWidth={2} color="currentColor" />
             </span>
             デザイン哲学：優しさの3原則
           </h2>
 
-          <div className={principleGrid}>
+          <div
+            className={css({
+              display: "grid",
+              gridTemplateColumns: { base: "1fr", lg: "repeat(3, 1fr)" },
+              gap: 4,
+              mt: 4,
+            })}
+          >
             {heroPrinciples.map(({ icon: Icon, title, description }) => (
-              <div key={title} className={principleCard}>
-                <span className={principleIcon} aria-hidden="true">
+              <div
+                key={title}
+                className={css({
+                  p: 4,
+                  bg: "bg.primary",
+                  borderRadius: "lg",
+                  borderWidth: "thin",
+                  borderStyle: "solid",
+                  borderColor: "border.default",
+                })}
+              >
+                <span className={css({ mb: 2, display: "inline-flex", color: "contents.link" })} aria-hidden="true">
                   <Icon size={32} strokeWidth={1.5} color="currentColor" />
                 </span>
-                <h3 className={principleHeading}>{title}</h3>
-                <p className={principleBody}>{description}</p>
+                <h3
+                  className={css({
+                    mt: 0,
+                    mb: 2,
+                    color: "contents.primary",
+                    fontSize: "base",
+                    fontWeight: "semibold",
+                  })}
+                >
+                  {title}
+                </h3>
+                <p
+                  className={css({
+                    m: 0,
+                    color: "contents.secondary",
+                    fontSize: "sm",
+                    lineHeight: "relaxed",
+                  })}
+                >
+                  {description}
+                </p>
               </div>
             ))}
           </div>
 
-          <div className={philosophyLinkCard}>
+          <div
+            className={css({
+              mt: 4,
+              p: 3,
+              bg: "bg.primary",
+              borderRadius: "md",
+              fontSize: "sm",
+              color: "contents.primary",
+            })}
+          >
             <strong>📚 詳しくは：</strong>{" "}
             <a
               href="https://github.com/andsaki/accessibility-learning/blob/master/DESIGN_PHILOSOPHY.md"
               target="_blank"
               rel="noopener noreferrer"
-              className={underlineLink}
+              className={css({
+                color: "contents.link",
+                textDecoration: "underline",
+              })}
             >
               DESIGN_PHILOSOPHY.md
             </a>{" "}
@@ -372,12 +360,28 @@ function App() {
         </div>
       </header>
 
-      <div className={contentLayout}>
-        <aside className={tocAside}>
+      <div
+        className={css({
+          display: "flex",
+          flexDirection: { base: "column", lg: "row" },
+          gap: { base: 4, lg: 8 },
+          alignItems: { base: "stretch", md: "flex-start" },
+          mt: 8,
+        })}
+      >
+        <aside
+          className={css({
+            width: "280px",
+            flexShrink: 0,
+            position: { base: "static", lg: "sticky" },
+            top: { base: "auto", lg: 4 },
+            display: { base: "none", lg: "block" },
+          })}
+        >
           <TableOfContents items={tocItems} activeId={activeId} onNavigate={handleNavigate} />
         </aside>
 
-        <main className={mainContent}>
+        <main className={css({ flex: 1, minW: 0 })}>
           <ComponentDemos
             count={count}
             isLoading={isLoading}

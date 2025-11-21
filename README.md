@@ -157,6 +157,11 @@ icons.concept.theme.dark     // Moon
 
 詳しくは [ADR 001: SVGアイコンライブラリの選択](./docs/adr/001-icon-library-selection.md)
 
+関連するADR:
+- [ADR 002: Panda CSSユーティリティの積極活用](./docs/adr/002-panda-css-utilities.md)
+
+スタイルの書き方は [docs/style-guide.md](./docs/style-guide.md) を参照してください。
+
 #### 📏 Spacing（spacing.ts）
 8pxグリッドシステムを採用。
 
