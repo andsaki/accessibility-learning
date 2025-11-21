@@ -28,6 +28,12 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 export interface ThemeProviderProps {
   children: ReactNode;
   defaultTheme?: ThemeMode;
+  /**
+   * localStorageのキー
+   * Storybookなど複数アプリでProviderを共有する場合に上書き競合を防ぐ
+   * @default "theme"
+   */
+  storageKey?: string;
 }
 
 /**
@@ -48,6 +54,7 @@ export interface ThemeProviderProps {
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   children,
   defaultTheme = 'light',
+  storageKey = 'theme',
 }) => {
   // システムのテーマ設定を検出
   const getSystemTheme = (): ThemeMode => {
@@ -59,7 +66,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   const getInitialTheme = (): ThemeMode => {
     if (typeof window === 'undefined') return defaultTheme;
 
-    const savedTheme = localStorage.getItem('theme') as ThemeMode | null;
+    const savedTheme = localStorage.getItem(storageKey) as ThemeMode | null;
     if (savedTheme) return savedTheme;
 
     return defaultTheme === 'light' ? getSystemTheme() : defaultTheme;
@@ -69,7 +76,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
 
   // テーマが変更されたらlocalStorageに保存
   useEffect(() => {
-    localStorage.setItem('theme', mode);
+    localStorage.setItem(storageKey, mode);
 
     // documentのdata属性を更新（CSS変数で使用可能）
     document.documentElement.setAttribute('data-theme', mode);
@@ -81,7 +88,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
 
     const handleChange = (e: MediaQueryListEvent) => {
       // localStorageに保存されていない場合のみシステム設定に従う
-      if (!localStorage.getItem('theme')) {
+      if (!localStorage.getItem(storageKey)) {
         setMode(e.matches ? 'dark' : 'light');
       }
     };
@@ -101,7 +108,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
         mediaQuery.removeListener(handleChange);
       }
     };
-  }, []);
+  }, [storageKey]);
 
   const toggleTheme = () => {
     setMode((prev) => (prev === 'light' ? 'dark' : 'light'));
