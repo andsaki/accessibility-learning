@@ -131,7 +131,7 @@ const contentLayout = css({
   display: "flex",
   flexDirection: { base: "column", lg: "row" },
   gap: { base: 4, lg: 8 },
-  alignItems: "flex-start",
+  alignItems: { base: "stretch", md: "flex-start" },
   mt: 8,
 });
 const tocAside = css({

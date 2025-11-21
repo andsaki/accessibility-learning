@@ -12,6 +12,7 @@ interface TableOfContentsProps {
 }
 
 const navContainer = css({
+  display: { base: "none", lg: "block" },
   position: "sticky",
   top: 4,
   p: 4,
