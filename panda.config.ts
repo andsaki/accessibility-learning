@@ -7,6 +7,7 @@ import { accordion } from "./panda-config/recipes/accordion";
 import { breadcrumbs } from "./panda-config/recipes/breadcrumbs";
 import { checkbox } from "./panda-config/recipes/checkbox";
 import { dropdown } from "./panda-config/recipes/dropdown";
+import { loading } from "./panda-config/recipes/loading";
 import { pandaSemanticColors } from "./panda-config/types/semanticTokens";
 import {
   pandaColors,
@@ -93,6 +94,7 @@ export default defineConfig({
         breadcrumbs,
         checkbox,
         dropdown,
+        loading,
       },
     },
   },
@@ -155,6 +157,9 @@ export default defineConfig({
       ],
       dropdown: [
         { state: ['default', 'error'], placeholder: ['empty', 'filled'] },
+      ],
+      loading: [
+        { size: ['sm', 'md', 'lg', 'xl'], color: ['primary', 'secondary', 'white'] },
       ],
     }
   },
