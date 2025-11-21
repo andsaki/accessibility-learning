@@ -140,6 +140,7 @@ export const Modal: React.FC<ModalProps> = ({
     <>
       {/* オーバーレイ */}
       <div
+        role="presentation"
         style={{
           position: 'fixed',
           inset: 0,
@@ -150,7 +151,16 @@ export const Modal: React.FC<ModalProps> = ({
           justifyContent: 'center',
           padding: spacing.scale[4],
         }}
-        onClick={onClose}
+        onClick={(e) => {
+          if (e.target === e.currentTarget) {
+            onClose();
+          }
+        }}
+        onKeyDown={(e) => {
+          if (e.key === 'Escape') {
+            onClose();
+          }
+        }}
       >
         {/* ダイアログ */}
         <div
@@ -168,7 +178,6 @@ export const Modal: React.FC<ModalProps> = ({
             display: 'flex',
             flexDirection: 'column',
           }}
-          onClick={(e) => e.stopPropagation()}
         >
           {/* ヘッダー */}
           <div
