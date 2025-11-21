@@ -1,9 +1,7 @@
 import React, { useId } from 'react';
 import { input as inputRecipe } from '../../../styled-system/recipes';
-import { spacing, typography } from '../tokens';
 import type { WCAGLevel } from '../tokens';
-import { useTheme } from '../theme';
-import { cx } from '@/styled-system/css';
+import { cx, css } from '@/styled-system/css';
 
 export interface InputProps extends Omit<React.InputHTMLAttributes<HTMLInputElement>, 'size'> {
   /** ラベルテキスト */
@@ -43,7 +41,6 @@ export const Input: React.FC<InputProps> = ({
   style,
   ...props
 }) => {
-  const { colors } = useTheme();
   // ユニークなIDを自動生成（idが指定されていない場合）
   const autoId = useId();
   const inputId = id || autoId;
@@ -74,26 +71,6 @@ export const Input: React.FC<InputProps> = ({
     };
   }, []);
 
-
-  const labelStyles: React.CSSProperties = {
-    display: 'block',
-    marginBottom: spacing.input.gap,
-    fontSize: typography.fontSize.sm,
-    fontWeight: typography.fontWeight.medium,
-    color: colors.input.label,
-  };
-
-  const helperTextStyles: React.CSSProperties = {
-    marginTop: spacing.input.gap,
-    fontSize: typography.fontSize.sm,
-    color: error ? colors.input.errorText : colors.input.helperText,
-    lineHeight: typography.lineHeight.normal,
-  };
-
-  const containerStyles: React.CSSProperties = {
-    marginBottom: spacing.scale[4], // 16px
-  };
-
   // aria-describedbyの値を構築
   const getAriaDescribedBy = () => {
     const ids: string[] = [];
@@ -109,14 +86,30 @@ export const Input: React.FC<InputProps> = ({
   });
 
   return (
-    <div style={containerStyles}>
+    <div
+      className={css({
+        mb: 4,
+      })}
+    >
       {/* ラベル: for属性でinputと関連付け */}
-      <label htmlFor={inputId} style={labelStyles}>
+      <label
+        htmlFor={inputId}
+        className={css({
+          display: 'block',
+          mb: 2,
+          fontSize: 'sm',
+          fontWeight: 'medium',
+          color: 'contents.primary',
+        })}
+      >
         {label}
         {/* 必須項目の表示 */}
         {required && (
           <span
-            style={{ color: colors.input.errorText, marginLeft: spacing.scale[1] }}
+            className={css({
+              color: 'colors.red.600',
+              ml: 1,
+            })}
             aria-label="必須"
           >
             *
@@ -154,7 +147,12 @@ export const Input: React.FC<InputProps> = ({
           id={errorId}
           role="alert"
           aria-live="polite"
-          style={helperTextStyles}
+          className={css({
+            mt: 2,
+            fontSize: 'sm',
+            color: 'colors.red.700',
+            lineHeight: 'normal',
+          })}
         >
           {error}
         </div>
@@ -162,7 +160,15 @@ export const Input: React.FC<InputProps> = ({
 
       {/* ヘルプテキスト: エラーがない場合のみ表示 */}
       {helperText && !error && (
-        <div id={helperId} style={helperTextStyles}>
+        <div
+          id={helperId}
+          className={css({
+            mt: 2,
+            fontSize: 'sm',
+            color: 'contents.secondary',
+            lineHeight: 'normal',
+          })}
+        >
           {helperText}
         </div>
       )}

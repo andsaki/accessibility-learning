@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { textarea as textareaRecipe } from "../../../styled-system/recipes";
-import { spacing, typography } from "../tokens";
 import type { WCAGLevel } from "../tokens";
-import { useTheme } from "../theme";
-import { cx } from "@/styled-system/css";
+import { cx, css } from "@/styled-system/css";
 
 export interface TextAreaProps
   extends Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, ""> {
@@ -51,7 +49,6 @@ export const TextArea: React.FC<TextAreaProps> = ({
   style,
   ...props
 }) => {
-  const { colors } = useTheme();
   const generatedId = React.useId();
   const textareaId = id || generatedId;
   const errorId = `${textareaId}-error`;
@@ -101,21 +98,25 @@ export const TextArea: React.FC<TextAreaProps> = ({
   });
 
   return (
-    <div style={{ width: "100%" }}>
+    <div
+      className={css({
+        width: "100%",
+      })}
+    >
       <label
         htmlFor={textareaId}
-        style={{
+        className={css({
           display: "block",
-          marginBottom: spacing.scale[2],
-          fontSize: typography.fontSize.sm,
-          fontWeight: typography.fontWeight.medium,
-          color: disabled ? colors.contents.disabled : colors.contents.primary,
-        }}
+          mb: 2,
+          fontSize: "sm",
+          fontWeight: "medium",
+          color: disabled ? "contents.disabled" : "contents.primary",
+        })}
       >
         {label}
         {required && (
           <span
-            style={{ color: colors.contents.error, marginLeft: spacing.scale[1] }}
+            className={css({ color: "colors.red.600", ml: 1 })}
             aria-label="必須"
           >
             *
@@ -123,7 +124,7 @@ export const TextArea: React.FC<TextAreaProps> = ({
         )}
       </label>
 
-      <div style={{ position: "relative" }}>
+      <div className={css({ position: "relative" })}>
         <textarea
           id={textareaId}
           disabled={disabled}
@@ -168,15 +169,15 @@ export const TextArea: React.FC<TextAreaProps> = ({
       {showCount && maxLength && (
         <div
           id={countId}
-          style={{
-            marginTop: spacing.scale[1],
-            fontSize: typography.fontSize.xs,
+          className={css({
+            mt: 1,
+            fontSize: "xs",
             color:
-              charCount > maxLength
-                ? colors.contents.error
-                : colors.contents.secondary,
+              showCount && maxLength && charCount > maxLength
+                ? "colors.red.600"
+                : "contents.secondary",
             textAlign: "right",
-          }}
+          })}
           aria-live="polite"
         >
           {charCount} / {maxLength}
@@ -186,12 +187,12 @@ export const TextArea: React.FC<TextAreaProps> = ({
       {helpText && !error && (
         <p
           id={helpId}
-          style={{
-            margin: `${spacing.scale[1]} 0 0 0`,
-            fontSize: typography.fontSize.sm,
-            color: colors.contents.secondary,
-            lineHeight: typography.lineHeight.normal,
-          }}
+          className={css({
+            mt: 1,
+            fontSize: "sm",
+            color: "contents.secondary",
+            lineHeight: "normal",
+          })}
         >
           {helpText}
         </p>
@@ -201,12 +202,12 @@ export const TextArea: React.FC<TextAreaProps> = ({
         <p
           id={errorId}
           role="alert"
-          style={{
-            margin: `${spacing.scale[1]} 0 0 0`,
-            fontSize: typography.fontSize.sm,
-            color: colors.contents.error,
-            lineHeight: typography.lineHeight.normal,
-          }}
+          className={css({
+            mt: 1,
+            fontSize: "sm",
+            color: "colors.red.600",
+            lineHeight: "normal",
+          })}
         >
           {error}
         </p>

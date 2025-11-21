@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { spacing, typography, radii, accessibilityLevels } from "../tokens";
+import { spacing, typography, radii, accessibilityLevels, colors } from "../tokens";
 import type { WCAGLevel } from "../tokens";
-import { useTheme } from "../theme";
 
 export interface RadioProps
   extends Omit<React.InputHTMLAttributes<HTMLInputElement>, "type"> {
@@ -33,7 +32,6 @@ export const Radio: React.FC<RadioProps> = ({
   wcagLevel = "AA",
   ...props
 }) => {
-  const { colors } = useTheme();
   const primitive = colors.primitive;
   const generatedId = React.useId();
   const radioId = id || generatedId;
@@ -185,7 +183,6 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   error,
   helpText,
 }) => {
-  const { colors } = useTheme();
   const groupId = React.useId();
   const errorId = `${groupId}-error`;
   const helpId = `${groupId}-help`;

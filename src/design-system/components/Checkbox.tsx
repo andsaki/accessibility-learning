@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { spacing, typography, radii, accessibilityLevels } from "../tokens";
-import { useTheme } from "../theme";
+import { spacing, typography, radii, accessibilityLevels, colors } from "../tokens";
 import type { WCAGLevel } from "../tokens";
 
 export interface CheckboxProps
@@ -42,7 +41,6 @@ export const Checkbox: React.FC<CheckboxProps> = ({
   const errorId = `${checkboxId}-error`;
   const helpId = `${checkboxId}-help`;
 
-  const { colors } = useTheme();
   const primitive = colors.primitive;
   const checkboxRef = React.useRef<HTMLInputElement>(null);
   const levelFocus = accessibilityLevels.focus[wcagLevel];

@@ -1,6 +1,5 @@
 import React from "react";
-import { spacing } from "../tokens";
-import { useTheme } from "../theme";
+import { spacing, colors } from "../tokens";
 
 export interface LoadingProps {
   /** スピナーのサイズ */
@@ -36,7 +35,6 @@ export const Loading: React.FC<LoadingProps> = ({
   label = "読み込み中",
   fullscreen = false,
 }) => {
-  const { colors } = useTheme();
   const primitive = colors.primitive;
 
   const colorMap = {
@@ -144,7 +142,6 @@ export const InlineLoading: React.FC<{
   size?: "sm" | "md";
   color?: "primary" | "secondary";
 }> = ({ size = "sm", color = "primary" }) => {
-  const { colors } = useTheme();
   const primitive = colors.primitive;
 
   const colorMap = {

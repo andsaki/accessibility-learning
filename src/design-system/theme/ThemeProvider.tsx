@@ -1,6 +1,5 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
 import type { ReactNode } from 'react';
-import { colors } from '../tokens';
 
 /**
  * テーマのタイプ
@@ -14,7 +13,6 @@ export interface ThemeContextType {
   mode: ThemeMode;
   toggleTheme: () => void;
   setTheme: (mode: ThemeMode) => void;
-  colors: typeof colors;
 }
 
 /**
@@ -122,7 +120,6 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
     mode,
     toggleTheme,
     setTheme,
-    colors,
   };
 
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;

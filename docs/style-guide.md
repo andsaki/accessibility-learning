@@ -8,12 +8,29 @@
 - `const heroRow = css(...)` といったトップレベルの定数は作らない。DOM 構造とスタイルを同じ場所で把握できることを優先するため。
 - 例外は「デザインシステムとして再利用する抽象化（Button / Card / Recipeなど）」。それ以外は inline をデフォルトとする。
 - ESLint に `custom/no-top-level-css-const` ルールを入れてあり、`const foo = css(...)` のようなトップレベル宣言は warning になる。
+- Light/Dark 切り替えは Panda の semantic tokens で吸収している。`ThemeProvider` が `<html data-theme="light|dark">` を付与し、`panda.config.ts` の `conditions` で `light: '[data-theme=light] &'` / `dark: '[data-theme=dark] &'` を指定済み。`css({ color: 'contents.primary' })` のようにトークン名をそのまま使えば、data-theme に合わせて自動で値が切り替わる。
 
 ### `custom/no-top-level-css-const`
 
 - `eslint.config.js` で有効化しているカスタムルール。
 - 警告: `const foo = css({ ... })` のようなトップレベル宣言を検出した場合に「JSX 近傍で inline 化する / デザインシステムへ昇格する」ことを促す。
 - 例外を設けたい場合は `eslint.config.js` の `files`/`ignores` で適用範囲を調整する。
+
+```
+Light/Dark Theme Sequence
+-------------------------
+ThemeProvider toggles `<html data-theme="light|dark">`
+↳ Panda `conditions` map: `light: '[data-theme=light] &'`, `dark: '[data-theme=dark] &'`
+↳ semantic tokens (e.g. `contents.primary`, `bg.primary`) declare both light/dark values
+↳ components call `css({ color: 'contents.primary' })`
+    - Panda generates CSS selectors scoped under `[data-theme=light]` or `[data-theme=dark]`
+    - No runtime branching needed; switching `data-theme` is enough
+
+To extend themes:
+1. Add a new condition (e.g. `contrast: '[data-theme=contrast] &'`)
+2. Provide token values for that condition
+3. Toggle `data-theme="contrast"` from ThemeProvider or UI controls
+```
 
 ```tsx
 // ✅ 推奨

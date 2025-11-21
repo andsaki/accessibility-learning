@@ -1,7 +1,7 @@
 import React, { useId } from 'react';
 import { spacing, typography, accessibilityLevels, radii } from '../tokens';
 import type { WCAGLevel } from '../tokens';
-import { useTheme } from '../theme';
+import { token } from '@/styled-system/tokens';
 
 export interface SelectProps extends Omit<React.SelectHTMLAttributes<HTMLSelectElement>, 'size'> {
   /** ラベルテキスト */
@@ -45,7 +45,6 @@ export const Select: React.FC<SelectProps> = ({
   id,
   ...props
 }) => {
-  const { colors } = useTheme();
   // ユニークなIDを自動生成（idが指定されていない場合）
   const autoId = useId();
   const selectId = id || autoId;
@@ -95,22 +94,34 @@ export const Select: React.FC<SelectProps> = ({
     },
   };
 
+  const selectColors = {
+    border: token('colors.gray.300'),
+    borderError: token('colors.red.500'),
+    bg: token('colors.white'),
+    bgDisabled: token('colors.gray.100'),
+    text: token('colors.gray.900'),
+    textDisabled: token('colors.gray.500'),
+    label: token('colors.gray.700'),
+    helper: token('colors.gray.600'),
+    error: token('colors.red.600'),
+  };
+
   // ベーススタイル
   const baseStyles: React.CSSProperties = {
     fontFamily: typography.fontFamily.base,
     borderRadius: radii.borderRadius.md,
     border: error
-      ? `2px solid ${colors.input.borderError}`
-      : `2px solid ${colors.input.border}`,
-    backgroundColor: disabled ? colors.input.bgDisabled : colors.input.bg,
-    color: disabled ? colors.input.textDisabled : colors.input.text,
+      ? `2px solid ${selectColors.borderError}`
+      : `2px solid ${selectColors.border}`,
+    backgroundColor: disabled ? selectColors.bgDisabled : selectColors.bg,
+    color: disabled ? selectColors.textDisabled : selectColors.text,
     transition: 'border-color 0.2s, box-shadow 0.2s',
     width: '100%',
     cursor: disabled ? 'not-allowed' : 'pointer',
     appearance: 'none',
     WebkitAppearance: 'none',
     MozAppearance: 'none',
-    backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='${encodeURIComponent(disabled ? colors.input.textDisabled : colors.input.text)}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
+    backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='${encodeURIComponent(disabled ? selectColors.textDisabled : selectColors.text)}' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e")`,
     backgroundRepeat: 'no-repeat',
     backgroundPosition: `right ${spacing.scale[2]} center`,
     backgroundSize: '1.25rem',
@@ -146,14 +157,14 @@ export const Select: React.FC<SelectProps> = ({
           marginBottom: spacing.scale[2],
           fontSize: typography.fontSize.sm,
           fontWeight: typography.fontWeight.medium,
-          color: colors.input.label,
+          color: selectColors.label,
         }}
       >
         {label}
         {required && (
           <span
             style={{
-              color: colors.contents.error,
+              color: selectColors.error,
               marginLeft: spacing.scale[1],
             }}
             aria-label="必須"
@@ -201,7 +212,7 @@ export const Select: React.FC<SelectProps> = ({
           style={{
             marginTop: spacing.scale[1],
             fontSize: typography.fontSize.sm,
-            color: colors.contents.error,
+            color: selectColors.error,
           }}
         >
           {error}
@@ -215,7 +226,7 @@ export const Select: React.FC<SelectProps> = ({
           style={{
             marginTop: spacing.scale[1],
             fontSize: typography.fontSize.sm,
-            color: colors.input.helperText,
+            color: selectColors.helper,
           }}
         >
           {helperText}

@@ -1,7 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 import type { ReactNode } from 'react';
-import { spacing, typography, radii, accessibilityLevels } from '../tokens';
-import { useTheme } from '../theme';
+import { spacing, typography, radii, accessibilityLevels, colors } from '../tokens';
 
 export type WCAGLevel = 'A' | 'AA' | 'AAA';
 
@@ -44,7 +43,6 @@ export const Modal: React.FC<ModalProps> = ({
   size = 'md',
   wcagLevel = 'AA',
 }) => {
-  const { colors } = useTheme();
   const primitive = colors.primitive;
 
   const dialogRef = useRef<HTMLDivElement>(null);

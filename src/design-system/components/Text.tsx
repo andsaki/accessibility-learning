@@ -1,7 +1,6 @@
 import React from "react";
 import { text as textRecipe } from "../../../styled-system/recipes";
-import { typography } from "../tokens";
-import { useTheme } from "../theme";
+import { typography, colors } from "../tokens";
 import { cx } from "@/styled-system/css";
 
 export interface TextProps {
@@ -62,7 +61,6 @@ export const Text: React.FC<TextProps> = ({
   className,
   style: externalStyle,
 }) => {
-  const { colors } = useTheme();
   const textColor = color || colors.contents.primary;
   // variantに応じたデフォルトのHTML要素を決定
   const defaultElement =

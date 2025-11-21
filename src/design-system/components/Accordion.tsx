@@ -1,7 +1,6 @@
 import React from 'react';
-import { spacing, typography, radii, accessibilityLevels } from '../tokens';
+import { spacing, typography, radii, accessibilityLevels, colors } from '../tokens';
 import type { WCAGLevel } from '../tokens';
-import { useTheme } from '../theme';
 
 export interface AccordionProps extends React.DetailsHTMLAttributes<HTMLDetailsElement> {
   children: React.ReactNode;
@@ -29,7 +28,6 @@ export const Accordion: React.FC<AccordionProps> = ({
   wcagLevel = 'AA',
   ...props
 }) => {
-  const { colors } = useTheme();
   const accordionStyles: React.CSSProperties = {
     border: `1px solid ${colors.accordion.border}`,
     borderRadius: radii.borderRadius.md,
@@ -61,7 +59,6 @@ export const AccordionSummary: React.FC<AccordionSummaryProps> = ({
   className = '',
   ...props
 }) => {
-  const { colors } = useTheme();
   // キーボード操作によるフォーカスかどうかを追跡
   const [isKeyboardFocus, setIsKeyboardFocus] = React.useState(false);
   const summaryRef = React.useRef<HTMLElement>(null);
@@ -156,7 +153,6 @@ export const AccordionSummary: React.FC<AccordionSummaryProps> = ({
 
 /** アコーディオンの開閉アイコン */
 const AccordionIcon: React.FC = () => {
-  const { colors } = useTheme();
   const iconStyles: React.CSSProperties = {
     width: '24px',
     height: '24px',
@@ -194,7 +190,6 @@ export const AccordionContent: React.FC<AccordionContentProps> = ({
   className = '',
   ...props
 }) => {
-  const { colors } = useTheme();
   const contentStyles: React.CSSProperties = {
     padding: `${spacing.scale[4]} ${spacing.scale[4]}`,
     backgroundColor: colors.accordion.bg,

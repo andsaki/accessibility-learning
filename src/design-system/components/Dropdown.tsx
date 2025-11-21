@@ -1,6 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { spacing, typography, radii, accessibilityLevels } from '../tokens';
-import { useTheme } from '../theme';
+import { spacing, typography, radii, accessibilityLevels, colors } from '../tokens';
 import type { WCAGLevel } from '../tokens';
 
 export interface DropdownOption {
@@ -62,7 +61,6 @@ export const Dropdown: React.FC<DropdownProps> = ({
   const buttonRef = useRef<HTMLButtonElement>(null);
   const listRef = useRef<HTMLUListElement>(null);
 
-  const { colors } = useTheme();
   const primitive = colors.primitive;
   const levelFocus = accessibilityLevels.focus[wcagLevel];
 
