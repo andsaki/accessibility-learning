@@ -267,7 +267,7 @@ export const CodeBlock: React.FC<CodeBlockProps> = ({
         <pre
           className={css({
             margin: 0,
-            fontFamily: "'Monaco', 'Menlo', 'Ubuntu Mono', monospace",
+            fontFamily: 'fonts.mono',
             fontSize: '14px',
             lineHeight: '1.6',
             color: 'gray.200',

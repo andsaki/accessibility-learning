@@ -325,37 +325,37 @@ export const ARIAGuide = () => {
                 </thead>
                 <tbody>
                   <tr className={css({ borderBottomWidth: "thin", borderBottomStyle: "solid", borderBottomColor: "bg.tertiary" })}>
-                    <td className={css({ padding: 2, fontFamily: 'monospace', color: "contents.primary" })}>page</td>
+                    <td className={css({ padding: 2, fontFamily: 'fonts.mono', color: "contents.primary" })}>page</td>
                     <td className={css({ padding: 2, color: "contents.secondary" })}>現在表示中のページ</td>
                     <td className={css({ padding: 2, color: "contents.tertiary", fontSize: "xs" })}>パンくずリスト、ページネーション</td>
                   </tr>
                   <tr className={css({ borderBottomWidth: "thin", borderBottomStyle: "solid", borderBottomColor: "bg.tertiary" })}>
-                    <td className={css({ padding: 2, fontFamily: 'monospace', color: "contents.primary" })}>step</td>
+                    <td className={css({ padding: 2, fontFamily: 'fonts.mono', color: "contents.primary" })}>step</td>
                     <td className={css({ padding: 2, color: "contents.secondary" })}>ステップ形式の現在位置</td>
                     <td className={css({ padding: 2, color: "contents.tertiary", fontSize: "xs" })}>フォームウィザード、チュートリアル</td>
                   </tr>
                   <tr className={css({ borderBottomWidth: "thin", borderBottomStyle: "solid", borderBottomColor: "bg.tertiary" })}>
-                    <td className={css({ padding: 2, fontFamily: 'monospace', color: "contents.primary" })}>location</td>
+                    <td className={css({ padding: 2, fontFamily: 'fonts.mono', color: "contents.primary" })}>location</td>
                     <td className={css({ padding: 2, color: "contents.secondary" })}>視覚的にハイライトされた場所</td>
                     <td className={css({ padding: 2, color: "contents.tertiary", fontSize: "xs" })}>フローチャート、サイトマップ</td>
                   </tr>
                   <tr className={css({ borderBottomWidth: "thin", borderBottomStyle: "solid", borderBottomColor: "bg.tertiary" })}>
-                    <td className={css({ padding: 2, fontFamily: 'monospace', color: "contents.primary" })}>date</td>
+                    <td className={css({ padding: 2, fontFamily: 'fonts.mono', color: "contents.primary" })}>date</td>
                     <td className={css({ padding: 2, color: "contents.secondary" })}>現在選択中の日付</td>
                     <td className={css({ padding: 2, color: "contents.tertiary", fontSize: "xs" })}>カレンダー、日付ピッカー</td>
                   </tr>
                   <tr className={css({ borderBottomWidth: "thin", borderBottomStyle: "solid", borderBottomColor: "bg.tertiary" })}>
-                    <td className={css({ padding: 2, fontFamily: 'monospace', color: "contents.primary" })}>time</td>
+                    <td className={css({ padding: 2, fontFamily: 'fonts.mono', color: "contents.primary" })}>time</td>
                     <td className={css({ padding: 2, color: "contents.secondary" })}>現在選択中の時刻</td>
                     <td className={css({ padding: 2, color: "contents.tertiary", fontSize: "xs" })}>タイムピッカー、スケジュール</td>
                   </tr>
                   <tr className={css({ borderBottomWidth: "thin", borderBottomStyle: "solid", borderBottomColor: "bg.tertiary" })}>
-                    <td className={css({ padding: 2, fontFamily: 'monospace', color: "contents.primary" })}>true</td>
+                    <td className={css({ padding: 2, fontFamily: 'fonts.mono', color: "contents.primary" })}>true</td>
                     <td className={css({ padding: 2, color: "contents.secondary" })}>上記に当てはまらない現在項目</td>
                     <td className={css({ padding: 2, color: "contents.tertiary", fontSize: "xs" })}>汎用的な「現在」の表示</td>
                   </tr>
                   <tr>
-                    <td className={css({ padding: 2, fontFamily: 'monospace', color: "contents.primary" })}>false</td>
+                    <td className={css({ padding: 2, fontFamily: 'fonts.mono', color: "contents.primary" })}>false</td>
                     <td className={css({ padding: 2, color: "contents.secondary" })}>現在項目ではない（デフォルト）</td>
                     <td className={css({ padding: 2, color: "contents.tertiary", fontSize: "xs" })}>通常は省略可能</td>
                   </tr>

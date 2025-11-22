@@ -327,28 +327,9 @@ export const spacing = {
 // タイポグラフィトークン
 export const typography = {
   fontFamily: {
-    base: [
-      '-apple-system',
-      'BlinkMacSystemFont',
-      '"Segoe UI"',
-      'Roboto',
-      '"Helvetica Neue"',
-      'Arial',
-      '"Noto Sans JP"',
-      'sans-serif',
-    ].join(', '),
-    mono: [
-      'Menlo',
-      'Monaco',
-      '"Courier New"',
-      'monospace',
-    ].join(', '),
-    serif: [
-      'Georgia',
-      '"Times New Roman"',
-      'Times',
-      'serif',
-    ].join(', '),
+    base: token('fonts.body'),
+    mono: token('fonts.mono'),
+    serif: token('fonts.serif'),
   },
   fontSize: {
     xs: token('fontSizes.xs'),
@@ -460,12 +441,7 @@ export const typography = {
       textTransform: 'uppercase' as const,
     },
     code: {
-      fontFamily: [
-        'Menlo',
-        'Monaco',
-        '"Courier New"',
-        'monospace',
-      ].join(', '),
+      fontFamily: token('fonts.mono'),
       fontSize: token('fontSizes.sm'),
       fontWeight: 400,
       lineHeight: 1.5,

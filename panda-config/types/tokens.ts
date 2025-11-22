@@ -144,6 +144,21 @@ export const pandaSizes: GetPandaConfigMap<"sizes"> = {
 };
 
 /**
+ * フォントファミリートークン
+ */
+export const pandaFonts: GetPandaConfigMap<"fonts"> = {
+  body: { value: "system-ui, Avenir, Helvetica, Arial, sans-serif" },
+  heading: { value: "Inter, 'Segoe UI', Helvetica, Arial, sans-serif" },
+  serif: {
+    value: "Georgia, 'Times New Roman', Times, serif",
+  },
+  mono: {
+    value:
+      "ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New', monospace",
+  },
+};
+
+/**
  * フォントサイズトークンの型安全な定義
  */
 export const pandaFontSizes: GetPandaConfigMap<"fontSizes"> = {
