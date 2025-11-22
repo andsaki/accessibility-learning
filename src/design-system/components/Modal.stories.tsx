@@ -4,7 +4,6 @@ import { Modal } from './Modal';
 import { Button } from './Button';
 import { Input } from './Input';
 import { InfoBox } from './InfoBox';
-type WCAGLevelOption = 'A' | 'AA' | 'AAA';
 
 /**
  * アクセシブルなモーダルダイアログコンポーネント
