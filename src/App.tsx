@@ -30,12 +30,14 @@ const heroPrinciples = [
   {
     icon: icons.philosophy.pleasant,
     title: "心地よさを感じる体験",
-    description: "柔らかな色彩、滑らかな動き、適切な余白で、ストレスのない使い心地を実現",
+    description:
+      "柔らかな色彩、滑らかな動き、適切な余白で、ストレスのない使い心地を実現",
   },
   {
     icon: icons.philosophy.scalable,
     title: "成長し続ける仕組み",
-    description: "スケーラブルなトークンシステムで、プロジェクトとともに進化するデザイン",
+    description:
+      "スケーラブルなトークンシステムで、プロジェクトとともに進化するデザイン",
   },
 ];
 
@@ -133,7 +135,7 @@ function App() {
   const handleNavigate = (id: string) => {
     const element = document.getElementById(id);
     if (element) {
-      window.history.pushState(null, '', `#${id}`);
+      window.history.pushState(null, "", `#${id}`);
       element.scrollIntoView({ behavior: "smooth", block: "start" });
     }
   };
@@ -200,8 +202,15 @@ function App() {
                 gap: 2,
               })}
             >
-              <span className={css({ color: "pink.400", display: "inline-flex" })} aria-hidden="true">
-                <icons.philosophy.kind size={32} color="currentColor" strokeWidth={1.5} />
+              <span
+                className={css({ color: "pink.400", display: "inline-flex" })}
+                aria-hidden="true"
+              >
+                <icons.philosophy.kind
+                  size={32}
+                  color="currentColor"
+                  strokeWidth={1.5}
+                />
               </span>
               優しい体験を学ぶデザインシステム
             </h1>
@@ -225,12 +234,12 @@ function App() {
           >
             <Button
               onClick={() =>
-                window.open("/accessibility-learning/storybook/", "_blank")
+                window.open("/kind-design-system-learning/storybook/", "_blank")
               }
               variant="secondary"
               size="sm"
               aria-label="Storybookを開く"
-              >
+            >
               <icons.component.button
                 size={20}
                 strokeWidth={2}
@@ -249,9 +258,17 @@ function App() {
               }
             >
               {mode === "light" ? (
-                <icons.concept.theme.dark size={20} strokeWidth={2} aria-hidden="true" />
+                <icons.concept.theme.dark
+                  size={20}
+                  strokeWidth={2}
+                  aria-hidden="true"
+                />
               ) : (
-                <icons.concept.theme.light size={20} strokeWidth={2} aria-hidden="true" />
+                <icons.concept.theme.light
+                  size={20}
+                  strokeWidth={2}
+                  aria-hidden="true"
+                />
               )}
             </Button>
           </div>
@@ -280,8 +297,18 @@ function App() {
               gap: 2,
             })}
           >
-            <span className={css({ color: "contents.link", display: "inline-flex" })} aria-hidden="true">
-              <icons.philosophy.overview size={24} strokeWidth={2} color="currentColor" />
+            <span
+              className={css({
+                color: "contents.link",
+                display: "inline-flex",
+              })}
+              aria-hidden="true"
+            >
+              <icons.philosophy.overview
+                size={24}
+                strokeWidth={2}
+                color="currentColor"
+              />
             </span>
             デザイン哲学：優しさの3原則
           </h2>
@@ -306,7 +333,14 @@ function App() {
                   borderColor: "border.default",
                 })}
               >
-                <span className={css({ mb: 2, display: "inline-flex", color: "contents.link" })} aria-hidden="true">
+                <span
+                  className={css({
+                    mb: 2,
+                    display: "inline-flex",
+                    color: "contents.link",
+                  })}
+                  aria-hidden="true"
+                >
                   <Icon size={32} strokeWidth={1.5} color="currentColor" />
                 </span>
                 <h3
@@ -379,7 +413,11 @@ function App() {
             display: { base: "none", lg: "block" },
           })}
         >
-          <TableOfContents items={tocItems} activeId={activeId} onNavigate={handleNavigate} />
+          <TableOfContents
+            items={tocItems}
+            activeId={activeId}
+            onNavigate={handleNavigate}
+          />
         </aside>
 
         <main className={css({ flex: 1, minW: 0 })}>
