@@ -1,82 +1,35 @@
 import React from "react";
-import { colors, spacing } from "../tokens";
-import { primitive } from "../tokens/colors";
+import { loading as loadingRecipe } from "../../../styled-system/recipes";
+import { css, cx } from "@/styled-system/css";
 
 export interface LoadingProps {
-  /** スピナーのサイズ */
   size?: "sm" | "md" | "lg" | "xl";
-  /** スピナーの色 */
   color?: "primary" | "secondary" | "white";
-  /** ラベルテキスト */
   label?: string;
-  /** フルスクリーンオーバーレイ表示 */
   fullscreen?: boolean;
 }
 
-const sizeMap = {
-  sm: 16,
-  md: 24,
-  lg: 32,
-  xl: 48,
-} as const;
-
-const colorMap = {
-  primary: primitive.blue[500],
-  secondary: primitive.gray[600],
-  white: primitive.white,
-} as const;
-
-/**
- * アクセシブルなローディングスピナーコンポーネント
- *
- * 機能:
- * - スクリーンリーダー対応（aria-label, role="status"）
- * - サイズバリエーション（sm/md/lg/xl）
- * - カラーバリエーション（primary/secondary/white）
- * - フルスクリーンオーバーレイ表示
- * - アニメーション対応
- */
 export const Loading: React.FC<LoadingProps> = ({
   size = "md",
   color = "primary",
   label = "読み込み中",
   fullscreen = false,
 }) => {
-  const spinnerSize = sizeMap[size];
-  const spinnerColor = colorMap[color];
+  const slots = loadingRecipe({ size, color });
 
   const spinner = (
     <div
       role="status"
       aria-label={label}
       aria-live="polite"
-      style={{
-        display: "inline-flex",
-        flexDirection: "column",
-        alignItems: "center",
-        gap: spacing.scale[2],
-      }}
+      className={slots.root}
     >
-      <svg
-        width={spinnerSize}
-        height={spinnerSize}
-        viewBox="0 0 24 24"
-        xmlns="http://www.w3.org/2000/svg"
-        style={{
-          animation: "spin 1s linear infinite",
-        }}
-      >
-        <style>{`
-          @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-          }
-        `}</style>
+      <svg viewBox="0 0 24 24" className={slots.spinner} xmlns="http://www.w3.org/2000/svg">
         <circle
           cx="12"
           cy="12"
           r="10"
-          stroke={spinnerColor}
+          stroke="currentColor"
           strokeWidth="3"
           fill="none"
           strokeLinecap="round"
@@ -87,7 +40,7 @@ export const Loading: React.FC<LoadingProps> = ({
           cx="12"
           cy="12"
           r="10"
-          stroke={spinnerColor}
+          stroke="currentColor"
           strokeWidth="3"
           fill="none"
           strokeLinecap="round"
@@ -97,11 +50,10 @@ export const Loading: React.FC<LoadingProps> = ({
       </svg>
       {label && (
         <span
-          style={{
-            fontSize: size === "sm" ? "12px" : size === "md" ? "14px" : "16px",
-            color: color === "white" ? primitive.white : colors.text.secondary,
-            fontWeight: 500,
-          }}
+          className={cx(
+            slots.label,
+            color === "white" && css({ color: "white" })
+          )}
         >
           {label}
         </span>
@@ -109,21 +61,20 @@ export const Loading: React.FC<LoadingProps> = ({
     </div>
   );
 
+  const overlayClass = css({
+    position: "fixed",
+    inset: 0,
+    bg: "rgba(0, 0, 0, 0.5)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 9999,
+  });
+
   if (fullscreen) {
     return (
       <div
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          backgroundColor: "rgba(0, 0, 0, 0.5)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          zIndex: 9999,
-        }}
+        className={cx(overlayClass, "loading__overlay")}
         aria-modal="true"
       >
         {spinner}
@@ -134,41 +85,39 @@ export const Loading: React.FC<LoadingProps> = ({
   return spinner;
 };
 
-/**
- * インラインローディング用の小さなスピナー
- */
+const inlineSizeVariantMap = {
+  sm: "inline-sm",
+  md: "inline-md",
+} as const;
+
 export const InlineLoading: React.FC<{
   size?: "sm" | "md";
   color?: "primary" | "secondary";
 }> = ({ size = "sm", color = "primary" }) => {
-  const spinnerSize = size === "sm" ? 14 : 18;
-  const spinnerColor = colorMap[color];
+  const inlineSlots = loadingRecipe({
+    size: inlineSizeVariantMap[size],
+    color,
+  });
 
   return (
     <svg
-      width={spinnerSize}
-      height={spinnerSize}
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
-      style={{
-        animation: "spin 1s linear infinite",
-        display: "inline-block",
-        verticalAlign: "middle",
-      }}
+      className={cx(
+        inlineSlots.spinner,
+        css({
+          display: "inline-block",
+          verticalAlign: "middle",
+        })
+      )}
       role="status"
       aria-label="読み込み中"
     >
-      <style>{`
-        @keyframes spin {
-          0% { transform: rotate(0deg); }
-          100% { transform: rotate(360deg); }
-        }
-      `}</style>
       <circle
         cx="12"
         cy="12"
         r="10"
-        stroke={spinnerColor}
+        stroke="currentColor"
         strokeWidth="3"
         fill="none"
         strokeLinecap="round"
@@ -179,7 +128,7 @@ export const InlineLoading: React.FC<{
         cx="12"
         cy="12"
         r="10"
-        stroke={spinnerColor}
+        stroke="currentColor"
         strokeWidth="3"
         fill="none"
         strokeLinecap="round"
