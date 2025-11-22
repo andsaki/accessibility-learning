@@ -88,15 +88,18 @@ export const Text: React.FC<TextProps> = ({
   const recipeClassName = textRecipe({ variant, align, wcagLevel });
 
   // スタイルの構築
+  const textDecorations = [
+    underline ? "underline" : null,
+    strikethrough ? "line-through" : null,
+  ].filter(Boolean);
+
   const styles: React.CSSProperties = {
-    color: color ?? undefined,
+    margin: 0,
+    color: color ?? "inherit",
+    textAlign: align,
     fontWeight: bold ? "bold" : undefined,
     fontStyle: italic ? "italic" : undefined,
-    textDecoration: underline
-      ? "underline"
-      : strikethrough
-      ? "line-through"
-      : undefined,
+    textDecoration: textDecorations.length ? textDecorations.join(" ") : undefined,
     ...externalStyle,
   };
 

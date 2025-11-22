@@ -2,11 +2,6 @@ import React from "react";
 import { loading as loadingRecipe } from "../../../styled-system/recipes";
 import { css, cx } from "@/styled-system/css";
 
-const inlineSizeMap = {
-  sm: 14,
-  md: 18,
-} as const;
-
 export interface LoadingProps {
   size?: "sm" | "md" | "lg" | "xl";
   color?: "primary" | "secondary" | "white";
@@ -29,11 +24,7 @@ export const Loading: React.FC<LoadingProps> = ({
       aria-live="polite"
       className={slots.root}
     >
-      <svg
-        viewBox="0 0 24 24"
-        className={slots.spinner}
-        xmlns="http://www.w3.org/2000/svg"
-      >
+      <svg viewBox="0 0 24 24" className={slots.spinner} xmlns="http://www.w3.org/2000/svg">
         <circle
           cx="12"
           cy="12"
@@ -70,18 +61,20 @@ export const Loading: React.FC<LoadingProps> = ({
     </div>
   );
 
+  const overlayClass = css({
+    position: "fixed",
+    inset: 0,
+    bg: "rgba(0, 0, 0, 0.5)",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 9999,
+  });
+
   if (fullscreen) {
     return (
       <div
-        className={css({
-          position: "fixed",
-          inset: 0,
-          bg: "rgba(0, 0, 0, 0.5)",
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          zIndex: 9999,
-        })}
+        className={cx(overlayClass, "loading__overlay")}
         aria-modal="true"
       >
         {spinner}
@@ -92,24 +85,31 @@ export const Loading: React.FC<LoadingProps> = ({
   return spinner;
 };
 
+const inlineSizeVariantMap = {
+  sm: "inline-sm",
+  md: "inline-md",
+} as const;
+
 export const InlineLoading: React.FC<{
   size?: "sm" | "md";
   color?: "primary" | "secondary";
 }> = ({ size = "sm", color = "primary" }) => {
-  const spinnerSize = inlineSizeMap[size];
+  const inlineSlots = loadingRecipe({
+    size: inlineSizeVariantMap[size],
+    color,
+  });
 
   return (
     <svg
-      width={spinnerSize}
-      height={spinnerSize}
       viewBox="0 0 24 24"
       xmlns="http://www.w3.org/2000/svg"
-      className={css({
-        animation: "spin 1s linear infinite",
-        display: "inline-block",
-        verticalAlign: "middle",
-        color: color === "primary" ? "blue.500" : "gray.600",
-      })}
+      className={cx(
+        inlineSlots.spinner,
+        css({
+          display: "inline-block",
+          verticalAlign: "middle",
+        })
+      )}
       role="status"
       aria-label="読み込み中"
     >

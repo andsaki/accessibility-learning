@@ -6,13 +6,6 @@ const colorMap = {
   white: "white",
 } as const;
 
-const sizeMap = {
-  sm: 16,
-  md: 24,
-  lg: 32,
-  xl: 48,
-} as const;
-
 export const loading: SlotRecipeConfig = {
   className: "loading",
   description: "Loading spinner styles",
@@ -35,10 +28,16 @@ export const loading: SlotRecipeConfig = {
   },
   variants: {
     size: {
-      sm: { spinner: { width: sizeMap.sm, height: sizeMap.sm } },
-      md: { spinner: { width: sizeMap.md, height: sizeMap.md } },
-      lg: { spinner: { width: sizeMap.lg, height: sizeMap.lg } },
-      xl: { spinner: { width: sizeMap.xl, height: sizeMap.xl } },
+      sm: { spinner: { width: "sizes.spinnerSm", height: "sizes.spinnerSm" } },
+      md: { spinner: { width: "sizes.spinnerMd", height: "sizes.spinnerMd" } },
+      lg: { spinner: { width: "sizes.spinnerLg", height: "sizes.spinnerLg" } },
+      xl: { spinner: { width: "sizes.spinnerXl", height: "sizes.spinnerXl" } },
+      "inline-sm": {
+        spinner: { width: "sizes.spinnerInlineSm", height: "sizes.spinnerInlineSm" },
+      },
+      "inline-md": {
+        spinner: { width: "sizes.spinnerInlineMd", height: "sizes.spinnerInlineMd" },
+      },
     },
     color: {
       primary: { spinner: { color: colorMap.primary } },

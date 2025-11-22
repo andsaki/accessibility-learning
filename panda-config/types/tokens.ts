@@ -132,6 +132,18 @@ export const pandaSpacing: GetPandaConfigMap<"spacing"> = {
 };
 
 /**
+ * サイズトークン - スピナーなど特定コンポーネントで再利用する寸法
+ */
+export const pandaSizes: GetPandaConfigMap<"sizes"> = {
+  spinnerSm: { value: '1rem' },         // 16px
+  spinnerMd: { value: '1.5rem' },       // 24px
+  spinnerLg: { value: '2rem' },         // 32px
+  spinnerXl: { value: '3rem' },         // 48px
+  spinnerInlineSm: { value: '0.875rem' }, // 14px
+  spinnerInlineMd: { value: '1.125rem' }, // 18px
+};
+
+/**
  * フォントサイズトークンの型安全な定義
  */
 export const pandaFontSizes: GetPandaConfigMap<"fontSizes"> = {

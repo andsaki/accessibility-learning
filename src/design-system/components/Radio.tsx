@@ -38,6 +38,7 @@ export const Radio: React.FC<RadioProps> = ({
         type="radio"
         id={radioId}
         disabled={disabled}
+        aria-invalid={error ? "true" : undefined}
         aria-describedby={error ? errorId : helpText ? helpId : undefined}
         className={slots.control}
         {...props}
@@ -82,8 +83,11 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
   const errorId = `${groupId}-error`;
   const helpId = `${groupId}-help`;
 
+  const describedById = error ? errorId : helpText ? helpId : undefined;
+
   return (
     <fieldset
+      aria-describedby={describedById}
       className={css({
         borderWidth: "thin",
         borderStyle: "solid",
@@ -106,11 +110,9 @@ export const RadioGroup: React.FC<RadioGroupProps> = ({
         {label}
       </legend>
 
-      <div aria-describedby={helpText ? helpId : error ? errorId : undefined}>
-        {children}
-      </div>
+      <div>{children}</div>
 
-      {helpText && (
+      {helpText && !error && (
         <p
           id={helpId}
           className={css({

@@ -32,7 +32,7 @@ export const infoBox: SlotRecipeConfig = {
         root: {
           bg: "bg.secondary",
           borderColor: "border.default",
-          color: "contents.primary",
+          color: "contents.link",
         },
       },
       warning: {
@@ -58,21 +58,9 @@ export const infoBox: SlotRecipeConfig = {
       },
     },
     wcagLevel: {
-      A: {
-        root: {
-          color: "contents.primary",
-        },
-      },
-      AA: {
-        root: {
-          color: "contents.primary",
-        },
-      },
-      AAA: {
-        root: {
-          color: "contents.inverse",
-        },
-      },
+      A: { root: {} },
+      AA: { root: {} },
+      AAA: { root: {} },
     },
     leftBorder: {
       true: {

@@ -157,7 +157,8 @@ export const Toast: React.FC<ToastProps> = ({
 
   // マウント時にスライドイン
   useEffect(() => {
-    setTimeout(() => setIsVisible(true), 50);
+    const timer = setTimeout(() => setIsVisible(true), 50);
+    return () => clearTimeout(timer);
   }, []);
 
   const handleClose = useCallback(() => {

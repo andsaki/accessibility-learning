@@ -121,7 +121,7 @@ export const Modal: React.FC<ModalProps> = ({
               })
             )}
             style={focusStyles}
-            aria-label="閉じる"
+            aria-label="モーダルを閉じる"
           >
             ✕
           </button>

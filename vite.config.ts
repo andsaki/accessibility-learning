@@ -15,7 +15,8 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: '@/styled-system',
+        // Regex ensures we only rewrite the "@/styled-system" prefix and keep the rest of the path
+        find: /^@\/styled-system/,
         replacement: path.resolve(dirname, 'styled-system'),
       },
       {

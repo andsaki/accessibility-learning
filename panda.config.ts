@@ -16,6 +16,7 @@ import { pandaSemanticColors } from "./panda-config/types/semanticTokens";
 import {
   pandaColors,
   pandaSpacing,
+  pandaSizes,
   pandaFontSizes,
   pandaFontWeights,
   pandaLineHeights,
@@ -43,8 +44,8 @@ export default defineConfig({
   conditions: {
     // ThemeProviderが付与するdata-theme属性に従って手動切替やlocalStorage保存を反映する。
     // OS依存の@media (prefers-color-scheme: …)だけだとボタン操作で強制切替できないため採用しない。
-    light: '[data-theme=light] &',
-    dark: '[data-theme=dark] &',
+    light: "[data-theme=light] &",
+    dark: "[data-theme=dark] &",
   },
 
   // Useful for theme customization
@@ -60,6 +61,7 @@ export default defineConfig({
         // - デザインシステムの一貫性を保てる
         colors: pandaColors,
         spacing: pandaSpacing,
+        sizes: pandaSizes,
         fontSizes: pandaFontSizes,
         fontWeights: pandaFontWeights,
         lineHeights: pandaLineHeights,
@@ -82,12 +84,12 @@ export default defineConfig({
         colors: pandaSemanticColors,
       },
       breakpoints: {
-        xs: '0px',
-        sm: '640px',
-        md: '768px',
-        lg: '1024px',
-        xl: '1280px',
-        '2xl': '1536px',
+        xs: "0px",
+        sm: "640px",
+        md: "768px",
+        lg: "1024px",
+        xl: "1280px",
+        "2xl": "1536px",
       },
       recipes: {
         button,
@@ -115,143 +117,155 @@ export default defineConfig({
     recipes: {
       button: [
         // All size variants
-        { size: ['sm', 'md', 'lg'] },
+        { size: ["sm", "md", "lg"] },
         // All variant + wcagLevel combinations
-        { variant: ['outline'], wcagLevel: ['A'] },
-        { variant: ['outline'], wcagLevel: ['AA'] },
-        { variant: ['outline'], wcagLevel: ['AAA'] },
-        { variant: ['primary'], wcagLevel: ['A'] },
-        { variant: ['primary'], wcagLevel: ['AA'] },
-        { variant: ['primary'], wcagLevel: ['AAA'] },
-        { variant: ['secondary'], wcagLevel: ['A'] },
-        { variant: ['secondary'], wcagLevel: ['AA'] },
-        { variant: ['secondary'], wcagLevel: ['AAA'] },
-        { variant: ['danger'], wcagLevel: ['A'] },
-        { variant: ['danger'], wcagLevel: ['AA'] },
-        { variant: ['danger'], wcagLevel: ['AAA'] },
+        { variant: ["outline"], wcagLevel: ["A"] },
+        { variant: ["outline"], wcagLevel: ["AA"] },
+        { variant: ["outline"], wcagLevel: ["AAA"] },
+        { variant: ["primary"], wcagLevel: ["A"] },
+        { variant: ["primary"], wcagLevel: ["AA"] },
+        { variant: ["primary"], wcagLevel: ["AAA"] },
+        { variant: ["secondary"], wcagLevel: ["A"] },
+        { variant: ["secondary"], wcagLevel: ["AA"] },
+        { variant: ["secondary"], wcagLevel: ["AAA"] },
+        { variant: ["danger"], wcagLevel: ["A"] },
+        { variant: ["danger"], wcagLevel: ["AA"] },
+        { variant: ["danger"], wcagLevel: ["AAA"] },
       ],
       input: [
-        { size: ['sm', 'md', 'lg'], state: ['default', 'error'], wcagLevel: ['A', 'AA', 'AAA'] },
+        {
+          size: ["sm", "md", "lg"],
+          state: ["default", "error"],
+          wcagLevel: ["A", "AA", "AAA"],
+        },
       ],
       select: [
-        { size: ['sm', 'md', 'lg'], state: ['default', 'error'], wcagLevel: ['A', 'AA', 'AAA'], disabled: [true] },
+        {
+          size: ["sm", "md", "lg"],
+          state: ["default", "error"],
+          wcagLevel: ["A", "AA", "AAA"],
+          disabled: ["true"],
+        },
       ],
       text: [
         {
           variant: [
-            'h1',
-            'h2',
-            'h3',
-            'h4',
-            'h5',
-            'h6',
-            'body-large',
-            'body',
-            'body-small',
-            'caption',
-            'overline',
+            "h1",
+            "h2",
+            "h3",
+            "h4",
+            "h5",
+            "h6",
+            "body-large",
+            "body",
+            "body-small",
+            "caption",
+            "overline",
           ],
-          align: ['left', 'center', 'right', 'justify'],
+          align: ["left", "center", "right", "justify"],
         },
       ],
       textarea: [
-        { state: ['default', 'error'], wcagLevel: ['A', 'AA', 'AAA'] },
+        { state: ["default", "error"], wcagLevel: ["A", "AA", "AAA"] },
       ],
-      accordion: [
-        { wcagLevel: ['A', 'AA', 'AAA'] },
-      ],
-      breadcrumbs: [
-        { wcagLevel: ['A', 'AA', 'AAA'] },
-      ],
+      accordion: [{ wcagLevel: ["A", "AA", "AAA"] }],
+      breadcrumbs: [{ wcagLevel: ["A", "AA", "AAA"] }],
       checkbox: [
-        { wcagLevel: ['A', 'AA', 'AAA'], state: ['default', 'error'] },
+        { wcagLevel: ["A", "AA", "AAA"], state: ["default", "error"] },
       ],
       dropdown: [
-        { state: ['default', 'error'], placeholder: ['empty', 'filled'] },
+        { state: ["default", "error"], placeholder: ["empty", "filled"] },
       ],
       loading: [
-        { size: ['sm', 'md', 'lg', 'xl'], color: ['primary', 'secondary', 'white'] },
+        {
+          size: ["sm", "md", "lg", "xl", "inline-sm", "inline-md"],
+          color: ["primary", "secondary", "white"],
+        },
       ],
       infoBox: [
-        { variant: ['info', 'warning', 'success', 'tip'], wcagLevel: ['A', 'AA', 'AAA'], leftBorder: [true] },
+        {
+          variant: ["info", "warning", "success", "tip"],
+          wcagLevel: ["A", "AA", "AAA"],
+          leftBorder: ["true"],
+        },
       ],
-      modal: [
-        { size: ['sm', 'md', 'lg'], wcagLevel: ['A', 'AA', 'AAA'] },
-      ],
-      radio: [
-        { wcagLevel: ['A', 'AA', 'AAA'], state: ['default', 'error'] },
-      ],
-    }
+      modal: [{ size: ["sm", "md", "lg"], wcagLevel: ["A", "AA", "AAA"] }],
+      radio: [{ wcagLevel: ["A", "AA", "AAA"], state: ["default", "error"] }],
+    },
   },
 
   // Global CSS
   globalCss: {
     html: {
-      fontFamily: 'system-ui, Avenir, Helvetica, Arial, sans-serif',
-      lineHeight: '1.5',
-      fontWeight: '400',
-      fontSynthesis: 'none',
-      textRendering: 'optimizeLegibility',
-      WebkitFontSmoothing: 'antialiased',
-      MozOsxFontSmoothing: 'grayscale',
+      fontFamily: "system-ui, Avenir, Helvetica, Arial, sans-serif",
+      lineHeight: "1.5",
+      fontWeight: "400",
+      fontSynthesis: "none",
+      textRendering: "optimizeLegibility",
+      WebkitFontSmoothing: "antialiased",
+      MozOsxFontSmoothing: "grayscale",
     },
     body: {
-      margin: '0',
-      display: 'flex',
-      placeItems: 'center',
-      minWidth: '320px',
-      minHeight: '100vh',
-      color: 'contents.primary',
-      backgroundColor: 'bg.primary',
+      margin: "0",
+      display: "flex",
+      placeItems: "center",
+      minWidth: "320px",
+      minHeight: "100vh",
+      color: "contents.primary",
+      backgroundColor: "bg.primary",
     },
-    '#root': {
-      width: '100%',
-      margin: '0 auto',
-      textAlign: 'left',
+    "#root": {
+      width: "100%",
+      margin: "0 auto",
+      textAlign: "left",
     },
     'input[type="checkbox"], input[type="radio"]': {
-      accentColor: '#3b82f6',
+      accentColor: "#3b82f6",
     },
     // Accordion styles
-    'details[open] .accordion-icon': {
-      transform: 'rotate(180deg)',
+    "details[open] .accordion-icon": {
+      transform: "rotate(180deg)",
     },
-    'summary::-webkit-details-marker': {
-      display: 'none',
+    "summary::-webkit-details-marker": {
+      display: "none",
     },
-    'summary::marker': {
-      display: 'none',
+    "summary::marker": {
+      display: "none",
     },
     // Button focus state management (keyboard focus only)
-    'button[data-focused]': {
-      backgroundColor: 'var(--focus-bg) !important',
-      outline: 'var(--focus-outline-width) solid var(--focus-outline) !important',
-      outlineOffset: 'var(--focus-outline-offset) !important',
+    "button[data-focused]": {
+      backgroundColor: "var(--focus-bg) !important",
+      outline:
+        "var(--focus-outline-width) solid var(--focus-outline) !important",
+      outlineOffset: "var(--focus-outline-offset) !important",
     },
-    'button[data-focused]:not([data-focus-text-inherit])': {
-      color: 'var(--focus-text) !important',
+    "button[data-focused]:not([data-focus-text-inherit])": {
+      color: "var(--focus-text) !important",
     },
-    'button[data-focused]:hover': {
-      backgroundColor: 'var(--focus-bg) !important',
+    "button[data-focused]:hover": {
+      backgroundColor: "var(--focus-bg) !important",
     },
-    'button[data-focused]:hover:not([data-focus-text-inherit])': {
-      color: 'var(--focus-text) !important',
+    "button[data-focused]:hover:not([data-focus-text-inherit])": {
+      color: "var(--focus-text) !important",
     },
-    'input[data-focused], textarea[data-focused]': {
-      backgroundColor: 'var(--focus-bg) !important',
-      color: 'var(--focus-text) !important',
-      borderColor: 'var(--focus-outline) !important',
-      outline: 'var(--focus-outline-width) solid var(--focus-outline) !important',
-      outlineOffset: 'var(--focus-outline-offset) !important',
+    "input[data-focused], textarea[data-focused]": {
+      backgroundColor: "var(--focus-bg) !important",
+      color: "var(--focus-text) !important",
+      borderColor: "var(--focus-outline) !important",
+      outline:
+        "var(--focus-outline-width) solid var(--focus-outline) !important",
+      outlineOffset: "var(--focus-outline-offset) !important",
     },
-    'input[data-focused]:not([data-focus-text-inherit]), textarea[data-focused]:not([data-focus-text-inherit])': {
-      color: 'var(--focus-text) !important',
+    "input[data-focused]:not([data-focus-text-inherit]), textarea[data-focused]:not([data-focus-text-inherit])":
+      {
+        color: "var(--focus-text) !important",
+      },
+    "input[data-focused]:hover, textarea[data-focused]:hover": {
+      backgroundColor: "var(--focus-bg) !important",
     },
-    'input[data-focused]:hover, textarea[data-focused]:hover': {
-      backgroundColor: 'var(--focus-bg) !important',
-    },
-    'input[data-focused]:hover:not([data-focus-text-inherit]), textarea[data-focused]:hover:not([data-focus-text-inherit])': {
-      color: 'var(--focus-text) !important',
-    },
+    "input[data-focused]:hover:not([data-focus-text-inherit]), textarea[data-focused]:hover:not([data-focus-text-inherit])":
+      {
+        color: "var(--focus-text) !important",
+      },
   },
 });
