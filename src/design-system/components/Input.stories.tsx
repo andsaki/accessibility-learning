@@ -389,3 +389,208 @@ export const WCAGLevels: Story = {
     </div>
   ),
 };
+
+/**
+ * ## アクセシビリティガイドライン
+ *
+ * ### `label` プロパティは必須
+ *
+ * Input コンポーネントの `label` プロパティは必須です。
+ *
+ * **理由:**
+ * - **WCAG 3.3.2 (Labels or Instructions) - レベルA**: すべてのフォーム入力には明確なラベルまたは説明が必要
+ * - **スクリーンリーダー対応**: `<label>` 要素がないと、音声読み上げ時に何の入力欄か分からない
+ * - **ユーザビリティ**: 視覚的なラベルがないと、何を入力すべきか不明
+ */
+export const AccessibilityGuidelines: Story = {
+  args: {
+    label: '',
+  },
+  render: () => (
+    <div style={{ maxWidth: '800px', padding: '2rem', fontFamily: 'system-ui, sans-serif' }}>
+      <h2 style={{ fontSize: '24px', fontWeight: 'bold', marginBottom: '1.5rem', borderBottom: '2px solid #e5e7eb', paddingBottom: '0.5rem' }}>
+        Inputコンポーネント - アクセシビリティガイドライン
+      </h2>
+
+      {/* label プロパティは必須 */}
+      <section style={{ marginBottom: '3rem' }}>
+        <h3 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '1rem' }}>
+          1. label プロパティは必須
+        </h3>
+
+        <div style={{ marginBottom: '1.5rem', padding: '1rem', backgroundColor: '#f3f4f6', borderRadius: '8px', borderLeft: '4px solid #3b82f6' }}>
+          <strong>理由:</strong>
+          <ul style={{ marginTop: '0.5rem', paddingLeft: '1.5rem', lineHeight: '1.6' }}>
+            <li><strong>WCAG 3.3.2 (Labels or Instructions) - レベルA</strong>: すべてのフォーム入力には明確なラベルまたは説明が必要</li>
+            <li><strong>スクリーンリーダー対応</strong>: <code>&lt;label&gt;</code> 要素がないと、音声読み上げ時に何の入力欄か分からない</li>
+            <li><strong>ユーザビリティ</strong>: ラベルをクリックすると入力欄にフォーカスが移動する（クリック領域の拡大）</li>
+          </ul>
+        </div>
+
+        <div style={{ display: 'flex', gap: '1rem', marginBottom: '1rem' }}>
+          <div style={{ flex: 1, backgroundColor: '#fee', padding: '1rem', borderRadius: '8px', border: '2px solid #fcc' }}>
+            <strong>❌ 悪い例（label がない）:</strong>
+            <pre style={{ marginTop: '0.5rem', padding: '0.5rem', backgroundColor: '#fff', borderRadius: '4px', overflow: 'auto', fontSize: '13px' }}>
+{`{/* 何を入力すればいいか分からない */}
+<input placeholder="example@example.com" />`}
+            </pre>
+            <div style={{ marginTop: '1rem', border: '1px solid #ccc', padding: '0.5rem', borderRadius: '4px', backgroundColor: '#fff' }}>
+              <input type="text" placeholder="example@example.com" style={{ width: '100%', padding: '0.5rem', border: '1px solid #ccc', borderRadius: '4px' }} />
+            </div>
+          </div>
+
+          <div style={{ flex: 1, backgroundColor: '#efe', padding: '1rem', borderRadius: '8px', border: '2px solid #cfc' }}>
+            <strong>✅ 良い例（label がある）:</strong>
+            <pre style={{ marginTop: '0.5rem', padding: '0.5rem', backgroundColor: '#fff', borderRadius: '4px', overflow: 'auto', fontSize: '13px' }}>
+{`<Input
+  label="メールアドレス"
+  placeholder="example@example.com"
+/>`}
+            </pre>
+            <div style={{ marginTop: '1rem' }}>
+              <Input label="メールアドレス" placeholder="example@example.com" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* placeholder はラベルの代わりにならない */}
+      <section style={{ marginBottom: '3rem' }}>
+        <h3 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '1rem' }}>
+          2. placeholder はラベルの代わりにならない
+        </h3>
+
+        <div style={{ marginBottom: '1.5rem', padding: '1rem', backgroundColor: '#fef3c7', borderRadius: '8px', borderLeft: '4px solid #f59e0b' }}>
+          <strong>⚠️ 注意:</strong>
+          <p style={{ marginTop: '0.5rem', lineHeight: '1.6' }}>
+            <code>placeholder</code> 属性は補助的なヒントであり、ラベルの代わりにはなりません。
+          </p>
+          <ul style={{ marginTop: '0.5rem', paddingLeft: '1.5rem', lineHeight: '1.6' }}>
+            <li><strong>入力中に消える</strong>: ユーザーが入力を始めると placeholder が消え、何を入力していたか忘れる可能性</li>
+            <li><strong>スクリーンリーダーでの扱いが不安定</strong>: ブラウザやスクリーンリーダーによって読み上げ方が異なる</li>
+            <li><strong>視認性が低い</strong>: placeholder は通常グレーで表示され、コントラストが低い</li>
+          </ul>
+        </div>
+
+        <div style={{ backgroundColor: '#efe', padding: '1rem', borderRadius: '8px', border: '2px solid #cfc' }}>
+          <strong>✅ 良い例:</strong>
+          <pre style={{ marginTop: '0.5rem', padding: '0.5rem', backgroundColor: '#fff', borderRadius: '4px', overflow: 'auto', fontSize: '13px' }}>
+{`<Input
+  label="メールアドレス"
+  placeholder="例: user@example.com"
+/>`}
+          </pre>
+          <div style={{ marginTop: '1rem' }}>
+            <Input label="メールアドレス" placeholder="例: user@example.com" />
+          </div>
+        </div>
+      </section>
+
+      {/* 必須項目の明示 */}
+      <section style={{ marginBottom: '3rem' }}>
+        <h3 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '1rem' }}>
+          3. 必須項目の明示
+        </h3>
+
+        <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
+          必須項目は視覚的にもプログラム的にも明示する必要があります。
+        </p>
+
+        <div style={{ backgroundColor: '#efe', padding: '1rem', borderRadius: '8px', border: '2px solid #cfc' }}>
+          <strong>✅ 実装:</strong>
+          <pre style={{ marginTop: '0.5rem', padding: '0.5rem', backgroundColor: '#fff', borderRadius: '4px', overflow: 'auto', fontSize: '13px' }}>
+{`<Input
+  label="メールアドレス"
+  required
+/>`}
+          </pre>
+          <div style={{ marginTop: '1rem' }}>
+            <Input label="メールアドレス" required placeholder="example@example.com" />
+          </div>
+          <div style={{ marginTop: '1rem', padding: '0.75rem', backgroundColor: '#f9fafb', borderRadius: '4px', fontSize: '13px' }}>
+            <strong>生成されるHTML:</strong>
+            <ul style={{ marginTop: '0.5rem', paddingLeft: '1.5rem' }}>
+              <li>視覚的に <code>*</code> を表示</li>
+              <li><code>required</code> 属性を付与</li>
+              <li><code>aria-required="true"</code> を付与</li>
+              <li><code>aria-label="必須"</code> で記号の意味を明示</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* エラー状態の伝達 */}
+      <section style={{ marginBottom: '3rem' }}>
+        <h3 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '1rem' }}>
+          4. エラー状態の伝達
+        </h3>
+
+        <p style={{ marginBottom: '1rem', lineHeight: '1.6' }}>
+          エラーメッセージは適切に伝達する必要があります。
+        </p>
+
+        <div style={{ backgroundColor: '#efe', padding: '1rem', borderRadius: '8px', border: '2px solid #cfc' }}>
+          <strong>✅ 実装:</strong>
+          <pre style={{ marginTop: '0.5rem', padding: '0.5rem', backgroundColor: '#fff', borderRadius: '4px', overflow: 'auto', fontSize: '13px' }}>
+{`<Input
+  label="メールアドレス"
+  value={email}
+  error="有効なメールアドレスを入力してください"
+/>`}
+          </pre>
+          <div style={{ marginTop: '1rem' }}>
+            <Input
+              label="メールアドレス"
+              value="invalid-email"
+              error="有効なメールアドレスを入力してください"
+            />
+          </div>
+          <div style={{ marginTop: '1rem', padding: '0.75rem', backgroundColor: '#f9fafb', borderRadius: '4px', fontSize: '13px' }}>
+            <strong>要件:</strong>
+            <ul style={{ marginTop: '0.5rem', paddingLeft: '1.5rem' }}>
+              <li><code>aria-invalid="true"</code> でエラー状態を明示</li>
+              <li><code>aria-describedby</code> でエラーメッセージを関連付け</li>
+              <li>エラーメッセージに <code>role="alert"</code> を付与</li>
+              <li><code>aria-live="polite"</code> で変更を読み上げ</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* キーボード操作 */}
+      <section style={{ marginBottom: '3rem' }}>
+        <h3 style={{ fontSize: '20px', fontWeight: 'bold', marginBottom: '1rem' }}>
+          5. キーボード操作
+        </h3>
+
+        <div style={{ marginBottom: '1rem', padding: '1rem', backgroundColor: '#eff6ff', borderRadius: '8px', borderLeft: '4px solid #3b82f6' }}>
+          <p style={{ margin: 0, lineHeight: '1.6' }}>
+            すべての入力欄は、キーボードで操作可能です。<code>&lt;input&gt;</code> などのネイティブ要素を使用することで、
+            <strong>Tab</strong> キーでのフォーカス移動、<strong>Shift + Tab</strong> での逆方向移動が自動的にサポートされます。
+          </p>
+        </div>
+
+        <div style={{ marginTop: '1rem' }}>
+          <p style={{ marginBottom: '0.5rem', fontWeight: 'bold' }}>試してみてください:</p>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <Input label="入力欄1" placeholder="Tabキーでフォーカス移動" />
+            <Input label="入力欄2" placeholder="Shift + Tabで逆方向" />
+            <Input label="入力欄3" placeholder="Enterキーで送信" />
+          </div>
+        </div>
+      </section>
+
+      {/* 参考リンク */}
+      <section style={{ marginTop: '3rem', padding: '1.5rem', backgroundColor: '#f9fafb', borderRadius: '8px', border: '1px solid #e5e7eb' }}>
+        <h3 style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '1rem' }}>
+          📚 参考リンク
+        </h3>
+        <ul style={{ paddingLeft: '1.5rem', lineHeight: '2' }}>
+          <li><a href="https://www.w3.org/WAI/WCAG21/Understanding/labels-or-instructions.html" target="_blank" rel="noopener noreferrer" style={{ color: '#3b82f6' }}>WCAG 2.1 - 3.3.2 Labels or Instructions</a></li>
+          <li><a href="https://www.w3.org/WAI/ARIA/apg/patterns/input/" target="_blank" rel="noopener noreferrer" style={{ color: '#3b82f6' }}>ARIA Authoring Practices - Input</a></li>
+          <li><a href="https://developer.mozilla.org/ja/docs/Web/Accessibility/ARIA/forms/Basic_form_hints" target="_blank" rel="noopener noreferrer" style={{ color: '#3b82f6' }}>MDN - 基本的なフォームのヒント</a></li>
+        </ul>
+      </section>
+    </div>
+  ),
+};
