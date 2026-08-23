@@ -217,39 +217,41 @@ export const InputTypes: Story = {
  *
  * リアルタイムバリデーションのデモです。
  */
+const InteractiveComponent = () => {
+  const [email, setEmail] = useState('');
+  const [error, setError] = useState('');
+
+  const validateEmail = (value: string) => {
+    if (!value) {
+      setError('メールアドレスを入力してください');
+    } else if (!/\S+@\S+\.\S+/.test(value)) {
+      setError('正しいメールアドレスを入力してください');
+    } else {
+      setError('');
+    }
+  };
+
+  return (
+    <Input
+      label="メールアドレス"
+      type="email"
+      value={email}
+      onChange={(e) => {
+        setEmail(e.target.value);
+        validateEmail(e.target.value);
+      }}
+      error={error}
+      helperText="ログイン時に使用します"
+      required
+    />
+  );
+};
+
 export const Interactive: Story = {
   args: {
     label: '',
   },
-  render: () => {
-    const [email, setEmail] = useState('');
-    const [error, setError] = useState('');
-
-    const validateEmail = (value: string) => {
-      if (!value) {
-        setError('メールアドレスを入力してください');
-      } else if (!/\S+@\S+\.\S+/.test(value)) {
-        setError('正しいメールアドレスを入力してください');
-      } else {
-        setError('');
-      }
-    };
-
-    return (
-      <Input
-        label="メールアドレス"
-        type="email"
-        value={email}
-        onChange={(e) => {
-          setEmail(e.target.value);
-          validateEmail(e.target.value);
-        }}
-        error={error}
-        helperText="ログイン時に使用します"
-        required
-      />
-    );
-  },
+  render: () => <InteractiveComponent />,
 };
 
 /**
@@ -257,44 +259,46 @@ export const Interactive: Story = {
  *
  * 複数の入力欄を組み合わせたフォームのデモです。
  */
+const FormExampleComponent = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+  });
+
+  return (
+    <form onSubmit={(e) => e.preventDefault()}>
+      <Input
+        label="お名前"
+        value={formData.name}
+        onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+        required
+      />
+      <Input
+        label="メールアドレス"
+        type="email"
+        value={formData.email}
+        onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+        helperText="ログイン時に使用します"
+        required
+      />
+      <Input
+        label="パスワード"
+        type="password"
+        value={formData.password}
+        onChange={(e) => setFormData({ ...formData, password: e.target.value })}
+        helperText="8文字以上の英数字を入力してください"
+        required
+      />
+    </form>
+  );
+};
+
 export const FormExample: Story = {
   args: {
     label: '',
   },
-  render: () => {
-    const [formData, setFormData] = useState({
-      name: '',
-      email: '',
-      password: '',
-    });
-
-    return (
-      <form onSubmit={(e) => e.preventDefault()}>
-        <Input
-          label="お名前"
-          value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-          required
-        />
-        <Input
-          label="メールアドレス"
-          type="email"
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-          helperText="ログイン時に使用します"
-          required
-        />
-        <Input
-          label="パスワード"
-          type="password"
-          value={formData.password}
-          onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-          helperText="8文字以上の英数字を入力してください"
-          required
-        />
-      </form>
-    );
-  },
+  render: () => <FormExampleComponent />,
 };
 
 /**

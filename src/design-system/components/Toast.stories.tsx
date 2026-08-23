@@ -149,95 +149,97 @@ const YourComponent = () => {
  * - Level AA: 3px の中太青枠（推奨）
  * - Level AAA: 4px の太い黄色枠
  */
-export const WCAGLevels: Story = {
-  render: () => {
-    const [level, setLevel] = useState<'A' | 'AA' | 'AAA'>('AA');
+const WCAGLevelsComponent = () => {
+  const [level, setLevel] = useState<'A' | 'AA' | 'AAA'>('AA');
 
-    const WCAGDemo = () => {
-      const { success, error, warning, info } = useToast();
-
-      return (
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', padding: '2rem' }}>
-          <h2 style={{ margin: 0 }}>WCAG Level {level} のフォーカススタイル</h2>
-          <p style={{ margin: 0, color: '#666' }}>
-            レベルを変更してから、トーストを表示してください。<br />
-            <strong>Tab キー</strong>を押して閉じるボタン（×）にフォーカスを当てると、アウトラインの太さが確認できます。
-          </p>
-
-          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
-            <Button variant={level === 'A' ? 'primary' : 'outline'} onClick={() => setLevel('A')}>
-              Level A
-            </Button>
-            <Button variant={level === 'AA' ? 'primary' : 'outline'} onClick={() => setLevel('AA')}>
-              Level AA（推奨）
-            </Button>
-            <Button variant={level === 'AAA' ? 'primary' : 'outline'} onClick={() => setLevel('AAA')}>
-              Level AAA
-            </Button>
-          </div>
-
-          <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-            <Button variant="secondary" onClick={() => success('操作が成功しました', '成功')}>
-              Success Toast
-            </Button>
-            <Button variant="secondary" onClick={() => error('エラーが発生しました', 'エラー')}>
-              Error Toast
-            </Button>
-            <Button variant="secondary" onClick={() => warning('警告メッセージです', '警告')}>
-              Warning Toast
-            </Button>
-            <Button variant="secondary" onClick={() => info('お知らせです', 'お知らせ')}>
-              Info Toast
-            </Button>
-          </div>
-
-          <div style={{
-            marginTop: '1rem',
-            padding: '1rem',
-            backgroundColor: level === 'A' ? '#eff6ff' : level === 'AA' ? '#eff6ff' : '#fefce8',
-            borderRadius: '0.5rem',
-            border: `1px solid ${level === 'A' ? '#dbeafe' : level === 'AA' ? '#3b82f6' : '#facc15'}`
-          }}>
-            <h4 style={{ marginTop: 0, marginBottom: '0.5rem' }}>
-              Level {level} の特徴
-            </h4>
-            {level === 'A' && (
-              <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8 }}>
-                <li><strong>アウトライン幅:</strong> 2px（細め）</li>
-                <li><strong>色:</strong> 青 (primitive.blue[300])</li>
-                <li><strong>オフセット:</strong> なし</li>
-                <li>最小限のアクセシビリティ基準</li>
-              </ul>
-            )}
-            {level === 'AA' && (
-              <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8 }}>
-                <li><strong>アウトライン幅:</strong> 3px（中太）</li>
-                <li><strong>色:</strong> 濃い青 (primitive.blue[700])</li>
-                <li><strong>オフセット:</strong> 2px</li>
-                <li><strong>背景:</strong> 薄い青</li>
-                <li>ほとんどのWebサイトで推奨される基準 ★</li>
-              </ul>
-            )}
-            {level === 'AAA' && (
-              <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8 }}>
-                <li><strong>アウトライン幅:</strong> 4px（太め）</li>
-                <li><strong>色:</strong> 黒 (primitive.black)</li>
-                <li><strong>オフセット:</strong> 2px</li>
-                <li><strong>背景:</strong> 黄色</li>
-                <li>最高レベルのアクセシビリティ基準</li>
-                <li>公共機関、医療、金融サービスなどで使用</li>
-              </ul>
-            )}
-          </div>
-        </div>
-      );
-    };
+  const WCAGDemo = () => {
+    const { success, error, warning, info } = useToast();
 
     return (
-      <ToastProvider wcagLevel={level}>
-        <WCAGDemo />
-      </ToastProvider>
+      <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem', padding: '2rem' }}>
+        <h2 style={{ margin: 0 }}>WCAG Level {level} のフォーカススタイル</h2>
+        <p style={{ margin: 0, color: '#666' }}>
+          レベルを変更してから、トーストを表示してください。<br />
+          <strong>Tab キー</strong>を押して閉じるボタン（×）にフォーカスを当てると、アウトラインの太さが確認できます。
+        </p>
+
+        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap', marginBottom: '1rem' }}>
+          <Button variant={level === 'A' ? 'primary' : 'outline'} onClick={() => setLevel('A')}>
+            Level A
+          </Button>
+          <Button variant={level === 'AA' ? 'primary' : 'outline'} onClick={() => setLevel('AA')}>
+            Level AA（推奨）
+          </Button>
+          <Button variant={level === 'AAA' ? 'primary' : 'outline'} onClick={() => setLevel('AAA')}>
+            Level AAA
+          </Button>
+        </div>
+
+        <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+          <Button variant="secondary" onClick={() => success('操作が成功しました', '成功')}>
+            Success Toast
+          </Button>
+          <Button variant="secondary" onClick={() => error('エラーが発生しました', 'エラー')}>
+            Error Toast
+          </Button>
+          <Button variant="secondary" onClick={() => warning('警告メッセージです', '警告')}>
+            Warning Toast
+          </Button>
+          <Button variant="secondary" onClick={() => info('お知らせです', 'お知らせ')}>
+            Info Toast
+          </Button>
+        </div>
+
+        <div style={{
+          marginTop: '1rem',
+          padding: '1rem',
+          backgroundColor: level === 'A' ? '#eff6ff' : level === 'AA' ? '#eff6ff' : '#fefce8',
+          borderRadius: '0.5rem',
+          border: `1px solid ${level === 'A' ? '#dbeafe' : level === 'AA' ? '#3b82f6' : '#facc15'}`
+        }}>
+          <h4 style={{ marginTop: 0, marginBottom: '0.5rem' }}>
+            Level {level} の特徴
+          </h4>
+          {level === 'A' && (
+            <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8 }}>
+              <li><strong>アウトライン幅:</strong> 2px（細め）</li>
+              <li><strong>色:</strong> 青 (primitive.blue[300])</li>
+              <li><strong>オフセット:</strong> なし</li>
+              <li>最小限のアクセシビリティ基準</li>
+            </ul>
+          )}
+          {level === 'AA' && (
+            <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8 }}>
+              <li><strong>アウトライン幅:</strong> 3px（中太）</li>
+              <li><strong>色:</strong> 濃い青 (primitive.blue[700])</li>
+              <li><strong>オフセット:</strong> 2px</li>
+              <li><strong>背景:</strong> 薄い青</li>
+              <li>ほとんどのWebサイトで推奨される基準 ★</li>
+            </ul>
+          )}
+          {level === 'AAA' && (
+            <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8 }}>
+              <li><strong>アウトライン幅:</strong> 4px（太め）</li>
+              <li><strong>色:</strong> 黒 (primitive.black)</li>
+              <li><strong>オフセット:</strong> 2px</li>
+              <li><strong>背景:</strong> 黄色</li>
+              <li>最高レベルのアクセシビリティ基準</li>
+              <li>公共機関、医療、金融サービスなどで使用</li>
+            </ul>
+          )}
+        </div>
+      </div>
     );
-  },
+  };
+
+  return (
+    <ToastProvider wcagLevel={level}>
+      <WCAGDemo />
+    </ToastProvider>
+  );
+};
+
+export const WCAGLevels: Story = {
+  render: () => <WCAGLevelsComponent />,
 };
 

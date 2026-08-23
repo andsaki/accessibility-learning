@@ -1,8 +1,8 @@
-import { test, expect } from '@playwright/test';
+import { test, expect, type Page } from '@playwright/test';
 import { gotoStory, STORY_ROOT } from './utils';
 import AxeBuilder from '@axe-core/playwright';
 
-const submit = async (page: any) => {
+const submit = async (page: Page) => {
   await page.getByRole('button', { name: /ログイン|会員登録|送信/ }).first().click();
 };
 

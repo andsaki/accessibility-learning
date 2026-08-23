@@ -59,43 +59,45 @@ type Story = StoryObj<typeof meta>;
  * - `aria-modal="true"` でモーダルであることを明示
  * - `aria-labelledby` でタイトルと関連付け
  */
-export const Default: Story = {
-  render: () => {
-    const [isOpen, setIsOpen] = useState(false);
+const DefaultComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-    return (
-      <>
-        <Button onClick={() => setIsOpen(true)}>モーダルを開く</Button>
-        <Modal
-          isOpen={isOpen}
-          onClose={() => setIsOpen(false)}
-          title="通知設定"
-          size="md"
-        >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <p style={{ margin: 0, lineHeight: 1.6 }}>
-              プッシュ通知を有効にすると、重要なお知らせをリアルタイムで受け取ることができます。
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>モーダルを開く</Button>
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="通知設定"
+        size="md"
+      >
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <p style={{ margin: 0, lineHeight: 1.6 }}>
+            プッシュ通知を有効にすると、重要なお知らせをリアルタイムで受け取ることができます。
+          </p>
+
+          <InfoBox variant="info" icon="💡" title="キーボード操作">
+            <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8 }}>
+              <li><strong>Tab</strong>: フォーカスを移動（モーダル内を循環）</li>
+              <li><strong>Esc</strong>: モーダルを閉じる</li>
+              <li><strong>Enter/Space</strong>: ボタンを実行</li>
+            </ul>
+          </InfoBox>
+
+          <InfoBox variant="warning" icon="⚠️" title="注意事項">
+            <p style={{ margin: 0 }}>
+              モーダル表示中は背景がスクロールできなくなります。
+              また、フォーカスはモーダル内に閉じ込められ、背景の要素にはアクセスできません。
             </p>
+          </InfoBox>
+        </div>
+      </Modal>
+    </>
+  );
+};
 
-            <InfoBox variant="info" icon="💡" title="キーボード操作">
-              <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8 }}>
-                <li><strong>Tab</strong>: フォーカスを移動（モーダル内を循環）</li>
-                <li><strong>Esc</strong>: モーダルを閉じる</li>
-                <li><strong>Enter/Space</strong>: ボタンを実行</li>
-              </ul>
-            </InfoBox>
-
-            <InfoBox variant="warning" icon="⚠️" title="注意事項">
-              <p style={{ margin: 0 }}>
-                モーダル表示中は背景がスクロールできなくなります。
-                また、フォーカスはモーダル内に閉じ込められ、背景の要素にはアクセスできません。
-              </p>
-            </InfoBox>
-          </div>
-        </Modal>
-      </>
-    );
-  },
+export const Default: Story = {
+  render: () => <DefaultComponent />,
 };
 
 /**
@@ -104,126 +106,130 @@ export const Default: Story = {
  * 破壊的な操作の確認に使用します。
  * フッターにアクションボタンを配置することで、ユーザーの意図を確認します。
  */
-export const WithFooter: Story = {
-  render: () => {
-    const [isOpen, setIsOpen] = useState(false);
+const WithFooterComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
-    return (
-      <>
-        <Button onClick={() => setIsOpen(true)}>アカウント削除</Button>
-        <Modal
-          isOpen={isOpen}
-          onClose={() => setIsOpen(false)}
-          title="アカウントの削除"
-          size="md"
-          footer={
-            <>
-              <Button variant="outline" onClick={() => setIsOpen(false)}>
-                キャンセル
-              </Button>
-              <Button
-                variant="primary"
-                onClick={() => {
-                  alert('アカウントを削除しました');
-                  setIsOpen(false);
-                }}
-              >
-                削除する
-              </Button>
-            </>
-          }
-        >
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            <p style={{ margin: 0, lineHeight: 1.6 }}>
-              本当にアカウントを削除しますか？
-            </p>
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>アカウント削除</Button>
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="アカウントの削除"
+        size="md"
+        footer={
+          <>
+            <Button variant="outline" onClick={() => setIsOpen(false)}>
+              キャンセル
+            </Button>
+            <Button
+              variant="primary"
+              onClick={() => {
+                alert('アカウントを削除しました');
+                setIsOpen(false);
+              }}
+            >
+              削除する
+            </Button>
+          </>
+        }
+      >
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          <p style={{ margin: 0, lineHeight: 1.6 }}>
+            本当にアカウントを削除しますか？
+          </p>
 
-            <div style={{
-              padding: '1rem',
-              backgroundColor: 'primitive.red[50]',
-              borderRadius: '0.5rem',
-              border: '1px solid primitive.red[300]'
-            }}>
-              <h4 style={{ marginTop: 0, marginBottom: '0.5rem', color: 'primitive.red[900]' }}>
-                ⚠️ この操作は取り消せません
-              </h4>
-              <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8, color: 'primitive.red[900]' }}>
-                <li>すべての投稿データが削除されます</li>
-                <li>フォロワー・フォロー情報が失われます</li>
-                <li>購入履歴が消去されます</li>
-                <li>同じメールアドレスでの再登録はできません</li>
-              </ul>
-            </div>
-
-            <p style={{ margin: 0, fontSize: '14px', color: 'primitive.gray[500]', lineHeight: 1.6 }}>
-              アカウントを削除する代わりに、一時的に非公開にすることもできます。
-              設定から「アカウントを非公開にする」を選択してください。
-            </p>
+          <div style={{
+            padding: '1rem',
+            backgroundColor: 'primitive.red[50]',
+            borderRadius: '0.5rem',
+            border: '1px solid primitive.red[300]'
+          }}>
+            <h4 style={{ marginTop: 0, marginBottom: '0.5rem', color: 'primitive.red[900]' }}>
+              ⚠️ この操作は取り消せません
+            </h4>
+            <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8, color: 'primitive.red[900]' }}>
+              <li>すべての投稿データが削除されます</li>
+              <li>フォロワー・フォロー情報が失われます</li>
+              <li>購入履歴が消去されます</li>
+              <li>同じメールアドレスでの再登録はできません</li>
+            </ul>
           </div>
-        </Modal>
-      </>
-    );
-  },
+
+          <p style={{ margin: 0, fontSize: '14px', color: 'primitive.gray[500]', lineHeight: 1.6 }}>
+            アカウントを削除する代わりに、一時的に非公開にすることもできます。
+            設定から「アカウントを非公開にする」を選択してください。
+          </p>
+        </div>
+      </Modal>
+    </>
+  );
+};
+
+export const WithFooter: Story = {
+  render: () => <WithFooterComponent />,
 };
 
 /**
  * フォーム付きモーダル
  */
+const WithFormComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    alert(`送信: ${name}, ${email}`);
+    setIsOpen(false);
+    setName('');
+    setEmail('');
+  };
+
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>フォーム付きモーダル</Button>
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="ユーザー登録"
+        footer={
+          <>
+            <Button variant="outline" onClick={() => setIsOpen(false)}>
+              キャンセル
+            </Button>
+            <Button variant="primary" type="submit" form="user-form">
+              登録
+            </Button>
+          </>
+        }
+      >
+        <form id="user-form" onSubmit={handleSubmit}>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+            <Input
+              label="お名前"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="山田太郎"
+              required
+            />
+            <Input
+              label="メールアドレス"
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="example@example.com"
+              required
+            />
+          </div>
+        </form>
+      </Modal>
+    </>
+  );
+};
+
 export const WithForm: Story = {
-  render: () => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-
-    const handleSubmit = (e: React.FormEvent) => {
-      e.preventDefault();
-      alert(`送信: ${name}, ${email}`);
-      setIsOpen(false);
-      setName('');
-      setEmail('');
-    };
-
-    return (
-      <>
-        <Button onClick={() => setIsOpen(true)}>フォーム付きモーダル</Button>
-        <Modal
-          isOpen={isOpen}
-          onClose={() => setIsOpen(false)}
-          title="ユーザー登録"
-          footer={
-            <>
-              <Button variant="outline" onClick={() => setIsOpen(false)}>
-                キャンセル
-              </Button>
-              <Button variant="primary" type="submit" form="user-form">
-                登録
-              </Button>
-            </>
-          }
-        >
-          <form id="user-form" onSubmit={handleSubmit}>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <Input
-                label="お名前"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                placeholder="山田太郎"
-                required
-              />
-              <Input
-                label="メールアドレス"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="example@example.com"
-                required
-              />
-            </div>
-          </form>
-        </Modal>
-      </>
-    );
-  },
+  render: () => <WithFormComponent />,
 };
 
 /**
@@ -234,159 +240,165 @@ export const WithForm: Story = {
  * - Level AA: 3px の中太青枠（推奨）
  * - Level AAA: 4px の太い黄色枠
  */
-export const WCAGLevels: Story = {
-  render: () => {
-    const [level, setLevel] = useState<'A' | 'AA' | 'AAA' | null>(null);
+const WCAGLevelsComponent = () => {
+  const [level, setLevel] = useState<'A' | 'AA' | 'AAA' | null>(null);
 
-    return (
-      <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-        <Button onClick={() => setLevel('A')}>Level A</Button>
-        <Button onClick={() => setLevel('AA')}>Level AA（推奨）</Button>
-        <Button onClick={() => setLevel('AAA')}>Level AAA</Button>
+  return (
+    <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+      <Button onClick={() => setLevel('A')}>Level A</Button>
+      <Button onClick={() => setLevel('AA')}>Level AA（推奨）</Button>
+      <Button onClick={() => setLevel('AAA')}>Level AAA</Button>
 
-        {level && (
-          <Modal
-            isOpen={true}
-            onClose={() => setLevel(null)}
-            title={`Level ${level} のフォーカススタイル`}
-            wcagLevel={level}
-            size="md"
-            footer={
-              <>
-                <Button variant="outline" onClick={() => setLevel(null)}>
-                  キャンセル
-                </Button>
-                <Button variant="primary" onClick={() => setLevel(null)}>
-                  確認
-                </Button>
-              </>
-            }
-          >
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-              <p style={{ margin: 0, lineHeight: 1.6 }}>
-                <strong>Tab キー</strong>を押して、フォーカスを移動してみてください。
-                閉じるボタン（×）やフッターのボタンにフォーカスが当たったときのアウトライン（枠線）の太さが変わります。
-              </p>
-
-              <div style={{
-                padding: '1rem',
-                backgroundColor: level === 'AAA' ? '#fefce8' : '#eff6ff',
-                borderRadius: '0.5rem',
-                border: `2px solid ${level === 'A' ? '#dbeafe' : level === 'AA' ? '#3b82f6' : '#facc15'}`,
-                color: level === 'AAA' ? '#111827' : '#0f172a',
-              }}>
-                <h4 style={{ marginTop: 0, marginBottom: '0.5rem' }}>
-                  Level {level} の特徴
-                </h4>
-                {level === 'A' && (
-                  <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8 }}>
-                    <li><strong>アウトライン幅:</strong> 2px（細め）</li>
-                    <li><strong>色:</strong> 青 (primitive.blue[300])</li>
-                    <li><strong>オフセット:</strong> なし</li>
-                    <li>最小限のアクセシビリティ基準</li>
-                  </ul>
-                )}
-                {level === 'AA' && (
-                  <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8 }}>
-                    <li><strong>アウトライン幅:</strong> 3px（中太）</li>
-                    <li><strong>色:</strong> 濃い青 (primitive.blue[700])</li>
-                    <li><strong>オフセット:</strong> 2px</li>
-                    <li><strong>背景:</strong> 薄い青</li>
-                    <li>ほとんどのWebサイトで推奨される基準 ★</li>
-                  </ul>
-                )}
-                {level === 'AAA' && (
-                  <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8 }}>
-                    <li><strong>アウトライン幅:</strong> 4px（太め）</li>
-                    <li><strong>色:</strong> 黒 (primitive.black)</li>
-                    <li><strong>オフセット:</strong> 2px</li>
-                    <li><strong>背景:</strong> 黄色</li>
-                    <li>最高レベルのアクセシビリティ基準</li>
-                    <li>公共機関、医療、金融サービスなどで使用</li>
-                  </ul>
-                )}
-              </div>
-            </div>
-          </Modal>
-        )}
-      </div>
-    );
-  },
-};
-
-/**
- * サイズ違い
- */
-export const Sizes: Story = {
-  render: () => {
-    const [size, setSize] = useState<'sm' | 'md' | 'lg' | null>(null);
-
-    return (
-      <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
-        <Button onClick={() => setSize('sm')}>Small</Button>
-        <Button onClick={() => setSize('md')}>Medium</Button>
-        <Button onClick={() => setSize('lg')}>Large</Button>
-
-        {size && (
-          <Modal
-            isOpen={true}
-            onClose={() => setSize(null)}
-            title={`${size.toUpperCase()} サイズのモーダル`}
-            size={size}
-          >
-            <p>これは {size} サイズのモーダルです。</p>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua.
-            </p>
-          </Modal>
-        )}
-      </div>
-    );
-  },
-};
-
-/**
- * 長いコンテンツ（スクロール）
- */
-export const LongContent: Story = {
-  render: () => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    return (
-      <>
-        <Button onClick={() => setIsOpen(true)}>長いコンテンツ</Button>
+      {level && (
         <Modal
-          isOpen={isOpen}
-          onClose={() => setIsOpen(false)}
-          title="利用規約"
+          isOpen={true}
+          onClose={() => setLevel(null)}
+          title={`Level ${level} のフォーカススタイル`}
+          wcagLevel={level}
+          size="md"
           footer={
             <>
-              <Button variant="outline" onClick={() => setIsOpen(false)}>
+              <Button variant="outline" onClick={() => setLevel(null)}>
                 キャンセル
               </Button>
-              <Button variant="primary" onClick={() => setIsOpen(false)}>
-                同意する
+              <Button variant="primary" onClick={() => setLevel(null)}>
+                確認
               </Button>
             </>
           }
         >
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-            {Array.from({ length: 20 }, (_, i) => (
-              <div key={i}>
-                <h3 style={{ marginTop: 0 }}>第{i + 1}条</h3>
-                <p>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
-                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-                  veniam, quis nostrud exercitation ullamco laboris.
-                </p>
-              </div>
-            ))}
+            <p style={{ margin: 0, lineHeight: 1.6 }}>
+              <strong>Tab キー</strong>を押して、フォーカスを移動してみてください。
+              閉じるボタン（×）やフッターのボタンにフォーカスが当たったときのアウトライン（枠線）の太さが変わります。
+            </p>
+
+            <div style={{
+              padding: '1rem',
+              backgroundColor: level === 'AAA' ? '#fefce8' : '#eff6ff',
+              borderRadius: '0.5rem',
+              border: `2px solid ${level === 'A' ? '#dbeafe' : level === 'AA' ? '#3b82f6' : '#facc15'}`,
+              color: level === 'AAA' ? '#111827' : '#0f172a',
+            }}>
+              <h4 style={{ marginTop: 0, marginBottom: '0.5rem' }}>
+                Level {level} の特徴
+              </h4>
+              {level === 'A' && (
+                <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8 }}>
+                  <li><strong>アウトライン幅:</strong> 2px（細め）</li>
+                  <li><strong>色:</strong> 青 (primitive.blue[300])</li>
+                  <li><strong>オフセット:</strong> なし</li>
+                  <li>最小限のアクセシビリティ基準</li>
+                </ul>
+              )}
+              {level === 'AA' && (
+                <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8 }}>
+                  <li><strong>アウトライン幅:</strong> 3px（中太）</li>
+                  <li><strong>色:</strong> 濃い青 (primitive.blue[700])</li>
+                  <li><strong>オフセット:</strong> 2px</li>
+                  <li><strong>背景:</strong> 薄い青</li>
+                  <li>ほとんどのWebサイトで推奨される基準 ★</li>
+                </ul>
+              )}
+              {level === 'AAA' && (
+                <ul style={{ margin: 0, paddingLeft: '1.5rem', lineHeight: 1.8 }}>
+                  <li><strong>アウトライン幅:</strong> 4px（太め）</li>
+                  <li><strong>色:</strong> 黒 (primitive.black)</li>
+                  <li><strong>オフセット:</strong> 2px</li>
+                  <li><strong>背景:</strong> 黄色</li>
+                  <li>最高レベルのアクセシビリティ基準</li>
+                  <li>公共機関、医療、金融サービスなどで使用</li>
+                </ul>
+              )}
+            </div>
           </div>
         </Modal>
-      </>
-    );
-  },
+      )}
+    </div>
+  );
+};
+
+export const WCAGLevels: Story = {
+  render: () => <WCAGLevelsComponent />,
+};
+
+/**
+ * サイズ違い
+ */
+const SizesComponent = () => {
+  const [size, setSize] = useState<'sm' | 'md' | 'lg' | null>(null);
+
+  return (
+    <div style={{ display: 'flex', gap: '0.75rem', flexWrap: 'wrap' }}>
+      <Button onClick={() => setSize('sm')}>Small</Button>
+      <Button onClick={() => setSize('md')}>Medium</Button>
+      <Button onClick={() => setSize('lg')}>Large</Button>
+
+      {size && (
+        <Modal
+          isOpen={true}
+          onClose={() => setSize(null)}
+          title={`${size.toUpperCase()} サイズのモーダル`}
+          size={size}
+        >
+          <p>これは {size} サイズのモーダルです。</p>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua.
+          </p>
+        </Modal>
+      )}
+    </div>
+  );
+};
+
+export const Sizes: Story = {
+  render: () => <SizesComponent />,
+};
+
+/**
+ * 長いコンテンツ（スクロール）
+ */
+const LongContentComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <>
+      <Button onClick={() => setIsOpen(true)}>長いコンテンツ</Button>
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="利用規約"
+        footer={
+          <>
+            <Button variant="outline" onClick={() => setIsOpen(false)}>
+              キャンセル
+            </Button>
+            <Button variant="primary" onClick={() => setIsOpen(false)}>
+              同意する
+            </Button>
+          </>
+        }
+      >
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+          {Array.from({ length: 20 }, (_, i) => (
+            <div key={i}>
+              <h3 style={{ marginTop: 0 }}>第{i + 1}条</h3>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
+                veniam, quis nostrud exercitation ullamco laboris.
+              </p>
+            </div>
+          ))}
+        </div>
+      </Modal>
+    </>
+  );
+};
+
+export const LongContent: Story = {
+  render: () => <LongContentComponent />,
 };
 
 /**
@@ -397,68 +409,70 @@ export const LongContent: Story = {
  * - `aria-labelledby` によりタイトルとの関連付けを読み上げ
  * - フォーカス管理により、モーダル内の要素を順番に読み上げ
  */
+const ScreenReaderExampleComponent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
+      <ScreenReaderDemo
+        label="基本的なモーダル"
+        description="モーダルを開くボタンとモーダルの読み上げを確認できます"
+        srText="通知設定 ボタン"
+      >
+        <Button onClick={() => setIsOpen(true)}>通知設定</Button>
+      </ScreenReaderDemo>
+
+      <Modal
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        title="通知設定"
+        size="md"
+        footer={
+          <>
+            <Button variant="outline" onClick={() => setIsOpen(false)}>
+              キャンセル
+            </Button>
+            <Button variant="primary" onClick={() => setIsOpen(false)}>
+              保存
+            </Button>
+          </>
+        }
+      >
+        <p style={{ margin: 0, lineHeight: 1.6 }}>
+          プッシュ通知を有効にすると、重要なお知らせをリアルタイムで受け取ることができます。
+        </p>
+      </Modal>
+
+      {isOpen && (
+        <div style={{ marginTop: '2rem' }}>
+          <InfoBox variant="info" icon="🎙️" title="スクリーンリーダーの読み上げ">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <p style={{ margin: 0, fontFamily: 'monospace', fontSize: '14px', lineHeight: 1.6 }}>
+                1. "ダイアログ、通知設定"
+              </p>
+              <p style={{ margin: 0, fontFamily: 'monospace', fontSize: '14px', lineHeight: 1.6 }}>
+                2. "通知設定 見出し レベル2"
+              </p>
+              <p style={{ margin: 0, fontFamily: 'monospace', fontSize: '14px', lineHeight: 1.6 }}>
+                3. "モーダルを閉じる ボタン"
+              </p>
+              <p style={{ margin: 0, fontFamily: 'monospace', fontSize: '14px', lineHeight: 1.6 }}>
+                4. "プッシュ通知を有効にすると、重要なお知らせをリアルタイムで受け取ることができます。"
+              </p>
+              <p style={{ margin: 0, fontFamily: 'monospace', fontSize: '14px', lineHeight: 1.6 }}>
+                5. "キャンセル ボタン"
+              </p>
+              <p style={{ margin: 0, fontFamily: 'monospace', fontSize: '14px', lineHeight: 1.6 }}>
+                6. "保存 ボタン"
+              </p>
+            </div>
+          </InfoBox>
+        </div>
+      )}
+    </div>
+  );
+};
+
 export const ScreenReaderExample: Story = {
-  render: () => {
-    const [isOpen, setIsOpen] = useState(false);
-
-    return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem' }}>
-        <ScreenReaderDemo
-          label="基本的なモーダル"
-          description="モーダルを開くボタンとモーダルの読み上げを確認できます"
-          srText="通知設定 ボタン"
-        >
-          <Button onClick={() => setIsOpen(true)}>通知設定</Button>
-        </ScreenReaderDemo>
-
-        <Modal
-          isOpen={isOpen}
-          onClose={() => setIsOpen(false)}
-          title="通知設定"
-          size="md"
-          footer={
-            <>
-              <Button variant="outline" onClick={() => setIsOpen(false)}>
-                キャンセル
-              </Button>
-              <Button variant="primary" onClick={() => setIsOpen(false)}>
-                保存
-              </Button>
-            </>
-          }
-        >
-          <p style={{ margin: 0, lineHeight: 1.6 }}>
-            プッシュ通知を有効にすると、重要なお知らせをリアルタイムで受け取ることができます。
-          </p>
-        </Modal>
-
-        {isOpen && (
-          <div style={{ marginTop: '2rem' }}>
-            <InfoBox variant="info" icon="🎙️" title="スクリーンリーダーの読み上げ">
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                <p style={{ margin: 0, fontFamily: 'monospace', fontSize: '14px', lineHeight: 1.6 }}>
-                  1. "ダイアログ、通知設定"
-                </p>
-                <p style={{ margin: 0, fontFamily: 'monospace', fontSize: '14px', lineHeight: 1.6 }}>
-                  2. "通知設定 見出し レベル2"
-                </p>
-                <p style={{ margin: 0, fontFamily: 'monospace', fontSize: '14px', lineHeight: 1.6 }}>
-                  3. "モーダルを閉じる ボタン"
-                </p>
-                <p style={{ margin: 0, fontFamily: 'monospace', fontSize: '14px', lineHeight: 1.6 }}>
-                  4. "プッシュ通知を有効にすると、重要なお知らせをリアルタイムで受け取ることができます。"
-                </p>
-                <p style={{ margin: 0, fontFamily: 'monospace', fontSize: '14px', lineHeight: 1.6 }}>
-                  5. "キャンセル ボタン"
-                </p>
-                <p style={{ margin: 0, fontFamily: 'monospace', fontSize: '14px', lineHeight: 1.6 }}>
-                  6. "保存 ボタン"
-                </p>
-              </div>
-            </InfoBox>
-          </div>
-        )}
-      </div>
-    );
-  },
+  render: () => <ScreenReaderExampleComponent />,
 };

@@ -86,76 +86,80 @@ export const WithDisabledOptions: Story = {
   },
 };
 
-export const WCAGLevels = {
-  render: () => {
-    const [valueAA, setValueAA] = useState('');
-    const [valueAAA, setValueAAA] = useState('');
+const WCAGLevelsComponent = () => {
+  const [valueAA, setValueAA] = useState('');
+  const [valueAAA, setValueAAA] = useState('');
 
-    return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-        <Dropdown
-          label="レベルAA（デフォルト）"
-          options={mockOptions}
-          value={valueAA}
-          onChange={setValueAA}
-          wcagLevel="AA"
-        />
-        <Dropdown
-          label="レベルAAA"
-          options={mockOptions}
-          value={valueAAA}
-          onChange={setValueAAA}
-          wcagLevel="AAA"
-        />
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
+      <Dropdown
+        label="レベルAA（デフォルト）"
+        options={mockOptions}
+        value={valueAA}
+        onChange={setValueAA}
+        wcagLevel="AA"
+      />
+      <Dropdown
+        label="レベルAAA"
+        options={mockOptions}
+        value={valueAAA}
+        onChange={setValueAAA}
+        wcagLevel="AAA"
+      />
+    </div>
+  );
+};
+
+export const WCAGLevels = {
+  render: () => <WCAGLevelsComponent />,
+};
+
+const InteractiveComponent = () => {
+  const [selectedFruit, setSelectedFruit] = useState('');
+  const [selectedCity, setSelectedCity] = useState('');
+
+  const cities = [
+    { value: 'tokyo', label: '東京' },
+    { value: 'osaka', label: '大阪' },
+    { value: 'nagoya', label: '名古屋' },
+    { value: 'fukuoka', label: '福岡' },
+    { value: 'sapporo', label: '札幌' },
+  ];
+
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+      <Dropdown
+        label="好きな果物"
+        options={mockOptions}
+        value={selectedFruit}
+        onChange={setSelectedFruit}
+        placeholder="果物を選択"
+        required
+      />
+
+      <Dropdown
+        label="住んでいる都市"
+        options={cities}
+        value={selectedCity}
+        onChange={setSelectedCity}
+        placeholder="都市を選択"
+        helperText="現在住んでいる都市を選んでください"
+      />
+
+      <div style={{
+        padding: '16px',
+        backgroundColor: '#f3f4f6',
+        borderRadius: '0.5rem',
+        fontSize: '14px',
+      }}>
+        <p><strong>選択された値:</strong></p>
+        <p>果物: {selectedFruit || 'なし'}</p>
+        <p>都市: {selectedCity || 'なし'}</p>
       </div>
-    );
-  },
+    </div>
+  );
 };
 
 export const Interactive = {
-  render: () => {
-    const [selectedFruit, setSelectedFruit] = useState('');
-    const [selectedCity, setSelectedCity] = useState('');
-
-    const cities = [
-      { value: 'tokyo', label: '東京' },
-      { value: 'osaka', label: '大阪' },
-      { value: 'nagoya', label: '名古屋' },
-      { value: 'fukuoka', label: '福岡' },
-      { value: 'sapporo', label: '札幌' },
-    ];
-
-    return (
-      <div style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-        <Dropdown
-          label="好きな果物"
-          options={mockOptions}
-          value={selectedFruit}
-          onChange={setSelectedFruit}
-          placeholder="果物を選択"
-          required
-        />
-
-        <Dropdown
-          label="住んでいる都市"
-          options={cities}
-          value={selectedCity}
-          onChange={setSelectedCity}
-          placeholder="都市を選択"
-          helperText="現在住んでいる都市を選んでください"
-        />
-
-        <div style={{
-          padding: '16px',
-          backgroundColor: '#f3f4f6',
-          borderRadius: '0.5rem',
-          fontSize: '14px',
-        }}>
-          <p><strong>選択された値:</strong></p>
-          <p>果物: {selectedFruit || 'なし'}</p>
-          <p>都市: {selectedCity || 'なし'}</p>
-        </div>
-      </div>
-    );
-  },
+  render: () => <InteractiveComponent />,
 };

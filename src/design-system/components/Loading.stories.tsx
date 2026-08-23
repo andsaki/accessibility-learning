@@ -98,25 +98,27 @@ export const NoLabel: Story = {
 /**
  * フルスクリーンオーバーレイ
  */
+const FullscreenComponent = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  return (
+    <div>
+      <Button
+        onClick={() => {
+          setIsLoading(true);
+          setTimeout(() => setIsLoading(false), 3000);
+        }}
+      >
+        ローディングを表示（3秒間）
+      </Button>
+      {isLoading && <Loading fullscreen label="データを読み込んでいます..." />}
+    </div>
+  );
+};
+
 export const Fullscreen: Story = {
   args: { label: "" } as any,
-  render: () => {
-    const [isLoading, setIsLoading] = useState(false);
-
-    return (
-      <div>
-        <Button
-          onClick={() => {
-            setIsLoading(true);
-            setTimeout(() => setIsLoading(false), 3000);
-          }}
-        >
-          ローディングを表示（3秒間）
-        </Button>
-        {isLoading && <Loading fullscreen label="データを読み込んでいます..." />}
-      </div>
-    );
-  },
+  render: () => <FullscreenComponent />,
 };
 
 /**
@@ -145,84 +147,88 @@ export const Inline: Story = {
 /**
  * ボタン内でのローディング
  */
+const InButtonComponent = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  return (
+    <div style={{ display: "flex", gap: "1rem" }}>
+      <Button
+        onClick={() => {
+          setIsLoading(true);
+          setTimeout(() => setIsLoading(false), 2000);
+        }}
+        disabled={isLoading}
+      >
+        {isLoading ? (
+          <span style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+            <InlineLoading size="sm" color="primary" />
+            送信中...
+          </span>
+        ) : (
+          "送信"
+        )}
+      </Button>
+
+      <Button variant="secondary">
+        <span style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <InlineLoading size="sm" color="secondary" />
+          読み込み中
+        </span>
+      </Button>
+    </div>
+  );
+};
+
 export const InButton: Story = {
   args: { label: "" } as any,
-  render: () => {
-    const [isLoading, setIsLoading] = useState(false);
-
-    return (
-      <div style={{ display: "flex", gap: "1rem" }}>
-        <Button
-          onClick={() => {
-            setIsLoading(true);
-            setTimeout(() => setIsLoading(false), 2000);
-          }}
-          disabled={isLoading}
-        >
-          {isLoading ? (
-            <span style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-              <InlineLoading size="sm" color="primary" />
-              送信中...
-            </span>
-          ) : (
-            "送信"
-          )}
-        </Button>
-
-        <Button variant="secondary">
-          <span style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-            <InlineLoading size="sm" color="secondary" />
-            読み込み中
-          </span>
-        </Button>
-      </div>
-    );
-  },
+  render: () => <InButtonComponent />,
 };
 
 /**
  * カード内でのローディング
  */
-export const InCard: Story = {
-  args: { label: "" } as any,
-  render: () => {
-    const [isLoading, setIsLoading] = useState(true);
+const InCardComponent = () => {
+  const [isLoading, setIsLoading] = useState(true);
 
-    return (
-      <div>
-        <Button
-          onClick={() => setIsLoading(!isLoading)}
-          style={{ marginBottom: "1rem" }}
-        >
-          ローディング切り替え
-        </Button>
+  return (
+    <div>
+      <Button
+        onClick={() => setIsLoading(!isLoading)}
+        style={{ marginBottom: "1rem" }}
+      >
+        ローディング切り替え
+      </Button>
 
-        <div
-          style={{
-            width: "400px",
-            minHeight: "200px",
-            border: "1px solid primitive.gray[300]",
-            borderRadius: "8px",
-            padding: "1.5rem",
-            display: "flex",
-            flexDirection: "column",
-            alignItems: "center",
-            justifyContent: "center",
-            backgroundColor: "primitive.gray[50]",
-          }}
-        >
-          {isLoading ? (
-            <Loading size="lg" label="データを読み込んでいます..." />
-          ) : (
-            <div>
-              <h3 style={{ marginTop: 0 }}>コンテンツ</h3>
-              <p>データの読み込みが完了しました。</p>
+      <div
+        style={{
+          width: "400px",
+          minHeight: "200px",
+          border: "1px solid primitive.gray[300]",
+          borderRadius: "8px",
+          padding: "1.5rem",
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          backgroundColor: "primitive.gray[50]",
+        }}
+      >
+        {isLoading ? (
+          <Loading size="lg" label="データを読み込んでいます..." />
+        ) : (
+          <div>
+            <h3 style={{ marginTop: 0 }}>コンテンツ</h3>
+            <p>データの読み込みが完了しました。</p>
             </div>
           )}
         </div>
       </div>
     );
-  },
+};
+
+export const InCard: Story = {
+  args: { label: "" } as any,
+  render: () => <InCardComponent />,
 };
 
 /**
